@@ -34,6 +34,7 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
+        primary: "#ea9934",
       },
       borderRadius: {
         none: "0px",
@@ -69,6 +70,13 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
+        manrope: ["Manrope-Regular", "sans-serif"],
+        "manrope-bold": ["Manrope-Bold", "sans-serif"],
+        "manrope-extrabold": ["Manrope-ExtraBold", "sans-serif"],
+        "manrope-light": ["Manrope-Light", "sans-serif"],
+        "manrope-medium": ["Manrope-Medium", "sans-serif"],
+        "manrope-semibold": ["Manrope-SemiBold", "sans-serif"],
+        "manrope-extralight": ["Manrope-ExtraLight", "sans-serif"],
       },
       keyframes: {
         ring: {
