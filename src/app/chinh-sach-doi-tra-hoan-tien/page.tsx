@@ -10,8 +10,8 @@ export default async function Chung() {
   
   return (
     <>
-      <div className="py-[36px] px-[120px]">
-        <div className="flex flex-col gap-x-6 text-[32px]">
+      <div className="py-[36px] content-container">
+        <div className="flex flex-col font-bold gap-x-6 text-[32px]">
         Chính Sách Đổi Trả Và Hoàn Tiền
         </div>
 
