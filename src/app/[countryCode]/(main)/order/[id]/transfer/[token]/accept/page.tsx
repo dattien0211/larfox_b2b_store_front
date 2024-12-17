@@ -17,7 +17,7 @@ export default async function TransferPage({
       <div className="flex flex-col gap-y-6">
         {success && (
           <>
-            <Heading level="h1" className="text-xl text-zinc-900">
+            <Heading level="h1" className=" text-xl  text-zinc-900">
               Order transfered!
             </Heading>
             <Text className="text-zinc-600">

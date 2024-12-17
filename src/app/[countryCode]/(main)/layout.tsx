@@ -21,10 +21,8 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
       {customer && cart && (
         <CartMismatchBanner customer={customer} cart={cart} />
       )}
-      <div className="w-full">
-        <div className="content-container">{props.children}</div>
-      </div>
 
+      {props.children}
       <Footer />
     </>
   )

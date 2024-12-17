@@ -22,20 +22,30 @@ module.exports = {
       },
       colors: {
         grey: {
-          0: "#FFFFFF",
-          5: "#F9FAFB",
-          10: "#F3F4F6",
-          20: "#E5E7EB",
-          30: "#D1D5DB",
-          40: "#9CA3AF",
-          50: "#6B7280",
-          60: "#4B5563",
-          70: "#374151",
-          80: "#1F2937",
-          90: "#111827",
-          100: "#f2f2f2",
+          5: "#3E3E3E",
+          10: "#f2f2f2", // Very light grey (close to white)
+          15: "#F8F8F8",
+          20: "#E5E5E5", // Light grey
+          30: "#AEAEAE", // Mid grey
+          40: "#5C5C5C", // Dark grey
+        },
+        black: {
+          10: "#565656",
+          20: "#787777",
         },
         primary: "#ea9934",
+        orang: {
+          5: "#FFB558",
+          10: "#D96800",
+          15: "#FFC274",
+          20: "#F79214",
+          25: "#EA9934",
+          30: "#EF751C",
+          35: "#F39031",
+        },
+        beige: {
+          10: "#FFFCF5",
+        },
       },
       borderRadius: {
         none: "0px",
@@ -71,6 +81,7 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
+        times: ["Times", "sans-serif"],
         manrope: ["Manrope-Regular", "sans-serif"],
         "manrope-bold": ["Manrope-Bold", "sans-serif"],
         "manrope-extrabold": ["Manrope-ExtraBold", "sans-serif"],
@@ -165,7 +176,19 @@ module.exports = {
         "slide-in": "slide-in 1.2s cubic-bezier(.41,.73,.51,1.02)",
         leave: "leave 150ms ease-in forwards",
       },
+      textShadow: {
+        custom: "2px 2px 4px #FEB954", // y=2, blur=4, color=#FEB954
+      },
     },
   },
-  plugins: [require("tailwindcss-radix")()],
+  plugins: [
+    require("tailwindcss-radix")(),
+    function ({ addUtilities }) {
+      addUtilities({
+        ".text-shadow-custom": {
+          "text-shadow": "0 2px 4px #FEB954",
+        },
+      })
+    },
+  ],
 }
