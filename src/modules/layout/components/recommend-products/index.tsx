@@ -31,7 +31,7 @@ const RecommendProducts: React.FC<RecommendProductsProps> = ({
           <h2 className="italic text-primary font-times font-bold text-2xl">
             {shopName}
           </h2>
-          <h1 className="text-[44px] font-bold font-times">{title}</h1>
+          <h1 className="text-44px font-bold font-times">{title}</h1>
         </div>
       </div>
 

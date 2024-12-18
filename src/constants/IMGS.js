@@ -22,6 +22,10 @@ import HotProduct3 from "@assets/images/hot-product-3.png"
 import LeafBG from "@assets/images/leaf-bg.png"
 import Vendor from "@assets/images/vendor.png"
 import Blog from "@assets/images/blog.png"
+import FBIcon from "@assets/images/fb-icon.png"
+import TwitterIcon from "@assets/images/twitter-icon.png"
+import LinkedInIcon from "@assets/images/linkedin-icon.png"
+import YTIcon from "@assets/images/yt-icon.png"
 
 export default {
   Logo,
@@ -47,4 +51,8 @@ export default {
   LeafBG,
   Vendor,
   Blog,
+  FBIcon,
+  TwitterIcon,
+  LinkedInIcon,
+  YTIcon,
 }

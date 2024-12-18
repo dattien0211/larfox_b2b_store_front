@@ -35,7 +35,7 @@ export default function OurStory() {
                 <h2 className="italic text-white font-times font-bold text-2xl">
                   Câu chuyện của Anco
                 </h2>
-                <h1 className="text-[44px] text-shadow-custom font-bold font-times text-white">
+                <h1 className="text-44px text-shadow-custom font-bold font-times text-white">
                   Sứ mệnh của chúng tôi
                 </h1>
               </div>
@@ -54,13 +54,7 @@ export default function OurStory() {
         </div>
       </div>
       <div className="h-[224px] bg-grey-15 flex items-center justify-center">
-        <Image
-          src={IMGS.Vendor}
-          alt="banner"
-          width={1200}
-          height={575}
-
-        />
+        <Image src={IMGS.Vendor} alt="banner" width={1200} height={575} />
       </div>
     </>
   )

@@ -19,9 +19,9 @@ const DropDown: React.FC<IconProps> = ({
       <path
         d="M1.46289 1.13576L6.19432 5.86719L10.9257 1.13576"
         stroke={color}
-        stroke-width="1.472"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.472"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )

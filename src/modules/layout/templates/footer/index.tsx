@@ -25,17 +25,20 @@ export default async function Footer() {
             alt="leaf"
             width={1200} // Set the original width of the image
             height={56} // Set the original height to maintain the aspect ratio
-            className="absolute left-0 -top-36 w-screen h-auto z-10" // Ensures the image fills the window width
+            className="absolute left-0 -top-36 w-screen  z-10" // Ensures the image fills the window width
           />
         </div>
         <div className="content-container">
           <div className="flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center justify-between py-8">
-            <Image
-              src={IMGS.Logo2}
-              alt="leaf"
-              width={120} // Set the original width of the image
-              height={32} // Set the original height to maintain the aspect ratio
-            />
+            <div className="relative w-[120px] h-[54px]">
+              <Image
+                src={IMGS.Logo2}
+                alt="Logo"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover"
+              />
+            </div>
             <div className="flex items-center justify-center gap-x-2">
               <h1 className="text-white font-manrope-bold font-bold">
                 Follow Us
@@ -55,12 +58,9 @@ export default async function Footer() {
               </div>
             </div>
           </div>
-          <Image
-            src={IMGS.Line}
-            alt="leaf"
-            width={1200} // Set the original width of the image
-            height={5} // Set the original height to maintain the aspect ratio
-          />
+          <div className="relative w-full h-1">
+            <Image src={IMGS.Line} alt="leaf" fill className="object-cover" />
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-y-8 md:gap-x-10 mt-12 pb-8 text-white">
             <div className="md:col-span-3">
               <h1 className="font-bold text-2xl font-manrope-bold">Liên hệ</h1>
@@ -155,27 +155,31 @@ export default async function Footer() {
               <div className="flex flex-col md:flex-row justify-between mt-14">
                 <SelectSubsidiary dropDownColor="#FFFFFF" />
                 <div className="flex gap-x-2 mt-4 md:mt-0">
-                  <Image
-                    src={IMGS.Paypal}
-                    alt="Paypal"
-                    width={62}
-                    height={30}
-                    className="h-[30px]"
-                  />
-                  <Image
-                    src={IMGS.Visa}
-                    alt="Visa"
-                    width={88}
-                    height={30}
-                    className="h-[30px]"
-                  />
+                  <div className="relative w-[62px] h-[30px]">
+                    <Image
+                      src={IMGS.Paypal}
+                      alt="Paypal"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="relative w-[88px] h-[30px]">
+                    <Image
+                      src={IMGS.Visa}
+                      alt="Paypal"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="w-full text-white  py-6 bg-orang-20 flex items-center justify-center">
+      <div className="w-full text-white  py-4 bg-orang-20 flex items-center justify-center">
         <h1>
           © {new Date().getFullYear()} Anco Company (201201016057) (1001568-K)
         </h1>

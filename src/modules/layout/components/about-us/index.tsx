@@ -16,7 +16,7 @@ export default function AboutUs() {
             <h2 className="italic text-primary font-times font-bold text-2xl">
               Về chúng tôi
             </h2>
-            <h1 className="text-[44px] font-bold font-times">
+            <h1 className="text-44px font-bold font-times">
               Gía trị Anco đem lại
             </h1>
           </div>

@@ -7,12 +7,15 @@ export default async function MiddleNav() {
 
   return (
     <div className="flex items-center justify-between my-4">
-      <Image
-        src={IMGS.Logo}
-        alt="Logo"
-        width={120} // Set the width of the image
-        height={56} // Set the height of the image
-      />
+      <div className="relative w-[120px] h-[56px]">
+        <Image
+          src={IMGS.Logo}
+          alt="Logo"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-contain"
+        />
+      </div>
       <div className="flex items-center h-[46px]">
         {/* <div className="bg-grey-10 rounded-l-md flex items-center justify-center gap-x-4 px-8 h-full  border-r border-grey-20 cursor-pointer">
           All categories

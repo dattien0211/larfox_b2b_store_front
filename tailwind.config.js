@@ -28,10 +28,13 @@ module.exports = {
           20: "#E5E5E5", // Light grey
           30: "#AEAEAE", // Mid grey
           40: "#5C5C5C", // Dark grey
+          45: "#AFAFAF",
+          50: "#F2F2F2",
         },
         black: {
           10: "#565656",
           20: "#787777",
+          30: "#323232",
         },
         primary: "#ea9934",
         orang: {
@@ -178,6 +181,9 @@ module.exports = {
       },
       textShadow: {
         custom: "2px 2px 4px #FEB954", // y=2, blur=4, color=#FEB954
+      },
+      fontSize: {
+        "44px": "44px", // Custom font size
       },
     },
   },

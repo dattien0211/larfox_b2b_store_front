@@ -14,9 +14,7 @@ export default function HotProducts() {
           <h2 className="italic text-primary font-times font-bold text-2xl">
             Sản phẩm
           </h2>
-          <h1 className="text-[44px] font-bold font-times">
-            Sản phẩm bán chạy
-          </h1>
+          <h1 className="text-44px font-bold font-times">Sản phẩm bán chạy</h1>
         </div>
       </div>
       <h1 className="text-xl mx-auto mt-4 w-[50%] text-center">

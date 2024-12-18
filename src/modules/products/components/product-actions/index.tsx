@@ -13,6 +13,12 @@ import MobileActions from "./mobile-actions"
 import ProductPrice from "../product-price"
 import { addToCart } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
+import ProductInfo from "@modules/products/templates/product-info"
+import Icons from "@modules/common/icons"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import ProductPolicy from "../product-policy"
+import ProductSocial from "../product-social"
+import ProductMoreInfo from "../product-more-info"
 
 type ProductActionsProps = {
   product: HttpTypes.StoreProduct
@@ -20,7 +26,9 @@ type ProductActionsProps = {
   disabled?: boolean
 }
 
-const optionsAsKeymap = (variantOptions: HttpTypes.StoreProductVariant["options"]) => {
+const optionsAsKeymap = (
+  variantOptions: HttpTypes.StoreProductVariant["options"]
+) => {
   return variantOptions?.reduce((acc: Record<string, string>, varopt: any) => {
     acc[varopt.option_id] = varopt.value
     return acc
@@ -32,9 +40,12 @@ export default function ProductActions({
   region,
   disabled,
 }: ProductActionsProps) {
+  const { Heart } = Icons
+
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
   const [isAdding, setIsAdding] = useState(false)
   const countryCode = useParams().countryCode as string
+  const [quantity, setQuantity] = useState<number>(1) // State for the quantity
 
   // If there is only 1 variant, preselect the options
   useEffect(() => {
@@ -65,6 +76,10 @@ export default function ProductActions({
 
   // check if the selected variant is in stock
   const inStock = useMemo(() => {
+    if (!selectedVariant) {
+      return true
+    }
+
     // If we don't manage inventory, we can always add to cart
     if (selectedVariant && !selectedVariant.manage_inventory) {
       return true
@@ -106,9 +121,28 @@ export default function ProductActions({
     setIsAdding(false)
   }
 
+  // Decrease quantity but ensure it doesn't go below 1
+  const handleDecrease = () => {
+    setQuantity((prev) => Math.max(prev - 1, 1))
+  }
+
+  // Increase quantity
+  const handleIncrease = () => {
+    setQuantity((prev) => prev + 1)
+  }
+
+  // Manually update quantity from input
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    if (/^\d*$/.test(value)) {
+      // Ensures only numbers are allowed
+      setQuantity(value === "" ? 1 : parseInt(value, 10)) // Default to 1 if empty
+    }
+  }
+
   return (
     <>
-      <div className="flex flex-col gap-y-2" ref={actionsRef}>
+      <div className="flex flex-col" ref={actionsRef}>
         <div>
           {(product.variants?.length ?? 0) > 1 && (
             <div className="flex flex-col gap-y-4">
@@ -133,21 +167,62 @@ export default function ProductActions({
 
         <ProductPrice product={product} variant={selectedVariant} />
 
-        <Button
-          onClick={handleAddToCart}
-          disabled={!inStock || !selectedVariant || !!disabled || isAdding}
-          variant="primary"
-          className="w-full h-10"
-          isLoading={isAdding}
-          data-testid="add-product-button"
-        >
-          {!selectedVariant
-            ? "Select variant"
-            : !inStock
-            ? "Out of stock"
-            : "Add to cart"}
-        </Button>
-        <MobileActions
+        <ProductInfo product={product} />
+
+        <div className="border-y border-grey-50 py-4 my-6">
+          <div className="flex items-center h-11 gap-x-4">
+            <div className="rounded-sm h-full bg-grey-50 flex items-center justify-center">
+              <button
+                className="w-11 h-full"
+                onClick={handleDecrease}
+                aria-label="Decrease quantity"
+              >
+                -
+              </button>
+              <input
+                value={quantity}
+                onChange={handleInputChange}
+                type="text"
+                min="1"
+                className="text-center w-10 font-semibold bg-grey-50 h-full focus:outline-none"
+              />
+              <button
+                className="w-11 h-full"
+                onClick={handleIncrease}
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+            </div>
+            <Button
+              onClick={handleAddToCart}
+              disabled={!inStock || !selectedVariant || !!disabled || isAdding}
+              variant="primary"
+              className="text-[16px] h-full rounded-sm px-6 border-none shadow-none bg-black-30 font-medium"
+              isLoading={isAdding}
+              data-testid="add-product-button"
+            >
+              {inStock ? "Thêm giỏ hàng" : "Hết hàng"}
+            </Button>
+            <button className="bg-primary px-6 h-full rounded-sm text-white">
+              Mua ngay
+            </button>
+          </div>
+          <div className="mt-4 flex gap-x-2 items-center">
+            <span className="cursor-pointer">
+              <Heart />
+            </span>
+            <p>Thêm sản phẩm yêu thích</p>
+          </div>
+        </div>
+
+        <ProductMoreInfo product={product} />
+
+        <ProductSocial />
+
+        <ProductPolicy />
+
+        {/* <MobileActions
           product={product}
           variant={selectedVariant}
           options={options}
@@ -157,7 +232,7 @@ export default function ProductActions({
           isAdding={isAdding}
           show={!inView}
           optionsDisabled={!!disabled || isAdding}
-        />
+        /> */}
       </div>
     </>
   )

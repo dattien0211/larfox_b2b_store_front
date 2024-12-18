@@ -42,28 +42,28 @@ export default async function RelatedProducts({
     )
   })
 
-  if (!products.length) {
-    return null
-  }
-
   return (
     <div className="product-page-constraint">
-      <div className="flex flex-col items-center text-center mb-16">
-        <span className="text-base-regular text-gray-600 mb-6">
-          Related products
-        </span>
-        <p className="text-2xl-regular text-ui-fg-base max-w-lg">
-          You might also want to check out these products.
-        </p>
+      <div className="flex flex-col items-center text-center mb-8">
+        <span className="text-4xl font-semibold">Sản phẩm liên quan</span>
       </div>
 
-      <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8">
-        {products.map((product) => (
-          <li key={product.id}>
-            <Product region={region} product={product} />
-          </li>
-        ))}
-      </ul>
+      {!products.length ? (
+        <div>
+          <h1 className="text-black-20 text-lg text-center">
+            Sản phẩm đang được thêm, hãy đón chờ những sản phẩm tốt nhất từ Anco
+            bạn nhé.
+          </h1>
+        </div>
+      ) : (
+        <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8">
+          {products.map((product) => (
+            <li key={product.id}>
+              <Product region={region} product={product} />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }
