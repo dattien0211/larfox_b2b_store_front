@@ -1,7 +1,8 @@
 import { Metadata } from "next"
 
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import StoreTemplate from "@modules/store/templates"
+import { SortOptions } from "@modules/categories/components/sort-category"
+import { getCategoriesList } from "@lib/data/categories"
 
 export const metadata: Metadata = {
   title: "Store",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 type Params = {
   searchParams: {
-    sortBy?: SortOptions
+    ["sap-xep"]?: SortOptions
     page?: string
   }
   params: {
@@ -19,10 +20,13 @@ type Params = {
 }
 
 export default async function StorePage({ searchParams, params }: Params) {
-  const { sortBy, page } = searchParams
+  const { page } = searchParams
+  const sortBy = searchParams["sap-xep"]
+  const categories = await getCategoriesList()
 
   return (
     <StoreTemplate
+      allCategories={categories.product_categories}
       sortBy={sortBy}
       page={page}
       countryCode={params.countryCode}

@@ -10,6 +10,7 @@ const Hero = () => {
         width={1200}
         height={568}
         className="w-full"
+        priority={true}
       />
     </div>
   )

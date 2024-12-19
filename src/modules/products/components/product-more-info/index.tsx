@@ -13,6 +13,7 @@ const ProductMoreInfo = ({ product }: ProductInfoProps) => {
     // Add more country mappings as needed
   }
 
+
   return (
     <div className="mb-4 flex flex-col gap-y-2">
       <div className="flex text-sm">
@@ -31,49 +32,61 @@ const ProductMoreInfo = ({ product }: ProductInfoProps) => {
         </div>
       </div>
       <div className="flex text-sm">
-        <span className="text-black-20">Loại Sản Phẩm:</span>
+        <span className="text-black-20 mr-2">Loại Sản Phẩm:</span>
         <div className="flex gap-x-2">
-          {product?.categories?.map((category) => {
-            return (
-              <LocalizedClientLink
-                key={category.id}
-                href={`/loai-san-pham/${category.handle}`}
-                className="hover:text-blue-500"
-              >
-                {category.name}
-              </LocalizedClientLink>
-            )
-          })}
+          {product?.categories &&
+            product?.categories?.length > 0 &&
+            product?.categories?.map((category, index) => {
+              return (
+                <div key={category?.id}>
+                  <LocalizedClientLink
+                    href={`/loai-san-pham/${category?.handle}`}
+                    className="hover:text-primary"
+                  >
+                    {category?.name}
+                  </LocalizedClientLink>
+                  {product?.categories && index < product?.categories.length - 1
+                    ? ", "
+                    : ""}
+                </div>
+              )
+            })}
         </div>
       </div>
       <div className="flex text-sm">
         <span className="text-black-20">Thẻ:</span>
         <div className="flex gap-x-2 ml-1">
-          {product?.tags?.map((tag, index) => {
-            return (
-              <LocalizedClientLink href="" key={tag?.id}>
-                {tag?.value}
-                {product?.tags && index < product?.tags.length - 1 ? ", " : ""}
-              </LocalizedClientLink>
-            )
-          })}
+          {product?.tags &&
+            product?.tags?.map((tag, index) => {
+              return (
+                <div key={tag?.id}>
+                  <LocalizedClientLink href="#">
+                    {tag?.value}
+                  </LocalizedClientLink>
+                  {product?.tags && index < product?.tags.length - 1
+                    ? ", "
+                    : ""}
+                </div>
+              )
+            })}
         </div>
       </div>
       <div className="flex text-sm">
         <span className="text-black-20">Thương hiệu:</span>
         <div className="flex gap-x-2 ml-1">
-          {product?.variants?.map((variant, index) => {
-            return (
-              <span key={variant?.id}>
-                {variant?.origin_country
-                  ? countryMapping[variant?.origin_country?.toLowerCase()]
-                  : countryMapping["vn"]}
-                {product?.variants && index < product?.variants.length - 1
-                  ? ", "
-                  : ""}
-              </span>
-            )
-          })}
+          {product?.variants &&
+            product?.variants?.map((variant, index) => {
+              return (
+                <span key={variant?.id}>
+                  {variant?.origin_country
+                    ? countryMapping[variant?.origin_country?.toLowerCase()]
+                    : countryMapping["vn"]}
+                  {product?.variants && index < product?.variants.length - 1
+                    ? ", "
+                    : ""}
+                </span>
+              )
+            })}
         </div>
       </div>
     </div>

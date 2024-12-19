@@ -29,8 +29,8 @@ const Thunder: React.FC<IconProps> = ({
           y2="2.56868"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#EA541E" />
-          <stop offset="1" stop-color="#FE6A00" />
+          <stop stopColor="#EA541E" />
+          <stop offset="1" stopColor="#FE6A00" />
         </linearGradient>
       </defs>
     </svg>

@@ -77,6 +77,7 @@ export default async function ProductPage({ params }: Props) {
   }
 
   const pricedProduct = await getProductByHandle(params.handle, region.id)
+
   if (!pricedProduct) {
     notFound()
   }

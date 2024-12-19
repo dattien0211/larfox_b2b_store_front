@@ -1,20 +1,23 @@
 import Image from "next/image"
 import Icons from "@modules/common/icons"
 import IMGS from "@constants/IMGS"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export default async function MiddleNav() {
   const { DropDown, Search, UserAnco, Heart, Bag } = Icons
 
   return (
     <div className="flex items-center justify-between my-4">
-      <div className="relative w-[120px] h-[56px]">
-        <Image
-          src={IMGS.Logo}
-          alt="Logo"
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-contain"
-        />
+      <div className="w-[120px] h-auto">
+        <LocalizedClientLink href="/">
+          <Image
+            src={IMGS.Logo}
+            alt="Logo"
+            width={120}
+            height={56}
+            className="w-auto h-auto"
+          />
+        </LocalizedClientLink>
       </div>
       <div className="flex items-center h-[46px]">
         {/* <div className="bg-grey-10 rounded-l-md flex items-center justify-center gap-x-4 px-8 h-full  border-r border-grey-20 cursor-pointer">

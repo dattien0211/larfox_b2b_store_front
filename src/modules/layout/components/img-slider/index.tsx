@@ -54,7 +54,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <div className="relative h-[520px] w-full">
+            <div className="relative h-[520px] w-full cursor-pointer">
               <Image
                 src={image.url}
                 alt={`Slide ${index + 1}`}

@@ -16,7 +16,7 @@ export default function OurStory() {
           alt="banner"
           width={2000}
           height={575}
-          className="w-full h-[575px] absolute inset-0 z-0"
+          className="w-full h-auto absolute inset-0 z-0"
         />
         <Image
           src={IMGS.LeafBG}

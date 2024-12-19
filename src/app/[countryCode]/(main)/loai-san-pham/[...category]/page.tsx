@@ -1,16 +1,22 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
-import { getCategoryByHandle, listCategories } from "@lib/data/categories"
+import {
+  getCategoryByHandle,
+  listCategories,
+  getCategoriesList,
+} from "@lib/data/categories"
+
+// import { getTagsList } from "@lib/data/tags"
 import { listRegions } from "@lib/data/regions"
 import { StoreProductCategory, StoreRegion } from "@medusajs/types"
 import CategoryTemplate from "@modules/categories/templates"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import { SortOptions } from "@modules/categories/components/sort-category"
 
 type Props = {
   params: { category: string[]; countryCode: string }
   searchParams: {
-    sortBy?: SortOptions
+    ["sap-xep"]?: SortOptions
     page?: string
   }
 }
@@ -44,9 +50,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const { product_categories } = await getCategoryByHandle(
-      params.category
-    )
+    const { product_categories } = await getCategoryByHandle(params.category)
 
     const title = product_categories
       .map((category: StoreProductCategory) => category.name)
@@ -69,22 +73,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function CategoryPage({ params, searchParams }: Props) {
-  const { sortBy, page } = searchParams
+  const { page } = searchParams
+  const sortBy = searchParams["sap-xep"]
 
-  const { product_categories } = await getCategoryByHandle(
-    params.category
-  )
+  const { product_categories } = await getCategoryByHandle(params.category)
 
   if (!product_categories) {
     notFound()
   }
 
+  const categories = await getCategoriesList()
+  // const tags = await getTagsList()
+
   return (
     <CategoryTemplate
       categories={product_categories}
+      allCategories={categories.product_categories}
       sortBy={sortBy}
       page={page}
       countryCode={params.countryCode}
+      paramsCategory={params.category}
     />
   )
 }

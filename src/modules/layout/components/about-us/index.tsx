@@ -79,7 +79,7 @@ export default function AboutUs() {
           alt="leaf"
           width={120}
           height={50}
-          className="mr-4"
+          className="mr-4 w-auto h-auto"
         />
       </div>
     </>
