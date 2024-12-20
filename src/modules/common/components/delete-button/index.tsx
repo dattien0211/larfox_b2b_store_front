@@ -1,7 +1,8 @@
 import { deleteLineItem } from "@lib/data/cart"
-import { Spinner, Trash } from "@medusajs/icons"
+import { Spinner } from "@medusajs/icons"
 import { clx } from "@medusajs/ui"
 import { useState } from "react"
+import Icons from "@modules/common/icons"
 
 const DeleteButton = ({
   id,
@@ -12,6 +13,7 @@ const DeleteButton = ({
   children?: React.ReactNode
   className?: string
 }) => {
+  const { Trash } = Icons
   const [isDeleting, setIsDeleting] = useState(false)
 
   const handleDelete = async (id: string) => {
@@ -32,7 +34,11 @@ const DeleteButton = ({
         className="flex gap-x-1 text-ui-fg-subtle hover:text-ui-fg-base cursor-pointer"
         onClick={() => handleDelete(id)}
       >
-        {isDeleting ? <Spinner className="animate-spin" /> : <Trash />}
+        {isDeleting ? (
+          <Spinner className="animate-spin" />
+        ) : (
+          <Trash scale={2} />
+        )}
         <span>{children}</span>
       </button>
     </div>

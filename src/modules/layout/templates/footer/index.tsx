@@ -78,30 +78,33 @@ export default async function Footer() {
               <h1 className="font-bold text-2xl font-manrope-bold">Về Anco</h1>
               <div className="mt-8">
                 <ul className="list-none">
-                  <li className="mt-4">
+                  <li className="mt-4 hover:text-orang-5">
                     <LocalizedClientLink href="/" className="flex items-center">
                       <RightArrow /> <p className="ml-2">Trang chủ</p>
                     </LocalizedClientLink>
                   </li>
-                  <li className="mt-4">
+                  <li className="mt-4 hover:text-orang-5">
                     <LocalizedClientLink
                       href="/ve-chung-toi"
                       className="flex items-center"
                     >
-                      <RightArrow /> <p className="ml-2">Giới thiệu</p>
+                      <RightArrow />
+                      <p className="ml-2">Giới thiệu</p>
                     </LocalizedClientLink>
                   </li>
-                  <li className="mt-4">
+                  <li className="mt-4 hover:text-orang-5">
                     <LocalizedClientLink
                       href="/tat-ca-san-pham"
                       className="flex items-center"
                     >
-                      <RightArrow /> <p className="ml-2">Sản phẩm</p>
+                      <RightArrow />
+                      <p className="ml-2">Sản phẩm</p>
                     </LocalizedClientLink>
                   </li>
-                  <li className="mt-4">
+                  <li className="mt-4 hover:text-orang-5">
                     <LocalizedClientLink href="/" className="flex items-center">
-                      <RightArrow /> <p className="ml-2">Đối tác</p>
+                      <RightArrow />
+                      <p className="ml-2">Đối tác</p>
                     </LocalizedClientLink>
                   </li>
                 </ul>
@@ -114,7 +117,7 @@ export default async function Footer() {
               </h1>
               <div className="mt-8">
                 <ul className="list-none">
-                  <li className="mt-4 ">
+                  <li className="mt-4 hover:text-orang-5">
                     <LocalizedClientLink
                       href="/chinh-sach-mua-hang-va-thanh-toan"
                       className="flex items-center"
@@ -123,7 +126,7 @@ export default async function Footer() {
                       <p className="ml-2">Chính sách mua hàng, và thanh toán</p>
                     </LocalizedClientLink>
                   </li>
-                  <li className="mt-4 ">
+                  <li className="mt-4 hover:text-orang-5">
                     <LocalizedClientLink
                       href="/chinh-sach-bao-hanh"
                       className="flex items-center"
@@ -131,7 +134,7 @@ export default async function Footer() {
                       <RightArrow /> <p className="ml-2">Chính sách bảo hành</p>
                     </LocalizedClientLink>
                   </li>
-                  <li className="mt-4 ">
+                  <li className="mt-4 hover:text-orang-5">
                     <LocalizedClientLink
                       href="/chinh-sach-doi-tra-va-hoan-tien"
                       className="flex items-center"
@@ -140,12 +143,13 @@ export default async function Footer() {
                       <p className="ml-2">Chính sách đổi trả và hoàn tiền</p>
                     </LocalizedClientLink>
                   </li>
-                  <li className="mt-4 ">
+                  <li className="mt-4 hover:text-orang-5">
                     <LocalizedClientLink
                       href="/chinh-sach-bao-mat"
                       className="flex items-center"
                     >
-                      <RightArrow /> <p className="ml-2">Chính sách bảo mật</p>
+                      <RightArrow />
+                      <p className="ml-2">Chính sách bảo mật</p>
                     </LocalizedClientLink>
                   </li>
                 </ul>

@@ -27,6 +27,7 @@ import { default as Star } from "./star"
 import { default as Car } from "./car"
 import { default as Verified } from "./verified"
 import { default as Camera } from "./camera"
+import { default as Trash } from "./trash"
 
 export default {
   FaceBook,
@@ -57,4 +58,5 @@ export default {
   Car,
   Verified,
   Camera,
+  Trash,
 }

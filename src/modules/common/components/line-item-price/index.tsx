@@ -29,11 +29,11 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
         {hasReducedPrice && (
           <>
             <p>
-              {style === "default" && (
+              {/* {style === "default" && (
                 <span className="text-ui-fg-subtle">Original: </span>
-              )}
+              )} */}
               <span
-                className="line-through text-ui-fg-muted"
+                className="line-through text-primary"
                 data-testid="product-original-price"
               >
                 {convertToLocale({
@@ -50,7 +50,7 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
           </>
         )}
         <span
-          className={clx("text-base-regular", {
+          className={clx("text-primary", {
             "text-ui-fg-interactive": hasReducedPrice,
           })}
           data-testid="product-price"

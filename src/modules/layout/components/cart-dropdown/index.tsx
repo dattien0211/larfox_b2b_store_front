@@ -13,6 +13,7 @@ import LineItemPrice from "@modules/common/components/line-item-price"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "@modules/products/components/thumbnail"
 import icons from "@modules/common/icons"
+import QuantityItem from "./quantityItem"
 
 const CartDropdown = ({
   cart: cartState,
@@ -102,13 +103,13 @@ const CartDropdown = ({
         >
           <Popover.Panel
             static
-            className="hidden small:block absolute top-[calc(100%+0px)] right-0 bg-white border border-grey-20 shadow-lg w-[420px] text-ui-fg-base"
+            className="hidden small:block absolute top-[calc(100%+0px)] right-0 bg-white border border-grey-20 shadow-lg w-[440px] text-ui-fg-base"
             data-testid="nav-cart-dropdown"
           >
-            <h1 className="text-lg font-semibold p-4 text-center">Giỏ Hàng</h1>
+            {/* <h1 className="text-lg font-semibold p-4 text-center">Giỏ Hàng</h1> */}
             {cartState && cartState.items?.length ? (
               <>
-                <div className="overflow-y-scroll max-h-[402px] px-4 grid grid-cols-1 gap-y-8 no-scrollbar p-px">
+                <div className="overflow-y-scroll max-h-[402px] p-4 grid grid-cols-1 gap-y-8 no-scrollbar">
                   {cartState.items
                     .sort((a, b) => {
                       return (a.created_at ?? "") > (b.created_at ?? "")
@@ -117,7 +118,7 @@ const CartDropdown = ({
                     })
                     .map((item) => (
                       <div
-                        className="grid grid-cols-[122px_1fr] gap-x-4"
+                        className="grid grid-cols-[100px_1fr] gap-x-2"
                         key={item.id}
                         data-testid="cart-item"
                       >
@@ -131,42 +132,30 @@ const CartDropdown = ({
                             size="square"
                           />
                         </LocalizedClientLink>
-                        <div className="flex flex-col justify-between flex-1">
-                          <div className="flex flex-col flex-1">
-                            <div className="flex items-start justify-between">
-                              <div className="flex flex-col overflow-ellipsis whitespace-nowrap mr-4 w-[180px]">
-                                <h3 className="text-base-regular overflow-hidden text-ellipsis">
-                                  <LocalizedClientLink
-                                    href={`/san-pham/${item.variant?.product?.handle}`}
-                                    data-testid="product-link"
-                                  >
-                                    {item.title}
-                                  </LocalizedClientLink>
-                                </h3>
-                                <LineItemOptions
+                        <div className="flex flex-col flex-1">
+                          <h3 className="text-lg overflow-hidden text-ellipsis truncate whitespace-nowrap">
+                            <LocalizedClientLink
+                              href={`/san-pham/${item.variant?.product?.handle}`}
+                              data-testid="product-link"
+                            >
+                              {item.title}
+                            </LocalizedClientLink>
+                          </h3>
+                          {/* <LineItemOptions
                                   variant={item.variant}
                                   data-testid="cart-item-variant"
                                   data-value={item.variant}
-                                />
-                                <span
-                                  data-testid="cart-item-quantity"
-                                  data-value={item.quantity}
-                                >
-                                  Quantity: {item.quantity}
-                                </span>
-                              </div>
-                              <div className="flex justify-end">
-                                <LineItemPrice item={item} style="tight" />
-                              </div>
+                                /> */}
+                          <div className="flex items-center justify-between mt-2">
+                            <QuantityItem item={item} />
+                            <div className="flex">
+                              <LineItemPrice item={item} style="tight" />
                             </div>
+                            <DeleteButton
+                              id={item.id}
+                              data-testid="cart-item-remove-button"
+                            ></DeleteButton>
                           </div>
-                          <DeleteButton
-                            id={item.id}
-                            className="mt-1"
-                            data-testid="cart-item-remove-button"
-                          >
-                            Xóa
-                          </DeleteButton>
                         </div>
                       </div>
                     ))}
@@ -189,13 +178,12 @@ const CartDropdown = ({
                     </span>
                   </div>
                   <LocalizedClientLink href="/gio-hang" passHref>
-                    <Button
-                      className="w-full"
-                      size="large"
+                    <button
+                      className="hover:bg-orang-30 bg-primary outline-none text-[16px] w-full py-2 rounded-md text-white"
                       data-testid="go-to-cart-button"
                     >
                       Đi đến giỏ hàng
-                    </Button>
+                    </button>
                   </LocalizedClientLink>
                 </div>
               </>
@@ -209,7 +197,7 @@ const CartDropdown = ({
                         <span className="sr-only"> Xem tất cả sản phẩm</span>
                         <button
                           onClick={close}
-                          className="hover:bg-orang-30 bg-primary outline-none text-sm px-4 py-2 rounded-md text-white"
+                          className="hover:bg-orang-30 bg-primary outline-none text-[16px] px-4 py-2 rounded-md text-white"
                         >
                           Khám phá sản phẩm
                         </button>
