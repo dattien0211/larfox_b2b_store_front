@@ -1,8 +1,8 @@
 module.exports = {
     apps: [
       {
-        script: './index.js',
-        name: 'p2p-invest-blockchain',
+        script: 'yarn start',
+        name: 'anco-storefront',
         log_date_format: 'HH:mm:ss MMDDYY',
         exec_mode: 'fork',
         instances: 1,
