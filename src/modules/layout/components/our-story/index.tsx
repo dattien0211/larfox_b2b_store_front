@@ -46,7 +46,7 @@ export default function OurStory() {
               Tôi bắt đầu Ước mơ Xanh của mình, nghiên cứu những sản phẩm thuần
               tuý, tối giản, chỉ tập trung vào mục đính sử dụng của chính nó.
             </h1>
-            <button className="mt-8 hover:text-orang-35 hover:bg-white shadow-md rounded-full flex items-center justify-center px-8 py-[10px] bg-gradient-to-r from-[#EE9C23] to-[#FFBB56] text-white transition-all">
+            <button className="mt-8 hover:text-orange-600 hover:bg-white shadow-md rounded-full flex items-center justify-center px-8 py-[10px] bg-gradient-to-r from-[#EE9C23] to-[#FFBB56] text-white transition-all duration-300 ease-in-out">
               <p className="mr-2 text-lg">Xem chi tiết</p>
               <RightArrow size={12} />
             </button>

@@ -6,8 +6,6 @@ import {
   listCategories,
   getCategoriesList,
 } from "@lib/data/categories"
-
-// import { getTagsList } from "@lib/data/tags"
 import { listRegions } from "@lib/data/regions"
 import { StoreProductCategory, StoreRegion } from "@medusajs/types"
 import CategoryTemplate from "@modules/categories/templates"

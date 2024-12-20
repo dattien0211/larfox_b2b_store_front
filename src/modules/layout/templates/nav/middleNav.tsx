@@ -2,6 +2,8 @@ import Image from "next/image"
 import Icons from "@modules/common/icons"
 import IMGS from "@constants/IMGS"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { Suspense } from "react"
+import CartButton from "@modules/layout/components/cart-button"
 
 export default async function MiddleNav() {
   const { DropDown, Search, UserAnco, Heart, Bag } = Icons
@@ -46,9 +48,19 @@ export default async function MiddleNav() {
         <span className="cursor-pointer hover:text-primary">
           <Heart />
         </span>
-        <span className="cursor-pointer hover:text-primary">
-          <Bag />
-        </span>
+        <Suspense
+          fallback={
+            <LocalizedClientLink
+              className="cursor-pointer hover:text-primary"
+              href="/gio-hang"
+              data-testid="nav-cart-link"
+            >
+              <Bag />
+            </LocalizedClientLink>
+          }
+        >
+          <CartButton />
+        </Suspense>
       </div>
     </div>
   )

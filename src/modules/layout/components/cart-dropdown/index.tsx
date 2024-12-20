@@ -12,12 +12,14 @@ import LineItemOptions from "@modules/common/components/line-item-options"
 import LineItemPrice from "@modules/common/components/line-item-price"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "@modules/products/components/thumbnail"
+import icons from "@modules/common/icons"
 
 const CartDropdown = ({
   cart: cartState,
 }: {
   cart?: HttpTypes.StoreCart | null
 }) => {
+  const { Bag } = icons
   const [activeTimer, setActiveTimer] = useState<NodeJS.Timer | undefined>(
     undefined
   )
@@ -71,17 +73,22 @@ const CartDropdown = ({
 
   return (
     <div
-      className="h-full z-50"
+      className="h-full z-[999]"
       onMouseEnter={openAndCancel}
       onMouseLeave={close}
     >
-      <Popover className="relative h-full">
+      <Popover className="relative h-full flex items-center">
         <Popover.Button className="h-full">
           <LocalizedClientLink
-            className="hover:text-ui-fg-base"
-            href="/cart"
+            className="hover:text-ui-fg-base relative"
+            href="/gio-hang"
             data-testid="nav-cart-link"
-          >{`Cart (${totalItems})`}</LocalizedClientLink>
+          >
+            <Bag />
+            <span className="w-[18px] h-[18px] flex items-center justify-center absolute -top-[6px] left-[2px] bg-primary text-white rounded-full text-xs">
+              {totalItems}
+            </span>
+          </LocalizedClientLink>
         </Popover.Button>
         <Transition
           show={cartDropdownOpen}
@@ -98,9 +105,7 @@ const CartDropdown = ({
             className="hidden small:block absolute top-[calc(100%+1px)] right-0 bg-white border-x border-b border-gray-200 w-[420px] text-ui-fg-base"
             data-testid="nav-cart-dropdown"
           >
-            <div className="p-4 flex items-center justify-center">
-              <h3 className="text-large-semi">Cart</h3>
-            </div>
+            <h1 className="text-lg font-semibold p-4 text-center">Giỏ Hàng</h1>
             {cartState && cartState.items?.length ? (
               <>
                 <div className="overflow-y-scroll max-h-[402px] px-4 grid grid-cols-1 gap-y-8 no-scrollbar p-px">
@@ -117,7 +122,7 @@ const CartDropdown = ({
                         data-testid="cart-item"
                       >
                         <LocalizedClientLink
-                          href={`/products/${item.variant?.product?.handle}`}
+                          href={`/san-pham/${item.variant?.product?.handle}`}
                           className="w-24"
                         >
                           <Thumbnail
@@ -132,7 +137,7 @@ const CartDropdown = ({
                               <div className="flex flex-col overflow-ellipsis whitespace-nowrap mr-4 w-[180px]">
                                 <h3 className="text-base-regular overflow-hidden text-ellipsis">
                                   <LocalizedClientLink
-                                    href={`/products/${item.variant?.product?.handle}`}
+                                    href={`/san-pham/${item.variant?.product?.handle}`}
                                     data-testid="product-link"
                                   >
                                     {item.title}
@@ -160,7 +165,7 @@ const CartDropdown = ({
                             className="mt-1"
                             data-testid="cart-item-remove-button"
                           >
-                            Remove
+                            Xóa
                           </DeleteButton>
                         </div>
                       </div>
@@ -183,7 +188,7 @@ const CartDropdown = ({
                       })}
                     </span>
                   </div>
-                  <LocalizedClientLink href="/cart" passHref>
+                  <LocalizedClientLink href="/gio-hang" passHref>
                     <Button
                       className="w-full"
                       size="large"
@@ -196,16 +201,18 @@ const CartDropdown = ({
               </>
             ) : (
               <div>
-                <div className="flex py-16 flex-col gap-y-4 items-center justify-center">
-                  <div className="bg-gray-900 text-small-regular flex items-center justify-center w-6 h-6 rounded-full text-white">
-                    <span>0</span>
-                  </div>
-                  <span>Your shopping bag is empty.</span>
+                <div className="flex py-6 flex-col gap-y-4 items-center justify-center">
+                  <span>Bạn chưa có sản phẩm trong giỏ hàng.</span>
                   <div>
-                    <LocalizedClientLink href="/store">
+                    <LocalizedClientLink href="/tat-ca-san-pham">
                       <>
-                        <span className="sr-only">Go to all products page</span>
-                        <Button onClick={close}>Explore products</Button>
+                        <span className="sr-only"> Xem tất cả sản phẩm</span>
+                        <button
+                          onClick={close}
+                          className="bg-orang-30 hover:bg-primary outline-none text-sm px-4 py-2 rounded-md text-white"
+                        >
+                          Khám phá sản phẩm
+                        </button>
                       </>
                     </LocalizedClientLink>
                   </div>

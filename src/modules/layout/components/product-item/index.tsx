@@ -26,7 +26,7 @@ export default function ProductItem() {
         </div>
 
         <div className="px-4 w-full absolute bottom-4 left-0 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible">
-          <LocalizedClientLink href="#">
+          <LocalizedClientLink href="/">
             <button className="w-full h-9 rounded-md bg-primary text-white hover:bg-white hover:text-primary">
               Xem chi tiết
             </button>

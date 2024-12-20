@@ -33,8 +33,10 @@ const CategoryFilter = ({
       }
 
       // Construct the new URL
-      const basePath = pathname.split("/").slice(0, 2).join("/") // Extract the base path, e.g., "/vn/loai-san-pham/anco-care"
-      const newPath = `${basePath}/loai-san-pham/${updatedCategories.join("/")}` // Add selected categories to the path
+      const basePath = pathname.split("/").slice(0, 2).join("/") // Extract the base path, e.g., "/vn/danh-muc-san-pham/anco-care"
+      const newPath = `${basePath}/danh-muc-san-pham/${updatedCategories.join(
+        "/"
+      )}` // Add selected categories to the path
 
       if (updatedCategories.length === 0) {
         router.push(`${basePath}/tat-ca-san-pham`)

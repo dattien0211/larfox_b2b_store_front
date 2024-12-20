@@ -13,7 +13,6 @@ const ProductMoreInfo = ({ product }: ProductInfoProps) => {
     // Add more country mappings as needed
   }
 
-
   return (
     <div className="mb-4 flex flex-col gap-y-2">
       <div className="flex text-sm">
@@ -40,7 +39,7 @@ const ProductMoreInfo = ({ product }: ProductInfoProps) => {
               return (
                 <div key={category?.id}>
                   <LocalizedClientLink
-                    href={`/loai-san-pham/${category?.handle}`}
+                    href={`/danh-muc-san-pham/${category?.handle}`}
                     className="hover:text-primary"
                   >
                     {category?.name}

@@ -79,22 +79,28 @@ export default async function Footer() {
               <div className="mt-8">
                 <ul className="list-none">
                   <li className="mt-4">
-                    <LocalizedClientLink href="#" className="flex items-center">
+                    <LocalizedClientLink href="/" className="flex items-center">
                       <RightArrow /> <p className="ml-2">Trang chủ</p>
                     </LocalizedClientLink>
                   </li>
                   <li className="mt-4">
-                    <LocalizedClientLink href="#" className="flex items-center">
+                    <LocalizedClientLink
+                      href="/ve-chung-toi"
+                      className="flex items-center"
+                    >
                       <RightArrow /> <p className="ml-2">Giới thiệu</p>
                     </LocalizedClientLink>
                   </li>
                   <li className="mt-4">
-                    <LocalizedClientLink href="#" className="flex items-center">
+                    <LocalizedClientLink
+                      href="/tat-ca-san-pham"
+                      className="flex items-center"
+                    >
                       <RightArrow /> <p className="ml-2">Sản phẩm</p>
                     </LocalizedClientLink>
                   </li>
                   <li className="mt-4">
-                    <LocalizedClientLink href="#" className="flex items-center">
+                    <LocalizedClientLink href="/" className="flex items-center">
                       <RightArrow /> <p className="ml-2">Đối tác</p>
                     </LocalizedClientLink>
                   </li>
@@ -109,24 +115,36 @@ export default async function Footer() {
               <div className="mt-8">
                 <ul className="list-none">
                   <li className="mt-4 ">
-                    <LocalizedClientLink href="#" className="flex items-center">
+                    <LocalizedClientLink
+                      href="/chinh-sach-mua-hang-va-thanh-toan"
+                      className="flex items-center"
+                    >
                       <RightArrow />
-                      <p className="ml-2">Chính sách mua, và thanh toán</p>
+                      <p className="ml-2">Chính sách mua hàng, và thanh toán</p>
                     </LocalizedClientLink>
                   </li>
                   <li className="mt-4 ">
-                    <LocalizedClientLink href="#" className="flex items-center">
+                    <LocalizedClientLink
+                      href="/chinh-sach-bao-hanh"
+                      className="flex items-center"
+                    >
                       <RightArrow /> <p className="ml-2">Chính sách bảo hành</p>
                     </LocalizedClientLink>
                   </li>
                   <li className="mt-4 ">
-                    <LocalizedClientLink href="#" className="flex items-center">
+                    <LocalizedClientLink
+                      href="/chinh-sach-doi-tra-va-hoan-tien"
+                      className="flex items-center"
+                    >
                       <RightArrow />
-                      <p className="ml-2">Chính sách đổi trả hoàn tiền</p>
+                      <p className="ml-2">Chính sách đổi trả và hoàn tiền</p>
                     </LocalizedClientLink>
                   </li>
                   <li className="mt-4 ">
-                    <LocalizedClientLink href="#" className="flex items-center">
+                    <LocalizedClientLink
+                      href="/chinh-sach-bao-mat"
+                      className="flex items-center"
+                    >
                       <RightArrow /> <p className="ml-2">Chính sách bảo mật</p>
                     </LocalizedClientLink>
                   </li>

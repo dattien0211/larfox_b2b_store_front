@@ -47,7 +47,7 @@ const StoreTemplate = ({
         <div className="flex-1">
           <CategoryHeader
             allCategories={allCategories}
-            path={["loai-san-pham"]}
+            path={["danh-muc-san-pham"]}
             sortBy={sort}
           />
           <Suspense fallback={<SkeletonProductGrid />}>

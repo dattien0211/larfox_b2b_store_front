@@ -59,7 +59,7 @@ export default function CategoryTemplate({
         <div className="flex-1">
           <CategoryHeader
             allCategories={allCategories}
-            path={["loai-san-pham", ...paramsCategory]}
+            path={["danh-muc-san-pham", ...paramsCategory]}
             sortBy={sort}
           />
           {category.description && (

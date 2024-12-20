@@ -71,7 +71,7 @@ export default async function ProductPreview({
               product?.categories?.map((category) => (
                 <span key={category.id} className="flex items-center">
                   <LocalizedClientLink
-                    href={`/loai-san-pham/${category.handle}`}
+                    href={`/danh-muc-san-pham/${category.handle}`}
                     className="bg-primary py-[2px] px-1 rounded-sm text-white font-manrope-bold text-xs mr-2 text-nowrap"
                   >
                     {category.name}

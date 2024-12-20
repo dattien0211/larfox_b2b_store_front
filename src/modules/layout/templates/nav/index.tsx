@@ -1,21 +1,22 @@
 import { Suspense } from "react"
 
 import { listRegions } from "@lib/data/regions"
+import {
+  getCategoryByHandle,
+  listCategories,
+  getCategoriesList,
+} from "@lib/data/categories"
 import { StoreRegion } from "@medusajs/types"
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
-import Image from "next/image"
-import Icons from "@modules/common/icons"
-import IMGS from "@constants/IMGS"
 import TopNav from "./topNav"
 import MiddleNav from "./middleNav"
 import BottomNav from "./bottomNav"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
-
+  const categories = await getCategoriesList()
   return (
-    // <div className="sticky top-0 inset-x-0 z-50 group">
     <header>
       {/* <header className="relative h-16 mx-auto border-b duration-200 bg-white border-ui-border-base">
         <nav className="content-container txt-xsmall-plus text-ui-fg-subtle flex items-center justify-between w-full h-full text-small-regular">
@@ -59,7 +60,7 @@ export default async function Nav() {
               fallback={
                 <LocalizedClientLink
                   className="hover:text-ui-fg-base flex gap-2"
-                  href="/cart"
+                  href="/gio-hang"
                   data-testid="nav-cart-link"
                 >
                   Cart (0)
@@ -76,7 +77,7 @@ export default async function Nav() {
       <div className="w-full ">
         <div className="content-container ">
           <MiddleNav />
-          <BottomNav />
+          <BottomNav categories={categories.product_categories} />
         </div>
       </div>
     </header>

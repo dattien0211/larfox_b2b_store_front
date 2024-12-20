@@ -5,14 +5,19 @@ import { enrichLineItems, retrieveCart } from "@lib/data/cart"
 const fetchCart = async () => {
   const cart = await retrieveCart()
 
-  if (!cart) {
+  // TODO: JUST A DEMO
+  if (cart) {
     return null
   }
 
-  if (cart?.items?.length) {
-    const enrichedItems = await enrichLineItems(cart.items, cart.region_id!)
-    cart.items = enrichedItems
-  }
+  // if (!cart) {
+  //   return null
+  // }
+
+  // if (cart?.items?.length) {
+  //   const enrichedItems = await enrichLineItems(cart.items, cart.region_id!)
+  //   cart.items = enrichedItems
+  // }
 
   return cart
 }
