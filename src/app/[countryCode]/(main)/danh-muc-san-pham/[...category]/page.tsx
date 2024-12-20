@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const title = product_categories
       .map((category: StoreProductCategory) => category.name)
-      .join(" | ")
+      .join(", ")
 
     const description =
       product_categories[product_categories.length - 1].description ??
