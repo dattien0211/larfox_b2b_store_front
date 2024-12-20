@@ -6,7 +6,7 @@ import { Suspense } from "react"
 import CartButton from "@modules/layout/components/cart-button"
 
 export default async function MiddleNav() {
-  const { DropDown, Search, UserAnco, Heart, Bag } = Icons
+  const { Search, UserAnco, Heart, Bag } = Icons
 
   return (
     <div className="flex items-center justify-between my-4">
