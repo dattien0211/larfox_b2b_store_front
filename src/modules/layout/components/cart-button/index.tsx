@@ -6,9 +6,9 @@ const fetchCart = async () => {
   const cart = await retrieveCart()
 
   // TODO: JUST A DEMO
-  if (cart) {
-    return null
-  }
+  // if (cart) {
+  //   return null
+  // }
 
   // if (!cart) {
   //   return null

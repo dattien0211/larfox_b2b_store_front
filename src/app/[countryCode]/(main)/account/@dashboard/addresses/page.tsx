@@ -8,8 +8,8 @@ import { getRegion } from "@lib/data/regions"
 import { getCustomer } from "@lib/data/customer"
 
 export const metadata: Metadata = {
-  title: "Addresses",
-  description: "View your addresses",
+  title: "Địa chỉ | Anco",
+  description: "Xem lại địa chỉ của bạn",
 }
 
 export default async function Addresses({

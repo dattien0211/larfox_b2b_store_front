@@ -41,11 +41,11 @@ export default async function MiddleNav() {
           </span>
         </div>
       </div>
-      <div className="flex items-center gap-x-4">
-        <span className="cursor-pointer hover:text-primary">
+      <div className="flex items-center gap-x-2">
+        <span className="cursor-pointer hover:text-primary p-2">
           <UserAnco />
         </span>
-        <span className="cursor-pointer hover:text-primary">
+        <span className="cursor-pointer hover:text-primary p-2">
           <Heart />
         </span>
         <Suspense

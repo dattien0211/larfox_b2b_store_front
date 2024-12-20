@@ -73,12 +73,12 @@ const CartDropdown = ({
 
   return (
     <div
-      className="h-full z-[999]"
+      className="h-full z-20"
       onMouseEnter={openAndCancel}
       onMouseLeave={close}
     >
       <Popover className="relative h-full flex items-center">
-        <Popover.Button className="h-full">
+        <Popover.Button className="h-full py-4 px-2">
           <LocalizedClientLink
             className="hover:text-ui-fg-base relative"
             href="/gio-hang"
@@ -102,7 +102,7 @@ const CartDropdown = ({
         >
           <Popover.Panel
             static
-            className="hidden small:block absolute top-[calc(100%+1px)] right-0 bg-white border-x border-b border-gray-200 w-[420px] text-ui-fg-base"
+            className="hidden small:block absolute top-[calc(100%+0px)] right-0 bg-white border border-grey-20 shadow-lg w-[420px] text-ui-fg-base"
             data-testid="nav-cart-dropdown"
           >
             <h1 className="text-lg font-semibold p-4 text-center">Giỏ Hàng</h1>
@@ -174,8 +174,8 @@ const CartDropdown = ({
                 <div className="p-4 flex flex-col gap-y-4 text-small-regular">
                   <div className="flex items-center justify-between">
                     <span className="text-ui-fg-base font-semibold">
-                      Subtotal{" "}
-                      <span className="font-normal">(excl. taxes)</span>
+                      Tổng giá:
+                      {/* <span className="font-normal">(excl. taxes)</span> */}
                     </span>
                     <span
                       className="text-large-semi"
@@ -194,7 +194,7 @@ const CartDropdown = ({
                       size="large"
                       data-testid="go-to-cart-button"
                     >
-                      Go to cart
+                      Đi đến giỏ hàng
                     </Button>
                   </LocalizedClientLink>
                 </div>
@@ -209,7 +209,7 @@ const CartDropdown = ({
                         <span className="sr-only"> Xem tất cả sản phẩm</span>
                         <button
                           onClick={close}
-                          className="bg-orang-30 hover:bg-primary outline-none text-sm px-4 py-2 rounded-md text-white"
+                          className="hover:bg-orang-30 bg-primary outline-none text-sm px-4 py-2 rounded-md text-white"
                         >
                           Khám phá sản phẩm
                         </button>

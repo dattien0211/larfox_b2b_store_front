@@ -17,7 +17,7 @@ import Blogs from "@modules/layout/components/blogs"
 export const metadata: Metadata = {
   title: "Anco",
   description:
-    "A performant frontend ecommerce starter template with Next.js 14 and Medusa.",
+    "Trang Web bán các sản phẩm về làm đẹp theo một cách tự nhiên và an toàn",
 }
 
 export default async function Home({
@@ -33,7 +33,7 @@ export default async function Home({
   }
 
   return (
-    <div className="relative z-50">
+    <div className="relative">
       <Hero />
       {/* <div className="py-12">
         <ul className="flex flex-col gap-x-6">
@@ -52,7 +52,11 @@ export default async function Home({
       <BannerProduct imageSrc={IMGS.Banner4} title="Sắp ra mắt" />
       <NewProducts />
       <HotProducts />
-      <BannerProduct imageSrc={IMGS.Banner6} title="Xem chi tiết" />
+      <BannerProduct
+        imageSrc={IMGS.Banner6}
+        title="Xem chi tiết"
+        buttonClass="!left-[21%]"
+      />
       <RecommendProducts
         backgroundText="Assortm"
         shopName="Anco Shop"

@@ -11,8 +11,8 @@ import { listRegions } from "@lib/data/regions"
 import { getCustomer } from "@lib/data/customer"
 
 export const metadata: Metadata = {
-  title: "Profile",
-  description: "View and edit your Medusa Store profile.",
+  title: "Thông Tin Tài Khoản | Anco",
+  description: "Xem và sửa tài khoản của bạn.",
 }
 
 export default async function Profile() {

@@ -5,8 +5,8 @@ import { SortOptions } from "@modules/categories/components/sort-category"
 import { getCategoriesList } from "@lib/data/categories"
 
 export const metadata: Metadata = {
-  title: "Store",
-  description: "Explore all of our products.",
+  title: "Tất Cả Sản Phẩm | Anco",
+  description: "Khám phá tất cả sản phẩm trên Anco.",
 }
 
 type Params = {

@@ -99,7 +99,7 @@ const Blogs = () => {
       </div>
 
       {/* Navigation Buttons */}
-      <div className="mt-8 flex items-center justify-center gap-x-4">
+      <div className="mt-8 flex items-center justify-center gap-x-4 relative z-20">
         <button className="mt-8 hover:text-orange-600 hover:bg-white shadow-md rounded-full flex items-center justify-center px-8 py-[10px] bg-gradient-to-r from-[#EE9C23] to-[#FFBB56] text-white transition-all duration-300 ease-in-out">
           <p className="mr-2 text-lg">Xem thêm</p>
           <RightArrow size={12} />

@@ -20,7 +20,7 @@ const Menu = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       {isHovered && (
-        <div className="absolute top-full -left-[100px]  bg-white z-[999] w-[1152px] shadow-md border-t border-grey-15 transition-all transform duration-500 ease-in-out">
+        <div className="absolute top-full -left-[103px]  bg-white z-[999] w-[1152px] shadow-md border-t border-grey-15 transition-all transform duration-500 ease-in-out">
           <div className="flex bg-white pt-8 pb-10 px-6">
             {/* Sidebar Menu */}
             <div className="w-1/4">

@@ -37,7 +37,7 @@ export default function BannerProduct({
       >
         <button
           className={clsx(
-            "text-orang-35 absolute bottom-[25%] left-[20%] bg-white rounded-full flex items-center justify-center px-8 py-2 hover:bg-orang-35 hover:text-white transition-all",
+            "text-orang-35 absolute bottom-[24%] left-[22%] bg-white rounded-full flex items-center justify-center px-8 py-2 hover:bg-orang-35 hover:text-white transition-all",
             buttonClass
           )}
         >

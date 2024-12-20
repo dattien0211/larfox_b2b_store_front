@@ -1,10 +1,10 @@
 import { Metadata } from "next"
 import Image from "next/image"
 import IMGS from "@constants/IMGS"
+
 export const metadata: Metadata = {
-  title: "Medusa Next.js Starter Template",
-  description:
-    "A performant frontend ecommerce starter template with Next.js 14 and Medusa.",
+  title: "Về Chúng Tôi | Anco",
+  description: "Các thông tin liên quan đến Anco.",
 }
 
 export default async function Chung() {

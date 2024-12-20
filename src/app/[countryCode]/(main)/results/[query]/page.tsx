@@ -3,11 +3,11 @@ import { Metadata } from "next"
 import SearchResultsTemplate from "@modules/search/templates/search-results-template"
 
 import { search } from "@modules/search/actions"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import { SortOptions } from "@modules/categories/components/sort-category"
 
 export const metadata: Metadata = {
-  title: "Search",
-  description: "Explore all of our products.",
+  title: "Tìm Kiếm | Anco",
+  description: "Khám phá tất cả sản phẩm.",
 }
 
 type Params = {

@@ -1,9 +1,9 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Medusa Next.js Starter Template",
+  title: "Chính Sách Mua Hàng Và Thanh Toán | Anco",
   description:
-    "A performant frontend ecommerce starter template with Next.js 14 and Medusa.",
+    "Các thông tin liên quan đến chính sách mua hàng và thanh toán của Anco.",
 }
 
 export default async function PaymentPolicyPage() {
