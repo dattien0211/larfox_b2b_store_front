@@ -33,7 +33,7 @@ export default async function Home({
   }
 
   return (
-    <div className="relative">
+    <div className="relative z-20">
       <Hero />
       {/* <div className="py-12">
         <ul className="flex flex-col gap-x-6">

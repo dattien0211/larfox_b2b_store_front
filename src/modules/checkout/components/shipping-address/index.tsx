@@ -66,6 +66,7 @@ const ShippingAddress = ({
     if (cart && !cart.email && customer?.email) {
       setFormAddress(undefined, customer.email)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart, customer])
 
   useEffect(() => {

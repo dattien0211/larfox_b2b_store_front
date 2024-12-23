@@ -65,6 +65,28 @@ body {
   color: #323232;
 }
 
+.swiper-pagination-bullet.custom-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white; /* Default color for active dots */
+  margin: 0 8px !important; /* Spacing between dots */
+  display: inline-block;
+  cursor: pointer;
+  position: relative; /* Positioning the child element inside */
+}
+
+.swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+  opacity: 0.5; /* Inactive bullets have 50% opacity */
+  background-color: white; /* Inactive bullets have white background */
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: white; /* Active bullet color */
+  opacity: 1; /* Active bullets have full opacity */
+  box-shadow: 0 4px 8px rgba(224, 129, 5, 0.1);
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {

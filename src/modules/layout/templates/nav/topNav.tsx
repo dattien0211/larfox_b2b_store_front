@@ -1,8 +1,20 @@
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import moment from "moment"
 import Icons from "@modules/common/icons"
+
+moment.locale("vi")
 
 export default async function TopNav() {
   const { FaceBook, Twitter, Mail, Skype, Clock, Location } = Icons
+  const formattedTime = moment().format("dddd HH:mm")
+  const vietnameseTime = formattedTime
+    .replace("Monday", "Thứ Hai")
+    .replace("Tuesday", "Thứ Ba")
+    .replace("Wednesday", "Thứ Tư")
+    .replace("Thursday", "Thứ Năm")
+    .replace("Friday", "Thứ Sáu")
+    .replace("Saturday", "Thứ Bảy")
+    .replace("Sunday", "Chủ Nhật")
 
   return (
     <div className="h-10 w-full bg-grey-10">
@@ -31,7 +43,7 @@ export default async function TopNav() {
           <div className="flex gap-x-4  text-grey-45">
             <div className="flex items-center justify-center">
               <Clock />
-              <p className="ml-2 text-xs">Monday 10:00</p>
+              <p className="ml-2 text-xs">{vietnameseTime}</p>
             </div>
             <div className="flex items-center justify-center">
               <Location />

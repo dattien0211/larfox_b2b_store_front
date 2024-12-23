@@ -76,11 +76,11 @@ const CartDropdown = ({
 
   return (
     <div
-      className="h-full z-20"
+      className="h-full relative z-50"
       onMouseEnter={openAndCancel}
       onMouseLeave={close}
     >
-      <Popover className="relative h-full flex items-center">
+      <Popover className="relative h-full flex items-center z-50">
         <Popover.Button className="h-full py-4 px-2">
           <LocalizedClientLink
             className="hover:text-ui-fg-base relative"
