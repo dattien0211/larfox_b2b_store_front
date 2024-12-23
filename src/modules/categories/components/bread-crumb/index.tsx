@@ -26,7 +26,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = async ({
 
   return (
     <nav aria-label="breadcrumb" className={className}>
-      <ul className="list-none p-0 flex items-center text-sm">
+      <ul className="list-none p-0 flex items-center text-base">
         <li>
           <LocalizedClientLink href="/" className="hover:text-primary">
             Trang chủ

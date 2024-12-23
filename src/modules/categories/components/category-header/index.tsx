@@ -19,7 +19,7 @@ const CategoryHeader = ({
       <div className="flex items-center space-x-6">
         {/* <span className="text-gray-600">Showing 1-12</span> */}
 
-        <div className="relative z-50 w-40 text-sm">
+        <div className="relative z-50 w-44 text-sm">
           <SortCategories sortBy={sortBy} />
         </div>
 
