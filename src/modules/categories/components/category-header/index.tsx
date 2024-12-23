@@ -13,7 +13,7 @@ const CategoryHeader = ({
   sortBy?: SortOptions
 }) => {
   return (
-    <div className="flex items-center justify-between p-4 h-[60px] bg-grey-15 mb-12">
+    <div className="flex items-center justify-between p-4 h-[60px] bg-grey-15 mb-10">
       <Breadcrumb allCategories={allCategories} path={path} />
 
       <div className="flex items-center space-x-6">

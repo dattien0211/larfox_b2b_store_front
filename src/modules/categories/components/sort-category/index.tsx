@@ -66,6 +66,7 @@ const SortCategories: React.FC<SortCategoriesProps> = ({
       onChange={handleChange}
       data-testid={dataTestId}
       isSearchable={false}
+      instanceId="my-select-instance"
     />
   )
 }

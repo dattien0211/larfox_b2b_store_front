@@ -50,14 +50,17 @@ export default async function ProductPreview({
             <div className="cursor-pointer text-grey-40 hover:bg-primary hover:text-white w-7 h-7 rounded-full bg-white flex items-center justify-center z-10">
               <Heart size={18} />
             </div>
-            <div className="text-white bg-primary flex text-xs px-2 py-1 rounded-sm">
-              -12%
-            </div>
+            {cheapestPrice?.percentage_diff &&
+              parseFloat(cheapestPrice?.percentage_diff) > 0 && (
+                <div className="text-white bg-primary flex text-xs px-2 py-1 rounded-sm">
+                  -{cheapestPrice?.percentage_diff}%
+                </div>
+              )}
           </div>
 
           <div className="px-4 w-full absolute bottom-4 left-0 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible">
             <LocalizedClientLink href={`/san-pham/${product.handle}`}>
-              <button className="w-full h-9 rounded-md bg-primary text-white hover:bg-white hover:text-primary">
+              <button className="w-full h-9 rounded-md bg-primary text-white hover:bg-orang-30">
                 Xem chi tiết
               </button>
             </LocalizedClientLink>
@@ -88,9 +91,13 @@ export default async function ProductPreview({
             <span className="text-primary text-lg font-semibold">
               {cheapestPrice?.calculated_price}
             </span>
-            <span className="text-grey-40 ml-2 line-through text-sm">
-              {cheapestPrice?.original_price}
-            </span>
+
+            {cheapestPrice?.percentage_diff &&
+              parseFloat(cheapestPrice?.percentage_diff) > 0 && (
+                <span className="text-grey-40 ml-2 line-through text-sm">
+                  {cheapestPrice?.original_price}
+                </span>
+              )}
           </div>
           <div className="flex items-center ml-2">
             <Star color="#EA9934" size={18} />

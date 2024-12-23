@@ -19,7 +19,7 @@ const TagFilter = () => {
     { id: 5, name: "Chăm sóc sức khoẻ", handle: "550" },
     { id: 6, name: "Túi làm ấm", handle: "650" },
     { id: 7, name: "Tẩy da", handle: "750" },
-    { id: 7, name: "Miếng dán", handle: "850" },
+    { id: 8, name: "Miếng dán", handle: "850" },
   ]
 
   // useEffect(() => {
