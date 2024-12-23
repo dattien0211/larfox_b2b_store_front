@@ -140,7 +140,6 @@ export default function ProductActions({
     }
   }
 
-
   return (
     <>
       <div className="flex flex-col" ref={actionsRef}>
@@ -199,7 +198,7 @@ export default function ProductActions({
               onClick={handleAddToCart}
               disabled={!inStock || !selectedVariant || !!disabled || isAdding}
               variant="primary"
-              className="text-[16px] h-full rounded-sm px-6 border-none shadow-none bg-black-30 font-medium"
+              className="text-base h-full rounded-sm px-6 border-none shadow-none bg-black-30 font-medium"
               isLoading={isAdding}
               data-testid="add-product-button"
             >

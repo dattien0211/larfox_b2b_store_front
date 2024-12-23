@@ -17,16 +17,21 @@ const ItemsTemplate = ({ items }: ItemsTemplateProps) => {
       </div>
       <Table>
         <Table.Header className="border-t-0">
-          <Table.Row className="text-ui-fg-subtle txt-medium-plus">
-            <Table.HeaderCell className="!pl-0">Tên sản phẩm</Table.HeaderCell>
+          <Table.Row>
+            <Table.HeaderCell className="!pl-0 text-base text-nowrap">
+              Tên sản phẩm
+            </Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>
-            <Table.HeaderCell>Số lượng</Table.HeaderCell>
-            <Table.HeaderCell className="hidden small:table-cell">
+            {/* <Table.HeaderCell className="text-base text-nowrap">
+              Số lượng
+            </Table.HeaderCell> */}
+            <Table.HeaderCell className="hidden small:table-cell text-base text-nowrap">
               Giá
             </Table.HeaderCell>
-            <Table.HeaderCell className="!pr-0 text-right">
-              Tổng giá
+            <Table.HeaderCell className="!pr-6 text-right text-base text-nowrap">
+              Tổng tiền
             </Table.HeaderCell>
+            <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>

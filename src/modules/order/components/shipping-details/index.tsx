@@ -11,51 +11,50 @@ type ShippingDetailsProps = {
 const ShippingDetails = ({ order }: ShippingDetailsProps) => {
   return (
     <div>
-      <Heading level="h2" className="flex flex-row text-3xl-regular my-6">
-        Delivery
+      <Heading level="h2" className="flex flex-row text-3xl text-primary my-6">
+        Phương thức vận chuyển
       </Heading>
-      <div className="flex items-start gap-x-8">
-        <div
-          className="flex flex-col w-1/3"
-          data-testid="shipping-address-summary"
-        >
-          <Text className="txt-medium-plus text-ui-fg-base mb-1">
-            Shipping Address
+      <div className="flex flex-col items-start gap-y-1">
+        <div className="flex " data-testid="shipping-address-summary">
+          <Text className="text-base text-ui-fg-base mr-2">
+            Địa chỉ giao hàng:
           </Text>
-          <Text className="txt-medium text-ui-fg-subtle">
-            {order.shipping_address?.first_name}{" "}
-            {order.shipping_address?.last_name}
+          <Text className="text-base text-ui-fg-subtle mr-1">
+            Khách hàng {order.shipping_address?.last_name}{" "}
+            {order.shipping_address?.first_name} -
           </Text>
-          <Text className="txt-medium text-ui-fg-subtle">
-            {order.shipping_address?.address_1}{" "}
-            {order.shipping_address?.address_2}
+
+          <Text className="text-base text-ui-fg-subtle mx-1">
+            {order.shipping_address?.province}, {order.shipping_address?.city},
           </Text>
-          <Text className="txt-medium text-ui-fg-subtle">
-            {order.shipping_address?.postal_code},{" "}
-            {order.shipping_address?.city}
+          <Text className="text-base text-ui-fg-subtle mr-1">
+            {order.shipping_address?.address_1},
           </Text>
-          <Text className="txt-medium text-ui-fg-subtle">
-            {order.shipping_address?.country_code?.toUpperCase()}
+          <Text className="text-base text-ui-fg-subtle">
+            {order.shipping_address?.country_code?.toUpperCase() || "VN"}.
           </Text>
         </div>
 
-        <div
-          className="flex flex-col w-1/3 "
-          data-testid="shipping-contact-summary"
-        >
-          <Text className="txt-medium-plus text-ui-fg-base mb-1">Contact</Text>
-          <Text className="txt-medium text-ui-fg-subtle">
-            {order.shipping_address?.phone}
-          </Text>
-          <Text className="txt-medium text-ui-fg-subtle">{order.email}</Text>
+        <div className="flex flex-col" data-testid="shipping-contact-summary">
+          <div className="flex items-center ">
+            <Text className="text-base text-ui-fg-base mr-2">
+              Số điện thoại:
+            </Text>
+            <Text className="text-base text-ui-fg-subtle">
+              {order.shipping_address?.phone}
+            </Text>
+          </div>
+          <div className="flex items-center ">
+            <Text className="text-base text-ui-fg-base mr-2">Email:</Text>
+            <Text className="text-base text-ui-fg-subtle">{order.email}</Text>
+          </div>
         </div>
 
-        <div
-          className="flex flex-col w-1/3"
-          data-testid="shipping-method-summary"
-        >
-          <Text className="txt-medium-plus text-ui-fg-base mb-1">Method</Text>
-          <Text className="txt-medium text-ui-fg-subtle">
+        <div className="flex  " data-testid="shipping-method-summary">
+          <Text className="text-base text-ui-fg-base mr-2">
+            Phương thức giao hàng:
+          </Text>
+          <Text className="text-base text-ui-fg-subtle">
             {(order as any).shipping_methods[0]?.name} (
             {convertToLocale({
               amount: order.shipping_methods?.[0].total ?? 0,

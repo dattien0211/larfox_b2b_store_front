@@ -6,6 +6,7 @@ import CartTotals from "@modules/common/components/cart-totals"
 import Divider from "@modules/common/components/divider"
 import DiscountCode from "@modules/checkout/components/discount-code"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { convertToLocale } from "@lib/util/money"
 import { HttpTypes } from "@medusajs/types"
 
 type SummaryProps = {
@@ -30,17 +31,30 @@ const Summary = ({ cart }: SummaryProps) => {
   return (
     <div className="flex flex-col gap-y-4">
       <Heading level="h2" className="text-[2rem] leading-[2.75rem]">
-        Summary
+        Tổng quan
       </Heading>
       <DiscountCode cart={cart} />
       <Divider />
       <CartTotals totals={cart} />
-      <LocalizedClientLink
-        href={"/checkout?step=" + step}
-        data-testid="checkout-button"
-      >
-        <Button className="w-full h-10">Go to checkout</Button>
-      </LocalizedClientLink>
+      <div className="flex items-center justify-between">
+        <div className="flex flex-col">
+          <h2>Thành tiền</h2>
+          <h1 className="text-xl font-semibold text-primary">
+            {convertToLocale({
+              amount: cart.total ?? 0,
+              currency_code: cart.currency_code,
+            })}
+          </h1>
+        </div>
+        <LocalizedClientLink
+          href={"/checkout?step=" + step}
+          data-testid="checkout-button"
+        >
+          <button className=" bg-primary text-white px-4 w-full h-10 cursor-pointer">
+            Thanh toán
+          </button>
+        </LocalizedClientLink>
+      </div>
     </div>
   )
 }

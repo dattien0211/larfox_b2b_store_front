@@ -76,8 +76,9 @@ const GiftCardPaymentButton = () => {
       onClick={handleOrder}
       isLoading={submitting}
       data-testid="submit-order-button"
+      className="bg-primary text-white hover:bg-orang-10 shadow-none rounded-none"
     >
-      Place order
+      Đặt hàng
     </Button>
   )
 }
@@ -178,8 +179,9 @@ const StripePaymentButton = ({
         size="large"
         isLoading={submitting}
         data-testid={dataTestId}
+        className="bg-primary text-white hover:bg-orang-10 shadow-none rounded-none"
       >
-        Place order
+        Đặt hàng
       </Button>
       <ErrorMessage
         error={errorMessage}
@@ -287,8 +289,9 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
         onClick={handlePayment}
         size="large"
         data-testid="submit-order-button"
+        className="bg-primary text-white hover:bg-orang-10 shadow-none rounded-none"
       >
-        Place order
+        Đặt hàng
       </Button>
       <ErrorMessage
         error={errorMessage}

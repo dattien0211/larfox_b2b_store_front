@@ -28,6 +28,7 @@ import { default as Car } from "./car"
 import { default as Verified } from "./verified"
 import { default as Camera } from "./camera"
 import { default as Trash } from "./trash"
+import { default as Discount } from "./discount"
 
 export default {
   FaceBook,
@@ -59,4 +60,5 @@ export default {
   Verified,
   Camera,
   Trash,
+  Discount,
 }

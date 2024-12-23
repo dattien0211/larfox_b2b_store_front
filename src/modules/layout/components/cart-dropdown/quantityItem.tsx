@@ -1,25 +1,31 @@
-import { useState, useCallback, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { updateLineItem } from "@lib/data/cart"
-import { HttpTypes } from "@medusajs/types"
 import { debounce } from "lodash"
 
 interface QuantityItemProps {
-  item: HttpTypes.StoreCartLineItem
+  itemQuantity: number
+  itemId: string
+  setUpdating: React.Dispatch<React.SetStateAction<boolean>> // Accept setUpdating from parent
+  setError: React.Dispatch<React.SetStateAction<string | null>>
+  isDisabled?: boolean
 }
 
-const QuantityItem = ({ item }: QuantityItemProps) => {
-  const [quantity, setQuantity] = useState(item.quantity)
-  const [updating, setUpdating] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+const QuantityItem = ({
+  itemQuantity,
+  itemId,
+  setUpdating,
+  setError,
+  isDisabled,
+}: QuantityItemProps) => {
+  const [quantity, setQuantity] = useState(itemQuantity)
 
-  // Create a debounced function outside useCallback
   const debouncedUpdate = debounce(async (newQuantity: number) => {
     setError(null)
     setUpdating(true)
 
     try {
       await updateLineItem({
-        lineId: item.id,
+        lineId: itemId,
         quantity: newQuantity,
       })
     } catch (err: any) {
@@ -27,7 +33,7 @@ const QuantityItem = ({ item }: QuantityItemProps) => {
     } finally {
       setUpdating(false)
     }
-  }, 300) // 300ms debounce delay
+  }, 300)
 
   // Cleanup the debounce function on unmount
   useEffect(() => {
@@ -48,33 +54,36 @@ const QuantityItem = ({ item }: QuantityItemProps) => {
     const value = parseInt(e.target.value, 10)
     if (!isNaN(value) && value >= 1) {
       changeQuantity(value)
+    } else if (e.target.value === "") {
+      setQuantity(0) // Handle empty input (optional based on requirements)
     }
   }
 
   return (
     <div
-      className="flex bg-grey-10 h-10"
+      className="flex bg-grey-10 h-full"
       data-testid="cart-item-quantity"
       data-value={quantity}
     >
       <button
         className=" text-center text-lg disabled:opacity-50 h-full pl-4 pr-2"
         onClick={() => changeQuantity(quantity - 1)}
-        disabled={quantity <= 1}
+        disabled={quantity <= 1 || isDisabled}
       >
         -
       </button>
       <input
+        disabled={isDisabled}
         className="bg-grey-10 w-14 text-center border-none outline-none focus:outline-none cursor-pointer "
         type="text"
         value={quantity}
         onChange={handleInputChange}
         min="1"
-        disabled={updating || !!error}
       />
       <button
         className=" text-center  text-lg disabled:opacity-50 h-full pr-4 pl-2"
         onClick={() => changeQuantity(quantity + 1)}
+        disabled={isDisabled}
       >
         +
       </button>

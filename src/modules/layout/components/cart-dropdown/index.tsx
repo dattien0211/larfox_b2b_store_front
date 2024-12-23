@@ -25,6 +25,8 @@ const CartDropdown = ({
     undefined
   )
   const [cartDropdownOpen, setCartDropdownOpen] = useState(false)
+  const [updating, setUpdating] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const open = () => setCartDropdownOpen(true)
   const close = () => setCartDropdownOpen(false)
@@ -34,7 +36,7 @@ const CartDropdown = ({
       return acc + item.quantity
     }, 0) || 0
 
-  const subtotal = cartState?.subtotal ?? 0
+  const itemTotal = cartState?.item_total ?? 0
   const itemRef = useRef<number>(totalItems || 0)
 
   const timedOpen = () => {
@@ -133,12 +135,12 @@ const CartDropdown = ({
                           />
                         </LocalizedClientLink>
                         <div className="flex flex-col flex-1">
-                          <h3 className="text-lg overflow-hidden text-ellipsis truncate whitespace-nowrap">
+                          <h3 className="text-base overflow-hidden text-ellipsis truncate whitespace-nowrap">
                             <LocalizedClientLink
                               href={`/san-pham/${item.variant?.product?.handle}`}
                               data-testid="product-link"
                             >
-                              {item.title}
+                              {item.product_title}
                             </LocalizedClientLink>
                           </h3>
                           {/* <LineItemOptions
@@ -147,7 +149,16 @@ const CartDropdown = ({
                                   data-value={item.variant}
                                 /> */}
                           <div className="flex items-center justify-between mt-2">
-                            <QuantityItem item={item} />
+                            <div className="h-10">
+                              <QuantityItem
+                                itemQuantity={item.quantity}
+                                itemId={item.id}
+                                setUpdating={setUpdating}
+                                setError={setError}
+                                isDisabled={updating || error !== null}
+                              />
+                            </div>
+
                             <div className="flex">
                               <LineItemPrice item={item} style="tight" />
                             </div>
@@ -162,24 +173,24 @@ const CartDropdown = ({
                 </div>
                 <div className="p-4 flex flex-col gap-y-4 text-small-regular">
                   <div className="flex items-center justify-between">
-                    <span className="text-ui-fg-base font-semibold">
+                    <span className="text-lg font-semibold">
                       Tổng giá:
                       {/* <span className="font-normal">(excl. taxes)</span> */}
                     </span>
                     <span
-                      className="text-large-semi"
+                      className="text-lg font-semibold text-primary"
                       data-testid="cart-subtotal"
-                      data-value={subtotal}
+                      data-value={itemTotal}
                     >
                       {convertToLocale({
-                        amount: subtotal,
+                        amount: itemTotal,
                         currency_code: cartState.currency_code,
                       })}
                     </span>
                   </div>
                   <LocalizedClientLink href="/gio-hang" passHref>
                     <button
-                      className="hover:bg-orang-30 bg-primary outline-none text-[16px] w-full py-2 rounded-md text-white"
+                      className="hover:bg-orang-30 bg-primary outline-none text-base w-full py-2 rounded-md text-white"
                       data-testid="go-to-cart-button"
                     >
                       Đi đến giỏ hàng
@@ -197,7 +208,7 @@ const CartDropdown = ({
                         <span className="sr-only"> Xem tất cả sản phẩm</span>
                         <button
                           onClick={close}
-                          className="hover:bg-orang-30 bg-primary outline-none text-[16px] px-4 py-2 rounded-md text-white"
+                          className="hover:bg-orang-30 bg-primary outline-none text-base px-4 py-2 rounded-md text-white"
                         >
                           Khám phá sản phẩm
                         </button>

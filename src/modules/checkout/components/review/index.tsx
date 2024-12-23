@@ -4,6 +4,7 @@ import { Heading, Text, clx } from "@medusajs/ui"
 
 import PaymentButton from "../payment-button"
 import { useSearchParams } from "next/navigation"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const Review = ({ cart }: { cart: any }) => {
   const searchParams = useSearchParams()
@@ -24,24 +25,50 @@ const Review = ({ cart }: { cart: any }) => {
         <Heading
           level="h2"
           className={clx(
-            "flex flex-row text-3xl-regular gap-x-2 items-baseline",
+            "flex flex-row text-3xl text-primary gap-x-2 items-baseline",
             {
               "opacity-50 pointer-events-none select-none": !isOpen,
             }
           )}
         >
-          Review
+          Chính sách và Điều khoản
         </Heading>
       </div>
       {isOpen && previousStepsCompleted && (
         <>
           <div className="flex items-start gap-x-1 w-full mb-6">
             <div className="w-full">
-              <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                By clicking the Place Order button, you confirm that you have
-                read, understand and accept our Terms of Use, Terms of Sale and
-                Returns Policy and acknowledge that you have read Medusa
-                Store&apos;s Privacy Policy.
+              <Text className="txt-medium-plus text-justify text-ui-fg-base mb-1">
+                Bằng cách nhấp vào nút Đặt Hàng, bạn xác nhận rằng bạn đã đọc,
+                hiểu và chấp nhận&nbsp;
+                <LocalizedClientLink
+                  href="/chinh-sach-mua-hang-va-thanh-toan"
+                  className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
+                >
+                  Chính Sách Mua Hàng
+                </LocalizedClientLink>
+                ,&nbsp;
+                <LocalizedClientLink
+                  href="/chinh-sach-bao-hanh"
+                  className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
+                >
+                  Chính Sách Bảo Hành
+                </LocalizedClientLink>
+                &nbsp;và&nbsp;
+                <LocalizedClientLink
+                  href="/chinh-sach-doi-tra-va-hoan-tien"
+                  className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
+                >
+                  Chính Sách Đổi Trả Và Hoàn Tiền
+                </LocalizedClientLink>
+                &nbsp;của chúng tôi, đồng thời đồng ý rằng bạn đã đọc{" "}
+                <LocalizedClientLink
+                  href="/chinh-sach-bao-mat"
+                  className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
+                >
+                  Chính Sách Bảo Mật
+                </LocalizedClientLink>
+                &nbsp;của Anco.
               </Text>
             </div>
           </div>

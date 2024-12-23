@@ -119,24 +119,24 @@ const Payment = ({
         <Heading
           level="h2"
           className={clx(
-            "flex flex-row text-3xl-regular gap-x-2 items-baseline",
+            "flex flex-row text-3xl text-primary text gap-x-2 items-baseline",
             {
               "opacity-50 pointer-events-none select-none":
                 !isOpen && !paymentReady,
             }
           )}
         >
-          Payment
+          Phương thức thanh toán
           {!isOpen && paymentReady && <CheckCircleSolid />}
         </Heading>
         {!isOpen && paymentReady && (
           <Text>
             <button
               onClick={handleEdit}
-              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
+              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-lg"
               data-testid="edit-payment-button"
             >
-              Edit
+              Sửa
             </button>
           </Text>
         )}
@@ -166,7 +166,7 @@ const Payment = ({
               </RadioGroup>
               {isStripe && stripeReady && (
                 <div className="mt-5 transition-all duration-150 ease-in-out">
-                  <Text className="txt-medium-plus text-ui-fg-base mb-1">
+                  <Text className="text-base text-ui-fg-base mb-1">
                     Enter your card details:
                   </Text>
 
@@ -188,14 +188,14 @@ const Payment = ({
 
           {paidByGiftcard && (
             <div className="flex flex-col w-1/3">
-              <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                Payment method
+              <Text className="text-base text-ui-fg-base mb-1">
+                Phương thức thanh toán
               </Text>
               <Text
                 className="txt-medium text-ui-fg-subtle"
                 data-testid="payment-method-summary"
               >
-                Gift card
+                Thẻ quà tặng
               </Text>
             </div>
           )}
@@ -207,7 +207,7 @@ const Payment = ({
 
           <Button
             size="large"
-            className="mt-6"
+            className="mt-6 bg-primary hover:bg-orang-10 rounded-none !shadow-none"
             onClick={handleSubmit}
             isLoading={isLoading}
             disabled={
@@ -217,8 +217,8 @@ const Payment = ({
             data-testid="submit-payment-button"
           >
             {!activeSession && isStripeFunc(selectedPaymentMethod)
-              ? " Enter card details"
-              : "Continue to review"}
+              ? " Nhập chi tiết thẻ"
+              : "Tiếp tục để đặt hàng"}
           </Button>
         </div>
 
@@ -226,8 +226,8 @@ const Payment = ({
           {cart && paymentReady && activeSession ? (
             <div className="flex items-start gap-x-1 w-full">
               <div className="flex flex-col w-1/3">
-                <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                  Payment method
+                <Text className="text-base text-ui-fg-base mb-1">
+                  Phương thức thanh toán
                 </Text>
                 <Text
                   className="txt-medium text-ui-fg-subtle"
@@ -238,8 +238,8 @@ const Payment = ({
                 </Text>
               </div>
               <div className="flex flex-col w-1/3">
-                <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                  Payment details
+                <Text className="text-base text-ui-fg-base mb-1">
+                  Chi tiết thanh toán
                 </Text>
                 <div
                   className="flex gap-2 txt-medium text-ui-fg-subtle items-center"
@@ -260,14 +260,14 @@ const Payment = ({
             </div>
           ) : paidByGiftcard ? (
             <div className="flex flex-col w-1/3">
-              <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                Payment method
+              <Text className="text-base text-ui-fg-base mb-1">
+                Phương thức thanh toán
               </Text>
               <Text
                 className="txt-medium text-ui-fg-subtle"
                 data-testid="payment-method-summary"
               >
-                Gift card
+                Thẻ quà tặng
               </Text>
             </div>
           ) : null}

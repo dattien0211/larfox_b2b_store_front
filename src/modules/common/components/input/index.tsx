@@ -13,10 +13,25 @@ type InputProps = Omit<
   touched?: Record<string, unknown>
   name: string
   topLabel?: string
+  error?: any
+  isRequired?: boolean
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ type, name, label, touched, required, topLabel, ...props }, ref) => {
+  (
+    {
+      type,
+      name,
+      label,
+      touched,
+      required,
+      topLabel,
+      error,
+      isRequired,
+      ...props
+    },
+    ref
+  ) => {
     const inputRef = React.useRef<HTMLInputElement>(null)
     const [showPassword, setShowPassword] = useState(false)
     const [inputType, setInputType] = useState(type)
@@ -54,7 +69,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className="flex items-center justify-center mx-3 px-1 transition-all absolute duration-300 top-3 -z-1 origin-0 text-ui-fg-subtle"
           >
             {label}
-            {required && <span className="text-rose-500">*</span>}
+            {isRequired && <span className="text-rose-500">*</span>}
           </label>
           {type === "password" && (
             <button
@@ -66,6 +81,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </button>
           )}
         </div>
+        {error && (
+          <div className="text-red-500 text-sm mt-2">{error ? error : ""}</div> // Error message below input
+        )}
       </div>
     )
   }

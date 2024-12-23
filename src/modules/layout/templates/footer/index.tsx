@@ -36,7 +36,7 @@ export default async function Footer() {
                 alt="Logo"
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <div className="flex items-center justify-center gap-x-2">
@@ -183,7 +183,7 @@ export default async function Footer() {
                       alt="Paypal"
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover"
+                      className="object-contain"
                     />
                   </div>
                   <div className="relative w-[88px] h-[30px]">
@@ -192,7 +192,7 @@ export default async function Footer() {
                       alt="Paypal"
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover"
+                      className="object-contain"
                     />
                   </div>
                 </div>

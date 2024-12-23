@@ -24,7 +24,7 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
   const hasReducedPrice = currentPrice < originalPrice
 
   return (
-    <div className="flex flex-col gap-x-2 text-ui-fg-subtle items-end">
+    <div className="flex flex-col gap-x-2 items-end">
       <div className="text-left">
         {hasReducedPrice && (
           <>
@@ -32,10 +32,7 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
               {/* {style === "default" && (
                 <span className="text-ui-fg-subtle">Original: </span>
               )} */}
-              <span
-                className="line-through text-primary"
-                data-testid="product-original-price"
-              >
+              <span data-testid="product-original-price">
                 {convertToLocale({
                   amount: originalPrice,
                   currency_code,
@@ -50,7 +47,7 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
           </>
         )}
         <span
-          className={clx("text-primary", {
+          className={clx("text-primary text-base font-semibold", {
             "text-ui-fg-interactive": hasReducedPrice,
           })}
           data-testid="product-price"

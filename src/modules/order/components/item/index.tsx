@@ -4,6 +4,7 @@ import { Table, Text } from "@medusajs/ui"
 import LineItemOptions from "@modules/common/components/line-item-options"
 import LineItemPrice from "@modules/common/components/line-item-price"
 import LineItemUnitPrice from "@modules/common/components/line-item-unit-price"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "@modules/products/components/thumbnail"
 
 type ItemProps = {
@@ -14,9 +15,18 @@ const Item = ({ item }: ItemProps) => {
   return (
     <Table.Row className="w-full" data-testid="product-row">
       <Table.Cell className="!pl-0 p-4 w-24">
-        <div className="flex w-16">
-          <Thumbnail thumbnail={item.thumbnail} size="square" />
-        </div>
+        <LocalizedClientLink href={`/san-pham/${item?.product_handle}`}>
+          <div className="flex w-16">
+            <Thumbnail
+              thumbnail={
+                item.variant?.product?.images
+                  ? item.variant?.product?.images[0]?.url
+                  : null
+              }
+              size="square"
+            />
+          </div>
+        </LocalizedClientLink>
       </Table.Cell>
 
       <Table.Cell className="text-left">
@@ -24,9 +34,9 @@ const Item = ({ item }: ItemProps) => {
           className="txt-medium-plus text-ui-fg-base"
           data-testid="product-name"
         >
-          {item.title}
+          {item.product_title}
         </Text>
-        <LineItemOptions variant={item.variant} data-testid="product-variant" />
+        {/* <LineItemOptions variant={item.variant} data-testid="product-variant" /> */}
       </Table.Cell>
 
       <Table.Cell className="!pr-0">
