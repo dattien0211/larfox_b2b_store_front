@@ -1,12 +1,12 @@
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import moment from "moment"
+import moment from "moment-timezone"
 import Icons from "@modules/common/icons"
 
 moment.locale("vi")
 
 export default async function TopNav() {
   const { FaceBook, Twitter, Mail, Skype, Clock, Location } = Icons
-  const formattedTime = moment().format("dddd HH:mm")
+  const formattedTime = moment.tz("Asia/Ho_Chi_Minh").format("dddd HH:mm")
   const vietnameseTime = formattedTime
     .replace("Monday", "Thứ Hai")
     .replace("Tuesday", "Thứ Ba")
