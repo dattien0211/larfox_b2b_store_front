@@ -1,11 +1,13 @@
 import { HttpTypes } from "@medusajs/types"
+
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 type ProductInfoProps = {
   product: HttpTypes.StoreProduct
+  variant?: HttpTypes.StoreProductVariant
 }
 
-const ProductMoreInfo = ({ product }: ProductInfoProps) => {
+const ProductMoreInfo = ({ product, variant }: ProductInfoProps) => {
   const countryMapping: Record<string, string> = {
     vn: "Việt Nam",
     us: "United States",
@@ -18,16 +20,11 @@ const ProductMoreInfo = ({ product }: ProductInfoProps) => {
       <div className="flex text-sm">
         <span className="text-black-20">SKU:</span>
         <div className="flex gap-x-2 ml-1">
-          {product?.variants?.map((variant, index) => {
-            return (
-              <span key={variant?.id}>
-                {variant?.sku}
-                {product?.variants && index < product?.variants.length - 1
-                  ? ", "
-                  : ""}
-              </span>
-            )
-          })}
+          {variant &&
+            product?.variants &&
+            product?.variants.length > 0 &&
+            product?.variants?.find((_variant) => _variant.id === variant.id)
+              ?.sku}
         </div>
       </div>
       <div className="flex text-sm">
@@ -73,19 +70,7 @@ const ProductMoreInfo = ({ product }: ProductInfoProps) => {
       <div className="flex text-sm">
         <span className="text-black-20">Thương hiệu:</span>
         <div className="flex gap-x-2 ml-1">
-          {product?.variants &&
-            product?.variants?.map((variant, index) => {
-              return (
-                <span key={variant?.id}>
-                  {variant?.origin_country
-                    ? countryMapping[variant?.origin_country?.toLowerCase()]
-                    : countryMapping["vn"]}
-                  {product?.variants && index < product?.variants.length - 1
-                    ? ", "
-                    : ""}
-                </span>
-              )
-            })}
+          {product.origin_country && countryMapping[product.origin_country]}
         </div>
       </div>
     </div>

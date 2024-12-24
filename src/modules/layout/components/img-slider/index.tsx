@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useCallback, useEffect } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Thumbs, FreeMode, Controller } from "swiper/modules"
+import { Navigation, Thumbs, Autoplay, Controller } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/thumbs"
@@ -42,10 +42,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     <div className="w-full max-w-[800px] mx-auto">
       <Swiper
         ref={mainSliderRef}
-        modules={[Navigation, Thumbs, Controller]}
+        modules={[Navigation, Thumbs, Controller, Autoplay]}
         loop={true}
-        spaceBetween={10}
         slidesPerView={1}
+        autoplay={{
+          delay: 3000, // Slide change interval (in ms)
+          disableOnInteraction: false, // Allow autoplay even when interacting
+        }}
         onSwiper={(swiper) => {
           mainSliderRef.current = swiper
         }}
@@ -68,11 +71,11 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         ))}
       </Swiper>
       {showThumbnails && (
-        <div className=" flex items-center justify-center gap-x-6 mt-8">
+        <div className=" flex items-center justify-center gap-x-4 mt-8 overflow-hidden">
           <button
             disabled={activeIndex === 0}
             className={clsx(
-              "p-4 cursor-pointer text-black-20",
+              "p-2 cursor-pointer text-black-20",
               activeIndex === 0 ? "opacity-20" : "opacity-100"
             )}
             onClick={handlePrev}
@@ -107,7 +110,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           <button
             disabled={activeIndex === images.length - 1}
             className={clsx(
-              "p-4 cursor-pointer text-black-20",
+              "p-2 cursor-pointer text-black-20",
               activeIndex === images.length - 1 ? "opacity-20" : "opacity-100"
             )}
             onClick={handleNext}

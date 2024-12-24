@@ -33,7 +33,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         className="content-container flex flex-col  small:items-start py-6 relative"
         data-testid="product-container"
       >
-        <div className="flex items-center justify-center gap-x-14 w-full">
+        <div className="flex items-start justify-center gap-x-14 w-full">
           <div className="w-1/2">
             <ImageSlider
               images={product?.images || []}
@@ -42,9 +42,9 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
               }
             />
           </div>
-          <div className="w-1/2 self-start">
+          <div className="w-1/2 ">
             {/* <ProductInfo product={product} /> */}
-            <div className="flex flex-col w-full  gap-y-12">
+            <div className="flex flex-col w-full">
               <ProductOnboardingCta />
               <Suspense
                 fallback={

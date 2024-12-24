@@ -2,20 +2,18 @@
 
 import { Button } from "@medusajs/ui"
 import { isEqual } from "lodash"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { useIntersection } from "@lib/hooks/use-in-view"
 import Divider from "@modules/common/components/divider"
 import OptionSelect from "@modules/products/components/product-actions/option-select"
-
 import MobileActions from "./mobile-actions"
 import ProductPrice from "../product-price"
 import { addToCart } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
 import ProductInfo from "@modules/products/templates/product-info"
 import Icons from "@modules/common/icons"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ProductPolicy from "../product-policy"
 import ProductSocial from "../product-social"
 import ProductMoreInfo from "../product-more-info"
@@ -42,6 +40,8 @@ export default function ProductActions({
 }: ProductActionsProps) {
   const { Heart } = Icons
 
+  const router = useRouter()
+
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
   const [isAdding, setIsAdding] = useState(false)
   const countryCode = useParams().countryCode as string
@@ -50,6 +50,10 @@ export default function ProductActions({
   // If there is only 1 variant, preselect the options
   useEffect(() => {
     if (product.variants?.length === 1) {
+      const variantOptions = optionsAsKeymap(product.variants[0].options)
+      setOptions(variantOptions ?? {})
+    } else if (product.variants?.length && product.variants?.length > 0) {
+      // Preselect the first variant if there are multiple variants
       const variantOptions = optionsAsKeymap(product.variants[0].options)
       setOptions(variantOptions ?? {})
     }
@@ -114,11 +118,27 @@ export default function ProductActions({
 
     await addToCart({
       variantId: selectedVariant.id,
-      quantity: 1,
+      quantity,
       countryCode,
     })
 
     setIsAdding(false)
+  }
+
+  const handleBuyNow = async () => {
+    if (!selectedVariant?.id) return null
+
+    setIsAdding(true)
+
+    await addToCart({
+      variantId: selectedVariant.id,
+      quantity,
+      countryCode,
+    })
+
+    setIsAdding(false)
+
+    router.push(`/${countryCode}/gio-hang`)
   }
 
   // Decrease quantity but ensure it doesn't go below 1
@@ -140,42 +160,51 @@ export default function ProductActions({
     }
   }
 
+  console.log(options)
   return (
     <>
+      <ProductPrice product={product} variant={selectedVariant} />
+
+      <ProductInfo product={product} />
+
+      <div>
+        {(product.variants?.length ?? 0) > 1 && (
+          <div className="flex flex-col gap-y-4">
+            <Divider />
+
+            {(product.options || []).map((option) => {
+              return (
+                <div key={option.id}>
+                  <OptionSelect
+                    option={option}
+                    current={options[option.id]}
+                    updateOption={setOptionValue}
+                    title={option.title ?? ""}
+                    data-testid="product-options"
+                    disabled={!!disabled || isAdding}
+                  />
+                </div>
+              )
+            })}
+          </div>
+        )}
+      </div>
+
       <div className="flex flex-col" ref={actionsRef}>
-        <div>
-          {(product.variants?.length ?? 0) > 1 && (
-            <div className="flex flex-col gap-y-4">
-              {(product.options || []).map((option) => {
-                return (
-                  <div key={option.id}>
-                    <OptionSelect
-                      option={option}
-                      current={options[option.id]}
-                      updateOption={setOptionValue}
-                      title={option.title ?? ""}
-                      data-testid="product-options"
-                      disabled={!!disabled || isAdding}
-                    />
-                  </div>
-                )
-              })}
-              <Divider />
-            </div>
-          )}
-        </div>
-
-        <ProductPrice product={product} variant={selectedVariant} />
-
-        <ProductInfo product={product} />
-
         <div className="border-y border-grey-50 py-4 my-6">
           <div className="flex items-center h-11 gap-x-4">
             <div className="rounded-sm h-full bg-grey-50 flex items-center justify-center">
               <button
-                className="w-11 h-full"
+                className="w-11 h-full disabled:opacity-50 text-xl"
                 onClick={handleDecrease}
                 aria-label="Decrease quantity"
+                disabled={
+                  quantity <= 1 ||
+                  !inStock ||
+                  !selectedVariant ||
+                  !!disabled ||
+                  isAdding
+                }
               >
                 -
               </button>
@@ -184,12 +213,18 @@ export default function ProductActions({
                 onChange={handleInputChange}
                 type="text"
                 min="1"
-                className="text-center w-10 font-semibold bg-grey-50 h-full focus:outline-none"
+                className="text-center w-10 font-semibold bg-grey-50 h-full focus:outline-none disabled:opacity-50"
+                disabled={
+                  !inStock || !selectedVariant || !!disabled || isAdding
+                }
               />
               <button
-                className="w-11 h-full"
+                className="w-11 h-full text-xl disabled:opacity-50"
                 onClick={handleIncrease}
                 aria-label="Increase quantity"
+                disabled={
+                  !inStock || !selectedVariant || !!disabled || isAdding
+                }
               >
                 +
               </button>
@@ -204,7 +239,10 @@ export default function ProductActions({
             >
               {inStock ? "Thêm giỏ hàng" : "Hết hàng"}
             </Button>
-            <button className="bg-primary px-6 h-full rounded-sm text-white">
+            <button
+              className="bg-primary px-6 h-full rounded-sm text-white"
+              onClick={handleBuyNow}
+            >
               Mua ngay
             </button>
           </div>
@@ -216,7 +254,7 @@ export default function ProductActions({
           </div>
         </div>
 
-        <ProductMoreInfo product={product} />
+        <ProductMoreInfo product={product} variant={selectedVariant} />
 
         <ProductSocial />
 

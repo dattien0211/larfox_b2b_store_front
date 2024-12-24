@@ -1,20 +1,39 @@
+"use client"
+
+import React, { useState, useEffect } from "react"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import moment from "moment-timezone"
 import Icons from "@modules/common/icons"
 
 moment.locale("vi")
 
-export default async function TopNav() {
+export default function TopNav() {
   const { FaceBook, Twitter, Mail, Skype, Clock, Location } = Icons
-  const formattedTime = moment.tz("Asia/Ho_Chi_Minh").format("dddd HH:mm")
-  const vietnameseTime = formattedTime
-    .replace("Monday", "Thứ Hai")
-    .replace("Tuesday", "Thứ Ba")
-    .replace("Wednesday", "Thứ Tư")
-    .replace("Thursday", "Thứ Năm")
-    .replace("Friday", "Thứ Sáu")
-    .replace("Saturday", "Thứ Bảy")
-    .replace("Sunday", "Chủ Nhật")
+
+  const [vietnameseTime, setVietnameseTime] = useState("")
+
+  // Function to format the time
+  const updateTime = () => {
+    const formattedTime = moment.tz("Asia/Ho_Chi_Minh").format("dddd HH:mm")
+    const timeInVietnamese = formattedTime
+      .replace("Monday", "Thứ Hai")
+      .replace("Tuesday", "Thứ Ba")
+      .replace("Wednesday", "Thứ Tư")
+      .replace("Thursday", "Thứ Năm")
+      .replace("Friday", "Thứ Sáu")
+      .replace("Saturday", "Thứ Bảy")
+      .replace("Sunday", "Chủ Nhật")
+    setVietnameseTime(timeInVietnamese)
+  }
+
+  // Set the interval to update time every minute
+  useEffect(() => {
+    updateTime() // Set the initial time
+    const interval = setInterval(updateTime, 60000) // Update every 60 seconds
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div className="h-10 w-full bg-grey-10">

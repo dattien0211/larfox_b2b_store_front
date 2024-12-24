@@ -31,6 +31,7 @@ export default function BannerProduct({
         alt={altText}
         width={2000}
         height={456}
+        priority={true}
         className="w-full"
       />
       <div

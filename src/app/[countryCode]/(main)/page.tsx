@@ -35,35 +35,39 @@ export default async function Home({
   return (
     <div className="relative z-20">
       <Hero />
-      {/* <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
-        </ul>
-      </div> */}
 
       <AboutUs />
+
       <FlashSale />
+
       <RecommendProducts
         backgroundText="Assortm"
         shopName="Anco Shop"
         title="Sản phẩm nổi bật"
         description="Những sản phẩm đặc biệt của chúng tôi, được thiết kế và sản xuất với công nghệ tiên tiến"
       />
+
       <BannerProduct imageSrc={IMGS.Banner4} title="Sắp ra mắt" />
+
       <NewProducts />
+
       <HotProducts />
+
       <BannerProduct
         imageSrc={IMGS.Banner6}
         title="Xem chi tiết"
         buttonClass="!left-[21%]"
       />
+
       <RecommendProducts
         backgroundText="Assortm"
         shopName="Anco Shop"
         title="Trang thiết bị"
         description="Những sản phẩm đặc biệt của chúng tôi, được thiết kế và sản xuất với công nghệ tiên tiến"
       />
+
       <OurStory />
+      
       <Blogs />
     </div>
   )
