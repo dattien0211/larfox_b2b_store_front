@@ -9,7 +9,7 @@ const ShowAll = () => {
   const width = typeof window !== "undefined" ? window.innerWidth : 0
 
   if (query === "") return null
-  if (hits.length > 0 && hits.length <= 6) return null
+  if (hits.length > 0 && hits.length <= 8) return null
 
   if (hits.length === 0) {
     return (
@@ -21,7 +21,6 @@ const ShowAll = () => {
       </Container>
     )
   }
-
   return (
     <Container className="flex sm:flex-col small:flex-row gap-2 justify-center items-center h-fit py-4 small:py-2">
       <Text>Hiển thị {width > 1680 ? 15 : 8} kết quả đầu tiên.</Text>

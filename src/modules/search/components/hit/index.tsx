@@ -22,7 +22,7 @@ type HitProps = {
 const Hit = ({ hit }: HitProps) => {
   return (
     <LocalizedClientLink
-      href={`/products/${hit.handle}`}
+      href={`/san-pham/${hit.handle}`}
       data-testid="search-result"
     >
       <Container
@@ -37,7 +37,7 @@ const Hit = ({ hit }: HitProps) => {
         <div className="flex flex-col justify-between group">
           <div className="flex flex-col">
             <Text
-              className="text-ui-fg-subtle"
+              className="text-ui-fg-subtle h-[48px] line-clamp-2"
               data-testid="search-result-title"
             >
               {hit.title}
