@@ -17,7 +17,7 @@ const ShowAll = () => {
         className="flex gap-2 justify-center h-fit py-2"
         data-testid="no-search-results-container"
       >
-        <Text>Không tìm thấy sản phẩm tương ứng.</Text>
+        <Text className="text-base">Không tìm thấy sản phẩm tương ứng.</Text>
       </Container>
     )
   }
