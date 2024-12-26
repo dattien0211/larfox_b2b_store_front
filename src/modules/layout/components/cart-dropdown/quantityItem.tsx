@@ -33,7 +33,7 @@ const QuantityItem = ({
     } finally {
       setUpdating(false)
     }
-  }, 300)
+  }, 1000)
 
   // Cleanup the debounce function on unmount
   useEffect(() => {

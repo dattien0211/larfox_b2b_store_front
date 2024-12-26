@@ -173,9 +173,9 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
         <span>{billingAddress.address_1}</span>
         <span className="ml-[2px] mr-1">,</span>
         <span>
-          {billingAddress.city}
-          <span className="ml-[2px] mr-1">,</span>
           {billingAddress.province}
+          <span className="ml-[2px] mr-1">,</span>
+          {billingAddress.city}
           <span className="ml-[2px] mr-1">,</span>
         </span>
         <span>{country === "Viet Nam" ? "Việt Nam" : country}</span>

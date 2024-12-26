@@ -13,6 +13,30 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
     return formatted.slice(0, 1).toUpperCase() + formatted.slice(1)
   }
 
+  const fulfillmentStatusTranslations = {
+    not_fulfilled: "Chưa hoàn thành",
+    partially_fulfilled: "Hoàn thành một phần",
+    fulfilled: "Đã hoàn thành",
+    partially_shipped: "Đã vận chuyển một phần",
+    shipped: "Đã vận chuyển",
+    partially_delivered: "Đã giao một phần",
+    delivered: "Đã giao hàng",
+    canceled: "Đã hủy",
+  }
+
+  const paymentStatusTranslations = {
+    not_paid: "Chưa thanh toán",
+    awaiting: "Đang chờ xử lý",
+    authorized: "Đã ủy quyền",
+    partially_authorized: "Đã ủy quyền một phần",
+    captured: "Đã thu tiền",
+    partially_captured: "Đã thu tiền một phần",
+    partially_refunded: "Đã hoàn tiền một phần",
+    refunded: "Đã hoàn tiền",
+    canceled: "Đã hủy",
+    requires_action: "Yêu cầu hành động",
+  }
+
   return (
     <div>
       {order.email && (
@@ -37,28 +61,28 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
         Order number: <span data-testid="order-id">{order.display_id}</span>
       </Text> */}
 
-      <div className="flex items-center text-compact-small gap-x-4 mt-4">
-        {showStatus && (
-          <>
-            <Text>
-              Trạng thái đơn hàng:{" "}
-              <span className="text-ui-fg-subtle " data-testid="order-status">
-                {/* TODO: Check where the statuses should come from */}
-                {/* {formatStatus(order.fulfillment_status)} */}
-              </span>
-            </Text>
-            <Text>
-              Trạng thái thanh toán:{" "}
-              <span
-                className="text-ui-fg-subtle "
-                sata-testid="order-payment-status"
-              >
-                {/* {formatStatus(order.payment_status)} */}
-              </span>
-            </Text>
-          </>
-        )}
-      </div>
+      {showStatus && (
+        <div className="flex items-center text-base gap-x-8 mt-2">
+          <Text className="text-base">
+            Trạng thái đơn hàng:{" "}
+            <span className="text-ui-fg-subtle " data-testid="order-status">
+              {/* TODO: Check where the statuses should come from */}
+              {formatStatus(
+                fulfillmentStatusTranslations[order.fulfillment_status]
+              )}
+            </span>
+          </Text>
+          <Text className="text-base">
+            Trạng thái thanh toán:{" "}
+            <span
+              className="text-ui-fg-subtle "
+              sata-testid="order-payment-status"
+            >
+              {formatStatus(paymentStatusTranslations[order.payment_status])}
+            </span>
+          </Text>
+        </div>
+      )}
     </div>
   )
 }

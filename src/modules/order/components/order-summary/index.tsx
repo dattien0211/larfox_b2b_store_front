@@ -7,7 +7,7 @@ type OrderSummaryProps = {
 
 const OrderSummary = ({ order }: OrderSummaryProps) => {
   const getAmount = (amount?: number | null) => {
-    if (!amount) {
+    if (amount !== 0 && !amount) {
       return
     }
 
@@ -17,40 +17,46 @@ const OrderSummary = ({ order }: OrderSummaryProps) => {
     })
   }
 
+  console.log(order)
+
   return (
     <div>
-      <h2 className="text-base-semi">Order Summary</h2>
-      <div className="text-small-regular text-ui-fg-base my-2">
-        <div className="flex items-center justify-between text-base-regular text-ui-fg-base mb-2">
-          <span>Subtotal</span>
-          <span>{getAmount(order.subtotal)}</span>
+      <h2 className="h2-core flex flex-row text-2xl text-primary my-4">
+        Tổng quan đơn hàng
+      </h2>
+      <div className="my-2">
+        <div className="flex items-center justify-between t mb-2">
+          <span>Tổng giá</span>
+          <span>{getAmount(order.item_total)}</span>
         </div>
         <div className="flex flex-col gap-y-1">
           {order.discount_total > 0 && (
             <div className="flex items-center justify-between">
-              <span>Discount</span>
+              <span>Giảm giá</span>
               <span>- {getAmount(order.discount_total)}</span>
             </div>
           )}
           {order.gift_card_total > 0 && (
             <div className="flex items-center justify-between">
-              <span>Discount</span>
+              <span>Giảm giá bằng thẻ tặng: </span>
               <span>- {getAmount(order.gift_card_total)}</span>
             </div>
           )}
           <div className="flex items-center justify-between">
-            <span>Shipping</span>
+            <span>Phí vận chuyển</span>
             <span>{getAmount(order.shipping_total)}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span>Taxes</span>
-            <span>{getAmount(order.tax_total)}</span>
+            <span>Thuế</span>
+            <span>{getAmount(order.tax_total || 0)}</span>
           </div>
         </div>
-        <div className="h-px w-full border-b border-gray-200 border-dashed my-4" />
-        <div className="flex items-center justify-between text-base-regular text-ui-fg-base mb-2">
-          <span>Total</span>
-          <span>{getAmount(order.total)}</span>
+        <div className="h-px w-full border-b border-gray-200 border-dashed my-6" />
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="h2-core flex flex-row text-2xl text-primary">
+            Thành tiền
+          </h2>
+          <span className="text-xl">{getAmount(order.total)}</span>
         </div>
       </div>
     </div>

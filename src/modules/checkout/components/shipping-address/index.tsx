@@ -1,10 +1,7 @@
 import { HttpTypes } from "@medusajs/types"
 import { useFormContext, Controller } from "react-hook-form" // Ensure Controller is imported for react-select
-import { Container } from "@medusajs/ui"
 import Input from "@modules/common/components/input"
-import { mapKeys } from "lodash"
 import React, { useEffect, useMemo, useState } from "react"
-import AddressSelect from "../address-select"
 import cityConstant from "@constants/citiesData.json"
 import Select from "react-select"
 
@@ -38,13 +35,13 @@ const ShippingAddress = ({
   )
 
   // check if customer has saved addresses that are in the current region
-  const addressesInRegion = useMemo(
-    () =>
-      customer?.addresses.filter(
-        (a) => a.country_code && countriesInRegion?.includes(a.country_code)
-      ),
-    [customer?.addresses, countriesInRegion]
-  )
+  // const addressesInRegion = useMemo(
+  //   () =>
+  //     customer?.addresses.filter(
+  //       (a) => a.country_code && countriesInRegion?.includes(a.country_code)
+  //     ),
+  //   [customer?.addresses, countriesInRegion]
+  // )
 
   const setFormAddress = (
     address?: HttpTypes.StoreCartAddress,
@@ -69,6 +66,26 @@ const ShippingAddress = ({
   useEffect(() => {
     if (cart && cart.shipping_address) {
       setFormAddress(cart.shipping_address, cart.email)
+    }
+
+    if (customer?.addresses[0]?.address_1) {
+      setValue(
+        "shipping_address.first_name",
+        customer?.addresses[0]?.first_name || ""
+      )
+
+      setValue(
+        "shipping_address.address_1",
+        customer?.addresses[0]?.address_1 || ""
+      )
+
+      setValue("shipping_address.city", customer?.addresses[0]?.city || "")
+
+      setValue(
+        "shipping_address.province",
+        customer?.addresses[0]?.province || ""
+      )
+      setValue("shipping_address.phone", customer?.addresses[0]?.phone || "")
     }
 
     if (cart && !cart.email && customer?.email) {
@@ -103,23 +120,6 @@ const ShippingAddress = ({
 
   return (
     <>
-      {customer && (addressesInRegion?.length || 0) > 0 && (
-        <Container className="mb-6 flex flex-col gap-y-4 p-5">
-          <p className="text-small-regular">
-            {`Xin chào ${customer.first_name}, Bạn có muốn sử dụng địa chỉ đã lưu?`}
-          </p>
-          <AddressSelect
-            addresses={customer.addresses}
-            addressInput={
-              mapKeys(watch(), (_, key) =>
-                key.replace("shipping_address.", "")
-              ) as HttpTypes.StoreCartAddress
-            }
-            onSelect={setFormAddress}
-          />
-        </Container>
-      )}
-
       <div className="grid grid-cols-2 gap-4">
         <div className="col-span-2">
           <Input
@@ -197,9 +197,9 @@ const ShippingAddress = ({
         <div className="col-span-2">
           <Input
             {...register("shipping_address.address_1", {
-              required: "Vui lòng nhập chi tiết địa chỉ giao hàng.",
+              required: "Vui lòng nhập chi tiết Địa chỉ nhận hàng.",
             })}
-            label="Địa chỉ giao hàng"
+            label="Địa chỉ nhận hàng"
             error={(errors?.shipping_address as any)?.address_1?.message}
             data-testid="shipping-address-input"
             isRequired={true}

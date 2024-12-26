@@ -107,7 +107,7 @@ const Addresses = ({
           level="h2"
           className="flex flex-row text-3xl gap-x-2 items-baseline text-primary"
         >
-          Địa chỉ giao hàng
+          Địa chỉ nhận hàng
           {!isOpen && <CheckCircleSolid />}
         </Heading>
         {!isOpen && cart?.shipping_address && (
@@ -182,30 +182,32 @@ const Addresses = ({
                             } -`}
                           </span>
                         </Text>
-
+                        <Text className="text-base text-ui-fg-subtle">
+                          {`${cart.shipping_address.address_1 || ""}`}
+                        </Text>
                         {cart.shipping_address.province && (
                           <Text className="text-base text-ui-fg-subtle">
-                            {`${cart.shipping_address.province}`}
+                            {`, ${cart.shipping_address.province}`}
                           </Text>
                         )}
                         {cart.shipping_address.city && (
                           <Text className="text-base text-ui-fg-subtle">
-                            {`, ${cart.shipping_address.city}`}
+                            {`, ${cart.shipping_address.city}.`}
                           </Text>
                         )}
-                        <Text className="text-base text-ui-fg-subtle">
-                          {`, ${cart.shipping_address.address_1 || ""}`}
-                        </Text>
-                        <Text className="text-base text-ui-fg-subtle">
+                        {/* <Text className="text-base text-ui-fg-subtle">
                           {`, ${
-                            cart?.shipping_address?.country_code?.toUpperCase() ||
-                            "VN."
+                            cart?.shipping_address?.country_code?.toUpperCase() ===
+                            "VN"
+                              ? "Việt Nam."
+                              : cart?.shipping_address?.country_code?.toUpperCase() ||
+                                "Việt Nam."
                           }`}
-                        </Text>
+                        </Text> */}
                       </div>
                     ) : (
                       <Text className="text-base text-ui-fg-subtle">
-                        Không có thông tin địa chỉ giao hàng.
+                        Chưa có thông tin địa chỉ nhận hàng.
                       </Text>
                     )}
                   </div>

@@ -11,28 +11,26 @@ type ShippingDetailsProps = {
 const ShippingDetails = ({ order }: ShippingDetailsProps) => {
   return (
     <div>
-      <Heading level="h2" className="flex flex-row text-3xl text-primary my-6">
-        Phương thức vận chuyển
+      <Heading level="h2" className="flex flex-row text-2xl text-primary my-4">
+        Địa chỉ nhận hàng
       </Heading>
       <div className="flex flex-col items-start gap-y-1">
         <div className="flex " data-testid="shipping-address-summary">
           <Text className="text-base text-ui-fg-base mr-2">
-            Địa chỉ giao hàng:
+            Địa chỉ nhận hàng:
           </Text>
           <Text className="text-base text-ui-fg-subtle mr-1">
-            Khách hàng {order.shipping_address?.last_name}{" "}
-            {order.shipping_address?.first_name} -
-          </Text>
-
-          <Text className="text-base text-ui-fg-subtle mx-1">
-            {order.shipping_address?.province}, {order.shipping_address?.city},
+            Khách hàng {order.shipping_address?.first_name} -
           </Text>
           <Text className="text-base text-ui-fg-subtle mr-1">
             {order.shipping_address?.address_1},
           </Text>
-          <Text className="text-base text-ui-fg-subtle">
-            {order.shipping_address?.country_code?.toUpperCase() || "VN"}.
+          <Text className="text-base text-ui-fg-subtle mx-1">
+            {order.shipping_address?.province}, {order.shipping_address?.city}.
           </Text>
+          {/* <Text className="text-base text-ui-fg-subtle">
+            {order.shipping_address?.country_code?.toUpperCase() || "VN"}.
+          </Text> */}
         </div>
 
         <div className="flex flex-col" data-testid="shipping-contact-summary">
