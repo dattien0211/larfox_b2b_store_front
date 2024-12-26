@@ -27,7 +27,7 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
   }
 
   useEffect(() => {
-    setSuccessState(state.success)
+    setSuccessState(state?.success)
   }, [state])
 
   return (
@@ -38,8 +38,8 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
           <span>The password is not shown for security reasons</span>
         }
         isSuccess={successState}
-        isError={!!state.error}
-        errorMessage={state.error ?? undefined}
+        isError={!!state?.error}
+        errorMessage={state?.error ?? undefined}
         clearState={clearState}
         data-testid="account-password-editor"
       >

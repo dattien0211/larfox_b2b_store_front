@@ -1,18 +1,27 @@
 "use client"
 
 import React, { useEffect, useMemo } from "react"
+import { useForm, Controller } from "react-hook-form"
+import Select from "react-select"
 
 import Input from "@modules/common/components/input"
-import NativeSelect from "@modules/common/components/native-select"
-
 import AccountInfo from "../account-info"
-import { useFormState } from "react-dom"
 import { HttpTypes } from "@medusajs/types"
 import { updateCustomerAddress } from "@lib/data/customer"
+import ErrorMessage from "@modules/checkout/components/error-message"
+import cityConstant from "@constants/citiesData.json"
 
 type MyInformationProps = {
   customer: HttpTypes.StoreCustomer
   regions: HttpTypes.StoreRegion[]
+}
+
+type FormInputs = {
+  first_name: string
+  phone: string
+  city: string
+  province: string
+  address_1: string
 }
 
 const ProfileBillingAddress: React.FC<MyInformationProps> = ({
@@ -31,29 +40,122 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
         .flat() || []
     )
   }, [regions])
-
+  const [provinceOptions, setProvinceOptions] = React.useState<any>([])
   const [successState, setSuccessState] = React.useState(false)
-
-  const [state, formAction] = useFormState(updateCustomerAddress, {
-    error: false,
-    success: false,
+  const [errorState, setErrorState] = React.useState<string | null>(null)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    reset,
+    control,
+    watch,
+  } = useForm<FormInputs>({
+    defaultValues: {
+      first_name: customer.addresses[0]?.first_name || "",
+      phone: customer.addresses[0]?.phone || "",
+      city: customer.addresses[0]?.city || "",
+      province: customer.addresses[0]?.province || "",
+      address_1: customer.addresses[0]?.address_1 || "",
+    },
+    shouldUnregister: false, // Prevent unregistering inputs when hidden
   })
+
+  const city = watch("city")
+  const province = watch("province")
+
+  useEffect(() => {
+    if (city) {
+      const filteredProvinces =
+        cityConstant
+          .find((item) => item.name === city)
+          ?.districts?.map((item: any) => ({
+            label: item.name,
+            value: item.name,
+          })) || []
+      setProvinceOptions(filteredProvinces)
+    } else {
+      setProvinceOptions([])
+    }
+  }, [city])
+
+  const handleChangeCity = (selectedOption: any) => {
+    /* @ts-ignore */
+    setValue("city", selectedOption?.value || "")
+    /* @ts-ignore */
+    setValue("province", "") // Clear province when city changes
+  }
+
+  const handleChangeProvince = (selectedOption: any) => {
+    /* @ts-ignore */
+    setValue("province", selectedOption?.value || "")
+  }
+
+  const onSubmit = async (data: FormInputs) => {
+    const formData = new FormData()
+
+    // Append the form data to FormData object
+    formData.append("first_name", data["first_name"])
+    formData.append("address_1", data["address_1"])
+    formData.append("city", data["city"])
+    formData.append("province", data["province"])
+    formData.append("phone", data["phone"])
+
+    // Flattening the form data structure
+    Object.entries(data).forEach(([key, value]) => {
+      if (typeof value === "object" && value !== null) {
+        Object.entries(value).forEach(([nestedKey, nestedValue]) => {
+          formData.append(`${key}[${nestedKey}]`, nestedValue as string)
+        })
+      } else {
+        formData.append(key, value as string)
+      }
+    })
+
+    try {
+      const response = await updateCustomerAddress(
+        { addressId: customer.addresses[0].id },
+        formData
+      )
+
+      if (response.success) {
+        setSuccessState(true)
+        setErrorState(null) // Clear previous errors
+        reset(data) // Optionally reset the form after a successful submission
+      } else {
+        setSuccessState(false)
+        setErrorState(response.message || "Đã có lỗi xảy ra. Vui lòng thử lại.")
+      }
+    } catch (error) {
+      setSuccessState(false)
+      setErrorState("Đã xảy ra lỗi. Vui lòng thử lại!")
+      console.error("API Error:", error)
+    }
+  }
 
   const clearState = () => {
     setSuccessState(false)
+    setErrorState(null)
+    reset({
+      first_name: customer.addresses[0]?.first_name || "",
+      phone: customer.addresses[0]?.phone || "",
+      city: customer.addresses[0]?.city || "",
+      province: customer.addresses[0]?.province || "",
+      address_1: customer.addresses[0]?.address_1 || "",
+    })
   }
 
   useEffect(() => {
-    setSuccessState(state.success)
-  }, [state])
+    if (successState) {
+      reset()
+    }
+  }, [successState, reset])
 
-  const billingAddress = customer.addresses?.find(
-    (addr) => addr.is_default_billing
-  )
-
+  const billingAddress = customer.addresses[0]
   const currentInfo = useMemo(() => {
-    if (!billingAddress) {
-      return "No billing address"
+    if (!billingAddress.address_1) {
+      return "Chưa có địa chỉ nhận hàng"
     }
 
     const country =
@@ -62,106 +164,140 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
       )?.label || billingAddress.country_code?.toUpperCase()
 
     return (
-      <div className="flex flex-col font-semibold" data-testid="current-info">
+      <div
+        className="flex flex-row mt-1 font-semibold"
+        data-testid="current-info"
+      >
+        <span>{billingAddress.first_name}</span>
+        <span className="mx-3">-</span>
+        <span>{billingAddress.address_1}</span>
+        <span className="ml-[2px] mr-1">,</span>
         <span>
-          {billingAddress.first_name} {billingAddress.last_name}
+          {billingAddress.city}
+          <span className="ml-[2px] mr-1">,</span>
+          {billingAddress.province}
+          <span className="ml-[2px] mr-1">,</span>
         </span>
-        <span>{billingAddress.company}</span>
-        <span>
-          {billingAddress.address_1}
-          {billingAddress.address_2 ? `, ${billingAddress.address_2}` : ""}
-        </span>
-        <span>
-          {billingAddress.postal_code}, {billingAddress.city}
-        </span>
-        <span>{country}</span>
+        <span>{country === "Viet Nam" ? "Việt Nam" : country}</span>
       </div>
     )
   }, [billingAddress, regionOptions])
 
   return (
-    <form action={formAction} onReset={() => clearState()} className="w-full">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      onReset={() => clearState()}
+      className="w-full"
+    >
       <AccountInfo
-        label="Billing address"
+        label="Địa chỉ nhận hàng"
         currentInfo={currentInfo}
         isSuccess={successState}
-        isError={!!state.error}
+        isError={!!errorState}
+        errorMessage={errorState ?? undefined}
         clearState={clearState}
         data-testid="account-billing-address-editor"
       >
         <div className="grid grid-cols-1 gap-y-2">
-          <div className="grid grid-cols-2 gap-x-2">
+          <div className="grid grid-cols-2 gap-x-4">
             <Input
-              label="First name"
-              name="billing_address.first_name"
-              defaultValue={billingAddress?.first_name || undefined}
+              label="Họ và tên"
               required
               data-testid="billing-first-name-input"
+              {...register("first_name", {
+                required: "Vui lòng nhập họ và tên!",
+              })}
             />
+            {errors["first_name"] && (
+              <ErrorMessage error={errors["first_name"]?.message} />
+            )}
+
             <Input
-              label="Last name"
-              name="billing_address.last_name"
-              defaultValue={billingAddress?.last_name || undefined}
+              label="Số điện thoại"
+              type="tel"
               required
-              data-testid="billing-last-name-input"
+              autoComplete="phone"
+              data-testid="phone-input"
+              {...register("phone", {
+                required: "Vui lòng nhập số điện thoại!",
+                pattern: {
+                  value:
+                    /^(?:\+84|84)[3|5|7|8|9]{1}(\d{8})$|^(0[3|5|7|8|9]{1}[0-9]{8})$/,
+                  message: "Số điện thoại không đúng định dạng!",
+                },
+              })}
             />
+            {errors.phone && <ErrorMessage error={errors.phone?.message} />}
           </div>
+
+          <div className="grid grid-cols-2 gap-x-4">
+            <Controller
+              name="city"
+              control={control}
+              rules={{ required: "Vui lòng chọn tỉnh/ thành." }}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  placeholder="Tỉnh/ Thành"
+                  isClearable
+                  /* @ts-ignore */
+                  options={cityConstant.map((item) => ({
+                    label: item.name,
+                    value: item.name,
+                  }))}
+                  onChange={handleChangeCity}
+                  value={
+                    field.value
+                      ? { label: field.value, value: field.value }
+                      : null
+                  }
+                  styles={{ control: (base) => ({ ...base, height: 44 }) }}
+                />
+              )}
+            />
+
+            {!city && errors["city"] && (
+              <ErrorMessage error={errors["city"]?.message} />
+            )}
+
+            <Controller
+              name="province"
+              control={control}
+              rules={{ required: "Vui lòng chọn quận/ huyện." }}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  placeholder="Quận/ Huyện"
+                  isClearable
+                  options={provinceOptions}
+                  onChange={handleChangeProvince}
+                  isDisabled={!city}
+                  value={
+                    field.value
+                      ? { label: field.value, value: field.value }
+                      : null
+                  }
+                  styles={{ control: (base) => ({ ...base, height: 44 }) }}
+                />
+              )}
+            />
+
+            {!province && errors["city"] && (
+              <ErrorMessage error={errors["province"]?.message} />
+            )}
+          </div>
+
           <Input
-            label="Company"
-            name="billing_address.company"
-            defaultValue={billingAddress?.company || undefined}
-            data-testid="billing-company-input"
-          />
-          <Input
-            label="Address"
-            name="billing_address.address_1"
-            defaultValue={billingAddress?.address_1 || undefined}
+            label="Địa chỉ nhận hàng"
             required
             data-testid="billing-address-1-input"
-          />
-          <Input
-            label="Apartment, suite, etc."
-            name="billing_address.address_2"
-            defaultValue={billingAddress?.address_2 || undefined}
-            data-testid="billing-address-2-input"
-          />
-          <div className="grid grid-cols-[144px_1fr] gap-x-2">
-            <Input
-              label="Postal code"
-              name="billing_address.postal_code"
-              defaultValue={billingAddress?.postal_code || undefined}
-              required
-              data-testid="billing-postcal-code-input"
-            />
-            <Input
-              label="City"
-              name="billing_address.city"
-              defaultValue={billingAddress?.city || undefined}
-              required
-              data-testid="billing-city-input"
-            />
-          </div>
-          <Input
-            label="Province"
-            name="billing_address.province"
-            defaultValue={billingAddress?.province || undefined}
-            data-testid="billing-province-input"
-          />
-          <NativeSelect
-            name="billing_address.country_code"
-            defaultValue={billingAddress?.country_code || undefined}
-            required
-            data-testid="billing-country-code-select"
-          >
-            <option value="">-</option>
-            {regionOptions.map((option, i) => {
-              return (
-                <option key={i} value={option?.value}>
-                  {option?.label}
-                </option>
-              )
+            {...register("address_1", {
+              required: "Vui lòng nhập địa chỉ!",
             })}
-          </NativeSelect>
+          />
+          {errors["address_1"] && (
+            <ErrorMessage error={errors["address_1"]?.message} />
+          )}
         </div>
       </AccountInfo>
     </form>

@@ -1,14 +1,16 @@
+import { getCustomer } from "@lib/data/customer"
 import Image from "next/image"
 import Icons from "@modules/common/icons"
 import IMGS from "@constants/IMGS"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { Suspense } from "react"
 import CartButton from "@modules/layout/components/cart-button"
-import { useRouter, useParams } from "next/navigation"
 import SearchNav from "./searchNav"
+import UserDropDown from "@modules/layout/components/user-dropdown"
 
-export default function MiddleNav() {
-  const { Search, UserAnco, Heart, Bag } = Icons
+export default async function MiddleNav() {
+  const { Heart, Bag } = Icons
+  const customer = await getCustomer().catch(() => null)
 
   return (
     <div className="flex items-center justify-between my-4">
@@ -25,10 +27,8 @@ export default function MiddleNav() {
       </div>
       <SearchNav />
       <div className="flex items-center gap-x-2">
-        <span className="cursor-pointer hover:text-primary p-2">
-          <UserAnco />
-        </span>
-        <span className="cursor-pointer hover:text-primary p-2">
+        <UserDropDown customer={customer} />
+        <span className="cursor-pointer hover:text-primary py-4 px-2">
           <Heart />
         </span>
         <Suspense

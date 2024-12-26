@@ -1,7 +1,6 @@
 import { HttpTypes } from "@medusajs/types"
 import { useFormContext, Controller } from "react-hook-form" // Ensure Controller is imported for react-select
 import { Container } from "@medusajs/ui"
-import Checkbox from "@modules/common/components/checkbox"
 import Input from "@modules/common/components/input"
 import { mapKeys } from "lodash"
 import React, { useEffect, useMemo, useState } from "react"
@@ -38,6 +37,15 @@ const ShippingAddress = ({
     [cart?.region]
   )
 
+  // check if customer has saved addresses that are in the current region
+  const addressesInRegion = useMemo(
+    () =>
+      customer?.addresses.filter(
+        (a) => a.country_code && countriesInRegion?.includes(a.country_code)
+      ),
+    [customer?.addresses, countriesInRegion]
+  )
+
   const setFormAddress = (
     address?: HttpTypes.StoreCartAddress,
     email?: string
@@ -66,7 +74,7 @@ const ShippingAddress = ({
     if (cart && !cart.email && customer?.email) {
       setFormAddress(undefined, customer.email)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart, customer])
 
   useEffect(() => {
@@ -95,7 +103,7 @@ const ShippingAddress = ({
 
   return (
     <>
-      {/* {customer && (addressesInRegion?.length || 0) > 0 && (
+      {customer && (addressesInRegion?.length || 0) > 0 && (
         <Container className="mb-6 flex flex-col gap-y-4 p-5">
           <p className="text-small-regular">
             {`Xin chào ${customer.first_name}, Bạn có muốn sử dụng địa chỉ đã lưu?`}
@@ -103,14 +111,14 @@ const ShippingAddress = ({
           <AddressSelect
             addresses={customer.addresses}
             addressInput={
-              mapKeys(formData, (_, key) =>
+              mapKeys(watch(), (_, key) =>
                 key.replace("shipping_address.", "")
               ) as HttpTypes.StoreCartAddress
             }
             onSelect={setFormAddress}
           />
         </Container>
-      )} */}
+      )}
 
       <div className="grid grid-cols-2 gap-4">
         <div className="col-span-2">
@@ -198,16 +206,6 @@ const ShippingAddress = ({
           />
         </div>
       </div>
-
-      {/* <div className="my-4">
-        <Checkbox
-          label="Địa chỉ nhận hóa đơn trùng với địa chỉ giao hàng."
-          name="same_as_billing"
-          checked={checked}
-          onChange={onChange}
-          data-testid="billing-address-checkbox"
-        />
-      </div> */}
 
       <div className="grid grid-cols-2 gap-4 my-4">
         <Input

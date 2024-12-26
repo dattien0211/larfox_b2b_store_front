@@ -21,10 +21,10 @@ export default async function Orders() {
   return (
     <div className="w-full" data-testid="orders-page-wrapper">
       <div className="mb-8 flex flex-col gap-y-4">
-        <h1 className="text-2xl-semi">Orders</h1>
+        <h1 className="text-2xl-semi">Đơn hàng</h1>
         <p className="text-base-regular">
-          View your previous orders and their status. You can also create
-          returns or exchanges for your orders if needed.
+          Xem các đơn hàng trước đây của bạn và trạng thái của chúng. Bạn cũng
+          có thể tạo yêu cầu trả hàng hoặc đổi hàng nếu cần.
         </p>
       </div>
       <div>

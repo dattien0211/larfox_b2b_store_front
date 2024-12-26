@@ -22,7 +22,7 @@ const AccountInfo = ({
   isSuccess,
   isError,
   clearState,
-  errorMessage = "An error occurred, please try again",
+  errorMessage = "Có lỗi xảy ra. Vui lòng thử lại sau!",
   children,
   "data-testid": dataTestid,
 }: AccountInfoProps) => {
@@ -42,10 +42,10 @@ const AccountInfo = ({
   }, [isSuccess, close])
 
   return (
-    <div className="text-small-regular" data-testid={dataTestid}>
+    <div className="text-base" data-testid={dataTestid}>
       <div className="flex items-end justify-between">
         <div className="flex flex-col">
-          <span className="uppercase text-ui-fg-base">{label}</span>
+          <span className="">{label}</span>
           <div className="flex items-center flex-1 basis-0 justify-end gap-x-4">
             {typeof currentInfo === "string" ? (
               <span className="font-semibold" data-testid="current-info">
@@ -59,7 +59,7 @@ const AccountInfo = ({
         <div>
           <Button
             variant="secondary"
-            className="w-[100px] min-h-[25px] py-1"
+            className="w-[100px] min-h-[25px] py-1 "
             onClick={handleToggle}
             type={state ? "reset" : "button"}
             data-testid="edit-button"
@@ -84,7 +84,7 @@ const AccountInfo = ({
           data-testid="success-message"
         >
           <Badge className="p-2 my-4" color="green">
-            <span>{label} updated succesfully</span>
+            <span>{label} cập nhập thành công</span>
           </Badge>
         </Disclosure.Panel>
       </Disclosure>
@@ -124,11 +124,11 @@ const AccountInfo = ({
             <div className="flex items-center justify-end mt-2">
               <Button
                 isLoading={pending}
-                className="w-full small:max-w-[140px]"
+                className="w-full small:max-w-[140px] bg-primary shadow-none"
                 type="submit"
                 data-testid="save-button"
               >
-                Save changes
+                Lưu thay đổi
               </Button>
             </div>
           </div>

@@ -27,11 +27,11 @@ export default function TransferRequestForm() {
       <div className="grid sm:grid-cols-2 items-center gap-x-8 gap-y-4 w-full">
         <div className="flex flex-col gap-y-1">
           <Heading level="h3" className="text-lg text-neutral-950">
-            Order transfers
+            Hoàn tiền đơn hàng
           </Heading>
           <Text className="text-base-regular text-neutral-500">
-            Can&apos;t find the order you are looking for?
-            <br /> Connect an order to your account.
+            Không thể tìm thấy đơn hàng bạn đã đặt
+            <br /> Hoàn tiền đơn hàng của bạn
           </Text>
         </div>
         <form
@@ -39,12 +39,16 @@ export default function TransferRequestForm() {
           className="flex flex-col gap-y-1 sm:items-end"
         >
           <div className="flex flex-col gap-y-2 w-full">
-            <Input className="w-full" name="order_id" placeholder="Order ID" />
+            <Input
+              className="w-full"
+              name="order_id"
+              placeholder="Mã đơn hàng"
+            />
             <SubmitButton
               variant="secondary"
               className="w-fit whitespace-nowrap self-end"
             >
-              Request transfer
+              Hoàn tiền
             </SubmitButton>
           </div>
         </form>
@@ -60,10 +64,10 @@ export default function TransferRequestForm() {
             <CheckCircleMiniSolid className="w-4 h-4 text-emerald-500" />
             <div className="flex flex-col gap-y-1">
               <Text className="text-medim-pl text-neutral-950">
-                Transfer for order {state.order?.id} requested
+                Yêu cầu hoàn tiền cho đơn hàng {state.order?.id}
               </Text>
               <Text className="text-base-regular text-neutral-600">
-                Transfer request email sent to {state.order?.email}
+                Email yêu cầu hoàn tiền đã được gửi đến {state.order?.email}
               </Text>
             </div>
           </div>

@@ -1,14 +1,12 @@
 "use client"
 
 import { Popover, Transition } from "@headlessui/react"
-import { Button } from "@medusajs/ui"
 import { usePathname } from "next/navigation"
 import { Fragment, useEffect, useRef, useState } from "react"
 
 import { convertToLocale } from "@lib/util/money"
 import { HttpTypes } from "@medusajs/types"
 import DeleteButton from "@modules/common/components/delete-button"
-import LineItemOptions from "@modules/common/components/line-item-options"
 import LineItemPrice from "@modules/common/components/line-item-price"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "@modules/products/components/thumbnail"
@@ -68,7 +66,7 @@ const CartDropdown = ({
 
   // open cart dropdown when modifying the cart items, but only if we're not on the cart page
   useEffect(() => {
-    if (itemRef.current !== totalItems && !pathname.includes("/cart")) {
+    if (itemRef.current !== totalItems && !pathname.includes("/gio-")) {
       timedOpen()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -81,7 +79,7 @@ const CartDropdown = ({
       onMouseLeave={close}
     >
       <Popover className="relative h-full flex items-center z-50">
-        <Popover.Button className="h-full py-4 px-2">
+        <Popover.Button className="h-full py-4 px-2 cursor-pointer hover:text-primary">
           <LocalizedClientLink
             className="hover:text-ui-fg-base relative"
             href="/gio-hang"

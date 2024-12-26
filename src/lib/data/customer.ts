@@ -99,7 +99,7 @@ export async function signout(countryCode: string) {
   removeAuthToken()
   revalidateTag("auth")
   revalidateTag("customer")
-  redirect(`/${countryCode}/account`)
+  redirect(`/${countryCode}/tai-khoan`)
 }
 
 export async function transferCart() {
@@ -167,18 +167,19 @@ export const updateCustomerAddress = async (
   const addressId = currentState.addressId as string
 
   const address = {
-    first_name: formData.get("first_name") as string,
-    last_name: formData.get("last_name") as string,
-    company: formData.get("company") as string,
-    address_1: formData.get("address_1") as string,
-    address_2: formData.get("address_2") as string,
-    city: formData.get("city") as string,
-    postal_code: formData.get("postal_code") as string,
-    province: formData.get("province") as string,
-    country_code: formData.get("country_code") as string,
-    phone: formData.get("phone") as string,
+    first_name: (formData.get("first_name") as string) || "",
+    last_name: (formData.get("last_name") as string) || "",
+    company: (formData.get("company") as string) || "",
+    address_1: (formData.get("address_1") as string) || "",
+    address_2: (formData.get("address_2") as string) || "",
+    city: (formData.get("city") as string) || "",
+    postal_code: (formData.get("postal_code") as string) || "",
+    province: (formData.get("province") as string) || "",
+    country_code: (formData.get("country_code") as string) || "vn",
+    phone: (formData.get("phone") as string) || "",
   }
 
+  console.log("ADDRESS", address)
   return sdk.store.customer
     .updateAddress(addressId, address, {}, getAuthHeaders())
     .then(() => {
@@ -186,6 +187,7 @@ export const updateCustomerAddress = async (
       return { success: true, error: null }
     })
     .catch((err) => {
+      console.log("ERROR", err)
       return { success: false, error: err.toString() }
     })
 }

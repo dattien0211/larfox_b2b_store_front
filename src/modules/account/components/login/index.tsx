@@ -1,60 +1,114 @@
-import { useFormState } from "react-dom"
-
+import { useState } from "react"
+import { useForm } from "react-hook-form"
 import { LOGIN_VIEW } from "@modules/account/templates/login-template"
 import Input from "@modules/common/components/input"
 import ErrorMessage from "@modules/checkout/components/error-message"
-import { SubmitButton } from "@modules/checkout/components/submit-button"
 import { login } from "@lib/data/customer"
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
 }
 
+type LoginFormInputs = {
+  email: string
+  password: string
+}
+
 const Login = ({ setCurrentView }: Props) => {
-  const [message, formAction] = useFormState(login, null)
+  const [serverError, setServerError] = useState<string | null>(null)
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginFormInputs>()
+
+  const onSubmit = async (data: LoginFormInputs) => {
+    try {
+      const formData = new FormData()
+      formData.append("email", data.email)
+      formData.append("password", data.password)
+      const error = await login(null, formData)
+
+      if (error) {
+        setServerError("Email hoặc mật khẩu không hợp lệ!")
+      }
+    } catch (error: any) {
+      setServerError(error.message || "Đã xảy ra lỗi khi đăng nhập!")
+      console.error("Unexpected Error:", error) // Logs unexpected errors to the console
+    }
+  }
 
   return (
     <div
       className="max-w-sm w-full flex flex-col items-center"
       data-testid="login-page"
     >
-      <h1 className="text-large-semi uppercase mb-6">Welcome back</h1>
-      <p className="text-center text-base-regular text-ui-fg-base mb-8">
-        Sign in to access an enhanced shopping experience.
-      </p>
-      <form className="w-full" action={formAction}>
-        <div className="flex flex-col w-full gap-y-2">
-          <Input
-            label="Email"
-            name="email"
-            type="email"
-            title="Enter a valid email address."
-            autoComplete="email"
-            required
-            data-testid="email-input"
-          />
-          <Input
-            label="Password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            required
-            data-testid="password-input"
-          />
+      <h1 className="text-3xl mb-6 text-primary font-times">Đăng nhập</h1>
+      <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col w-full gap-y-4">
+          <div>
+            <Input
+              label="Email"
+              autoComplete="email"
+              data-testid="email-input"
+              {...register("email", {
+                required: "Vui lòng nhập Email!",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Email không đúng định dạng!",
+                },
+              })}
+            />
+            {errors.email && (
+              <ErrorMessage
+                error={errors.email.message}
+                data-testid="email-error"
+              />
+            )}
+          </div>
+          <div>
+            <Input
+              label="Mật khẩu"
+              type="password"
+              autoComplete="current-password"
+              data-testid="password-input"
+              {...register("password", {
+                required: "Vui lòng nhập mật khẩu!",
+                minLength: {
+                  value: 8,
+                  message: "Mật khẩu phải có ít nhất 8 ký tự!",
+                },
+              })}
+            />
+            {errors.password && (
+              <ErrorMessage
+                error={errors.password.message}
+                data-testid="password-error"
+              />
+            )}
+          </div>
         </div>
-        <ErrorMessage error={message} data-testid="login-error-message" />
-        <SubmitButton data-testid="sign-in-button" className="w-full mt-6">
-          Sign in
-        </SubmitButton>
+        {serverError && (
+          <ErrorMessage error={serverError} data-testid="server-error" />
+        )}
+        <button
+          type="submit"
+          data-testid="sign-in-button"
+          className="w-full mt-4 text-white bg-primary rounded-md py-2"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Đang đăng nhập ..." : "Đăng nhập"}
+        </button>
       </form>
-      <span className="text-center text-ui-fg-base text-small-regular mt-6">
-        Not a member?{" "}
+      <span className="text-center mt-4">
+        Chưa phải là thành viên?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.REGISTER)}
-          className="underline"
+          className="underline text-primary"
           data-testid="register-button"
         >
-          Join us
+          Đăng ký ngay
         </button>
         .
       </span>
