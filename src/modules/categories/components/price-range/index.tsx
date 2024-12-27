@@ -24,10 +24,10 @@ const PriceRange = () => {
 
   return (
     <>
-      <h2 className="text-xl font-semibold border-b border-gray-200 py-4 mt-8">
+      <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 pb-4 sm:py-4 mt-6 sm:mt-8">
         Giá
       </h2>
-      <div className="my-12">
+      <div className="my-6 sm:my-12">
         <RangeSlider
           id="range-slider-yellow"
           min={10000}
@@ -47,7 +47,7 @@ const PriceRange = () => {
           {formatNumber(value[1])}
         </span>
       </p>
-      <div className="mt-6">
+      <div className="mt-4 sm:mt-6">
         <button className="px-8 py-2 bg-primary text-white rounded-md hover:bg-orang-10">
           Áp dụng
         </button>

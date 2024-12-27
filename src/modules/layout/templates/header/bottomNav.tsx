@@ -1,5 +1,6 @@
 "use client"
-import { useState } from "react"
+
+import { useState, useRef, useEffect } from "react"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import SelectSubsidiary from "@modules/layout/components/select-subsidiary"
 import Icons from "@modules/common/icons"
@@ -13,6 +14,23 @@ export default function BottomNav({
 }) {
   const { DropDown } = Icons
   const [menuOpen, setMenuOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false) // Close menu when clicked outside
+      }
+    }
+
+    // Attach the event listener
+    document.addEventListener("mousedown", handleClickOutside)
+
+    // Cleanup the event listener
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
 
   return (
     <div className="relative">
@@ -22,14 +40,14 @@ export default function BottomNav({
           <div className="py-2 pr-2 lg:py-4 lg:pr-4 cursor-pointer hover:text-primary">
             <LocalizedClientLink
               href="/"
-              className=" text-sm text-nowrap lg:text-base"
+              className="text-sm text-nowrap lg:text-base"
             >
               Trang chủ
             </LocalizedClientLink>
           </div>
 
           <div className="relative flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group">
-            <h1 className=" text-sm text-nowrap lg:text-base">Sản phẩm</h1>
+            <h1 className="text-sm text-nowrap lg:text-base">Sản phẩm</h1>
             <span className="text-grey-30 group-hover:text-primary">
               <DropDown />
             </span>
@@ -37,13 +55,13 @@ export default function BottomNav({
           </div>
 
           <div className="flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group">
-            <h1 className=" text-sm text-nowrap lg:text-base">Giới thiệu</h1>
+            <h1 className="text-sm text-nowrap lg:text-base">Giới thiệu</h1>
             <span className="text-grey-30 group-hover:text-primary">
               <DropDown />
             </span>
           </div>
           <div className="flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group">
-            <h1 className=" text-sm text-nowrap lg:text-base">Blog</h1>
+            <h1 className="text-sm text-nowrap lg:text-base">Blog</h1>
             <span className="text-grey-30 group-hover:text-primary">
               <DropDown />
             </span>
@@ -51,7 +69,7 @@ export default function BottomNav({
           <h1 className="p-2 lg:p-4 cursor-pointer hover:text-primary">
             <LocalizedClientLink
               href="/"
-              className=" text-sm text-nowrap lg:text-base"
+              className="text-sm text-nowrap lg:text-base"
             >
               Liên hệ
             </LocalizedClientLink>
@@ -62,7 +80,7 @@ export default function BottomNav({
       </div>
 
       {/* Mobile Navigation */}
-      <div className="sm:hidden flex items-center justify-between  ">
+      <div className="sm:hidden flex items-center justify-between">
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="p-2 text-grey-30 hover:text-primary"
@@ -90,7 +108,8 @@ export default function BottomNav({
       {/* Mobile Menu */}
       {menuOpen && (
         <div
-          className={`absolute z-50 top-full left-0 w-full bg-white shadow-md flex flex-col gap-y-2 p-4  transition-a duration-300 ease-in-out ${
+          ref={menuRef}
+          className={`absolute z-50 top-full left-0 w-full bg-white shadow-md flex flex-col gap-y-2 p-4 transition-all duration-300 ease-in-out ${
             menuOpen ? "opacity-100" : "opacity-0"
           }`}
         >

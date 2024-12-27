@@ -25,11 +25,11 @@ const UserDropDown = ({
   }
   return (
     <div
-      className="h-full relative z-50"
+      className="h-full relative lg:z-30 mt-1"
       onMouseEnter={open}
       onMouseLeave={close}
     >
-      <Popover className="relative h-full flex items-center z-50">
+      <Popover className="relative h-full flex items-center lg:z-30">
         <Popover.Button className="h-full py-2 px-1 lg:py-4 lg:px-2  cursor-pointer hover:text-primary">
           <UserAnco />
         </Popover.Button>

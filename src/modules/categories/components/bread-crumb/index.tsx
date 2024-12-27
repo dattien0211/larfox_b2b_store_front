@@ -26,21 +26,21 @@ const Breadcrumb: React.FC<BreadcrumbProps> = async ({
 
   return (
     <nav aria-label="breadcrumb" className={className}>
-      <ul className="list-none p-0 flex items-center text-base">
+      <ul className="list-none p-0 flex items-center text-sm sm:text-base">
         <li>
           <LocalizedClientLink href="/" className="hover:text-primary">
             Trang chủ
           </LocalizedClientLink>
         </li>
-        <span className="mx-2">
-          <RightArrow />
+        <span className="mx-1 sm:mx-2">
+          <RightArrow size={"1vw"} />
         </span>
         <li>
           <LocalizedClientLink
             href="/tat-ca-san-pham"
             className="hover:text-primary"
           >
-            Tất cả sản phẩm
+            Sản phẩm
           </LocalizedClientLink>
         </li>
         {filteredItems.slice(1).map((item, index) => {
@@ -55,8 +55,8 @@ const Breadcrumb: React.FC<BreadcrumbProps> = async ({
               {index > 0 ? (
                 <span className="ml-1 mr-2 font-bold">,</span>
               ) : (
-                <span className="mx-2 ">
-                  <RightArrow />
+                <span className="mx-1 sm:mx-2">
+                  <RightArrow size={"1vw"} />
                 </span>
               )}
 

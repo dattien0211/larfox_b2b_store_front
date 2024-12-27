@@ -24,7 +24,7 @@ export default function OurStory() {
           height={575}
           className="absolute -top-12 left-0 w-full"
         />
-        <div className="w-full h-full absolute inset-0 z-50   !text-white flex flex-col items-center justify-center ">
+        <div className="w-full h-full absolute inset-0 z-30   !text-white flex flex-col items-center justify-center ">
           <TextAnco
             backgroundText=" About us"
             subTitle="Sứ mệnh của chúng tôi"

@@ -6,12 +6,9 @@ import PaginatedProducts from "@modules/store/templates/paginated-products"
 import { HttpTypes } from "@medusajs/types"
 import BannerProduct from "@modules/layout/components/banner-product"
 import IMGS from "@constants/IMGS"
-import CategoryFilter from "@modules/categories/components/category-filter"
-import PriceRange from "@modules/categories/components/price-range"
-import SizeFilter from "@modules/categories/components/size-filter"
-import TagFilter from "@modules/categories/components/tag-filter"
 import CategoryHeader from "@modules/categories/components/category-header"
 import { SortOptions } from "@modules/categories/components/sort-category"
+import FilterMenu from "@modules/categories/components/filter-menu"
 
 export default function CategoryTemplate({
   categories,
@@ -40,21 +37,14 @@ export default function CategoryTemplate({
       <BannerProduct imageSrc={IMGS.Banner4} title="Sắp ra mắt" />
 
       <div
-        className="flex flex-col small:flex-row small:items-start py-6 gap-x-10 content-container small:!mb-24 relative z-20"
+        className="flex flex-col small:flex-row small:items-start py-6 gap-x-10 gap-y-4 content-container small:!mb-24 relative z-20"
         data-testid="category-container"
       >
         {/* <RefinementList sortBy={sort} data-testid="sort-by-container" /> */}
-        <div className="w-[280px]">
-          {allCategories && allCategories.length > 0 && (
-            <CategoryFilter
-              allCategories={allCategories}
-              paramsCategory={paramsCategory}
-            />
-          )}
-          <PriceRange />
-          <SizeFilter />
-          <TagFilter />
-        </div>
+        <FilterMenu
+          allCategories={allCategories}
+          paramsCategory={paramsCategory}
+        />
 
         <div className="flex-1">
           <CategoryHeader

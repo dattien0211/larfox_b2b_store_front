@@ -29,6 +29,8 @@ import { default as Verified } from "./verified"
 import { default as Camera } from "./camera"
 import { default as Trash } from "./trash"
 import { default as Discount } from "./discount"
+import { default as Filter } from "./filter"
+import { default as XMark } from "./x-mark"
 
 export default {
   FaceBook,
@@ -61,4 +63,6 @@ export default {
   Camera,
   Trash,
   Discount,
+  Filter,
+  XMark,
 }

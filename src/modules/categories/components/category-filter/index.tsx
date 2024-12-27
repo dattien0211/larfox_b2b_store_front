@@ -51,14 +51,14 @@ const CategoryFilter = ({
 
   return (
     <>
-      <h2 className="text-xl font-semibold border-b border-gray-200 py-4">
+      <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 pb-4 sm:py-4">
         Loại sản phẩm
       </h2>
-      <div className="space-y-8 mt-8">
+      <div className="space-y-6 mt-6 sm:space-y-8 sm:mt-8">
         {allCategories.map((category) => (
           <label
             key={category.id}
-            className="flex items-center  cursor-pointer hover:opacity-80"
+            className="flex items-center cursor-pointer hover:opacity-80"
             onClick={() => toggleCategory(category.handle)}
           >
             <div
@@ -89,7 +89,7 @@ const CategoryFilter = ({
               )}
             </div>
             <span
-              className={clsx("ml-4 font-medium", {
+              className={clsx("ml-4 font-medium text-sm sm:text-base", {
                 "text-primary": selectedCategories.includes(category.handle),
               })}
             >

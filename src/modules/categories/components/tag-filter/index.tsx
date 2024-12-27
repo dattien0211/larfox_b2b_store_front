@@ -48,10 +48,10 @@ const TagFilter = () => {
 
   return (
     <>
-      <h2 className="text-xl font-semibold border-b border-gray-200 py-4 mt-8">
+      <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 py-4 mt-8">
         Tags
       </h2>
-      <div className="flex flex-wrap mt-8 gap-2">
+      <div className="flex flex-wrap mt-4 sm:mt-8 gap-2">
         {tagArr.map((tag) => (
           <div
             className={clsx(
