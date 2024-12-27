@@ -66,8 +66,8 @@ body {
 }
 
 .swiper-pagination-bullet.custom-dot {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background-color: white; /* Default color for active dots */
   margin: 0 8px !important; /* Spacing between dots */
@@ -78,13 +78,27 @@ body {
 
 .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
   opacity: 0.5; /* Inactive bullets have 50% opacity */
-  background-color: white; /* Inactive bullets have white background */
+  background-color: #e0e0e0; /* Inactive bullets have white background */
 }
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background-color: white; /* Active bullet color */
   opacity: 1; /* Active bullets have full opacity */
   box-shadow: 0 4px 8px rgba(224, 129, 5, 0.1);
+}
+
+.swiper-pagination-bullet:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  background-color: #ffd700; /* Highlight on hover with gold tone */
+  opacity: 1; /* Ensure full visibility on hover */
+}
+
+@media (max-width: 640px) {
+  .swiper-pagination-bullet.custom-dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 4px !important; /* Spacing between dots */
+  }
 }
 
 @layer utilities {
@@ -136,7 +150,7 @@ body {
 
 @layer components {
   .content-container {
-    @apply max-w-[1200px] w-full mx-auto px-6;
+    @apply max-w-[1200px] w-full mx-auto px-4 sm:px-8 md:px-6;
   }
 
   .contrast-btn {

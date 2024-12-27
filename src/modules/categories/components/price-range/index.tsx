@@ -25,7 +25,7 @@ const PriceRange = () => {
   return (
     <>
       <h2 className="text-xl font-semibold border-b border-gray-200 py-4 mt-8">
-        Gía
+        Giá
       </h2>
       <div className="my-12">
         <RangeSlider

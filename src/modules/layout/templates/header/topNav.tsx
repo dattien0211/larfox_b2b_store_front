@@ -36,24 +36,24 @@ export default function TopNav() {
   }, [])
 
   return (
-    <div className="h-10 w-full bg-grey-10">
+    <div className="sm:block hidden h-10 w-full bg-grey-10">
       <div className="content-container h-full">
         <div className="w-full flex items-center justify-between h-full">
           <div className="flex gap-x-4 text-grey-45">
             <LocalizedClientLink
-              href="#"
+              href="/"
               className="flex items-center justify-center"
             >
               <FaceBook />
             </LocalizedClientLink>
             <LocalizedClientLink
-              href="#"
+              href="/"
               className="flex items-center justify-center"
             >
               <Twitter />
             </LocalizedClientLink>
             <LocalizedClientLink
-              href="#"
+              href="/"
               className="flex items-center justify-center"
             >
               <Skype />
@@ -66,7 +66,7 @@ export default function TopNav() {
             </div>
             <div className="flex items-center justify-center">
               <Location />
-              <p className="ml-2 text-xs">180 Tran Hung Dao, Ha Noi</p>
+              <p className="ml-2 text-xs">180 Trần Hưng Đạo, Hà Nội</p>
             </div>
             <div className="flex items-center justify-center">
               <Mail />

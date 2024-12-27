@@ -6,7 +6,7 @@ export default function SaleProductItem() {
   const { Thunder, Star } = Icons
 
   return (
-    <div className="p-4 rounded-md bg-white">
+    <div className="p-2 sm:p-4 rounded-md bg-white">
       <div className="bg-grey-15 relative">
         <Image
           src={IMGS.Product}
@@ -24,23 +24,23 @@ export default function SaleProductItem() {
       </div>
       <div className="mt-4 ">
         <div className="flex items-center justify-between">
-          <p className="text-xs text-primary font-bold">Anco Care</p>
+          <p className="text-sm text-primary font-bold">Anco Care</p>
           <div className="flex items-center">
             <Star color="#EA9934" />
-            <p className="text-sm ml-1">4.8</p>
-            <p className="text-black-20 text-sm">(120K)</p>
+            <p className="text-xxs sm:text-sm ml-1">4.8</p>
+            <p className="text-black-20 text-xxs sm:text-sm">(120K)</p>
           </div>
         </div>
-        <h1 className="font-manrope-extrabold text-lg">
+        <h1 className="font-manrope-extrabold text-sm sm:text-lg line-clamp-2 h-10 mt-1">
           Dầu massga trị liệu 100ml
         </h1>
-        <div className="flex items-center justify-between text-lg">
+        <div className="flex items-center justify-between text-sm sm:text-lg">
           <p className="text-primary font-bold font-manrope-bold">299.000 đ</p>
           <p className="text-black-20 line-through">299.000 đ</p>
         </div>
-        <div className="mt-4 rounded-full bg-[#FFDBB7] w-full h-5 relative">
+        <div className="mt-2 sm:mt-4 rounded-full bg-[#FFDBB7] w-full h-5 relative">
           <div className="absolute bg-gradient-to-r from-[#EA541E] to-[#FBD316] top-0 left-0 w-[20%] h-full rounded-full"></div>
-          <div className="absolute uppercase inset-0 text-orang-30  text-xs h-full w-full flex items-center justify-center">
+          <div className="absolute uppercase inset-0 text-orang-30 text-xxs  sm:text-xs h-full w-full flex items-center justify-center">
             Đang bán chạy
           </div>
         </div>

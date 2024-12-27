@@ -14,14 +14,16 @@ export default async function Chung() {
 
       <div className="content-container">
         <div className="relative">
-          <div className="absolute text-grey-15 font-bold  text-[140px] left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 -z-10">
-            Aboutus
+          <div className="absolute text-grey-15 font-bold  text-60px sm:text-80px  md:text-110px lg:text-140px left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 -z-10">
+            About us
           </div>
           <div className="flex flex-col items-center">
-            <h2 className="italic text-primary  font-bold text-2xl">
+            <h2 className="italic text-primary font-times font-bold text-lg sm:text-xl lg:text-2xl">
               Về chúng tôi
             </h2>
-            <h1 className="text-4xl font-bold  mt-2">Câu chuyện thương hiệu</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl md:text-44px font-bold font-times mt-2">
+              Câu chuyện thương hiệu
+            </h1>
           </div>
         </div>
 

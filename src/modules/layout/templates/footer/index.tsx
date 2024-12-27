@@ -25,7 +25,7 @@ export default async function Footer() {
             alt="leaf"
             width={1200} // Set the original width of the image
             height={56} // Set the original height to maintain the aspect ratio
-            className="absolute left-0 -top-36 w-screen  z-10" // Ensures the image fills the window width
+            className="absolute left-0 -top-12 sm:-top-36 w-screen  z-10" // Ensures the image fills the window width
           />
         </div>
         <div className="content-container">
@@ -40,7 +40,7 @@ export default async function Footer() {
               />
             </div>
             <div className="flex items-center justify-center gap-x-2">
-              <h1 className="text-white font-manrope-bold font-bold">
+              <h1 className="text-white font-manrope-bold font-bold text-xl ">
                 Follow Us
               </h1>
               <div className="w-[45px] h-[1px] bg-white"></div>
@@ -61,29 +61,33 @@ export default async function Footer() {
           <div className="relative w-full h-1">
             <Image src={IMGS.Line} alt="leaf" fill className="object-cover" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-y-8 md:gap-x-10 mt-12 pb-8 text-white">
-            <div className="md:col-span-3">
-              <h1 className="font-bold text-2xl font-manrope-bold">Liên hệ</h1>
-              <div className="mt-8">
-                <p className="mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-x-8 gap-y-12 lg:gap-x-10 mt-12 pb-8 text-white">
+            <div className="sm:col-span-6 lg:col-span-3">
+              <h1 className="font-bold text-xl sm:text-2xl font-manrope-bold">
+                Liên hệ
+              </h1>
+              <div className="sm:mt-8 mt-4 space-y-2 sm:space-y-4">
+                <p>
                   Địa chỉ: BT3/16A4 làng Việt Kiều Châu Âu, phường Mộ Lao, Quận
                   Hà Đông, Thành phố Hà Nội
                 </p>
-                <p className="mt-4">0946174888</p>
-                <p className="mt-4">trabavan34@gmail.com</p>
+                <p>0946174888</p>
+                <p>trabavan34@gmail.com</p>
               </div>
             </div>
 
-            <div className="md:col-span-2">
-              <h1 className="font-bold text-2xl font-manrope-bold">Về Anco</h1>
-              <div className="mt-8">
-                <ul className="list-none">
-                  <li className="mt-4 hover:text-orang-5">
+            <div className="sm:col-span-6 lg:col-span-2">
+              <h1 className="font-bold text-xl sm:text-2xl font-manrope-bold">
+                Về Anco
+              </h1>
+              <div className="sm:mt-8 mt-4">
+                <ul className="list-none space-y-2 sm:space-y-4">
+                  <li className=" hover:text-orang-5">
                     <LocalizedClientLink href="/" className="flex items-center">
                       <RightArrow /> <p className="ml-2">Trang chủ</p>
                     </LocalizedClientLink>
                   </li>
-                  <li className="mt-4 hover:text-orang-5">
+                  <li className=" hover:text-orang-5">
                     <LocalizedClientLink
                       href="/ve-chung-toi"
                       className="flex items-center"
@@ -92,7 +96,7 @@ export default async function Footer() {
                       <p className="ml-2">Giới thiệu</p>
                     </LocalizedClientLink>
                   </li>
-                  <li className="mt-4 hover:text-orang-5">
+                  <li className=" hover:text-orang-5">
                     <LocalizedClientLink
                       href="/tat-ca-san-pham"
                       className="flex items-center"
@@ -101,7 +105,7 @@ export default async function Footer() {
                       <p className="ml-2">Sản phẩm</p>
                     </LocalizedClientLink>
                   </li>
-                  <li className="mt-4 hover:text-orang-5">
+                  <li className=" hover:text-orang-5">
                     <LocalizedClientLink href="/" className="flex items-center">
                       <RightArrow />
                       <p className="ml-2">Đối tác</p>
@@ -111,13 +115,13 @@ export default async function Footer() {
               </div>
             </div>
 
-            <div className="md:col-span-3">
-              <h1 className="font-bold text-2xl font-manrope-bold">
+            <div className="sm:col-span-6 lg:col-span-3">
+              <h1 className="font-bold text-xl sm:text-2xl font-manrope-bold">
                 Chính sách
               </h1>
-              <div className="mt-8">
-                <ul className="list-none">
-                  <li className="mt-4 hover:text-orang-5">
+              <div className="sm:mt-8 mt-4">
+                <ul className="list-none space-y-2 sm:space-y-4">
+                  <li className="hover:text-orang-5">
                     <LocalizedClientLink
                       href="/chinh-sach-mua-hang-va-thanh-toan"
                       className="flex items-center"
@@ -126,7 +130,7 @@ export default async function Footer() {
                       <p className="ml-2">Chính sách mua hàng, và thanh toán</p>
                     </LocalizedClientLink>
                   </li>
-                  <li className="mt-4 hover:text-orang-5">
+                  <li className="hover:text-orang-5">
                     <LocalizedClientLink
                       href="/chinh-sach-bao-hanh"
                       className="flex items-center"
@@ -134,7 +138,7 @@ export default async function Footer() {
                       <RightArrow /> <p className="ml-2">Chính sách bảo hành</p>
                     </LocalizedClientLink>
                   </li>
-                  <li className="mt-4 hover:text-orang-5">
+                  <li className="hover:text-orang-5">
                     <LocalizedClientLink
                       href="/chinh-sach-doi-tra-va-hoan-tien"
                       className="flex items-center"
@@ -143,7 +147,7 @@ export default async function Footer() {
                       <p className="ml-2">Chính sách đổi trả và hoàn tiền</p>
                     </LocalizedClientLink>
                   </li>
-                  <li className="mt-4 hover:text-orang-5">
+                  <li className="hover:text-orang-5">
                     <LocalizedClientLink
                       href="/chinh-sach-bao-mat"
                       className="flex items-center"
@@ -156,11 +160,11 @@ export default async function Footer() {
               </div>
             </div>
 
-            <div className="md:col-span-4">
-              <h1 className="font-bold text-2xl font-manrope-bold">
+            <div className="sm:col-span-6 lg:col-span-4">
+              <h1 className="font-bold text-xl sm:text-2xl font-manrope-bold">
                 Đăng ký nhận ưu đãi từ Anco
               </h1>
-              <div className="mt-8">
+              <div className="sm:mt-8 mt-4">
                 <div className="flex h-[46px] w-full">
                   <input
                     type="text"
@@ -174,7 +178,7 @@ export default async function Footer() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col md:flex-row justify-between mt-14">
+              <div className="flex flex-col md:flex-row justify-between mt-4 sm:mt-14">
                 <SelectSubsidiary dropDownColor="#FFFFFF" />
                 <div className="flex gap-x-2 mt-4 md:mt-0">
                   <div className="relative w-[62px] h-[30px]">
@@ -202,17 +206,9 @@ export default async function Footer() {
         </div>
       </div>
       <div className="w-full text-white  py-4 bg-orang-20 flex items-center justify-center">
-        <h1>
+        <h1 className="text-center">
           © {new Date().getFullYear()} Anco Company (201201016057) (1001568-K)
         </h1>
-      </div>
-      <div className="content-container">
-        {/* <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
-          <Text className="txt-compact-small">
-            © {new Date().getFullYear()} Medusa Store. All rights reserved.
-          </Text>
-          <MedusaCTA />
-        </div> */}
       </div>
     </footer>
   )

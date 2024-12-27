@@ -79,7 +79,7 @@ const CartDropdown = ({
       onMouseLeave={close}
     >
       <Popover className="relative h-full flex items-center z-50">
-        <Popover.Button className="h-full py-4 px-2 cursor-pointer hover:text-primary">
+        <Popover.Button className="h-full py-2 px-1 lg:py-4 lg:px-2 cursor-pointer hover:text-primary">
           <LocalizedClientLink
             className="hover:text-ui-fg-base relative"
             href="/gio-hang"

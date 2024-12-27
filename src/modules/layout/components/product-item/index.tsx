@@ -16,7 +16,7 @@ export default function ProductItem() {
           height={255}
           className="w-full h-full"
         />
-        <div className="absolute top-4 left-0 px-4 w-full flex items-center justify-between">
+        <div className="absolute top-2 sm:top-4 left-0 px-2 sm:px-4 w-full flex items-center justify-between">
           <div className="cursor-pointer text-grey-40 hover:bg-primary hover:text-white w-7 h-7 rounded-full bg-white flex items-center justify-center z-10">
             <Heart size={18} />
           </div>
@@ -27,7 +27,7 @@ export default function ProductItem() {
 
         <div className="px-4 w-full absolute bottom-4 left-0 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible">
           <LocalizedClientLink href="/">
-            <button className="w-full h-9 rounded-md bg-primary text-white hover:bg-white hover:text-primary">
+            <button className="w-full h-7 sm:h-9 text-sm sm:text-base rounded-md bg-primary text-white hover:bg-white hover:text-primary">
               Xem chi tiết
             </button>
           </LocalizedClientLink>
@@ -37,24 +37,24 @@ export default function ProductItem() {
         <span className="bg-primary py-[2px] px-1 rounded-sm text-white font-manrope-bold text-xs">
           Anco Care
         </span>
-        <span className="ml-2">
+        <span className="h-10 sm:h-fit line-clamp-2 text-sm mt-1 sm:mt-2 sm:text-base">
           Bịt mắt thảo dược AnCo Eyes phiên bản mới 2025
         </span>
       </div>
       <div>
-        <span className="text-primary text-xl font-semibold">299.000đ</span>
-        <span className="text-grey-40 ml-6 line-through text-xl ">
+        <span className="text-primary sm:text-xl font-semibold">299.000đ</span>
+        <span className="text-grey-40 sm:ml-6 ml-2 line-through sm:text-xl ">
           299.000đ
         </span>
       </div>
       <div className="flex items-center gap-x-2">
         <Star color="#EA9934" />
-        <p className="text-sm">
+        <p className="text-xxs sm:text-sm">
           <span>4.8</span>
           <span className="text-grey-5">(120K)</span>
         </p>
         <div className="h-2 bg-grey-30 w-[1px]"></div>
-        <p className="text-sm">
+        <p className="text-xxs sm:text-sm">
           <span className="text-grey-30">Đã bán:</span>
           <span className="text-grey-5">130</span>
         </p>

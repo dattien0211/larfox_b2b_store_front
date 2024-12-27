@@ -7,14 +7,15 @@ import { Suspense } from "react"
 import CartButton from "@modules/layout/components/cart-button"
 import SearchNav from "./searchNav"
 import UserDropDown from "@modules/layout/components/user-dropdown"
+import SearchIconMobile from "@modules/layout/components/search-icon"
 
 export default async function MiddleNav() {
   const { Heart, Bag } = Icons
   const customer = await getCustomer().catch(() => null)
 
   return (
-    <div className="flex items-center justify-between my-4">
-      <div className="w-[120px] h-auto">
+    <div className="flex items-center justify-between my-2 md:my-4">
+      <div className="w-[80px] md:w-[100px] lg:w-[120px] h-auto">
         <LocalizedClientLink href="/">
           <Image
             src={IMGS.Logo}
@@ -26,9 +27,10 @@ export default async function MiddleNav() {
         </LocalizedClientLink>
       </div>
       <SearchNav />
-      <div className="flex items-center gap-x-2">
+      <div className="flex items-center gap-x-1 md:gap-x-2">
+        <SearchIconMobile />
         <UserDropDown customer={customer} />
-        <span className="cursor-pointer hover:text-primary py-4 px-2">
+        <span className="cursor-pointer hover:text-primary py-2 px-1 lg:py-4 lg:px-2 ">
           <Heart />
         </span>
         <Suspense

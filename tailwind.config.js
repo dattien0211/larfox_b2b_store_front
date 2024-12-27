@@ -62,7 +62,7 @@ module.exports = {
         "8xl": "100rem",
       },
       screens: {
-        "2xsmall": "320px",
+        "2xsmall": "375px",
         xsmall: "512px",
         small: "1024px",
         medium: "1280px",
@@ -71,8 +71,14 @@ module.exports = {
         "2xlarge": "1920px",
       },
       fontSize: {
+        xxs: "10px",
         "3xl": "2rem",
         normal: "1rem",
+        "44px": "44px", // Custom font size
+        "60px": "60px",
+        "80px": "80px",
+        "110px": "110px",
+        "140px": "140px",
       },
       fontFamily: {
         sans: [
@@ -182,9 +188,6 @@ module.exports = {
       },
       textShadow: {
         custom: "2px 2px 4px #FEB954", // y=2, blur=4, color=#FEB954
-      },
-      fontSize: {
-        "44px": "44px", // Custom font size
       },
     },
   },

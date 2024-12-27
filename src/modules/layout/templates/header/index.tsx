@@ -7,7 +7,7 @@ import BottomNav from "./bottomNav"
 export default async function Header() {
   const categories = await getCategoriesList()
   return (
-    <header className="border-b border-grey-10 ">
+    <header>
       <TopNav />
       <div className="w-full ">
         <div className="content-container ">

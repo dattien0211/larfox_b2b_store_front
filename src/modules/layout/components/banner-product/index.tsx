@@ -40,12 +40,20 @@ export default function BannerProduct({
         <LocalizedClientLink href="/">
           <button
             className={clsx(
-              "text-orang-35 absolute bottom-[24%] left-[22%] bg-white rounded-full flex items-center justify-center px-8 py-2 hover:bg-orang-35 hover:text-white transition-all",
+              "text-orang-35 absolute bottom-[20%] sm:bottom-[24%] left-[22%] bg-white rounded-full flex items-center justify-center px-2 md:px-4 py-1 lg:px-8 lg:py-2 hover:bg-orang-35 hover:text-white transition-all",
               buttonClass
             )}
           >
-            <p className={clsx("mr-2 text-lg", titleClass)}>{title}</p>
-            <RightArrow size={12} />
+            <p
+              className={clsx(
+                "mr-2 text-xs md:text-base lg:text-lg",
+                titleClass
+              )}
+            >
+              {title}
+            </p>
+
+            <RightArrow size={"1vw"} />
           </button>
         </LocalizedClientLink>
       </div>
