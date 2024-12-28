@@ -10,7 +10,7 @@ export default async function PaymentPolicyPage() {
   return (
     <>
       <div className="py-9 content-container !mb-24">
-        <h1 className="text-3xl font-bold  mb-6">
+        <h1 className="sm:text-3xl text-2xl  font-bold  mb-6">
           Chính Sách Mua Hàng Và Thanh Toán
         </h1>
         <ul className="pl-6 list-disc">
@@ -24,7 +24,7 @@ export default async function PaymentPolicyPage() {
         </ul>
         <p>Cụ thể:</p>
 
-        <h1 className="mt-8 mb-6 text-3xl font-bold ">
+        <h1 className="mt-8 mb-6 sm:text-3xl text-2xl  font-bold ">
           Mua hàng tại website comem.vn:
         </h1>
         <div className="space-y-4">
@@ -68,7 +68,7 @@ export default async function PaymentPolicyPage() {
           <p>Xem và tìm kiếm các Cửa hàng gần bạn:</p>
         </div>
 
-        <h1 className="mt-8 mb-6 text-3xl font-bold ">
+        <h1 className="mt-8 mb-6 sm:text-3xl text-2xl  font-bold ">
           2. Vận chuyển và thanh toán
         </h1>
         <ul className="pl-6 list-disc ">

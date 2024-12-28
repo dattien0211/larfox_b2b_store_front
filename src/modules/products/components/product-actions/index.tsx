@@ -191,8 +191,8 @@ export default function ProductActions({
       </div>
 
       <div className="flex flex-col" ref={actionsRef}>
-        <div className="border-y border-grey-50 py-4 my-6">
-          <div className="flex items-center h-11 gap-x-4">
+        <div className="border-y border-grey-50 py-4 my-4 sm:my-6">
+          <div className="flex items-center justify-normal h-11 gap-x-2 lg:gap-x-4">
             <div className="rounded-sm h-full bg-grey-50 flex items-center justify-center">
               <button
                 className="w-11 h-full disabled:opacity-50 text-xl"
@@ -233,14 +233,14 @@ export default function ProductActions({
               onClick={handleAddToCart}
               disabled={!inStock || !selectedVariant || !!disabled || isAdding}
               variant="primary"
-              className="text-base h-full rounded-sm px-6 border-none shadow-none bg-black-30 font-medium"
+              className="text-sm h-full rounded-sm px-2 sm:px-4 lg:px-6 border-none shadow-none bg-black-30 font-medium sm:text-base"
               isLoading={isAdding}
               data-testid="add-product-button"
             >
               {inStock ? "Thêm giỏ hàng" : "Hết hàng"}
             </Button>
             <button
-              className="bg-primary px-6 h-full rounded-sm text-white"
+              className="bg-primary px-2 sm:px-4 lg:px-6 h-full rounded-sm text-white sm:text-base text-sm"
               onClick={handleBuyNow}
             >
               Mua ngay

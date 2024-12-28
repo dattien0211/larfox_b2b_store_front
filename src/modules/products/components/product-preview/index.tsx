@@ -81,7 +81,7 @@ export default async function ProductPreview({
                   </LocalizedClientLink>
                 </span>
               ))}
-            <span className="line-clamp-2">
+            <span className="line-clamp-2 small:line-clamp-none sm:text-base text-sm">
               {product?.title || "Sản phẩm AnCo phiên bản mới 2025"}
             </span>
           </div>

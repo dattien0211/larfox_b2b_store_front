@@ -25,7 +25,7 @@ const Review = ({ cart }: { cart: any }) => {
         <Heading
           level="h2"
           className={clx(
-            "flex flex-row text-3xl text-primary gap-x-2 items-baseline",
+            "flex flex-row sm:text-3xl text-2xl  text-primary gap-x-2 items-baseline",
             {
               "opacity-50 pointer-events-none select-none": !isOpen,
             }

@@ -29,13 +29,16 @@ export default function OrderCompletedTemplate({
         >
           <Heading
             level="h1"
-            className="flex flex-col gap-y-3 text-primary text-3xl mb-4"
+            className="flex flex-col gap-y-3 text-primary sm:text-3xl text-2xl  mb-4"
           >
             <span>Cảm ơn!</span>
             <span>Đơn hàng của bạn đã được đặt thành công.</span>
           </Heading>
           <OrderDetails order={order} />
-          <Heading level="h2" className="flex flex-row text-3xl text-primary">
+          <Heading
+            level="h2"
+            className="flex flex-row sm:text-3xl text-2xl  text-primary"
+          >
             Tổng quan
           </Heading>
           <Items items={order.items} />

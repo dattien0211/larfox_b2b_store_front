@@ -40,10 +40,10 @@ export default function CategoryTemplate({
         className="flex flex-col small:flex-row small:items-start py-6 gap-x-10 gap-y-4 content-container small:!mb-24 relative z-20"
         data-testid="category-container"
       >
-        {/* <RefinementList sortBy={sort} data-testid="sort-by-container" /> */}
         <FilterMenu
           allCategories={allCategories}
           paramsCategory={paramsCategory}
+          data-testid="product-filter"
         />
 
         <div className="flex-1">

@@ -10,7 +10,7 @@ export default async function RefundPolicyPage() {
   return (
     <>
       <div className="py-9 content-container !mb-24">
-        <h1 className=" text-3xl mb-6 font-bold">
+        <h1 className=" sm:text-3xl text-2xl  mb-6 font-bold">
           Chính Sách Đổi Trả Và Hoàn Tiền
         </h1>
         <p>

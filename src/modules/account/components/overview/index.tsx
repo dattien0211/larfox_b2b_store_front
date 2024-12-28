@@ -37,7 +37,7 @@ const Overview = ({ customer, orders }: OverviewProps) => {
                 <h3 className="text-large-semi">Profile</h3>
                 <div className="flex items-end gap-x-2">
                   <span
-                    className="text-3xl-semi leading-none"
+                    className="sm:text-3xl text-2xl -semi leading-none"
                     data-testid="customer-profile-completion"
                     data-value={getProfileCompletion(customer)}
                   >
@@ -53,7 +53,7 @@ const Overview = ({ customer, orders }: OverviewProps) => {
                 <h3 className="text-large-semi">Addresses</h3>
                 <div className="flex items-end gap-x-2">
                   <span
-                    className="text-3xl-semi leading-none"
+                    className="sm:text-3xl text-2xl -semi leading-none"
                     data-testid="addresses-count"
                     data-value={customer?.addresses?.length || 0}
                   >

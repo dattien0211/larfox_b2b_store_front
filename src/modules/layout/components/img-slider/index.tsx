@@ -11,7 +11,7 @@ import Image from "next/image"
 import { HttpTypes } from "@medusajs/types"
 import Icons from "@modules/common/icons"
 import clsx from "clsx"
-
+import { useOS } from "@lib/hooks/OSContext"
 interface ImageSliderProps {
   images: HttpTypes.StoreProductImage[]
   showThumbnails?: boolean
@@ -23,7 +23,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 }) => {
   const mainSliderRef = useRef<any>(null)
   const [activeIndex, setActiveIndex] = useState(0)
-
+  const { os } = useOS()
   const { RightArrow, LeftArrow } = Icons
 
   const handlePrev = useCallback(() => {
@@ -57,27 +57,23 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <div className="relative h-[520px] w-full cursor-pointer">
+            <div className="relative h-[260px] sm:h-[320px] md:h-[400px] lg:h-[520px] w-full cursor-pointer">
               <Image
                 src={image.url}
                 alt={`Slide ${index + 1}`}
                 fill
                 priority
                 sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
-                className="object-cover "
+                className="object-cover w-full h-full "
               />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
       {showThumbnails && (
-        <div className=" flex items-center justify-center gap-x-4 mt-8 overflow-hidden">
+        <div className=" flex items-center justify-center gap-x-4 mt-4 md:mt-8 overflow-hidden">
           <button
-            disabled={activeIndex === 0}
-            className={clsx(
-              "p-2 cursor-pointer text-black-20",
-              activeIndex === 0 ? "opacity-20" : "opacity-100"
-            )}
+            className={clsx("p-2 cursor-pointer text-black-20")}
             onClick={handlePrev}
           >
             <LeftArrow size={20} />
@@ -86,7 +82,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             <div
               key={index}
               className={clsx(
-                "p-2 w-[120px] h-[120px] border transition-all duration-300 ease-in-out cursor-pointer",
+                "p-2 w-[120px]  border transition-all duration-300 ease-in-out cursor-pointer",
                 activeIndex === index
                   ? "opacity-100 border-yellow-400"
                   : "opacity-50 border-[#AEAEAE]"
@@ -103,16 +99,12 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 width={120}
                 height={120}
                 alt="thumbnail"
-                className="w-full h-full"
+                className="w-full h-full object-contain"
               />
             </div>
           ))}
           <button
-            disabled={activeIndex === images.length - 1}
-            className={clsx(
-              "p-2 cursor-pointer text-black-20",
-              activeIndex === images.length - 1 ? "opacity-20" : "opacity-100"
-            )}
+            className={clsx("p-2 cursor-pointer text-black-20")}
             onClick={handleNext}
           >
             <RightArrow size={20} />

@@ -43,7 +43,7 @@ const SizeFilter = () => {
 
   return (
     <>
-      <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 py-4 mt-6 sm:mt-8">
+      <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 py-4 mt-4 sm:mt-8">
         Size
       </h2>
       <div className="space-y-4 sm:space-y-8 mt-4 sm:mt-8">

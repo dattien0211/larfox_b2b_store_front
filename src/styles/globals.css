@@ -203,11 +203,11 @@ body {
     @apply text-[30px] leading-[48px] font-semibold;
   }
 
-  .text-3xl-regular {
-    @apply text-3xl leading-[44px] font-normal;
+  .sm:text-3xl text-2xl -regular {
+    @apply sm:text-3xl text-2xl  leading-[44px] font-normal;
   }
 
-  .text-3xl-semi {
-    @apply text-3xl leading-[44px] font-semibold;
+  .sm:text-3xl text-2xl -semi {
+    @apply sm:text-3xl text-2xl  leading-[44px] font-semibold;
   }
 }

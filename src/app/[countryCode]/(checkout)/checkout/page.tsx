@@ -7,6 +7,7 @@ import CheckoutSummary from "@modules/checkout/templates/checkout-summary"
 import { enrichLineItems, retrieveCart } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
 import { getCustomer } from "@lib/data/customer"
+import Divider from "@modules/common/components/divider"
 
 export const metadata: Metadata = {
   title: "Đặt hàng | Anco",
@@ -31,11 +32,16 @@ export default async function Checkout() {
   const customer = await getCustomer()
 
   return (
-    <div className="grid grid-cols-1 small:grid-cols-[1fr_416px] content-container gap-x-20 py-12">
-      <Wrapper cart={cart}>
-        <CheckoutForm cart={cart} customer={customer} />
-      </Wrapper>
-      <CheckoutSummary cart={cart} />
+    <div className="flex flex-col-reverse small:flex-row content-container gap-8 py-4 sm:py-12">
+      <div className="flex-1">
+        <Wrapper cart={cart}>
+          <CheckoutForm cart={cart} customer={customer} />
+        </Wrapper>
+      </div>
+      <Divider className="small:hidden" />
+      <div className="sm:w-[416px]">
+        <CheckoutSummary cart={cart} />
+      </div>
     </div>
   )
 }

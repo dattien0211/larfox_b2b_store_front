@@ -9,11 +9,11 @@ type ProductInfoProps = {
 const ProductInfo = ({ product }: ProductInfoProps) => {
   const { Star } = Icons
   return (
-    <div id="product-info " className="mt-4">
-      <div className="flex flex-col gap-y-4">
+    <div id="product-info " className="mt-2 sm:mt-4">
+      <div className="flex flex-col gap-y-2 sm:gap-y-4">
         <Heading
           level="h2"
-          className="text-3xl leading-10 "
+          className="sm:text-3xl text-2xl  leading-10 "
           data-testid="product-title"
         >
           {product.title}

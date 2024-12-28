@@ -1,7 +1,7 @@
 import { getProductsList } from "@lib/data/products"
 import { getRegion } from "@lib/data/regions"
 import { HttpTypes } from "@medusajs/types"
-import Product from "../product-preview"
+import ProductPreview from "@modules/products/components/product-preview"
 
 type RelatedProductsProps = {
   product: HttpTypes.StoreProduct
@@ -44,22 +44,24 @@ export default async function RelatedProducts({
 
   return (
     <div className="product-page-constraint">
-      <div className="flex flex-col items-center text-center mb-8">
-        <span className="text-4xl font-semibold">Sản phẩm liên quan</span>
+      <div className="flex flex-col items-center text-center mb-4 sm:mb-8">
+        <h1 className="sm:text-3xl text-2xl   md:text-4xl font-semibold">
+          Sản phẩm liên quan
+        </h1>
       </div>
 
       {!products.length ? (
         <div>
-          <h1 className="text-black-20 text-lg text-center">
+          <h1 className="text-black-20 text-sm  sm:text-base md:text-lg text-center">
             Sản phẩm đang được thêm, hãy đón chờ những sản phẩm tốt nhất từ Anco
             bạn nhé.
           </h1>
         </div>
       ) : (
-        <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8">
+        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
           {products.map((product) => (
             <li key={product.id}>
-              <Product region={region} product={product} />
+              <ProductPreview region={region} product={product} />
             </li>
           ))}
         </ul>

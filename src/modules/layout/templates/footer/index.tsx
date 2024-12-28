@@ -1,20 +1,18 @@
-import { getCategoriesList } from "@lib/data/categories"
-import { getCollectionsList } from "@lib/data/collections"
-import { Text, clx } from "@medusajs/ui"
 import Image from "next/image"
 
 import Icons from "@modules/common/icons"
-import SelectSubsidiary from "@modules/layout/components/select-subsidiary"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import MedusaCTA from "@modules/layout/components/medusa-cta"
 import IMGS from "@constants/IMGS"
-import PayPal from "@modules/common/icons/paypal"
+import FooterContact from "./contact"
+import FooterAbout from "./about"
+import FooterPolicy from "./policy"
+import FooterOfferForm from "./offer-form"
+import FooterSocial from "./social"
 
 export default async function Footer() {
-  const { collections } = await getCollectionsList(0, 6)
-  const { product_categories } = await getCategoriesList(0, 6)
+  // const { collections } = await getCollectionsList(0, 6)
+  // const { product_categories } = await getCategoriesList(0, 6)
 
-  const { Twitter, FaceBook, Instagram, Google, RightArrow, Send } = Icons
+  const { Twitter, FaceBook, Instagram, Google } = Icons
 
   return (
     <footer className="w-full">
@@ -29,7 +27,7 @@ export default async function Footer() {
           />
         </div>
         <div className="content-container">
-          <div className="flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center justify-between py-8">
+          <div className="flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center justify-between py-4 sm:py-8">
             <div className="relative w-[120px] h-[54px]">
               <Image
                 src={IMGS.Logo2}
@@ -39,174 +37,21 @@ export default async function Footer() {
                 className="object-contain"
               />
             </div>
-            <div className="flex items-center justify-center gap-x-2">
-              <h1 className="text-white font-manrope-bold font-bold text-xl ">
-                Follow Us
-              </h1>
-              <div className="w-[45px] h-[1px] bg-white"></div>
-              <div className="w-8 h-8 rounded-full bg-orang-20 flex items-center justify-center cursor-pointer">
-                <Twitter color="#FFFFFF" />
-              </div>
-              <div className="w-8 h-8 rounded-full bg-orang-20 flex items-center justify-center cursor-pointer">
-                <FaceBook color="#FFFFFF" />
-              </div>
-              <div className="w-8 h-8 rounded-full bg-orang-20 flex items-center justify-center cursor-pointer">
-                <Instagram color="#FFFFFF" />
-              </div>
-              <div className="w-8 h-8 rounded-full bg-orang-20 flex items-center justify-center cursor-pointer">
-                <Google color="#FFFFFF" />
-              </div>
-            </div>
+            <FooterSocial />
           </div>
           <div className="relative w-full h-1">
             <Image src={IMGS.Line} alt="leaf" fill className="object-cover" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-12 gap-x-8 gap-y-12 lg:gap-x-10 mt-12 pb-8 text-white">
-            <div className="sm:col-span-6 lg:col-span-3">
-              <h1 className="font-bold text-xl sm:text-2xl font-manrope-bold">
-                Liên hệ
-              </h1>
-              <div className="sm:mt-8 mt-4 space-y-2 sm:space-y-4">
-                <p>
-                  Địa chỉ: BT3/16A4 làng Việt Kiều Châu Âu, phường Mộ Lao, Quận
-                  Hà Đông, Thành phố Hà Nội
-                </p>
-                <p>0946174888</p>
-                <p>trabavan34@gmail.com</p>
-              </div>
-            </div>
-
-            <div className="sm:col-span-6 lg:col-span-2">
-              <h1 className="font-bold text-xl sm:text-2xl font-manrope-bold">
-                Về Anco
-              </h1>
-              <div className="sm:mt-8 mt-4">
-                <ul className="list-none space-y-2 sm:space-y-4">
-                  <li className=" hover:text-orang-5">
-                    <LocalizedClientLink href="/" className="flex items-center">
-                      <RightArrow /> <p className="ml-2">Trang chủ</p>
-                    </LocalizedClientLink>
-                  </li>
-                  <li className=" hover:text-orang-5">
-                    <LocalizedClientLink
-                      href="/ve-chung-toi"
-                      className="flex items-center"
-                    >
-                      <RightArrow />
-                      <p className="ml-2">Giới thiệu</p>
-                    </LocalizedClientLink>
-                  </li>
-                  <li className=" hover:text-orang-5">
-                    <LocalizedClientLink
-                      href="/tat-ca-san-pham"
-                      className="flex items-center"
-                    >
-                      <RightArrow />
-                      <p className="ml-2">Sản phẩm</p>
-                    </LocalizedClientLink>
-                  </li>
-                  <li className=" hover:text-orang-5">
-                    <LocalizedClientLink href="/" className="flex items-center">
-                      <RightArrow />
-                      <p className="ml-2">Đối tác</p>
-                    </LocalizedClientLink>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="sm:col-span-6 lg:col-span-3">
-              <h1 className="font-bold text-xl sm:text-2xl font-manrope-bold">
-                Chính sách
-              </h1>
-              <div className="sm:mt-8 mt-4">
-                <ul className="list-none space-y-2 sm:space-y-4">
-                  <li className="hover:text-orang-5">
-                    <LocalizedClientLink
-                      href="/chinh-sach-mua-hang-va-thanh-toan"
-                      className="flex items-center"
-                    >
-                      <RightArrow />
-                      <p className="ml-2">Chính sách mua hàng, và thanh toán</p>
-                    </LocalizedClientLink>
-                  </li>
-                  <li className="hover:text-orang-5">
-                    <LocalizedClientLink
-                      href="/chinh-sach-bao-hanh"
-                      className="flex items-center"
-                    >
-                      <RightArrow /> <p className="ml-2">Chính sách bảo hành</p>
-                    </LocalizedClientLink>
-                  </li>
-                  <li className="hover:text-orang-5">
-                    <LocalizedClientLink
-                      href="/chinh-sach-doi-tra-va-hoan-tien"
-                      className="flex items-center"
-                    >
-                      <RightArrow />
-                      <p className="ml-2">Chính sách đổi trả và hoàn tiền</p>
-                    </LocalizedClientLink>
-                  </li>
-                  <li className="hover:text-orang-5">
-                    <LocalizedClientLink
-                      href="/chinh-sach-bao-mat"
-                      className="flex items-center"
-                    >
-                      <RightArrow />
-                      <p className="ml-2">Chính sách bảo mật</p>
-                    </LocalizedClientLink>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="sm:col-span-6 lg:col-span-4">
-              <h1 className="font-bold text-xl sm:text-2xl font-manrope-bold">
-                Đăng ký nhận ưu đãi từ Anco
-              </h1>
-              <div className="sm:mt-8 mt-4">
-                <div className="flex h-[46px] w-full">
-                  <input
-                    type="text"
-                    placeholder="Nhập email"
-                    className="px-4 flex-1 focus:outline-none h-full bg-grey-10 rounded-l-md text-primary"
-                  />
-                  <div className="bg-orang-5 w-[46px] h-[46px] flex items-center justify-center rounded-r-md cursor-pointer">
-                    <span className="text-white">
-                      <Send />
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col md:flex-row justify-between mt-4 sm:mt-14">
-                <SelectSubsidiary dropDownColor="#FFFFFF" />
-                <div className="flex gap-x-2 mt-4 md:mt-0">
-                  <div className="relative w-[62px] h-[30px]">
-                    <Image
-                      src={IMGS.Paypal}
-                      alt="Paypal"
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-contain"
-                    />
-                  </div>
-                  <div className="relative w-[88px] h-[30px]">
-                    <Image
-                      src={IMGS.Visa}
-                      alt="Paypal"
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-x-8 gap-y-6 sm:gap-y-12 lg:gap-x-10 mt-4 sm:mt-12 pb-4 sm:pb-8 text-white">
+            <FooterContact />
+            <FooterAbout />
+            <FooterPolicy />
+            <FooterOfferForm />
           </div>
         </div>
       </div>
       <div className="w-full text-white  py-4 bg-orang-20 flex items-center justify-center">
-        <h1 className="text-center">
+        <h1 className="text-center text-sm sm:text-base">
           © {new Date().getFullYear()} Anco Company (201201016057) (1001568-K)
         </h1>
       </div>

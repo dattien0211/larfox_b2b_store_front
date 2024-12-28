@@ -38,17 +38,17 @@ const PriceRange = () => {
         />
       </div>
       <p className="">
-        Giá:
-        <span className="font-manrope-extrabold ml-2 text-lg">
+        <span className="text-sm sm:text-base">Giá:</span>
+        <span className="font-manrope-extrabold ml-2 sm:text-lg">
           {formatNumber(value[0])}
         </span>
         <span className="mx-2">-</span>
-        <span className="font-manrope-extrabold  text-lg">
+        <span className="font-manrope-extrabold  sm:text-lg">
           {formatNumber(value[1])}
         </span>
       </p>
       <div className="mt-4 sm:mt-6">
-        <button className="px-8 py-2 bg-primary text-white rounded-md hover:bg-orang-10">
+        <button className="px-8 py-2 bg-primary text-white rounded-md hover:bg-orang-10 text-sm sm:text-base">
           Áp dụng
         </button>
       </div>

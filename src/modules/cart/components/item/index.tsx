@@ -38,7 +38,9 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       data-testid="product-row"
     >
       <Table.Cell
-        className={clx("!px-0 py-4 w-24", { "!w-20": type === "preview" })}
+        className={clx("!pl-0 pr-2 sm:!pr-0 py-4 w-24", {
+          "!w-20": type === "preview",
+        })}
       >
         <LocalizedClientLink
           href={`/san-pham/${handle}`}
@@ -55,11 +57,14 @@ const Item = ({ item, type = "full" }: ItemProps) => {
         </LocalizedClientLink>
       </Table.Cell>
 
-      <Table.Cell className="text-left">
+      <Table.Cell className="text-lef !pr-2 sm:!pr-6">
         <Text
-          className={clsx("text-base truncate text-ui-fg-base", {
-            "!text-sm": type === "preview",
-          })}
+          className={clsx(
+            "text-base truncate text-ui-fg-base w-[150px] sm:w-[200px]",
+            {
+              "!text-sm": type === "preview",
+            }
+          )}
           data-testid="product-title"
         >
           {item.product_title}
@@ -92,7 +97,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
 
       <Table.Cell
         className={clsx({
-          "!pr-4": type === "preview",
+          "!pr-0": type === "preview",
         })}
       >
         <span

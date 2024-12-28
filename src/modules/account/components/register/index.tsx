@@ -54,7 +54,9 @@ const Register = ({ setCurrentView }: Props) => {
       className="max-w-sm flex flex-col items-center"
       data-testid="register-page"
     >
-      <h1 className="text-3xl text-primary mb-6 font-times">Đăng ký</h1>
+      <h1 className="sm:text-3xl text-2xl  text-primary mb-6 font-times">
+        Đăng ký
+      </h1>
 
       <form
         className="w-full flex flex-col"

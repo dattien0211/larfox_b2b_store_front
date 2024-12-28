@@ -21,13 +21,13 @@ export default async function Chung() {
             <h2 className="italic text-primary font-times font-bold text-lg sm:text-xl lg:text-2xl">
               Về chúng tôi
             </h2>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl md:text-44px font-bold font-times mt-2">
+            <h1 className="sm:text-3xl text-2xl   md:text-4xl md:text-44px font-bold font-times mt-2">
               Câu chuyện thương hiệu
             </h1>
           </div>
         </div>
 
-        <h1 className=" text-3xl mt-16">Câu chuyện thương hiệu</h1>
+        <h1 className=" sm:text-3xl text-2xl  mt-16">Câu chuyện thương hiệu</h1>
         <div className="mt-4 mb-8">
           Được thành lập từ năm….. cho đến nay công ty chúng tôi đã ngày càng
           được mở rộng, ngày càng được khách hàng ưa chuộng. Hiện tại, trong
@@ -35,7 +35,7 @@ export default async function Chung() {
           số những công ty đi đầu về ngành dịch vụ……
         </div>
 
-        <h1 className=" text-3xl">Nhà sáng lập</h1>
+        <h1 className=" sm:text-3xl text-2xl ">Nhà sáng lập</h1>
         <div className="space-y-2 mt-4 mb-8">
           <p>
             Trong tình hình chính trị, xã hội hiện nay thì dịch vụ ……. đang là
@@ -57,7 +57,7 @@ export default async function Chung() {
           </p>
         </div>
 
-        <h1 className=" text-3xl">Triết lý</h1>
+        <h1 className=" sm:text-3xl text-2xl ">Triết lý</h1>
         <div className="space-y-2 mt-4 mb-8">
           <p>
             Đến với công ty chúng tôi bạn sẽ được hưởng rất nhiều lợi ích
@@ -79,7 +79,7 @@ export default async function Chung() {
           </p>
         </div>
 
-        <h1 className=" text-3xl">Sứ mệnh</h1>
+        <h1 className=" sm:text-3xl text-2xl ">Sứ mệnh</h1>
         <div className="space-y-2 mt-4 mb-8">
           <p>
             Được thành lập từ năm….. cho đến nay công ty chúng tôi đã ngày càng

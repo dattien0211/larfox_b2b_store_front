@@ -12,17 +12,23 @@ export default function BottomNav({
 }: {
   categories?: HttpTypes.StoreProductCategory[]
 }) {
-  const { DropDown } = Icons
+  const { DropDown, RightArrow } = Icons
   const [menuOpen, setMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
+  const btnToggleRef = useRef<HTMLButtonElement>(null)
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(event.target as Node) &&
+      btnToggleRef.current &&
+      !btnToggleRef.current.contains(event.target as Node)
+    ) {
+      setMenuOpen(false)
+    }
+  }
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setMenuOpen(false) // Close menu when clicked outside
-      }
-    }
-
     // Attach the event listener
     document.addEventListener("mousedown", handleClickOutside)
 
@@ -82,8 +88,9 @@ export default function BottomNav({
       {/* Mobile Navigation */}
       <div className="sm:hidden flex items-center justify-between">
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="p-2 text-grey-30 hover:text-primary"
+          ref={btnToggleRef}
+          onClick={() => setMenuOpen((prev) => !prev)}
+          className="py-2 pr-2 text-grey-30 hover:text-primary"
         >
           {/* Hamburger Icon */}
           <svg
@@ -109,32 +116,57 @@ export default function BottomNav({
       {menuOpen && (
         <div
           ref={menuRef}
-          className={`absolute z-50 top-full left-0 w-full bg-white shadow-md flex flex-col gap-y-2 p-4 transition-all duration-300 ease-in-out ${
+          className={`absolute z-40 top-full left-0 -mx-4 py-4 pl-4 pr-6 border-t border-grey-20  w-[calc(100%+2rem)]  bg-white shadow-md flex flex-col gap-y-3  transition-all duration-300 ease-in-out ${
             menuOpen ? "opacity-100" : "opacity-0"
           }`}
         >
           <LocalizedClientLink
             href="/"
-            className="py-2 hover:text-primary"
+            className="py-2 hover:text-primary flex items-center justify-between"
             onClick={() => setMenuOpen(false)}
           >
             Trang chủ
+            <RightArrow />
           </LocalizedClientLink>
-          <div className="py-2 hover:text-primary">
+          <LocalizedClientLink
+            href="/tat-ca-san-pham"
+            className="py-2 hover:text-primary flex items-center justify-between"
+            onClick={() => setMenuOpen(false)}
+          >
             <h1>Sản phẩm</h1>
-          </div>
-          <div className="py-2 hover:text-primary">
+            <RightArrow />
+          </LocalizedClientLink>
+          <LocalizedClientLink
+            href="/ve-chung-toi"
+            className="py-2 hover:text-primary flex items-center justify-between"
+            onClick={() => setMenuOpen(false)}
+          >
             <h1>Giới thiệu</h1>
-          </div>
-          <div className="py-2 hover:text-primary">
-            <h1>Blog</h1>
-          </div>
+            <RightArrow />
+          </LocalizedClientLink>
           <LocalizedClientLink
             href="/"
-            className="py-2 hover:text-primary"
+            className="py-2 hover:text-primary flex items-center justify-between"
+            onClick={() => setMenuOpen(false)}
+          >
+            <h1>Blog</h1>
+            <RightArrow />
+          </LocalizedClientLink>
+          <LocalizedClientLink
+            href="/"
+            className="py-2 hover:text-primary flex items-center justify-between"
             onClick={() => setMenuOpen(false)}
           >
             Liên hệ
+            <RightArrow />
+          </LocalizedClientLink>
+          <LocalizedClientLink
+            href="/tai-khoan"
+            className="py-2 hover:text-primary flex items-center justify-between"
+            onClick={() => setMenuOpen(false)}
+          >
+            Tài khoản
+            <RightArrow />
           </LocalizedClientLink>
         </div>
       )}

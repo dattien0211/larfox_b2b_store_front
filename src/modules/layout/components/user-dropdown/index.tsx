@@ -25,7 +25,7 @@ const UserDropDown = ({
   }
   return (
     <div
-      className="h-full relative lg:z-30 mt-1"
+      className="hidden sm:block h-full relative lg:z-30 mt-1"
       onMouseEnter={open}
       onMouseLeave={close}
     >

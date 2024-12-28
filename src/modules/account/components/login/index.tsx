@@ -44,7 +44,9 @@ const Login = ({ setCurrentView }: Props) => {
       className="max-w-sm w-full flex flex-col items-center"
       data-testid="login-page"
     >
-      <h1 className="text-3xl mb-6 text-primary font-times">Đăng nhập</h1>
+      <h1 className="sm:text-3xl text-2xl  mb-6 text-primary font-times">
+        Đăng nhập
+      </h1>
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col w-full gap-y-4">
           <div>

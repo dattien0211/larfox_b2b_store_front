@@ -89,7 +89,7 @@ const CategoryFilter = ({
               )}
             </div>
             <span
-              className={clsx("ml-4 font-medium text-sm sm:text-base", {
+              className={clsx("ml-2 sm:ml-4 font-medium text-sm sm:text-base", {
                 "text-primary": selectedCategories.includes(category.handle),
               })}
             >

@@ -48,7 +48,7 @@ const TagFilter = () => {
 
   return (
     <>
-      <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 py-4 mt-8">
+      <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 py-4 mt-4 sm:mt-8">
         Tags
       </h2>
       <div className="flex flex-wrap mt-4 sm:mt-8 gap-2">
@@ -63,7 +63,7 @@ const TagFilter = () => {
             key={tag.id}
           >
             <span
-              className={clsx("text-nowrap text-sm", {
+              className={clsx("text-nowrap text-xs sm:text-sm", {
                 "text-white": selectedTags.includes(tag.handle),
               })}
             >
