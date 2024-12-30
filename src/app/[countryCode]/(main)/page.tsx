@@ -6,13 +6,14 @@ import { getCollectionsWithProducts } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 import AboutUs from "@modules/layout/components/about-us"
 import FlashSale from "@modules/layout/components/flash-sale"
-import BannerProduct from "@modules/layout/components/banner-product"
+import BannerProduct from "@modules/layout/components/banner"
 import ListProducts from "@modules/layout/components/list-products"
 import RecommendProducts from "@modules/layout/components/recommend-products"
 import IMGS from "@constants/IMGS"
 import OurStory from "@modules/layout/components/our-story"
 import Blogs from "@modules/layout/components/blogs"
 import TextAnco from "@modules/layout/components/text-anco"
+import ProductBanner from "@modules/layout/components/product-banner"
 
 export const metadata: Metadata = {
   title: "Anco",
@@ -84,7 +85,7 @@ export default async function Home({
         <RecommendProducts />
       </div>
 
-      <BannerProduct imageSrc={IMGS.Banner4} title="Sắp ra mắt" />
+      <ProductBanner />
 
       <div className="relative py-12 sm:py-20">
         <TextAnco
@@ -113,11 +114,7 @@ export default async function Home({
         />
       </div>
 
-      <BannerProduct
-        imageSrc={IMGS.Banner6}
-        title="Xem chi tiết"
-        buttonClass="!left-[21%]"
-      />
+      <ProductBanner />
 
       <div className="bg-beige-10 relative py-12 sm:py-20">
         <TextAnco

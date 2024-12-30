@@ -26,6 +26,8 @@ import FBIcon from "@assets/images/fb-icon.png"
 import TwitterIcon from "@assets/images/twitter-icon.png"
 import LinkedInIcon from "@assets/images/linkedin-icon.png"
 import YTIcon from "@assets/images/yt-icon.png"
+import MobileBanner from "@assets/images/mobile-banner.jpg"
+import MobileBanner2 from "@assets/images/mobile-banner-2.jpg"
 
 export default {
   Logo,
@@ -55,4 +57,6 @@ export default {
   TwitterIcon,
   LinkedInIcon,
   YTIcon,
+  MobileBanner,
+  MobileBanner2,
 }

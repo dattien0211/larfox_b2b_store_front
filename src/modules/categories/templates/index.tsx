@@ -4,11 +4,12 @@ import { Suspense } from "react"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import { HttpTypes } from "@medusajs/types"
-import BannerProduct from "@modules/layout/components/banner-product"
+import BannerProduct from "@modules/layout/components/banner"
 import IMGS from "@constants/IMGS"
 import CategoryHeader from "@modules/categories/components/category-header"
 import { SortOptions } from "@modules/categories/components/sort-category"
 import FilterMenu from "@modules/categories/components/filter-menu"
+import ProductBanner from "@modules/layout/components/product-banner"
 
 export default function CategoryTemplate({
   categories,
@@ -34,7 +35,7 @@ export default function CategoryTemplate({
 
   return (
     <div className="mb-24">
-      <BannerProduct imageSrc={IMGS.Banner4} title="Sắp ra mắt" />
+      <ProductBanner />
 
       <div
         className="flex flex-col small:flex-row small:items-start py-6 gap-x-10 gap-y-4 content-container small:!mb-24 relative z-20"

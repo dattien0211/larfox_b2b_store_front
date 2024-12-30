@@ -34,7 +34,9 @@ const Overview = ({ customer, orders }: OverviewProps) => {
           <div className="flex flex-col gap-y-4 h-full col-span-1 row-span-2 flex-1">
             <div className="flex flex-col gap-y-4">
               <div className="flex items-center gap-x-2">
-                <h3 className="text-large-semi">Đơn hàng gần đây</h3>
+                <h3 className="text-2xl sm:text-3xl font-times text-primary font-semibold ">
+                  Đơn hàng gần đây
+                </h3>
               </div>
               <ul
                 className="flex flex-col gap-y-4"

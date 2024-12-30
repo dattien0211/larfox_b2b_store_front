@@ -160,7 +160,6 @@ export default function ProductActions({
     }
   }
 
-  console.log(options)
   return (
     <>
       <ProductPrice product={product} variant={selectedVariant} />

@@ -108,11 +108,17 @@ const AccountNav = ({
       {/* AccountNavDesktop */}
       <div className="hidden small:block mb-24" data-testid="account-nav">
         <div>
-          <div className="pb-6">
-            <h3 className="font-semibold text-primary">Tài khoản</h3>
-          </div>
           <div className="text-base">
             <ul className="flex mb-0 justify-start items-start flex-col gap-y-6">
+              <li>
+                <AccountNavLink
+                  href="/tai-khoan"
+                  route={route!}
+                  data-testid="profile-link"
+                >
+                  Tài khoản
+                </AccountNavLink>
+              </li>
               <li>
                 <AccountNavLink
                   href="/tai-khoan/thong-tin"
@@ -140,7 +146,7 @@ const AccountNav = ({
                   Đơn hàng
                 </AccountNavLink>
               </li>
-              <li className="text-grey-700">
+              <li className="text-grey-700 hover:text-primary">
                 <button
                   type="button"
                   onClick={handleLogout}
@@ -176,8 +182,8 @@ const AccountNavLink = ({
   return (
     <LocalizedClientLink
       href={href}
-      className={clx("text-ui-fg-subtle hover:text-ui-fg-base", {
-        "text-ui-fg-base font-semibold": active,
+      className={clx("text-base hover:text-primary", {
+        "font-semibold text-primary": active,
       })}
       data-testid={dataTestId}
     >

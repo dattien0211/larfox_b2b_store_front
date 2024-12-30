@@ -15,9 +15,12 @@ import "swiper/css/navigation"
 import "swiper/css/thumbs"
 import "swiper/css/free-mode"
 import "swiper/css/pagination" // Import pagination styles
-import BannerProduct from "@modules/layout/components/banner-product"
+import BannerProduct from "@modules/layout/components/banner"
+import { useOS } from "@lib/hooks/OSContext"
 
 const Hero = () => {
+  const { os } = useOS()
+
   return (
     <div className="w-full cursor-pointer mb-4">
       <Swiper
@@ -39,30 +42,46 @@ const Hero = () => {
       >
         <SwiperSlide>
           <BannerProduct
-            imageSrc={IMGS.Banner6}
+            imageSrc={os !== "mobile" ? IMGS.Banner6 : IMGS.MobileBanner}
             title="Xem thêm"
-            buttonClass="!left-[21%]"
+            buttonClass={
+              os !== "mobile"
+                ? "bottom-[25%] left-[25%]"
+                : "top-[35%] left-[12%]   "
+            }
           />
         </SwiperSlide>
         <SwiperSlide>
           <BannerProduct
-            imageSrc={IMGS.Banner4}
+            imageSrc={os !== "mobile" ? IMGS.Banner4 : IMGS.MobileBanner}
             title="Xem thêm"
-            buttonClass="!left-[21%]"
+            buttonClass={
+              os !== "mobile"
+                ? "bottom-[25%] left-[25%]"
+                : "top-[35%] left-[12%]   "
+            }
           />
         </SwiperSlide>
         <SwiperSlide>
           <BannerProduct
-            imageSrc={IMGS.Banner6}
+            imageSrc={os !== "mobile" ? IMGS.Banner6 : IMGS.MobileBanner}
             title="Xem thêm"
-            buttonClass="!left-[21%]"
+            buttonClass={
+              os !== "mobile"
+                ? "bottom-[25%] left-[25%]"
+                : "top-[35%] left-[12%]   "
+            }
           />
         </SwiperSlide>
         <SwiperSlide>
           <BannerProduct
-            imageSrc={IMGS.Banner4}
+            imageSrc={os !== "mobile" ? IMGS.Banner4 : IMGS.MobileBanner}
             title="Xem thêm"
-            buttonClass="!left-[21%]"
+            buttonClass={
+              os !== "mobile"
+                ? "bottom-[25%] left-[25%]"
+                : "top-[35%] left-[12%]   "
+            }
           />
         </SwiperSlide>
       </Swiper>

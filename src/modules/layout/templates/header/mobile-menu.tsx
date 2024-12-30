@@ -36,6 +36,7 @@ export default function MobileMenu({
   const handleClickOutside = (event: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
       onClose()
+      toggleSubmenu("")
     }
   }
 
@@ -107,16 +108,14 @@ export default function MobileMenu({
                 className={clsx(
                   "max-h-0 overflow-hidden ml-4 transition-all duration-300",
                   {
-                    "max-h-96": activeSubmenu === item.title,
+                    "max-h-[500px]": activeSubmenu === item.title,
                   }
                 )}
               >
                 {item.submenus?.map((submenuItem) => (
                   <LocalizedClientLink
                     key={submenuItem.title}
-                    href={
-                   submenuItem.href || "#"
-                    }
+                    href={submenuItem.href || "#"}
                     className="py-2 hover:text-primary flex items-center justify-between"
                     onClick={onClose}
                   >
