@@ -29,7 +29,7 @@ const Addresses = ({
   const router = useRouter()
   const pathname = usePathname()
 
-  const isOpen = searchParams.get("step") === "address"
+  const isOpen = searchParams.get("step") === "dia-chi"
 
   // const { state: sameAsBilling, toggle: toggleSameAsBilling } = useToggleState(
   //   cart?.shipping_address && cart?.billing_address
@@ -103,18 +103,15 @@ const Addresses = ({
   return (
     <>
       <div className="flex flex-row items-center justify-between sm:mb-6">
-        <Heading
-          level="h2"
-          className="flex flex-row sm:text-3xl text-2xl   gap-x-2 items-baseline text-primary mb-4"
-        >
+        <h1 className="flex flex-row sm:text-3xl text-2xl font-semibold font-times  gap-x-2 items-baseline text-primary mb-4">
           Địa chỉ nhận hàng
           {!isOpen && <CheckCircleSolid />}
-        </Heading>
+        </h1>
         {!isOpen && cart?.shipping_address && (
           <Text>
             <button
               onClick={handleEdit}
-              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-lg"
+              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base sm:text-lg"
               data-testid="edit-address-button"
             >
               Sửa
@@ -159,7 +156,7 @@ const Addresses = ({
           </form>
         </FormProvider>
       ) : (
-        <div>
+        <div className="mb-4 sm:mb-0">
           <div className="text-small-regular">
             {cart && cart.shipping_address ? (
               <div className="flex items-start gap-x-8">
@@ -173,8 +170,8 @@ const Addresses = ({
                     </Text>
 
                     {cart?.shipping_address ? (
-                      <div className="flex flex-wrap">
-                        <Text className="text-base text-ui-fg-subtle mr-1">
+                      <div className="flex flex-wrap ">
+                        <Text className="text-sm sm:text-base text-ui-fg-subtle mr-1">
                           Khách hàng{" "}
                           <span className="font-semibold">
                             {`${cart.shipping_address.last_name || ""} ${
@@ -182,16 +179,16 @@ const Addresses = ({
                             } -`}
                           </span>
                         </Text>
-                        <Text className="text-base text-ui-fg-subtle">
+                        <Text className="text-sm sm:text-base text-ui-fg-subtle">
                           {`${cart.shipping_address.address_1 || ""}`}
                         </Text>
                         {cart.shipping_address.province && (
-                          <Text className="text-base text-ui-fg-subtle">
+                          <Text className="text-sm sm:text-base text-ui-fg-subtle">
                             {`, ${cart.shipping_address.province}`}
                           </Text>
                         )}
                         {cart.shipping_address.city && (
-                          <Text className="text-base text-ui-fg-subtle">
+                          <Text className="text-sm sm:text-base text-ui-fg-subtle">
                             {`, ${cart.shipping_address.city}.`}
                           </Text>
                         )}
@@ -219,7 +216,7 @@ const Addresses = ({
                     <Text className="text-base txt-ui-fg-base mb-1 font-semibold">
                       Thông tin liên hệ
                     </Text>
-                    <Text className="text-base text-ui-fg-subtle">
+                    <Text className="text-sm sm:text-base text-ui-fg-subtle">
                       Số điện thoại:{" "}
                       <span className="font-semibold">
                         {cart.shipping_address.phone
@@ -227,7 +224,7 @@ const Addresses = ({
                           : ""}
                       </span>
                     </Text>
-                    <Text className="text-base text-ui-fg-subtle">
+                    <Text className="text-sm sm:text-base text-ui-fg-subtle">
                       Email:{" "}
                       <span className="font-semibold">
                         {cart.email ? cart.email : ""}

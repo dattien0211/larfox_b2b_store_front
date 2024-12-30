@@ -29,7 +29,7 @@ const Shipping: React.FC<ShippingProps> = ({
   const router = useRouter()
   const pathname = usePathname()
 
-  const isOpen = searchParams.get("step") === "delivery"
+  const isOpen = searchParams.get("step") === "giao-hang"
 
   const selectedShippingMethod = availableShippingMethods?.find(
     // To do: remove the previously selected shipping method instead of using the last one
@@ -37,11 +37,11 @@ const Shipping: React.FC<ShippingProps> = ({
   )
 
   const handleEdit = () => {
-    router.push(pathname + "?step=delivery", { scroll: false })
+    router.push(pathname + "?step=giao-hang", { scroll: false })
   }
 
   const handleSubmit = () => {
-    router.push(pathname + "?step=payment", { scroll: false })
+    router.push(pathname + "?step=thanh-toan", { scroll: false })
   }
 
   const set = async (id: string) => {
@@ -62,10 +62,9 @@ const Shipping: React.FC<ShippingProps> = ({
   return (
     <div className="bg-white">
       <div className="flex flex-row items-center justify-between mb-6">
-        <Heading
-          level="h2"
+        <h1
           className={clx(
-            "flex flex-row sm:text-3xl text-2xl text-primary gap-x-2 items-baseline",
+            "flex flex-row sm:text-3xl text-2xl font-semibold font-times text-primary gap-x-2 items-baseline",
             {
               "opacity-50 pointer-events-none select-none":
                 !isOpen && cart.shipping_methods?.length === 0,
@@ -76,7 +75,7 @@ const Shipping: React.FC<ShippingProps> = ({
           {!isOpen && (cart.shipping_methods?.length ?? 0) > 0 && (
             <CheckCircleSolid />
           )}
-        </Heading>
+        </h1>
         {!isOpen &&
           cart?.shipping_address &&
           cart?.billing_address &&
@@ -84,7 +83,7 @@ const Shipping: React.FC<ShippingProps> = ({
             <Text>
               <button
                 onClick={handleEdit}
-                className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-lg"
+                className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base sm:text-lg"
                 data-testid="edit-delivery-button"
               >
                 Sửa
@@ -94,7 +93,7 @@ const Shipping: React.FC<ShippingProps> = ({
       </div>
       {isOpen ? (
         <div data-testid="delivery-options-container">
-          <div className="pb-8">
+          <div className="pb-4 sm:pb-8">
             <RadioGroup value={selectedShippingMethod?.id} onChange={set}>
               {availableShippingMethods?.map((option) => {
                 return (
@@ -135,7 +134,7 @@ const Shipping: React.FC<ShippingProps> = ({
 
           <Button
             size="large"
-            className="bg-primary rounded-none shadow-none hover:bg-orang-10 transition duration-300"
+            className="bg-primary rounded-none shadow-none hover:bg-orang-10 transition duration-300 sm:mb-0 mb-4"
             onClick={handleSubmit}
             isLoading={isLoading}
             disabled={!cart.shipping_methods?.[0]}
@@ -145,11 +144,11 @@ const Shipping: React.FC<ShippingProps> = ({
           </Button>
         </div>
       ) : (
-        <div>
+        <div className="mb-4 sm:mb-0">
           <div className="text-small-regular">
             {cart && (cart.shipping_methods?.length ?? 0) > 0 && (
-              <div className="flex flex-col w-1/3">
-                <Text className="text-base text-ui-fg-subtle">
+              <div className="flex flex-col gap-y-4">
+                <Text className="text-nowrap text-base text-ui-fg-subtle">
                   {selectedShippingMethod?.name}{" "}
                   {convertToLocale({
                     amount: selectedShippingMethod?.amount!,

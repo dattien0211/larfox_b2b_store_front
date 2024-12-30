@@ -44,7 +44,7 @@ export default async function Home({
           description="Sự đổi mới sáng tạo - Chìa khóa thành công - Sự bền vững và phát triển lâu dài."
         />
         <AboutUs />
-        <div className="absolute bottom-16 right-4 w-[90px] h-[35px] sm:w-[120px] sm:h-[50px]">
+        <div className="absolute bottom-6 sm:bottom-10 lg::bottom-16 right-0 sm:right-4 w-[90px] h-[35px] sm:w-[120px] sm:h-[50px]">
           <Image
             src={IMGS.Leaf1}
             alt="leaf"
@@ -98,10 +98,10 @@ export default async function Home({
 
       <div className="relative py-12 sm:py-20">
         <TextAnco
-          backgroundText="Assortm"
-          subTitle="Anco Shop"
-          title="Sản phẩm nổi bật"
-          description="Những sản phẩm đặc biệt của chúng tôi, được thiết kế và sản xuất với công nghệ tiên tiến."
+          backgroundText="Products"
+          subTitle="Sản phẩm bán chạy"
+          title="Sản phẩm "
+          description="Luôn đứng đầu trong danh sách bán chạy nhờ vào tính năng ưu việt và khả năng đáp ứng nhu cầu của khách hàng một cách hoàn hảo."
         />
         <ListProducts />
         <Image

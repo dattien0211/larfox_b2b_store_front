@@ -21,7 +21,7 @@ export default async function Orders() {
   return (
     <div className="w-full" data-testid="orders-page-wrapper">
       <div className="mb-8 flex flex-col gap-y-4">
-        <h1 className="text-2xl-semi">Đơn hàng</h1>
+        <h1 className="text-2xl font-semibold text-primary">Đơn hàng</h1>
         <p className="text-base-regular">
           Xem các đơn hàng trước đây của bạn và trạng thái của chúng. Bạn cũng
           có thể tạo yêu cầu trả hàng hoặc đổi hàng nếu cần.

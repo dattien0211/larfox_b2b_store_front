@@ -13,37 +13,38 @@ const CartTemplate = ({
   customer: HttpTypes.StoreCustomer | null
 }) => {
   return (
-    <div className="pt-12 mb-24 relative z-20">
-      <div className="content-container" data-testid="cart-container">
-        {cart?.items?.length ? (
-          <div className="grid grid-cols-1 small:grid-cols-[1fr_360px] gap-x-20">
-            <div className="flex flex-col bg-white py-6 gap-y-6">
-              {/* {!customer && (
+    <div
+      className="content-container mb-16 sm:mb-24"
+      data-testid="cart-container"
+    >
+      {cart?.items?.length ? (
+        <div className="grid grid-cols-1 small:grid-cols-[1fr_360px] gap-x-20">
+          <div className="flex flex-col bg-white py-6 gap-y-6">
+            {/* {!customer && (
                 <>
                   <SignInPrompt />
                   <Divider />
                 </>
               )} */}
-              <ItemsTemplate items={cart?.items} />
-            </div>
-            <div className="relative">
-              <div className="flex flex-col gap-y-8 sticky top-12">
-                {cart && cart.region && (
-                  <>
-                    <div className="bg-white py-6">
-                      <Summary cart={cart as any} />
-                    </div>
-                  </>
-                )}
-              </div>
+            <ItemsTemplate items={cart?.items} />
+          </div>
+          <div className="relative">
+            <div className="flex flex-col gap-y-8 sticky top-12">
+              {cart && cart.region && (
+                <>
+                  <div className="bg-white py-6">
+                    <Summary cart={cart as any} />
+                  </div>
+                </>
+              )}
             </div>
           </div>
-        ) : (
-          <div>
-            <EmptyCartMessage />
-          </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div>
+          <EmptyCartMessage />
+        </div>
+      )}
     </div>
   )
 }

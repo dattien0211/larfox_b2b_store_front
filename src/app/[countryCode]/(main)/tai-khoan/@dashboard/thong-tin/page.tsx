@@ -26,8 +26,10 @@ export default async function Profile() {
   return (
     <div className="w-full" data-testid="profile-page-wrapper">
       <div className="mb-8 flex flex-col gap-y-4">
-        <h1 className="text-2xl-semi">Thông tin tài khoản </h1>
-        <p className="text-base-regular">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-primary font-times">
+          Thông tin tài khoản
+        </h1>
+        <p className="text-sm sm:text-base">
           Xem và cập nhật thông tin hồ sơ của bạn, bao gồm tên, email và số điện
           thoại. Bạn cũng có thể cập nhật địa chỉ thanh toán hoặc thay đổi mật
           khẩu của mình.

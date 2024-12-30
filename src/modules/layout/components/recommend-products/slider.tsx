@@ -93,7 +93,7 @@ const RecommendProductsSlider = () => {
         >
           {products.map((product, index) => (
             <SwiperSlide key={index}>
-              <div className="relative h-[280px]  2xsmall:h-[430px] sm:h-[280px] md:h-[330px]">
+              <div className="relative h-[290px]  sm:h-[280px] md:h-[330px]">
                 <Image
                   src={product.imgSrc}
                   alt="hot product"

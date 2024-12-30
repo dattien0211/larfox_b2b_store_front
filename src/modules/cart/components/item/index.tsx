@@ -38,7 +38,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       data-testid="product-row"
     >
       <Table.Cell
-        className={clx("!pl-0 pr-2 sm:!pr-0 py-4 w-24", {
+        className={clx("!pl-0 pr-2 py-4 w-24", {
           "!w-20": type === "preview",
         })}
       >
@@ -46,7 +46,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
           href={`/san-pham/${handle}`}
           className={clx("flex", {
             "w-16": type === "preview",
-            "small:w-24 w-12": type === "full",
+            "small:w-24 w-16": type === "full",
           })}
         >
           <Thumbnail
@@ -60,7 +60,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       <Table.Cell className="text-lef !pr-2 sm:!pr-6">
         <Text
           className={clsx(
-            "text-base truncate text-ui-fg-base w-[150px] sm:w-[200px]",
+            "text-sm sm:text-base truncate text-ui-fg-base w-[150px] sm:w-[200px]",
             {
               "!text-sm": type === "preview",
             }
@@ -96,8 +96,8 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       )}
 
       <Table.Cell
-        className={clsx({
-          "!pr-0": type === "preview",
+        className={clsx("!pr-2 sm:!pr-6", {
+          "!pr-2": type === "preview",
         })}
       >
         <span

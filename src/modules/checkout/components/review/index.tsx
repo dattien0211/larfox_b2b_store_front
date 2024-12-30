@@ -9,7 +9,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 const Review = ({ cart }: { cart: any }) => {
   const searchParams = useSearchParams()
 
-  const isOpen = searchParams.get("step") === "review"
+  const isOpen = searchParams.get("step") === "danh-gia"
 
   const paidByGiftcard =
     cart?.gift_cards && cart?.gift_cards?.length > 0 && cart?.total === 0
@@ -22,17 +22,16 @@ const Review = ({ cart }: { cart: any }) => {
   return (
     <div className="bg-white">
       <div className="flex flex-row items-center justify-between mb-6">
-        <Heading
-          level="h2"
+        <h1
           className={clx(
-            "flex flex-row sm:text-3xl text-2xl  text-primary gap-x-2 items-baseline",
+            "flex flex-row sm:text-3xl text-2xl font-semibold font-times text-primary gap-x-2 items-baseline",
             {
               "opacity-50 pointer-events-none select-none": !isOpen,
             }
           )}
         >
           Chính sách và Điều khoản
-        </Heading>
+        </h1>
       </div>
       {isOpen && previousStepsCompleted && (
         <>

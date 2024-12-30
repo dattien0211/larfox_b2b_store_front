@@ -150,6 +150,7 @@ body {
 ::-webkit-scrollbar {
   width: 0;
 }
+
 @layer components {
   .content-container {
     @apply max-w-[1200px] w-full mx-auto px-4 sm:px-8 md:px-6;

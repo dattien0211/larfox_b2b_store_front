@@ -21,10 +21,12 @@ const OrderDetailsTemplate: React.FC<OrderDetailsTemplateProps> = ({
   return (
     <div className="flex flex-col justify-center gap-y-4">
       <div className="flex gap-2 justify-between items-center">
-        <h1 className="text-2xl-semi text-primary">Chi tiết đơn hàng</h1>
+        <h1 className="text-2xl sm:text-3xl font-semibold text-primary font-times">
+          Chi tiết đơn hàng
+        </h1>
         <LocalizedClientLink
           href="/tai-khoan/don-hang"
-          className="flex gap-2 items-center text-ui-fg-subtle hover:text-ui-fg-base"
+          className="flex gap-2 items-center text-sm sm:text-base text-grey-40 hover:text-ui-fg-base"
           data-testid="back-to-overview-button"
         >
           <XMark /> Quay lại

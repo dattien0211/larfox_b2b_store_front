@@ -14,6 +14,8 @@ import { default as DropDown } from "./drop-down"
 import { default as Market } from "./market"
 import { default as RightArrow } from "./right-arrow"
 import { default as LeftArrow } from "./left-arrow"
+import { default as DownArrow } from "./down-arrow"
+import { default as UpArrow } from "./up-arrow"
 import { default as Google } from "./google"
 import { default as Instagram } from "./instagram"
 import { default as Send } from "./send"
@@ -33,6 +35,8 @@ import { default as Filter } from "./filter"
 import { default as XMark } from "./x-mark"
 
 export default {
+  DownArrow,
+  UpArrow,
   FaceBook,
   Skype,
   Store,

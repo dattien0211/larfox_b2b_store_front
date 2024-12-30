@@ -165,14 +165,14 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
 
     return (
       <div
-        className="flex flex-row mt-1 font-semibold"
+        className="flex flex-wrap mt-1 font-semibold"
         data-testid="current-info"
       >
-        <span>{billingAddress.first_name}</span>
+        <span className="text-nowrap">{billingAddress.first_name}</span>
         <span className="mx-3">-</span>
-        <span>{billingAddress.address_1}</span>
+        <span className="text-nowrap">{billingAddress.address_1}</span>
         <span className="ml-[2px] mr-1">,</span>
-        <span>
+        <span className="text-nowrap">
           {billingAddress.province}
           <span className="ml-[2px] mr-1">,</span>
           {billingAddress.city}

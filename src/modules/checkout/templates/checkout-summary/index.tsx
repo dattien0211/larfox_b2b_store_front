@@ -9,12 +9,9 @@ const CheckoutSummary = ({ cart }: { cart: any }) => {
   return (
     <div className="sticky top-0 flex flex-col-reverse small:flex-col gap-y-8 sm:py-8 small:py-0 ">
       <div className="w-full bg-white flex flex-col">
-        <Heading
-          level="h2"
-          className="flex flex-row sm:text-3xl text-2xl  items-baseline text-primary"
-        >
+        <h1 className="flex flex-row text-2xl sm:text-3xl font-semibold items-baseline text-primary font-times">
           Giỏ hàng
-        </Heading>
+        </h1>
         <Divider className="mt-4 mb-2" />
         <div className="mb-4">
           <ItemsPreviewTemplate items={cart?.items} />

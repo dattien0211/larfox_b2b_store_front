@@ -17,11 +17,11 @@ type SummaryProps = {
 
 function getCheckoutStep(cart: HttpTypes.StoreCart) {
   if (!cart?.shipping_address?.address_1 || !cart.email) {
-    return "address"
+    return "dia-chi"
   } else if (cart?.shipping_methods?.length === 0) {
-    return "delivery"
+    return "giao-hang"
   } else {
-    return "payment"
+    return "thanh-toan"
   }
 }
 
@@ -32,7 +32,7 @@ const Summary = ({ cart }: SummaryProps) => {
     <div className="flex flex-col gap-y-4">
       <Heading
         level="h2"
-        className="text-[2rem] leading-[2.75rem] text-primary"
+        className="text-2xl font-semibold sm:text-[2rem] leading-[2.75rem] text-primary font-times"
       >
         Tổng quan
       </Heading>
@@ -50,7 +50,7 @@ const Summary = ({ cart }: SummaryProps) => {
           </h1>
         </div>
         <LocalizedClientLink
-          href={"/checkout?step=" + step}
+          href={"/dat-hang?step=" + step}
           data-testid="checkout-button"
         >
           <button className=" bg-primary text-white px-4 w-full h-10 cursor-pointer">

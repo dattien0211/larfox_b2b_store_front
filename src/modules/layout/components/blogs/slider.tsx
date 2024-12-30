@@ -1,13 +1,22 @@
 "use client"
 
-import React from "react"
-import Icons from "@modules/common/icons"
 import IMGS from "@constants/IMGS"
-import TextAnco from "@modules/layout/components/text-anco"
-import { useOS } from "@lib/hooks/OSContext"
+import React, { useCallback, useRef, useState } from "react"
+import { Swiper, SwiperSlide } from "swiper/react"
+import {
+  Navigation,
+  Thumbs,
+  Controller,
+  Autoplay,
+  Pagination,
+} from "swiper/modules"
+import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/thumbs"
+import "swiper/css/free-mode"
+import "swiper/css/pagination"
 import { StaticImageData } from "next/image"
 import BlogCard from "./blogCard"
-import BlogSlider from "./slider"
 
 interface BlogData {
   imageSrc: StaticImageData
@@ -15,9 +24,8 @@ interface BlogData {
   description: string
 }
 
-const Blogs: React.FC = () => {
-  const { RightArrow } = Icons
-  const { os } = useOS()
+const BlogSlider = () => {
+  const sliderRef = useRef<any>(null)
   const blogData: BlogData[] = [
     {
       imageSrc: IMGS.Blog,
@@ -39,49 +47,36 @@ const Blogs: React.FC = () => {
     },
   ]
 
-  const displayedBlogs =
-    os === "desktop"
-      ? blogData
-      : os === "tablet"
-      ? blogData.slice(0, 2)
-      : blogData.slice(0, 1)
-
   return (
-    <div className="relative py-12 sm:py-20">
-      <TextAnco
-        backgroundText="Blogs"
-        subTitle="Thật thú vị"
-        title="Tin tức mới"
-        classBGText="!text-[#FFF6E8]"
-      />
-
-      {/* Blog Cards */}
-      <div className="content-container mt-4 sm:mt-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 px-0">
-          {os !== "mobile" ? (
-            displayedBlogs.map((blog, index) => (
+    <div className="flex flex-col items-center justify-center">
+      <div className="w-[90%] sm:w-full cursor-pointer">
+        <Swiper
+          modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
+          loop
+          slidesPerView={1}
+          spaceBetween={32}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          onSwiper={(swiper) => {
+            sliderRef.current = swiper
+          }}
+        >
+          {blogData.map((blog, index) => (
+            <SwiperSlide key={index}>
               <BlogCard
                 key={index}
                 imageSrc={blog.imageSrc}
                 title={blog.title}
                 description={blog.description}
               />
-            ))
-          ) : (
-            <BlogSlider />
-          )}
-        </div>
-      </div>
-
-      {/* Navigation Button */}
-      <div className="mt-12 flex items-center justify-center gap-x-4 relative z-20">
-        <button className="hover:text-orange-600 hover:bg-white shadow-md rounded-full flex items-center justify-center px-4 py-[6px] sm:px-8 sm:py-2 bg-gradient-to-r from-[#EE9C23] to-[#FFBB56] text-white transition-all duration-300 ease-in-out">
-          <p className="mr-2 text-base sm:text-lg text-nowrap">Xem thêm</p>
-          <RightArrow size={12} />
-        </button>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   )
 }
 
-export default Blogs
+export default BlogSlider

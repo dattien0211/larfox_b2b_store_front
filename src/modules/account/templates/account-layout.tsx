@@ -4,6 +4,7 @@ import UnderlineLink from "@modules/common/components/interactive-link"
 
 import AccountNav from "../components/account-nav"
 import { HttpTypes } from "@medusajs/types"
+import Divider from "@modules/common/components/divider"
 
 interface AccountLayoutProps {
   customer: HttpTypes.StoreCustomer | null
@@ -15,14 +16,17 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
   children,
 }) => {
   return (
-    <div className="flex-1 mb-24" data-testid="account-page">
-      <div className="flex-1 content-container h-full mx-auto bg-white flex flex-col">
-        <div className="flex py-8">
+    <div className="flex-1 mb-12 sm:mb-24" data-testid="account-page">
+      <div className="flex-1 flex flex-col content-container h-full mx-auto bg-white  ">
+        <div className="py-4 sm:py-8 flex  flex-col gap-y-4 md:flex-row ">
           {customer && (
-            <div className="w-[240px]">
+            <div className="w-full sm:w-[240px]">
               <AccountNav customer={customer} />
             </div>
           )}
+          <div className="block sm:hidden">
+            <Divider />
+          </div>
           <div className="flex-1">{children}</div>
         </div>
         {/* <div className="flex flex-col small:flex-row items-end justify-between small:border-t border-gray-200 py-12 gap-8">

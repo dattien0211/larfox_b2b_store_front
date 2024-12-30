@@ -13,13 +13,13 @@ type OverviewProps = {
 const Overview = ({ customer, orders }: OverviewProps) => {
   return (
     <div data-testid="overview-page-wrapper">
-      <div className="hidden small:block">
-        <div className=" text-xl -semi flex justify-between items-center mb-4">
+      <div className="block">
+        <div className="text-lg sm:text-xl flex flex-col sm:flex-row justify-between items-center mb-4 font-times">
           <span data-testid="welcome-message" data-value={customer?.first_name}>
             Xin chào{" "}
             <span className="text-primary">{customer?.first_name}</span>
           </span>
-          <span className="text-sm text-ui-fg-base">
+          <span className="text-lg sm:text-xl">
             Email:{" "}
             <span
               className="font-semibold text-primary"
@@ -32,40 +32,6 @@ const Overview = ({ customer, orders }: OverviewProps) => {
         </div>
         <div className="flex flex-col py-8 border-t border-gray-200">
           <div className="flex flex-col gap-y-4 h-full col-span-1 row-span-2 flex-1">
-            {/* <div className="flex items-start gap-x-16 mb-6">
-              <div className="flex flex-col gap-y-4">
-                <h3 className="text-large-semi">Profile</h3>
-                <div className="flex items-end gap-x-2">
-                  <span
-                    className="sm:text-3xl text-2xl -semi leading-none"
-                    data-testid="customer-profile-completion"
-                    data-value={getProfileCompletion(customer)}
-                  >
-                    {getProfileCompletion(customer)}%
-                  </span>
-                  <span className="uppercase text-base-regular text-ui-fg-subtle">
-                    Completed
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-y-4">
-                <h3 className="text-large-semi">Addresses</h3>
-                <div className="flex items-end gap-x-2">
-                  <span
-                    className="sm:text-3xl text-2xl -semi leading-none"
-                    data-testid="addresses-count"
-                    data-value={customer?.addresses?.length || 0}
-                  >
-                    {customer?.addresses?.length || 0}
-                  </span>
-                  <span className="uppercase text-base-regular text-ui-fg-subtle">
-                    Saved
-                  </span>
-                </div>
-              </div>
-            </div> */}
-
             <div className="flex flex-col gap-y-4">
               <div className="flex items-center gap-x-2">
                 <h3 className="text-large-semi">Đơn hàng gần đây</h3>
@@ -86,11 +52,9 @@ const Overview = ({ customer, orders }: OverviewProps) => {
                           href={`/tai-khoan/don-hang/chi-tiet/${order.id}`}
                         >
                           <Container className="bg-gray-50 flex justify-between items-center p-4">
-                            <div className="grid grid-cols-3 grid-rows-2 text-small-regular gap-x-4 flex-1">
+                            <div className="grid grid-cols-3 grid-rows-2 text-small-regular sm:text-base-regular gap-x-2 sm:gap-x-4 flex-1">
                               <span className="font-semibold">Ngày đặt</span>
-                              <span className="font-semibold">
-                                Mã số đơn hàng
-                              </span>
+                              <span className="font-semibold">Mã đơn hàng</span>
                               <span className="font-semibold">
                                 Tổng thành tiền
                               </span>

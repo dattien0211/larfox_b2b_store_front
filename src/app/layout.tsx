@@ -12,9 +12,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
     <html lang="en" data-mode="light">
       <body>
         <OSProvider>
-          <main className="relative z-20 border-t border-grey-10">
-            {props.children}
-          </main>
+          <main>{props.children}</main>
         </OSProvider>
       </body>
     </html>

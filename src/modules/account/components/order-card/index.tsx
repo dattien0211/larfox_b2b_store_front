@@ -52,7 +52,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
               <Thumbnail thumbnail={i.thumbnail} images={[]} size="square" />
               <div className="flex items-center text-sm text-ui-fg-base">
                 <span
-                  className="text-base line-clamp-2"
+                  className="text-sm sm:text-base line-clamp-2"
                   data-testid="item-title"
                 >
                   {i.product_title}

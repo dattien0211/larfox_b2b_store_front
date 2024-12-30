@@ -33,7 +33,7 @@ export default function AboutUs() {
   ]
 
   return (
-    <div className="content-container flex items-center justify-center flex-wrap md:flex-nowrap gap-y-8 sm:gap-x-8 md:gap-x-4 mt-12 md:mt-20">
+    <div className="content-container flex items-center justify-center flex-wrap md:flex-nowrap gap-x-4 gap-y-6 sm:gap-8 md:gap-x-4 mt-12 md:mt-20">
       {features.map((feature, index) => (
         <FeatureCard
           key={index}

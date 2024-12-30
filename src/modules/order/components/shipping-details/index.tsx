@@ -11,21 +11,21 @@ type ShippingDetailsProps = {
 const ShippingDetails = ({ order }: ShippingDetailsProps) => {
   return (
     <div>
-      <Heading level="h2" className="flex flex-row text-2xl text-primary my-4">
+      <h1 className="flex flex-row text-2xl sm:text-3xl font-semibold text-primary font-times my-4">
         Địa chỉ nhận hàng
-      </Heading>
+      </h1>
       <div className="flex flex-col items-start gap-y-1">
-        <div className="flex " data-testid="shipping-address-summary">
-          <Text className="text-base text-ui-fg-base mr-2">
+        <div className="flex flex-wrap" data-testid="shipping-address-summary">
+          <Text className="text-base text-ui-fg-base mr-2 text-nowrap">
             Địa chỉ nhận hàng:
           </Text>
-          <Text className="text-base text-ui-fg-subtle mr-1">
+          <Text className="text-sm sm:text-base text-ui-fg-subtle mr-1 text-nowrap">
             Khách hàng {order.shipping_address?.first_name} -
           </Text>
-          <Text className="text-base text-ui-fg-subtle mr-1">
+          <Text className="text-sm sm:text-base text-ui-fg-subtle mr-1 text-nowrap">
             {order.shipping_address?.address_1},
           </Text>
-          <Text className="text-base text-ui-fg-subtle mx-1">
+          <Text className="text-sm sm:text-base text-ui-fg-subtle mx-1 text-nowrap">
             {order.shipping_address?.province}, {order.shipping_address?.city}.
           </Text>
           {/* <Text className="text-base text-ui-fg-subtle">
@@ -48,7 +48,10 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
           </div>
         </div>
 
-        <div className="flex  " data-testid="shipping-method-summary">
+        <div
+          className="flex flex-row flex-wrap"
+          data-testid="shipping-method-summary"
+        >
           <Text className="text-base text-ui-fg-base mr-2">
             Phương thức giao hàng:
           </Text>

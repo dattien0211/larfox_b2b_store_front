@@ -1,18 +1,20 @@
+"use client"
 import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Icons from "@modules/common/icons"
-
+import { useOS } from "@lib/hooks/OSContext"
 interface BreadcrumbProps {
   path: string[]
   className?: string
   allCategories: HttpTypes.StoreProductCategory[]
 }
 
-const Breadcrumb: React.FC<BreadcrumbProps> = async ({
+const Breadcrumb: React.FC<BreadcrumbProps> = ({
   path,
   className,
   allCategories,
 }) => {
+  const { os } = useOS()
   const { RightArrow } = Icons
 
   const filteredItems = path.map((segment) => {
@@ -33,7 +35,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = async ({
           </LocalizedClientLink>
         </li>
         <span className="mx-1 sm:mx-2">
-          <RightArrow size={"1vw"} />
+          <RightArrow size={os === "mobile" ? "10" : "12"} />
         </span>
         <li>
           <LocalizedClientLink
@@ -56,7 +58,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = async ({
                 <span className="ml-1 mr-2 font-bold">,</span>
               ) : (
                 <span className="mx-1 sm:mx-2">
-                  <RightArrow size={"1vw"} />
+                  <RightArrow size={os === "mobile" ? "10" : "12"} />
                 </span>
               )}
 

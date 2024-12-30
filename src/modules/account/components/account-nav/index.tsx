@@ -26,11 +26,12 @@ const AccountNav = ({
 
   return (
     <div>
-      <div className="small:hidden" data-testid="mobile-account-nav">
+      {/* AccountNavMobile */}
+      <div className="small:hidden w-full" data-testid="mobile-account-nav">
         {route !== `/${countryCode}/tai-khoan` ? (
           <LocalizedClientLink
             href="/tai-khoan"
-            className="flex items-center gap-x-2 text-small-regular py-2"
+            className="flex items-center gap-x-2 text-base py-2"
             data-testid="account-main-link"
           >
             <>
@@ -40,30 +41,27 @@ const AccountNav = ({
           </LocalizedClientLink>
         ) : (
           <>
-            <div className=" text-xl -semi mb-4 px-8">
-              Xin chào {customer?.first_name}
-            </div>
             <div className="text-base-regular">
               <ul>
                 <li>
                   <LocalizedClientLink
                     href="/tai-khoan/thong-tin"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    className="flex items-center justify-between py-4"
                     data-testid="profile-link"
                   >
                     <>
                       <div className="flex items-center gap-x-2">
                         <User size={20} />
-                        <span>Thông tin tài khoản</span>
+                        <span>Chỉnh sửa thông tin</span>
                       </div>
                       <ChevronDown className="transform -rotate-90" />
                     </>
                   </LocalizedClientLink>
                 </li>
-                <li>
+                {/* <li>
                   <LocalizedClientLink
                     href="/tai-khoan/dia-chi"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    className="flex items-center justify-between py-4"
                     data-testid="addresses-link"
                   >
                     <>
@@ -74,11 +72,11 @@ const AccountNav = ({
                       <ChevronDown className="transform -rotate-90" />
                     </>
                   </LocalizedClientLink>
-                </li>
+                </li> */}
                 <li>
                   <LocalizedClientLink
                     href="/tai-khoan/don-hang"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    className="flex items-center justify-between py-4"
                     data-testid="orders-link"
                   >
                     <div className="flex items-center gap-x-2">
@@ -91,7 +89,7 @@ const AccountNav = ({
                 <li>
                   <button
                     type="button"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8 w-full"
+                    className="flex items-center justify-between py-4 w-full"
                     onClick={handleLogout}
                     data-testid="logout-button"
                   >
@@ -107,6 +105,7 @@ const AccountNav = ({
           </>
         )}
       </div>
+      {/* AccountNavDesktop */}
       <div className="hidden small:block mb-24" data-testid="account-nav">
         <div>
           <div className="pb-6">
@@ -120,7 +119,7 @@ const AccountNav = ({
                   route={route!}
                   data-testid="profile-link"
                 >
-                  Thông tin tài khoản
+                  Chỉnh sửa thông tin
                 </AccountNavLink>
               </li>
               {/* <li>

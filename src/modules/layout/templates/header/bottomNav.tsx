@@ -2,69 +2,57 @@
 
 import { useState, useRef, useEffect } from "react"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import SelectSubsidiary from "@modules/layout/components/select-subsidiary"
 import Icons from "@modules/common/icons"
 import Menu from "./menu"
 import { HttpTypes } from "@medusajs/types"
+import MobileMenu from "./mobile-menu"
 
-export default function BottomNav({
-  categories,
-}: {
+interface BottomNavProps {
   categories?: HttpTypes.StoreProductCategory[]
-}) {
-  const { DropDown, RightArrow, LeftArrow } = Icons
+}
+
+export default function BottomNav({ categories }: BottomNavProps) {
+  const { DropDown } = Icons
   const [menuOpen, setMenuOpen] = useState(false)
-  const menuRef = useRef<HTMLDivElement>(null)
-  const btnToggleRef = useRef<HTMLButtonElement>(null)
-  const [menuState, setMenuState] = useState<"main" | string>("main")
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      menuRef.current &&
-      !menuRef.current.contains(event.target as Node) &&
-      btnToggleRef.current &&
-      !btnToggleRef.current.contains(event.target as Node)
-    ) {
-      setMenuOpen(false)
-    }
-  }
-
-  useEffect(() => {
-    // Attach the event listener
-    document.addEventListener("mousedown", handleClickOutside)
-
-    // Cleanup the event listener
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [])
-
-  useEffect(() => {
-    // Reset to the main menu when menu is closed
-    if (!menuOpen) {
-      setMenuState("main")
-    }
-  }, [menuOpen])
-
-  // Define the menu items structure with proper typing
-
-  const menuItems: Record<string, { title: string; href?: string }[]> = {
+  const menuItems: Record<
+    string,
+    {
+      title: string
+      href?: string
+      submenus?: { title: string; href?: string }[]
+    }[]
+  > = {
     main: [
       { title: "Trang chủ", href: "/" },
-      { title: "Sản phẩm" }, // No href because it triggers a submenu
+      {
+        title: "Sản phẩm",
+        submenus: [
+          { title: "Tất cả sản phẩm", href: "/tat-ca-san-pham" },
+          ...(categories?.map((category) => ({
+            title: category.name,
+            href: `/danh-muc-san-pham/${category.handle}`,
+          })) || []),
+        ],
+      },
+      {
+        title: "Blog",
+        submenus: [
+          { title: "Tin tức", href: "/" },
+          { title: "Sức khỏe", href: "/" },
+        ],
+      },
       { title: "Giới thiệu", href: "/ve-chung-toi" },
-      { title: "Blog", href: "/" },
-      { title: "Liên hệ", href: "/" },
+      {
+        title: "Liên hệ",
+      },
       { title: "Tài khoản", href: "/tai-khoan" },
     ],
+  }
 
-    "Sản phẩm": [
-      { title: "Tất cả sản phẩm", href: "/tat-ca-san-pham" },
-      ...(categories?.map((category) => ({
-        title: category.name,
-        href: `/${category.handle}`,
-      })) || []), // Safeguard in case categories is undefined
-    ],
+  const toggleSubmenu = (menuTitle: string) => {
+    setActiveSubmenu((prev) => (prev === menuTitle ? null : menuTitle))
   }
 
   return (
@@ -75,14 +63,14 @@ export default function BottomNav({
           <div className="py-2 pr-2 lg:py-4 lg:pr-4 cursor-pointer hover:text-primary">
             <LocalizedClientLink
               href="/"
-              className="text-sm text-nowrap lg:text-base"
+              className=" text-sm text-nowrap lg:text-base"
             >
               Trang chủ
             </LocalizedClientLink>
           </div>
 
           <div className="relative flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group">
-            <h1 className="text-sm text-nowrap lg:text-base">Sản phẩm</h1>
+            <h1 className=" text-sm text-nowrap lg:text-base">Sản phẩm</h1>
             <span className="text-grey-30 group-hover:text-primary">
               <DropDown />
             </span>
@@ -90,13 +78,13 @@ export default function BottomNav({
           </div>
 
           <div className="flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group">
-            <h1 className="text-sm text-nowrap lg:text-base">Giới thiệu</h1>
+            <h1 className=" text-sm text-nowrap lg:text-base">Giới thiệu</h1>
             <span className="text-grey-30 group-hover:text-primary">
               <DropDown />
             </span>
           </div>
           <div className="flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group">
-            <h1 className="text-sm text-nowrap lg:text-base">Blog</h1>
+            <h1 className=" text-sm text-nowrap lg:text-base">Blog</h1>
             <span className="text-grey-30 group-hover:text-primary">
               <DropDown />
             </span>
@@ -104,24 +92,20 @@ export default function BottomNav({
           <h1 className="p-2 lg:p-4 cursor-pointer hover:text-primary">
             <LocalizedClientLink
               href="/"
-              className="text-sm text-nowrap lg:text-base"
+              className=" text-sm text-nowrap lg:text-base"
             >
               Liên hệ
             </LocalizedClientLink>
           </h1>
         </div>
-
-        <SelectSubsidiary />
       </div>
 
       {/* Mobile Navigation */}
       <div className="sm:hidden flex items-center justify-between">
         <button
-          ref={btnToggleRef}
           onClick={() => setMenuOpen((prev) => !prev)}
           className="py-2 pr-2 text-grey-30 hover:text-primary"
         >
-          {/* Hamburger Icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -137,42 +121,17 @@ export default function BottomNav({
             />
           </svg>
         </button>
-
-        <SelectSubsidiary />
+        <div className="text-sm text-grey-45">Hotline: 19001080</div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div
-          ref={menuRef}
-          className={`absolute z-40 top-full left-0 -mx-4 py-4 pl-4 pr-6 border-t border-grey-20 w-[calc(100%+2rem)] bg-white shadow-md flex flex-col gap-y-2 transition-all duration-300 ease-in-out`}
-        >
-          {menuState !== "main" && (
-            <button
-              onClick={() => setMenuState("main")}
-              className="text-primary hover:underline flex items-center gap-4"
-            >
-              <LeftArrow size={11} /> <span>Quay lại</span>
-            </button>
-          )}
-
-          {menuItems[menuState]?.map((item) => (
-            <LocalizedClientLink
-              key={item.title}
-              href={item.href || "#"}
-              className="py-2 hover:text-primary flex items-center justify-between"
-              onClick={() =>
-                menuItems[item.title]
-                  ? setMenuState(item.title)
-                  : setMenuOpen(false)
-              }
-            >
-              {item.title}
-              {menuItems[item.title] && <RightArrow />}
-            </LocalizedClientLink>
-          ))}
-        </div>
-      )}
+      {/* Mobile Menu Component */}
+      <MobileMenu
+        menuItems={menuItems}
+        isOpen={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        activeSubmenu={activeSubmenu}
+        toggleSubmenu={toggleSubmenu}
+      />
     </div>
   )
 }

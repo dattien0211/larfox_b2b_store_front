@@ -38,7 +38,7 @@ const Payment = ({
   const router = useRouter()
   const pathname = usePathname()
 
-  const isOpen = searchParams.get("step") === "payment"
+  const isOpen = searchParams.get("step") === "thanh-toan"
 
   const isStripe = isStripeFunc(activeSession?.provider_id)
   const stripeReady = useContext(StripeContext)
@@ -96,7 +96,7 @@ const Payment = ({
 
       if (!shouldInputCard) {
         return router.push(
-          pathname + "?" + createQueryString("step", "review"),
+          pathname + "?" + createQueryString("step", "danh-gia"),
           {
             scroll: false,
           }
@@ -116,10 +116,9 @@ const Payment = ({
   return (
     <div className="bg-white">
       <div className="flex flex-row items-center justify-between mb-6">
-        <Heading
-          level="h2"
+        <h1
           className={clx(
-            "flex flex-row sm:text-3xl text-2xl   text-primary text gap-x-2 items-baseline",
+            "flex flex-row sm:text-3xl text-2xl font-semibold font-times text-primary text gap-x-2 items-baseline",
             {
               "opacity-50 pointer-events-none select-none":
                 !isOpen && !paymentReady,
@@ -128,12 +127,12 @@ const Payment = ({
         >
           Phương thức thanh toán
           {!isOpen && paymentReady && <CheckCircleSolid />}
-        </Heading>
+        </h1>
         {!isOpen && paymentReady && (
           <Text>
             <button
               onClick={handleEdit}
-              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-lg"
+              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base sm:text-lg"
               data-testid="edit-payment-button"
             >
               Sửa
@@ -167,7 +166,7 @@ const Payment = ({
               {isStripe && stripeReady && (
                 <div className="mt-5 transition-all duration-150 ease-in-out">
                   <Text className="text-base text-ui-fg-base mb-1">
-                    Enter your card details:
+                    Nhập chi tiết thẻ
                   </Text>
 
                   <CardElement
@@ -207,7 +206,7 @@ const Payment = ({
 
           <Button
             size="large"
-            className="mt-6 bg-primary hover:bg-orang-10 rounded-none !shadow-none"
+            className="mt-6 mb-4 sm:mb-0 bg-primary hover:bg-orang-10 rounded-none !shadow-none"
             onClick={handleSubmit}
             isLoading={isLoading}
             disabled={
@@ -222,12 +221,12 @@ const Payment = ({
           </Button>
         </div>
 
-        <div className={isOpen ? "hidden" : "block"}>
+        <div className={isOpen ? "hidden" : "block mb-4 sm:mb-0"}>
           {cart && paymentReady && activeSession ? (
             <div className="flex items-start gap-x-1 w-full">
-              <div className="flex flex-col w-1/3">
-                <Text className="text-base text-ui-fg-base mb-1">
-                  Phương thức thanh toán
+              <div className="flex flex-col w-1/2">
+                <Text className="text-base  text-ui-fg-base mb-1">
+                  Phương thức
                 </Text>
                 <Text
                   className="txt-medium text-ui-fg-subtle"
@@ -237,7 +236,7 @@ const Payment = ({
                     selectedPaymentMethod}
                 </Text>
               </div>
-              <div className="flex flex-col w-1/3">
+              <div className="flex flex-col w-1/2">
                 <Text className="text-base text-ui-fg-base mb-1">
                   Chi tiết thanh toán
                 </Text>
