@@ -179,7 +179,6 @@ export const updateCustomerAddress = async (
     phone: (formData.get("phone") as string) || "",
   }
 
-  console.log("ADDRESS", address)
   return sdk.store.customer
     .updateAddress(addressId, address, {}, getAuthHeaders())
     .then(() => {
@@ -187,7 +186,7 @@ export const updateCustomerAddress = async (
       return { success: true, error: null }
     })
     .catch((err) => {
-      console.log("ERROR", err)
+      console.error("ERROR", err)
       return { success: false, error: err.toString() }
     })
 }
