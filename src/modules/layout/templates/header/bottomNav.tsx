@@ -12,10 +12,11 @@ export default function BottomNav({
 }: {
   categories?: HttpTypes.StoreProductCategory[]
 }) {
-  const { DropDown, RightArrow } = Icons
+  const { DropDown, RightArrow, LeftArrow } = Icons
   const [menuOpen, setMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const btnToggleRef = useRef<HTMLButtonElement>(null)
+  const [menuState, setMenuState] = useState<"main" | string>("main")
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -37,6 +38,34 @@ export default function BottomNav({
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [])
+
+  useEffect(() => {
+    // Reset to the main menu when menu is closed
+    if (!menuOpen) {
+      setMenuState("main")
+    }
+  }, [menuOpen])
+
+  // Define the menu items structure with proper typing
+
+  const menuItems: Record<string, { title: string; href?: string }[]> = {
+    main: [
+      { title: "Trang chủ", href: "/" },
+      { title: "Sản phẩm" }, // No href because it triggers a submenu
+      { title: "Giới thiệu", href: "/ve-chung-toi" },
+      { title: "Blog", href: "/" },
+      { title: "Liên hệ", href: "/" },
+      { title: "Tài khoản", href: "/tai-khoan" },
+    ],
+
+    "Sản phẩm": [
+      { title: "Tất cả sản phẩm", href: "/tat-ca-san-pham" },
+      ...(categories?.map((category) => ({
+        title: category.name,
+        href: `/${category.handle}`,
+      })) || []), // Safeguard in case categories is undefined
+    ],
+  }
 
   return (
     <div className="relative">
@@ -116,58 +145,32 @@ export default function BottomNav({
       {menuOpen && (
         <div
           ref={menuRef}
-          className={`absolute z-40 top-full left-0 -mx-4 py-4 pl-4 pr-6 border-t border-grey-20  w-[calc(100%+2rem)]  bg-white shadow-md flex flex-col gap-y-3  transition-all duration-300 ease-in-out ${
-            menuOpen ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute z-40 top-full left-0 -mx-4 py-4 pl-4 pr-6 border-t border-grey-20 w-[calc(100%+2rem)] bg-white shadow-md flex flex-col gap-y-2 transition-all duration-300 ease-in-out`}
         >
-          <LocalizedClientLink
-            href="/"
-            className="py-2 hover:text-primary flex items-center justify-between"
-            onClick={() => setMenuOpen(false)}
-          >
-            Trang chủ
-            <RightArrow />
-          </LocalizedClientLink>
-          <LocalizedClientLink
-            href="/tat-ca-san-pham"
-            className="py-2 hover:text-primary flex items-center justify-between"
-            onClick={() => setMenuOpen(false)}
-          >
-            <h1>Sản phẩm</h1>
-            <RightArrow />
-          </LocalizedClientLink>
-          <LocalizedClientLink
-            href="/ve-chung-toi"
-            className="py-2 hover:text-primary flex items-center justify-between"
-            onClick={() => setMenuOpen(false)}
-          >
-            <h1>Giới thiệu</h1>
-            <RightArrow />
-          </LocalizedClientLink>
-          <LocalizedClientLink
-            href="/"
-            className="py-2 hover:text-primary flex items-center justify-between"
-            onClick={() => setMenuOpen(false)}
-          >
-            <h1>Blog</h1>
-            <RightArrow />
-          </LocalizedClientLink>
-          <LocalizedClientLink
-            href="/"
-            className="py-2 hover:text-primary flex items-center justify-between"
-            onClick={() => setMenuOpen(false)}
-          >
-            Liên hệ
-            <RightArrow />
-          </LocalizedClientLink>
-          <LocalizedClientLink
-            href="/tai-khoan"
-            className="py-2 hover:text-primary flex items-center justify-between"
-            onClick={() => setMenuOpen(false)}
-          >
-            Tài khoản
-            <RightArrow />
-          </LocalizedClientLink>
+          {menuState !== "main" && (
+            <button
+              onClick={() => setMenuState("main")}
+              className="text-primary hover:underline flex items-center gap-4"
+            >
+              <LeftArrow size={11} /> <span>Quay lại</span>
+            </button>
+          )}
+
+          {menuItems[menuState]?.map((item) => (
+            <LocalizedClientLink
+              key={item.title}
+              href={item.href || "#"}
+              className="py-2 hover:text-primary flex items-center justify-between"
+              onClick={() =>
+                menuItems[item.title]
+                  ? setMenuState(item.title)
+                  : setMenuOpen(false)
+              }
+            >
+              {item.title}
+              {menuItems[item.title] && <RightArrow />}
+            </LocalizedClientLink>
+          ))}
         </div>
       )}
     </div>

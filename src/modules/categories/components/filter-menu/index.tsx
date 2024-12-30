@@ -28,7 +28,7 @@ export default function FilterMenu({
       {/* Toggle Button */}
       <button
         onClick={toggleMenu}
-        className="lg:hidden bg-primary text-white p-2 rounded-full absolute -bottom-20 left-[48%] animate-bounce z-30"
+        className="lg:hidden bg-primary text-white p-2 rounded-full absolute -bottom-20 left-[45%] animate-bounce z-30"
       >
         <Filter />
       </button>

@@ -80,7 +80,7 @@ const SizeFilter = () => {
               )}
             </div>
             <span
-              className={clsx("ml-4 font-medium", {
+              className={clsx("ml-2 sm:ml-4 font-medium text-sm sm:text-base", {
                 "text-primary": selectedSizes.includes(size.handle),
               })}
             >
