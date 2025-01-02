@@ -1,3 +1,4 @@
+import { DEFAULT_EMAIL } from "@constants/defaultEmail"
 import { HttpTypes } from "@medusajs/types"
 import { Text } from "@medusajs/ui"
 
@@ -38,8 +39,8 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
   }
 
   return (
-    <div>
-      {order.email && (
+    <div className="flex flex-col gap-y-1 mb-2">
+      {order.email && order.email !== DEFAULT_EMAIL && (
         <Text className="text-base">
           Chúng tôi đã gửi chi tiết xác nhận đơn hàng đến{" "}
           <span
@@ -51,18 +52,24 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
           .
         </Text>
       )}
-      <Text className="mt-2 text-base">
+      <Text className="text-base">
         Ngày đặt hàng:{" "}
         <span data-testid="order-date">
           {new Date(order.created_at).toLocaleDateString("vi-VN")}
         </span>
       </Text>
-      {/* <Text className="mt-2 text-ui-fg-interactive">
-        Order number: <span data-testid="order-id">{order.display_id}</span>
-      </Text> */}
+      <Text className=" text-base">
+        Mã đơn hàng:{" "}
+        <span
+          data-testid="order-id"
+          className="uppercase text-ui-fg-interactive"
+        >
+          {order?.id}
+        </span>
+      </Text>
 
       {showStatus && (
-        <div className="flex items-center text-base gap-x-8 mt-2">
+        <div className="flex items-center text-base gap-x-8 ">
           <Text className="text-base">
             Trạng thái đơn hàng:{" "}
             <span className="text-ui-fg-subtle " data-testid="order-status">

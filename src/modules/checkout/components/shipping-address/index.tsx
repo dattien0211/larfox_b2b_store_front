@@ -4,6 +4,7 @@ import Input from "@modules/common/components/input"
 import React, { useEffect, useMemo, useState } from "react"
 import cityConstant from "@constants/citiesData.json"
 import Select from "react-select"
+import { DEFAULT_EMAIL } from "@constants/defaultEmail"
 
 const ShippingAddress = ({
   customer,
@@ -58,7 +59,7 @@ const ShippingAddress = ({
       setValue("shipping_address.province", address.province || "")
       setValue("shipping_address.phone", address.phone || "")
     }
-    if (email) {
+    if (email && email !== DEFAULT_EMAIL) {
       setValue("email", email || "")
     }
   }
@@ -209,20 +210,6 @@ const ShippingAddress = ({
 
       <div className="grid grid-cols-2 gap-4 my-4">
         <Input
-          {...register("email", {
-            pattern: {
-              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-              message: "Vui lòng nhập Email hợp lệ.",
-            },
-          })}
-          label="Email"
-          error={errors.email?.message}
-          type="email"
-          autoComplete="email"
-          data-testid="shipping-email-input"
-        />
-
-        <Input
           {...register("shipping_address.phone", {
             required: "Vui lòng nhập số điện thoại.",
             pattern: {
@@ -236,6 +223,19 @@ const ShippingAddress = ({
           autoComplete="tel"
           data-testid="shipping-phone-input"
           isRequired={true}
+        />
+        <Input
+          {...register("email", {
+            pattern: {
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+              message: "Vui lòng nhập Email hợp lệ.",
+            },
+          })}
+          label="Email"
+          error={errors.email?.message}
+          type="email"
+          autoComplete="email"
+          data-testid="shipping-email-input"
         />
       </div>
     </>

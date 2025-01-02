@@ -8,7 +8,6 @@ import Divider from "@modules/common/components/divider"
 import Spinner from "@modules/common/icons/spinner"
 
 import { setAddresses } from "@lib/data/cart"
-import compareAddresses from "@lib/util/compare-addresses"
 import { HttpTypes } from "@medusajs/types"
 import { useFormState } from "react-dom"
 import BillingAddress from "../billing_address"
@@ -17,6 +16,7 @@ import ShippingAddress from "../shipping-address"
 import { SubmitButton } from "../submit-button"
 import { useForm, FormProvider } from "react-hook-form"
 import { useState } from "react"
+import { DEFAULT_EMAIL } from "@constants/defaultEmail"
 
 const Addresses = ({
   cart,
@@ -31,17 +31,11 @@ const Addresses = ({
 
   const isOpen = searchParams.get("step") === "dia-chi"
 
-  // const { state: sameAsBilling, toggle: toggleSameAsBilling } = useToggleState(
-  //   cart?.shipping_address && cart?.billing_address
-  //     ? compareAddresses(cart?.shipping_address, cart?.billing_address)
-  //     : true
-  // )
-
   // hard code for the same address for shipping and billing
   const sameAsBilling = true
 
   const handleEdit = () => {
-    router.push(pathname + "?step=address")
+    router.push(pathname + "?step=dia-chi")
   }
 
   // const [message, formAction] = useFormState(setAddresses, null)
@@ -146,7 +140,7 @@ const Addresses = ({
                 className="mt-4 bg-primary hover:bg-orang-10 rounded-none !shadow-none"
                 data-testid="submit-address-button"
               >
-                Tiếp tục đặt hàng
+                Tiếp tục để đặt hàng
               </SubmitButton>
               <ErrorMessage
                 error={message}
@@ -170,28 +164,41 @@ const Addresses = ({
                     </Text>
 
                     {cart?.shipping_address ? (
-                      <div className="flex flex-wrap ">
-                        <Text className="text-sm sm:text-base text-ui-fg-subtle mr-1">
-                          Khách hàng{" "}
-                          <span className="font-semibold">
-                            {`${cart.shipping_address.last_name || ""} ${
-                              cart.shipping_address.first_name || ""
-                            } -`}
-                          </span>
-                        </Text>
-                        <Text className="text-sm sm:text-base text-ui-fg-subtle">
-                          {`${cart.shipping_address.address_1 || ""}`}
-                        </Text>
-                        {cart.shipping_address.province && (
-                          <Text className="text-sm sm:text-base text-ui-fg-subtle">
-                            {`, ${cart.shipping_address.province}`}
+                      <div className="flex flex-col ">
+                        <div className="flex">
+                          <Text className="text-sm sm:text-base text-ui-fg-subtle mr-1">
+                            Khách hàng
                           </Text>
-                        )}
-                        {cart.shipping_address.city && (
                           <Text className="text-sm sm:text-base text-ui-fg-subtle">
-                            {`, ${cart.shipping_address.city}.`}
+                            <span className="font-semibold">
+                              {`${cart.shipping_address.last_name || ""} ${
+                                cart.shipping_address.first_name || ""
+                              }`}
+                            </span>
                           </Text>
-                        )}
+                        </div>
+
+                        <div className="flex">
+                          <Text className="text-sm sm:text-base text-ui-fg-subtle mr-1">
+                            Địa chỉ:
+                          </Text>
+                          <div className="flex flex-wrap ">
+                            <Text className="text-sm sm:text-base text-ui-fg-subtle font-semibold">
+                              {`${cart.shipping_address.address_1 || ""}`}
+                            </Text>
+                            {cart.shipping_address.province && (
+                              <Text className="text-sm sm:text-base text-ui-fg-subtle font-semibold">
+                                {`, ${cart.shipping_address.province}`}
+                              </Text>
+                            )}
+                            {cart.shipping_address.city && (
+                              <Text className="text-sm sm:text-base text-ui-fg-subtle font-semibold">
+                                {`, ${cart.shipping_address.city}.`}
+                              </Text>
+                            )}
+                          </div>
+                        </div>
+
                         {/* <Text className="text-base text-ui-fg-subtle">
                           {`, ${
                             cart?.shipping_address?.country_code?.toUpperCase() ===
@@ -224,10 +231,13 @@ const Addresses = ({
                           : ""}
                       </span>
                     </Text>
+
                     <Text className="text-sm sm:text-base text-ui-fg-subtle">
                       Email:{" "}
                       <span className="font-semibold">
-                        {cart.email ? cart.email : ""}
+                        {cart.email && cart.email !== DEFAULT_EMAIL
+                          ? cart.email
+                          : ""}
                       </span>
                     </Text>
                   </div>

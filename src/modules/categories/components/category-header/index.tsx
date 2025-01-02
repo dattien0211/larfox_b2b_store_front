@@ -18,7 +18,7 @@ const CategoryHeader = ({
         <Breadcrumb allCategories={allCategories} path={path} />
       </div>
 
-      <h1 className="sm:hidden">Sắp xếp</h1>
+      <h1 className="lg:hidden">Sắp xếp</h1>
 
       <div className="flex items-center justify-between space-x-6">
         {/* <span className="text-gray-600">Showing 1-12</span> */}

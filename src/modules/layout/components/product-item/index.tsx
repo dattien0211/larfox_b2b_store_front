@@ -4,10 +4,10 @@ import IMGS from "@constants/IMGS"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export default function ProductItem() {
-  const { Star, Heart } = Icons
+  const { Star, Heart, Thunder } = Icons
 
   return (
-    <div className="w-full flex flex-col gap-y-2 group cursor-pointer">
+    <div className="w-full flex flex-col gap-y-1 sm:gap-y-2 group cursor-pointer">
       <div className="bg-grey-15 relative w-full shadow-md">
         <Image
           src={IMGS.Product}
@@ -20,9 +20,14 @@ export default function ProductItem() {
           <div className="cursor-pointer text-grey-40 hover:bg-primary hover:text-white w-7 h-7 rounded-full bg-white flex items-center justify-center z-10">
             <Heart size={18} />
           </div>
-          <div className="text-white bg-primary flex text-xs px-2 py-1 rounded-sm">
-            -12%
-          </div>
+          <>
+            <div className="absolute top-2 right-10 z-20">
+              <Thunder size={24} />
+            </div>
+            <div className="text-red-500 bg-orang-15 flex  absolute top-[10px] right-2 text-xs pl-3 pr-1 py-[1px] rounded-r-sm font-semibold">
+              -12%
+            </div>
+          </>
         </div>
 
         <div className="px-4 w-full absolute bottom-4 left-0 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible">
@@ -34,27 +39,29 @@ export default function ProductItem() {
         </div>
       </div>
       <div>
-        <span className="bg-primary py-[2px] px-1 rounded-sm text-white font-manrope-bold text-xs">
+        <span className="bg-primary py-[2px] px-1 rounded-sm text-white font-manrope-bold text-xxs">
           Anco Care
         </span>
-        <span className="h-10 sm:h-fit line-clamp-2 text-sm mt-1 sm:mt-2 sm:text-base">
-          Bịt mắt thảo dược AnCo Eyes phiên bản mới 2025
-        </span>
+      </div>
+      <div className="h-10 sm:h-fit line-clamp-2  text-sm sm:text-lg">
+        Bịt mắt thảo dược AnCo Eyes phiên bản mới 2025
       </div>
       <div>
-        <span className="text-primary sm:text-xl font-semibold">299.000đ</span>
-        <span className="text-grey-40 sm:ml-6 ml-2 line-through sm:text-xl ">
+        <span className="text-primary text-sm sm:text-xl font-bold">
+          299.000đ
+        </span>
+        <span className="text-grey-40 sm:ml-4 ml-2 text-xs sm:text-base line-through">
           299.000đ
         </span>
       </div>
       <div className="flex items-center gap-x-2">
         <Star color="#EA9934" />
-        <p className="text-xxs sm:text-sm">
+        <p className="text-xs sm:text-sm">
           <span>4.8</span>
           <span className="text-grey-5">(120K)</span>
         </p>
         <div className="h-2 bg-grey-30 w-[1px]"></div>
-        <p className="text-xxs sm:text-sm">
+        <p className="text-xs sm:text-sm">
           <span className="text-grey-30">Đã bán:</span>
           <span className="text-grey-5">130</span>
         </p>

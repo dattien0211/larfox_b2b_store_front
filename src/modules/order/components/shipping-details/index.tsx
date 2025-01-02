@@ -1,3 +1,4 @@
+import { DEFAULT_EMAIL } from "@constants/defaultEmail"
 import { convertToLocale } from "@lib/util/money"
 import { HttpTypes } from "@medusajs/types"
 import { Heading, Text } from "@medusajs/ui"
@@ -12,21 +13,32 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
   return (
     <div>
       <h1 className="flex flex-row text-2xl sm:text-3xl font-semibold text-primary font-times my-4">
-        Địa chỉ nhận hàng
+        Thông tin nhận hàng
       </h1>
       <div className="flex flex-col items-start gap-y-1">
+        <div className="flex flex-wrap" data-testid="shipping-address-name">
+          <Text className="text-base text-ui-fg-base mr-2 text-nowrap">
+            Tên khách hàng:
+          </Text>
+          <Text className="text-base text-ui-fg-subtle mr-1 text-nowrap">
+            Khách hàng
+          </Text>
+          <Text className="text-base text-ui-fg-subtle mr-1 text-nowrap">
+            {order.shipping_address?.first_name}
+          </Text>
+        </div>
         <div className="flex flex-wrap" data-testid="shipping-address-summary">
           <Text className="text-base text-ui-fg-base mr-2 text-nowrap">
-            Địa chỉ nhận hàng:
+            Địa chỉ:
           </Text>
-          <Text className="text-sm sm:text-base text-ui-fg-subtle mr-1 text-nowrap">
-            Khách hàng {order.shipping_address?.first_name} -
-          </Text>
-          <Text className="text-sm sm:text-base text-ui-fg-subtle mr-1 text-nowrap">
+          <Text className="text-base text-ui-fg-subtle mr-1 text-nowrap">
             {order.shipping_address?.address_1},
           </Text>
-          <Text className="text-sm sm:text-base text-ui-fg-subtle mx-1 text-nowrap">
-            {order.shipping_address?.province}, {order.shipping_address?.city}.
+          <Text className="text-base text-ui-fg-subtle mx-1 text-nowrap">
+            {order.shipping_address?.province},
+          </Text>
+          <Text className="text-base text-ui-fg-subtle mx-1 text-nowrap">
+            {order.shipping_address?.city}.
           </Text>
           {/* <Text className="text-base text-ui-fg-subtle">
             {order.shipping_address?.country_code?.toUpperCase() || "VN"}.
@@ -44,7 +56,9 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
           </div>
           <div className="flex items-center ">
             <Text className="text-base text-ui-fg-base mr-2">Email:</Text>
-            <Text className="text-base text-ui-fg-subtle">{order.email}</Text>
+            <Text className="text-base text-ui-fg-subtle">
+              {order.email && order.email !== DEFAULT_EMAIL ? order.email : ""}
+            </Text>
           </div>
         </div>
 

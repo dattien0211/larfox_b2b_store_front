@@ -27,7 +27,10 @@ const AccountNav = ({
   return (
     <div>
       {/* AccountNavMobile */}
-      <div className="small:hidden w-full" data-testid="mobile-account-nav">
+      <div
+        className="small:hidden w-full mt-4"
+        data-testid="mobile-account-nav"
+      >
         {route !== `/${countryCode}/tai-khoan` ? (
           <LocalizedClientLink
             href="/tai-khoan"

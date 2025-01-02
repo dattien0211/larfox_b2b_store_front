@@ -18,20 +18,20 @@ export default async function TransferPage({
         {success && (
           <>
             <Heading level="h1" className=" text-xl  text-zinc-900">
-              Order transfer declined!
+              Đơn hàng đã bị từ chối chuyển giao!
             </Heading>
             <Text className="text-zinc-600">
-              Transfer of order {id} has been successfully declined.
+              Việc chuyển giao đơn hàng {id} đã bị từ chối thành công.
             </Text>
           </>
         )}
         {!success && (
           <>
             <Text className="text-zinc-600">
-              There was an error declining the transfer. Please try again.
+              Đã xảy ra lỗi khi từ chối việc chuyển giao. Vui lòng thử lại.
             </Text>
             {error && (
-              <Text className="text-red-500">Error message: {error}</Text>
+              <Text className="text-red-500">Thông báo lỗi: {error}</Text>
             )}
           </>
         )}

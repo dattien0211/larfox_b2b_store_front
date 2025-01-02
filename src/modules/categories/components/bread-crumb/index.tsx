@@ -28,7 +28,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
   return (
     <nav aria-label="breadcrumb" className={className}>
-      <ul className="list-none p-0 flex items-center text-sm sm:text-base">
+      <ul className="list-none p-0 flex flex-wrap gap-y-1 items-center text-sm sm:text-base">
         <li>
           <LocalizedClientLink href="/" className="hover:text-primary">
             Trang chủ

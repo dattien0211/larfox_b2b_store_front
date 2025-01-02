@@ -66,7 +66,11 @@ const CartDropdown = ({
 
   // open cart dropdown when modifying the cart items, but only if we're not on the cart page
   useEffect(() => {
-    if (itemRef.current !== totalItems && !pathname.includes("/gio-")) {
+    if (
+      itemRef.current !== totalItems &&
+      !pathname.includes("/gio-hang") &&
+      !pathname.includes("/don-hang")
+    ) {
       timedOpen()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

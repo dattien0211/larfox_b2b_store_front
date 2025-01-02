@@ -9,6 +9,7 @@ import { redirect } from "next/navigation"
 import { getAuthHeaders, getCartId, removeCartId, setCartId } from "./cookies"
 import { getProductsById } from "./products"
 import { getRegion } from "./regions"
+import { DEFAULT_EMAIL } from "@constants/defaultEmail"
 
 export async function retrieveCart() {
   const cartId = getCartId()
@@ -324,7 +325,7 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
         province: formData.get("shipping_address.province"),
         phone: formData.get("shipping_address.phone"),
       },
-      email: formData.get("email"),
+      email: formData.get("email") || DEFAULT_EMAIL,
     } as any
 
     const sameAsBilling = formData.get("same_as_billing")

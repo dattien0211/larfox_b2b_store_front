@@ -16,7 +16,7 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
     <div>
       <Heading
         level="h2"
-        className="flex flex-row sm:text-3xl text-2xl   text-primary my-6"
+        className="flex flex-row sm:text-3xl text-2xl  text-primary my-6 font-times font-bold"
       >
         Phương thức thanh toán
       </Heading>

@@ -14,21 +14,21 @@ export default async function TransferPage({
       <TransferImage />
       <div className="flex flex-col gap-y-6">
         <Heading level="h1" className=" text-xl  text-zinc-900">
-          Transfer request for order {id}
+          Yêu cầu chuyển giao đơn hàng {id}
         </Heading>
         <Text className="text-zinc-600">
-          You&#39;ve received a request to transfer ownership of your order (
-          {id}). If you agree to this request, you can approve the transfer by
-          clicking the button below.
+          Bạn đã nhận được yêu cầu chuyển quyền sở hữu đơn hàng ({id}). Nếu bạn
+          đồng ý với yêu cầu này, bạn có thể phê duyệt việc chuyển giao bằng
+          cách nhấp vào nút bên dưới.
         </Text>
         <div className="w-full h-px bg-zinc-200" />
         <Text className="text-zinc-600">
-          If you accept, the new owner will take over all responsibilities and
-          permissions associated with this order.
+          Nếu bạn chấp nhận, chủ sở hữu mới sẽ đảm nhận toàn bộ trách nhiệm và
+          quyền liên quan đến đơn hàng này.
         </Text>
         <Text className="text-zinc-600">
-          If you do not recognize this request or wish to retain ownership, no
-          further action is required.
+          Nếu bạn không nhận ra yêu cầu này hoặc muốn giữ quyền sở hữu, bạn
+          không cần thực hiện thêm hành động nào.
         </Text>
         <div className="w-full h-px bg-zinc-200" />
         <TransferActions id={id} token={token} />

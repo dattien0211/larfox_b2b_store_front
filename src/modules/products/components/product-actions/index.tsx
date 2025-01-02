@@ -3,12 +3,10 @@
 import { Button } from "@medusajs/ui"
 import { isEqual } from "lodash"
 import { useParams, useRouter } from "next/navigation"
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
-import { useIntersection } from "@lib/hooks/use-in-view"
 import Divider from "@modules/common/components/divider"
 import OptionSelect from "@modules/products/components/product-actions/option-select"
-import MobileActions from "./mobile-actions"
 import ProductPrice from "../product-price"
 import { addToCart } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
@@ -106,10 +104,6 @@ export default function ProductActions({
     return false
   }, [selectedVariant])
 
-  const actionsRef = useRef<HTMLDivElement>(null)
-
-  const inView = useIntersection(actionsRef, "0px")
-
   // add the selected variant to the cart
   const handleAddToCart = async () => {
     if (!selectedVariant?.id) return null
@@ -189,7 +183,7 @@ export default function ProductActions({
         )}
       </div>
 
-      <div className="flex flex-col" ref={actionsRef}>
+      <div className="flex flex-col">
         <div className="border-y border-grey-50 py-4 my-4 sm:my-6">
           <div className="flex items-center justify-normal h-11 gap-x-2 lg:gap-x-4">
             <div className="rounded-sm h-full bg-grey-50 flex items-center justify-center">
@@ -232,14 +226,14 @@ export default function ProductActions({
               onClick={handleAddToCart}
               disabled={!inStock || !selectedVariant || !!disabled || isAdding}
               variant="primary"
-              className="text-sm h-full rounded-sm px-2 sm:px-4 lg:px-6 border-none shadow-none bg-black-30 font-medium sm:text-base"
+              className="text-sm h-full rounded-sm px-2 sm:px-4 lg:px-6 border-none shadow-none bg-black-30 font-medium sm:text-base hover:bg-primary"
               isLoading={isAdding}
               data-testid="add-product-button"
             >
               {inStock ? "Thêm giỏ hàng" : "Hết hàng"}
             </Button>
             <button
-              className="bg-primary px-2 sm:px-4 lg:px-6 h-full rounded-sm text-white sm:text-base text-sm"
+              className="bg-primary px-2 sm:px-4 lg:px-6 h-full rounded-sm text-white sm:text-base text-sm hover:bg-orang-30"
               onClick={handleBuyNow}
             >
               Mua ngay

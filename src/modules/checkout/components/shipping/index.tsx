@@ -140,7 +140,7 @@ const Shipping: React.FC<ShippingProps> = ({
             disabled={!cart.shipping_methods?.[0]}
             data-testid="submit-delivery-option-button"
           >
-            Thanh toán
+            Tiếp tục để đặt hàng
           </Button>
         </div>
       ) : (

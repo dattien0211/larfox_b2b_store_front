@@ -18,25 +18,29 @@ export default function SaleProductItem() {
         <div className="absolute top-2 right-10 z-20">
           <Thunder size={24} />
         </div>
-        <div className="text-red-500 bg-orang-15 flex  absolute top-[10px] right-2 text-xs pl-3 pr-1 py-[1px] rounded-r-sm">
+        <div className="text-red-500 bg-orang-15 flex  absolute top-[10px] right-2 text-xs pl-3 pr-1 py-[1px] rounded-r-sm font-semibold">
           -52%
         </div>
       </div>
       <div className="mt-4 ">
         <div className="flex items-center justify-between">
-          <p className="text-sm text-primary font-bold">Anco Care</p>
+          <p className="text-xxs sm:text-sm text-primary font-bold">
+            Anco Care
+          </p>
           <div className="flex items-center">
             <Star color="#EA9934" />
-            <p className="text-xxs sm:text-sm ml-1">4.8</p>
-            <p className="text-black-20 text-xxs sm:text-sm">(120K)</p>
+            <p className="text-xs sm:text-sm ml-1">4.8</p>
+            <p className="text-black-20 text-xs sm:text-sm">(120K)</p>
           </div>
         </div>
-        <h1 className="font-manrope-extrabold text-sm sm:text-lg line-clamp-2 h-10 mt-1">
+        <h1 className="font-manrope-extrabold text-sm sm:text-lg truncate line-clamp-1 mt-1">
           Dầu massga trị liệu 100ml
         </h1>
-        <div className="flex items-center justify-between text-sm sm:text-lg">
-          <p className="text-primary font-bold font-manrope-bold">299.000 đ</p>
-          <p className="text-black-20 line-through">299.000 đ</p>
+        <div className="flex items-center justify-between mt-2">
+          <p className="text-primary font-bold text-sm sm:text-xl">299.000 đ</p>
+          <p className="text-black-20 line-through text-xs sm:text-base">
+            299.000 đ
+          </p>
         </div>
         <div className="mt-2 sm:mt-4 rounded-full bg-[#FFDBB7] w-full h-5 relative">
           <div className="absolute bg-gradient-to-r from-[#EA541E] to-[#FBD316] top-0 left-0 w-[20%] h-full rounded-full"></div>

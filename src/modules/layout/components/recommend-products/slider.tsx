@@ -18,6 +18,7 @@ import "swiper/css/navigation"
 import "swiper/css/thumbs"
 import "swiper/css/free-mode"
 import "swiper/css/pagination"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const RecommendProductsSlider = () => {
   const { LeftArrow, RightArrow } = Icons
@@ -29,37 +30,37 @@ const RecommendProductsSlider = () => {
       imgSrc: IMGS.HotProduct1,
       brand: "Anco Care",
       name: "Xịt xao vàng",
-      price: "285.000 đ",
+      price: "285.000đ",
     },
     {
       imgSrc: IMGS.HotProduct2,
       brand: "Anco Home",
       name: "Lược chải sức khỏe",
-      price: "150.000 đ",
+      price: "150.000đ",
     },
     {
       imgSrc: IMGS.HotProduct3,
       brand: "Anco Foods",
       name: "Trà thảo mộc",
-      price: "325.000 đ",
+      price: "325.000đ",
     },
     {
       imgSrc: IMGS.HotProduct1,
       brand: "Anco Care",
       name: "Xịt xao vàng",
-      price: "285.000 đ",
+      price: "285.000đ",
     },
     {
       imgSrc: IMGS.HotProduct2,
       brand: "Anco Home",
       name: "Lược chải sức khỏe",
-      price: "150.000 đ",
+      price: "150.000đ",
     },
     {
       imgSrc: IMGS.HotProduct3,
       brand: "Anco Foods",
       name: "Trà thảo mộc",
-      price: "325.000 đ",
+      price: "325.000đ",
     },
   ]
 
@@ -101,17 +102,20 @@ const RecommendProductsSlider = () => {
                   height={280}
                   className="w-full object-contain"
                 />
-                <div className="absolute w-[60%] md:w-[90%] bg-white left-1/2 -translate-x-1/2 bottom-4 sm:bottom-2 z-20 cursor-pointer rounded-md p-2 lg:p-4 shadow-lg flex flex-col items-center justify-center">
+                <LocalizedClientLink
+                  href="/"
+                  className="absolute w-[60%] md:w-[90%] bg-white left-1/2 -translate-x-1/2 bottom-4 sm:bottom-2 z-20 cursor-pointer rounded-md p-2 lg:p-4 shadow-lg flex flex-col items-center justify-center"
+                >
                   <h2 className="font-times italic text-primary">
                     {product.brand}
                   </h2>
-                  <h1 className=" sm:text-base lg:text-2xl font-manrope-extrabold line-clamp-1">
+                  <h1 className="text-lg md:text-xl lg:text-2xl font-manrope-extrabold line-clamp-1 truncate">
                     {product.name}
                   </h1>
-                  <h3 className="sm:text-sm md:text-base text-primary">
+                  <h3 className="text-base text-primary font-bold ">
                     {product.price}
                   </h3>
-                </div>
+                </LocalizedClientLink>
               </div>
             </SwiperSlide>
           ))}

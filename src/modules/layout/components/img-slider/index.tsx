@@ -82,7 +82,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             <div
               key={index}
               className={clsx(
-                "p-2 w-[120px]  border transition-all duration-300 ease-in-out cursor-pointer",
+                "p-2 w-[120px] h-[70px] sm:h-[120px] border transition-all duration-300 ease-in-out cursor-pointer relative",
                 activeIndex === index
                   ? "opacity-100 border-yellow-400"
                   : "opacity-50 border-[#AEAEAE]"

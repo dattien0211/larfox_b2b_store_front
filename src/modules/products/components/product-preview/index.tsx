@@ -1,11 +1,10 @@
-import { Text } from "@medusajs/ui"
+import { HttpTypes } from "@medusajs/types"
 
 import { getProductPrice } from "@lib/util/get-product-price"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "../thumbnail"
 import PreviewPrice from "./price"
 import { getProductsById } from "@lib/data/products"
-import { HttpTypes } from "@medusajs/types"
 import Icons from "@modules/common/icons"
 
 export default async function ProductPreview({
@@ -17,7 +16,7 @@ export default async function ProductPreview({
   isFeatured?: boolean
   region: HttpTypes.StoreRegion
 }) {
-  const { Star, Heart } = Icons
+  const { Star, Heart, Thunder } = Icons
 
   const [pricedProduct] = await getProductsById({
     ids: [product.id!],
@@ -36,9 +35,9 @@ export default async function ProductPreview({
     <div className="group">
       <div
         data-testid="product-wrapper"
-        className="overflow-hidden flex flex-col gap-y-2"
+        className="overflow-hidden flex flex-col gap-y-1"
       >
-        <div className="relative">
+        <div className="relative shadow-md bg-grey-15 ">
           <Thumbnail
             thumbnail={product.thumbnail}
             images={product.images}
@@ -52,60 +51,74 @@ export default async function ProductPreview({
             </div>
             {cheapestPrice?.percentage_diff &&
               parseFloat(cheapestPrice?.percentage_diff) > 0 && (
-                <div className="text-white bg-primary flex text-xs px-2 py-1 rounded-sm">
-                  -{cheapestPrice?.percentage_diff}%
-                </div>
+                <>
+                  <div className="absolute top-2 right-10 z-20">
+                    <Thunder size={24} />
+                  </div>
+                  <div className="text-red-500 bg-orang-15 flex  absolute top-[10px] right-2 text-xs pl-3 pr-1 py-[1px] rounded-r-sm font-semibold">
+                    -{cheapestPrice?.percentage_diff}%
+                  </div>
+                </>
               )}
           </div>
 
-          <div className="px-4 w-full absolute bottom-4 left-0 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible">
+          <div className="px-8 sm:px-4 w-full absolute bottom-4 left-0 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible">
             <LocalizedClientLink href={`/san-pham/${product.handle}`}>
-              <button className="w-full h-9 rounded-md bg-primary text-white hover:bg-orang-30">
+              <button className="w-full h-7 sm:h-9 rounded-md bg-primary text-white hover:bg-orang-30 text-sm sm:text-base">
                 Xem chi tiết
               </button>
             </LocalizedClientLink>
           </div>
         </div>
 
-        <div>
-          <div className="max-w-full flex items-center flex-wrap gap-y-1">
-            {product?.categories &&
-              product?.categories?.length > 0 &&
-              product?.categories?.map((category) => (
+        <div className="flex flex-wrap gap-x-2 gap-y-1 mt-2">
+          {product?.categories &&
+            product?.categories.length > 0 &&
+            product.categories
+              .slice() // Create a shallow copy to avoid mutating the original array
+              .sort((a, b) => a.name.length - b.name.length) // Sort by length of name
+              .map((category) => (
                 <span key={category.id} className="flex items-center">
                   <LocalizedClientLink
                     href={`/danh-muc-san-pham/${category.handle}`}
-                    className="bg-primary py-[2px] px-1 rounded-sm text-white font-manrope-bold text-xs mr-2 text-nowrap"
+                    className="text-white bg-primary py-[2px] rounded-sm font-semibold text-xxs sm:text-xs px-1 text-nowrap"
                   >
                     {category.name}
                   </LocalizedClientLink>
                 </span>
               ))}
-            <span className="line-clamp-2 small:line-clamp-none sm:text-base text-sm">
-              {product?.title || "Sản phẩm AnCo phiên bản mới 2025"}
-            </span>
-          </div>
         </div>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <span className="text-primary text-lg font-semibold">
-              {cheapestPrice?.calculated_price}
-            </span>
 
-            {cheapestPrice?.percentage_diff &&
-              parseFloat(cheapestPrice?.percentage_diff) > 0 && (
-                <span className="text-grey-40 ml-2 line-through text-sm">
-                  {cheapestPrice?.original_price}
-                </span>
-              )}
-          </div>
-          <div className="flex items-center ml-2">
-            <Star color="#EA9934" size={18} />
-            <p className="flex items-center">
-              <span className="ml-[2px]">4.8</span>
+        <div className="line-clamp-2 text-black-30 text-sm sm:text-lg">
+          {product?.title || "Sản phẩm AnCo phiên bản mới 2025"}
+        </div>
+
+        <div className="flex items-center">
+          {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
+        </div>
+
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-x-1">
+            <Star color="#EA9934" size={16} />
+            <p className="text-xs sm:text-base">
+              <span className="mr-1">4.8</span>
             </p>
           </div>
+
+          <p className="text-xs sm:text-base">
+            <span className="text-grey-30 mr-1">Đã bán:</span>
+            <span className="text-black-30">130</span>
+          </p>
         </div>
+
+        {cheapestPrice && cheapestPrice.price_type === "sale" && (
+          <div className="mt-1 rounded-full bg-[#FFDBB7] w-full h-5 relative">
+            <div className="absolute bg-gradient-to-r from-[#EA541E] to-[#FBD316] top-0 left-0 w-[20%] h-full rounded-full"></div>
+            <div className="absolute uppercase inset-0 text-orang-30 text-xxs  sm:text-xs h-full w-full flex items-center justify-center">
+              Đang bán chạy
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

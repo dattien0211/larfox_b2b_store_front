@@ -27,26 +27,30 @@ const ProductMoreInfo = ({ product, variant }: ProductInfoProps) => {
               ?.sku}
         </div>
       </div>
-      <div className="flex text-sm">
-        <span className="text-black-20 mr-2">Loại Sản Phẩm:</span>
-        <div className="flex gap-x-2">
+      <div className="flex  text-sm">
+        <span className="text-black-20 mr-2 text-nowrap">Loại Sản Phẩm:</span>
+        <div className="flex gap-x-2 flex-wrap gap-y-1">
           {product?.categories &&
             product?.categories?.length > 0 &&
-            product?.categories?.map((category, index) => {
-              return (
-                <div key={category?.id}>
-                  <LocalizedClientLink
-                    href={`/danh-muc-san-pham/${category?.handle}`}
-                    className="hover:text-primary"
-                  >
-                    {category?.name}
-                  </LocalizedClientLink>
-                  {product?.categories && index < product?.categories.length - 1
-                    ? ", "
-                    : ""}
-                </div>
-              )
-            })}
+            product?.categories
+              ?.slice() // Create a shallow copy to avoid mutating the original array
+              ?.sort((a, b) => a.name.length - b.name.length) // Sort by length of name
+              ?.map((category, index) => {
+                return (
+                  <div key={category?.id}>
+                    <LocalizedClientLink
+                      href={`/danh-muc-san-pham/${category?.handle}`}
+                      className="hover:text-primary"
+                    >
+                      {category?.name}
+                    </LocalizedClientLink>
+                    {product?.categories &&
+                    index < product?.categories.length - 1
+                      ? ", "
+                      : ""}
+                  </div>
+                )
+              })}
         </div>
       </div>
       <div className="flex text-sm">
@@ -56,7 +60,7 @@ const ProductMoreInfo = ({ product, variant }: ProductInfoProps) => {
             product?.tags?.map((tag, index) => {
               return (
                 <div key={tag?.id}>
-                  <LocalizedClientLink href="#">
+                  <LocalizedClientLink href="#" className="hover:text-primary">
                     {tag?.value}
                   </LocalizedClientLink>
                   {product?.tags && index < product?.tags.length - 1

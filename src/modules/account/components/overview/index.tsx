@@ -53,30 +53,41 @@ const Overview = ({ customer, orders }: OverviewProps) => {
                         <LocalizedClientLink
                           href={`/tai-khoan/don-hang/chi-tiet/${order.id}`}
                         >
-                          <Container className="bg-gray-50 flex justify-between items-center p-4">
-                            <div className="grid grid-cols-3 grid-rows-2 text-small-regular sm:text-base-regular gap-x-2 sm:gap-x-4 flex-1">
-                              <span className="font-semibold">Ngày đặt</span>
-                              <span className="font-semibold">Mã đơn hàng</span>
-                              <span className="font-semibold">
-                                Tổng thành tiền
-                              </span>
-                              <span data-testid="order-created-date">
-                                {new Date(order.created_at).toLocaleDateString(
-                                  "vi-VN"
-                                )}
-                              </span>
-                              <span
-                                data-testid="order-id"
-                                data-value={order.display_id}
-                              >
-                                #{order.display_id}
-                              </span>
-                              <span data-testid="order-amount">
-                                {convertToLocale({
-                                  amount: order.total,
-                                  currency_code: order.currency_code,
-                                })}
-                              </span>
+                          <Container className="bg-gray-50 flex justify-between items-center p-4 text-sm md:text-base gap-x-4 gap-y-2">
+                            <div className="flex flex-col sm:flex-row flex-wrap gap-x-2 sm:gap-x-4 flex-1 gap-y-2">
+                              <div className="w-full sm:w-1/5">
+                                <span className="font-semibold text-sm">
+                                  Ngày đặt
+                                </span>
+                                <div data-testid="order-created-date">
+                                  {new Date(
+                                    order.created_at
+                                  ).toLocaleDateString("vi-VN")}
+                                </div>
+                              </div>
+                              <div className="w-full sm:w-1/2">
+                                <span className="font-semibold text-sm">
+                                  Mã đơn hàng
+                                </span>
+                                <div
+                                  data-testid="order-id"
+                                  data-value={order.id}
+                                  className="uppercase"
+                                >
+                                  {order.id}
+                                </div>
+                              </div>
+                              <div>
+                                <span className="font-semibold text-sm">
+                                  Tổng thành tiền
+                                </span>
+                                <div data-testid="order-amount">
+                                  {convertToLocale({
+                                    amount: order.total,
+                                    currency_code: order.currency_code,
+                                  })}
+                                </div>
+                              </div>
                             </div>
                             <button
                               className="flex items-center justify-between"
@@ -104,36 +115,6 @@ const Overview = ({ customer, orders }: OverviewProps) => {
       </div>
     </div>
   )
-}
-
-const getProfileCompletion = (customer: HttpTypes.StoreCustomer | null) => {
-  let count = 0
-
-  if (!customer) {
-    return 0
-  }
-
-  if (customer.email) {
-    count++
-  }
-
-  if (customer.first_name && customer.last_name) {
-    count++
-  }
-
-  if (customer.phone) {
-    count++
-  }
-
-  const billingAddress = customer.addresses?.find(
-    (addr) => addr.is_default_billing
-  )
-
-  if (billingAddress) {
-    count++
-  }
-
-  return (count / 4) * 100
 }
 
 export default Overview

@@ -77,7 +77,7 @@ const Payment = ({
   )
 
   const handleEdit = () => {
-    router.push(pathname + "?" + createQueryString("step", "payment"), {
+    router.push(pathname + "?" + createQueryString("step", "thanh-toan"), {
       scroll: false,
     })
   }
