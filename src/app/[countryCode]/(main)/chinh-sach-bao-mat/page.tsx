@@ -14,7 +14,7 @@ export default async function SecurityPolicyPage() {
           Chính Sách Bảo Mật Thông Tin
         </h1>
 
-        <h2 className="my-8 text-2xl font-manrope-extrabold">
+        <h2 className="my-8 text-2xl font-manrope-bold">
           1. Mục đích và phạm vi thu thập
         </h2>
         <div>
@@ -43,7 +43,7 @@ export default async function SecurityPolicyPage() {
           <br />
           Thời gian giao nhận sản phẩm
         </div>
-        <h2 className="my-6 text-2xl font-manrope-extrabold">
+        <h2 className="my-6 text-2xl font-manrope-bold">
           2. Phạm vi sử dụng thông tin
         </h2>
         <div>
@@ -65,7 +65,7 @@ export default async function SecurityPolicyPage() {
           liên quan đến các khoản thanh toán trực tuyến của bạn.
           <br />
         </div>
-        <h2 className="my-6 text-2xl font-manrope-extrabold">
+        <h2 className="my-6 text-2xl font-manrope-bold">
           3. Thời gian lưu trữ thông tin
         </h2>
         <div>
@@ -73,7 +73,7 @@ export default async function SecurityPolicyPage() {
           hàng có yêu cầu, khách hàng yêu cầu gửi mail về cskh@comem.vn
           <br />
         </div>
-        <h2 className="my-6 text-2xl font-manrope-extrabold">
+        <h2 className="my-6 text-2xl font-manrope-bold">
           4. Những người hoặc tổ chức có thể được tiếp cận với thông tin cá nhân
         </h2>
         <div>
@@ -90,7 +90,7 @@ export default async function SecurityPolicyPage() {
           vụ do Công ty cung cấp.
           <br />
         </div>
-        <h2 className="my-6 text-2xl font-manrope-extrabold">
+        <h2 className="my-6 text-2xl font-manrope-bold">
           5. Địa chỉ của đơn vị thu thập và quản lý thông tin cá nhân
         </h2>
         <ul className="list-disc pl-6">
@@ -103,7 +103,7 @@ export default async function SecurityPolicyPage() {
           <li> Website: Comem.vn</li>
           <li> Email: cskh@comem.vn</li>
         </ul>
-        <h2 className="my-6 text-2xl font-manrope-extrabold">
+        <h2 className="my-6 text-2xl font-manrope-bold">
           6. Phương tiện và công cụ để người dùng tiếp cập và chỉnh sử dữ liệu
           cá nhân của mình
         </h2>
@@ -118,7 +118,7 @@ export default async function SecurityPolicyPage() {
             Comem.vn chỉnh sửa dữ liệu cá nhân của mình <br />
           </div>
         </div>
-        <h2 className="my-6 text-2xl font-manrope-extrabold">
+        <h2 className="my-6 text-2xl font-manrope-bold">
           7. Cơ chế tiếp nhận và giải quyết khiếu nại của người tiêu dùng liên
           quan đến việc thông tin cá nhân bị sử dụng sai mục đích hoặc phạm vi
           đã thông báo

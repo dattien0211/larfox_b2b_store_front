@@ -70,7 +70,7 @@ export default function SaleProductItem({ productItem }: { productItem: any }) {
                     ? `/danh-muc-san-pham/${product?.categories[0].handle}`
                     : "/"
                 }
-                className="bg-primary py-[2px] px-1 rounded-sm text-white font-manrope-bold text-xxs"
+                className="bg-primary py-[2px] px-1 rounded-sm text-white font-manrope-semibold text-xxs"
               >
                 {product?.categories[0].name}
               </LocalizedClientLink>
@@ -83,7 +83,7 @@ export default function SaleProductItem({ productItem }: { productItem: any }) {
             <p className="text-black-20 text-xs sm:text-sm">(120K)</p>
           </div>
         </div>
-        <h1 className="font-manrope-extrabold text-sm sm:text-lg  line-clamp-1 mt-1">
+        <h1 className="text-sm sm:text-lg  line-clamp-1 mt-1">
           {product?.title}
         </h1>
         <div className="flex items-center justify-between mt-2">

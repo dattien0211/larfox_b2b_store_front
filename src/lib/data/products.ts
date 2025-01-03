@@ -73,7 +73,8 @@ export const getProductsList = cache(async function ({
         limit,
         offset,
         region_id: region.id,
-        fields: "*variants.calculated_price,*categories",
+        fields:
+          "*variants.calculated_price,+variants.inventory_quantity,*categories",
         ...queryParams,
       },
       { next: { tags: ["products"] } }

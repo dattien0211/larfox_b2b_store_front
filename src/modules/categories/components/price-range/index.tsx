@@ -39,11 +39,11 @@ const PriceRange = () => {
       </div>
       <p className="">
         <span className="text-sm sm:text-base">Giá:</span>
-        <span className="font-manrope-extrabold ml-2 sm:text-lg">
+        <span className="font-manrope-semibold ml-2 sm:text-lg">
           {formatNumber(value[0])}
         </span>
         <span className="mx-2">-</span>
-        <span className="font-manrope-extrabold  sm:text-lg">
+        <span className="font-manrope-semibold  sm:text-lg">
           {formatNumber(value[1])}
         </span>
       </p>

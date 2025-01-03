@@ -91,7 +91,7 @@ export default function ProductReview({
 
         {/* Review Form */}
         <div className="mt-8 sm:mt-12">
-          <h1 className="font-manrope-extrabold mb-4 text-base sm:text-lg">
+          <h1 className="font-manrope-semibold mb-4 text-base sm:text-lg">
             Hãy là người đầu tiên đánh giá
           </h1>
           <div className="my-2 sm:my-4">

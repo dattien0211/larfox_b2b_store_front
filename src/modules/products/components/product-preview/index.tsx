@@ -16,19 +16,10 @@ export default async function ProductPreview({
   isFeatured?: boolean
   region: HttpTypes.StoreRegion
 }) {
-  const { Star, Heart, Thunder } = Icons
-
-  const [pricedProduct] = await getProductsById({
-    ids: [product.id!],
-    regionId: region.id,
-  })
-
-  if (!pricedProduct) {
-    return null
-  }
+  const { Star, Thunder } = Icons
 
   const { cheapestPrice } = getProductPrice({
-    product: pricedProduct,
+    product: product,
   })
 
   return (
@@ -81,7 +72,7 @@ export default async function ProductPreview({
                 <span key={category.id} className="flex items-center">
                   <LocalizedClientLink
                     href={`/danh-muc-san-pham/${category.handle}`}
-                    className="text-white bg-primary py-[2px] rounded-sm font-semibold text-xxs sm:text-xs px-1 text-nowrap"
+                    className="text-white bg-primary py-[2px] rounded-sm font-manrope-semibold text-xxs sm:text-xs px-1 text-nowrap"
                   >
                     {category.name}
                   </LocalizedClientLink>

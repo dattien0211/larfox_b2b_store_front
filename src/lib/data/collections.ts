@@ -28,10 +28,7 @@ export const getCollectionByHandle = cache(async function (
 })
 
 export const getCollectionsWithProducts = cache(
-  async (
-    countryCode: string,
-    region: HttpTypes.StoreRegion
-  ): Promise<HttpTypes.StoreCollection[] | null> => {
+  async (countryCode: string): Promise<HttpTypes.StoreCollection[] | null> => {
     const { collections } = await getCollectionsList(0, 5)
 
     if (!collections) {
@@ -59,18 +56,9 @@ export const getCollectionsWithProducts = cache(
             collection.products = []
           }
 
-          const [pricedProduct] = await getProductsById({
-            ids: [product.id!],
-            regionId: region.id,
+          const cheapestPrice = getProductPrice({
+            product: product,
           })
-
-          let cheapestPrice = {}
-
-          if (pricedProduct) {
-            cheapestPrice = getProductPrice({
-              product: pricedProduct,
-            })
-          }
 
           collection.products.push({ ...cheapestPrice } as any)
         }

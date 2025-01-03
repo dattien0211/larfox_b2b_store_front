@@ -63,7 +63,7 @@ export default function ProductItem({ productItem }: { productItem: any }) {
                 ? `/danh-muc-san-pham/${product?.categories[0].handle}`
                 : "/"
             }
-            className="bg-primary py-[2px] px-1 rounded-sm text-white font-manrope-bold text-xxs"
+            className="bg-primary py-[2px] px-1 rounded-sm text-white font-manrope-semibold text-xxs"
           >
             {product?.categories[0].name}
           </LocalizedClientLink>
