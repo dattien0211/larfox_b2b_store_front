@@ -1,12 +1,11 @@
 import { Metadata } from "next"
-
 import Image from "next/image"
 import Hero from "@modules/home/components/hero"
 import { getCollectionsWithProducts } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
+
 import AboutUs from "@modules/layout/components/about-us"
 import FlashSale from "@modules/layout/components/flash-sale"
-import BannerProduct from "@modules/layout/components/banner"
 import ListProducts from "@modules/layout/components/list-products"
 import RecommendProducts from "@modules/layout/components/recommend-products"
 import IMGS from "@constants/IMGS"
@@ -14,6 +13,13 @@ import OurStory from "@modules/layout/components/our-story"
 import Blogs from "@modules/layout/components/blogs"
 import TextAnco from "@modules/layout/components/text-anco"
 import ProductBanner from "@modules/layout/components/product-banner"
+import {
+  FLASH_SALE_HANDLE,
+  RECOMMEND_PRODUCT_HANDLE,
+  NEW_PRODUCT_HANDLE,
+  BEST_SELLER_PRODUCT_HANDLE,
+  EQUIPMENT_PRODUCT_HANDLE,
+} from "@constants/defaultHandleCollection"
 
 export const metadata: Metadata = {
   title: "Anco",
@@ -26,13 +32,26 @@ export default async function Home({
 }: {
   params: { countryCode: string }
 }) {
-  const collections = await getCollectionsWithProducts(countryCode)
   const region = await getRegion(countryCode)
 
-  if (!collections || !region) {
+  if (!region) {
     return null
   }
 
+  const collections = await getCollectionsWithProducts(countryCode, region)
+
+  if (!collections) {
+    return null
+  }
+
+  // Function to get products based on collection handle
+  function getProductsByHandle(handle: string) {
+    if (!collections) return []
+    const collection = collections.find(
+      (collection) => collection.handle === handle
+    )
+    return collection ? collection.products : []
+  }
   return (
     <>
       <Hero />
@@ -72,7 +91,10 @@ export default async function Home({
             className="w-full h-full object-contain"
           />
         </div>
-        <FlashSale />
+        <FlashSale
+          products={getProductsByHandle(FLASH_SALE_HANDLE)}
+          collectionHandle={FLASH_SALE_HANDLE}
+        />
       </div>
 
       <div className="bg-beige-10 relative py-12 sm:py-20">
@@ -82,7 +104,10 @@ export default async function Home({
           title="Anco Shop"
           description="Những sản phẩm đặc biệt của chúng tôi, được thiết kế và sản xuất với công nghệ tiên tiến."
         />
-        <RecommendProducts />
+        <RecommendProducts
+          products={getProductsByHandle(RECOMMEND_PRODUCT_HANDLE)}
+          collectionHandle={RECOMMEND_PRODUCT_HANDLE}
+        />
       </div>
 
       <ProductBanner />
@@ -94,17 +119,24 @@ export default async function Home({
           title="Sản phẩm"
           description="Sản phẩm mới giúp nâng cao hiệu quả công việc và cuộc sống hàng ngày."
         />
-        <ListProducts />
+        <ListProducts
+          products={getProductsByHandle(NEW_PRODUCT_HANDLE)}
+          collectionHandle={NEW_PRODUCT_HANDLE}
+        />
       </div>
 
       <div className="relative py-12 sm:py-20">
         <TextAnco
           backgroundText="Products"
           subTitle="Sản phẩm bán chạy"
-          title="Sản phẩm "
+          title="Sản phẩm"
+          classDesText="w-[50%] mx-auto"
           description="Luôn đứng đầu trong danh sách bán chạy nhờ vào tính năng ưu việt và khả năng đáp ứng nhu cầu của khách hàng một cách hoàn hảo."
         />
-        <ListProducts />
+        <ListProducts
+          products={getProductsByHandle(BEST_SELLER_PRODUCT_HANDLE)}
+          collectionHandle={BEST_SELLER_PRODUCT_HANDLE}
+        />
         <Image
           src={IMGS.Banner5}
           alt="banner"
@@ -123,7 +155,10 @@ export default async function Home({
           title="Trang thiết bị"
           description="Những sản phẩm đặc biệt của chúng tôi, được thiết kế và sản xuất với công nghệ tiên tiến."
         />
-        <RecommendProducts />
+        <RecommendProducts
+          products={getProductsByHandle(EQUIPMENT_PRODUCT_HANDLE)}
+          collectionHandle={EQUIPMENT_PRODUCT_HANDLE}
+        />
       </div>
 
       <OurStory />

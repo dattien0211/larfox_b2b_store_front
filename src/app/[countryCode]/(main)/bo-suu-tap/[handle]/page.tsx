@@ -9,12 +9,13 @@ import { listRegions } from "@lib/data/regions"
 import { StoreCollection, StoreRegion } from "@medusajs/types"
 import CollectionTemplate from "@modules/collections/templates"
 import { SortOptions } from "@modules/categories/components/sort-category"
+import { getCategoriesList } from "@lib/data/categories"
 
 type Props = {
   params: { handle: string; countryCode: string }
   searchParams: {
+    ["sap-xep"]?: SortOptions
     page?: string
-    sortBy?: SortOptions
   }
 }
 
@@ -67,7 +68,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function CollectionPage({ params, searchParams }: Props) {
-  const { sortBy, page } = searchParams
+  const { page } = searchParams
+  const sortBy = searchParams["sap-xep"]
+  const categories = await getCategoriesList()
 
   const collection = await getCollectionByHandle(params.handle).then(
     (collection: StoreCollection) => collection
@@ -80,6 +83,7 @@ export default async function CollectionPage({ params, searchParams }: Props) {
   return (
     <CollectionTemplate
       collection={collection}
+      allCategories={categories.product_categories}
       page={page}
       sortBy={sortBy}
       countryCode={params.countryCode}

@@ -1,10 +1,8 @@
 "use client"
 
-import { useOS } from "@lib/hooks/OSContext"
-import Icons from "@modules/common/icons"
+import { HttpTypes } from "@medusajs/types"
 import Image from "next/image"
-import IMGS from "@constants/IMGS"
-import React, { useCallback, useRef, useState } from "react"
+import React, { useCallback, useRef } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import {
   Navigation,
@@ -18,51 +16,23 @@ import "swiper/css/navigation"
 import "swiper/css/thumbs"
 import "swiper/css/free-mode"
 import "swiper/css/pagination"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-const RecommendProductsSlider = () => {
+import Icons from "@modules/common/icons"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { useOS } from "@lib/hooks/OSContext"
+import IMGS from "@constants/IMGS"
+interface RecommendProductsSliderProps {
+  products?: any
+  collectionHandle?: string
+}
+
+const RecommendProductsSlider: React.FC<RecommendProductsSliderProps> = ({
+  products,
+  collectionHandle,
+}) => {
   const { LeftArrow, RightArrow } = Icons
   const { os } = useOS()
   const sliderRef = useRef<any>(null)
-
-  const products = [
-    {
-      imgSrc: IMGS.HotProduct1,
-      brand: "Anco Care",
-      name: "Xịt xao vàng",
-      price: "285.000đ",
-    },
-    {
-      imgSrc: IMGS.HotProduct2,
-      brand: "Anco Home",
-      name: "Lược chải sức khỏe",
-      price: "150.000đ",
-    },
-    {
-      imgSrc: IMGS.HotProduct3,
-      brand: "Anco Foods",
-      name: "Trà thảo mộc",
-      price: "325.000đ",
-    },
-    {
-      imgSrc: IMGS.HotProduct1,
-      brand: "Anco Care",
-      name: "Xịt xao vàng",
-      price: "285.000đ",
-    },
-    {
-      imgSrc: IMGS.HotProduct2,
-      brand: "Anco Home",
-      name: "Lược chải sức khỏe",
-      price: "150.000đ",
-    },
-    {
-      imgSrc: IMGS.HotProduct3,
-      brand: "Anco Foods",
-      name: "Trà thảo mộc",
-      price: "325.000đ",
-    },
-  ]
 
   const handlePrev = useCallback(() => {
     if (sliderRef.current) {
@@ -92,33 +62,70 @@ const RecommendProductsSlider = () => {
             sliderRef.current = swiper
           }}
         >
-          {products.map((product, index) => (
-            <SwiperSlide key={index}>
-              <div className="relative h-[290px]  sm:h-[280px] md:h-[330px]">
-                <Image
-                  src={product.imgSrc}
-                  alt="hot product"
-                  width={380}
-                  height={280}
-                  className="w-full object-contain"
-                />
-                <LocalizedClientLink
-                  href="/"
-                  className="absolute w-[60%] md:w-[90%] bg-white left-1/2 -translate-x-1/2 bottom-4 sm:bottom-2 z-20 cursor-pointer rounded-md p-2 lg:p-4 shadow-lg flex flex-col items-center justify-center"
-                >
-                  <h2 className="font-times italic text-primary">
-                    {product.brand}
-                  </h2>
-                  <h1 className="text-lg md:text-xl lg:text-2xl font-manrope-extrabold line-clamp-1 truncate">
-                    {product.name}
-                  </h1>
-                  <h3 className="text-base text-primary font-bold ">
-                    {product.price}
-                  </h3>
-                </LocalizedClientLink>
-              </div>
-            </SwiperSlide>
-          ))}
+          {products &&
+            products.length > 0 &&
+            products.map(
+              (
+                {
+                  product,
+                  cheapestPrice,
+                }: {
+                  product: HttpTypes.StoreProduct
+                  cheapestPrice: {
+                    calculated_price_number: any
+                    calculated_price: string
+                    original_price_number: any
+                    original_price: string
+                    currency_code: any
+                    price_type: any
+                    percentage_diff: string
+                  } | null
+                },
+                index: number
+              ) => (
+                <SwiperSlide key={index}>
+                  <div className="relative h-[330px]  sm:h-[360px] ">
+                    <Image
+                      src={
+                        product?.thumbnail ||
+                        (product?.images && product?.images.length > 0
+                          ? product.images[0].url
+                          : IMGS.Product)
+                      }
+                      alt="hot product"
+                      width={380}
+                      height={280}
+                      className="w-full h-[85%] object-contain bg-white"
+                    />
+                    <div className="absolute w-[60%] sm:w-[70%] bg-white left-1/2 -translate-x-1/2 bottom-2  z-20 cursor-pointer rounded-md p-2 lg:p-4 shadow-md flex flex-col items-center justify-center">
+                      <LocalizedClientLink
+                        href={
+                          product?.categories && product?.categories.length > 0
+                            ? `/danh-muc-san-pham/${product?.categories[0].handle}`
+                            : "/"
+                        }
+                        className="font-times italic text-primary"
+                      >
+                        {product?.categories &&
+                          product?.categories.length > 0 &&
+                          product?.categories[0].name}
+                      </LocalizedClientLink>
+                      <LocalizedClientLink
+                        href={
+                          product?.handle ? `/san-pham/${product?.handle}` : "/"
+                        }
+                        className="text-lg md:text-xl font-manrope-extrabold line-clamp-1  "
+                      >
+                        {product?.title}
+                      </LocalizedClientLink>
+                      <h3 className="text-base text-primary font-bold ">
+                        {cheapestPrice?.calculated_price}
+                      </h3>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              )
+            )}
         </Swiper>
       </div>
 

@@ -147,9 +147,9 @@ body {
     -webkit-appearance: none;
   }
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 0;
-}
+} */
 
 @layer components {
   .content-container {

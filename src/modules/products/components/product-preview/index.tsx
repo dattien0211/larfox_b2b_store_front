@@ -1,10 +1,10 @@
 import { HttpTypes } from "@medusajs/types"
 
 import { getProductPrice } from "@lib/util/get-product-price"
+import { getProductsById } from "@lib/data/products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "../thumbnail"
 import PreviewPrice from "./price"
-import { getProductsById } from "@lib/data/products"
 import Icons from "@modules/common/icons"
 
 export default async function ProductPreview({
@@ -46,9 +46,9 @@ export default async function ProductPreview({
             className="!aspect-square !rounded-none"
           />
           <div className="absolute top-4 left-0 px-4 w-full flex items-center justify-between">
-            <div className="cursor-pointer text-grey-40 hover:bg-primary hover:text-white w-7 h-7 rounded-full bg-white flex items-center justify-center z-10">
+            {/* <div className="cursor-pointer text-grey-40 hover:bg-primary hover:text-white w-7 h-7 rounded-full bg-white flex items-center justify-center z-10">
               <Heart size={18} />
-            </div>
+            </div> */}
             {cheapestPrice?.percentage_diff &&
               parseFloat(cheapestPrice?.percentage_diff) > 0 && (
                 <>

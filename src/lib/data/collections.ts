@@ -1,7 +1,8 @@
 import { sdk } from "@lib/config"
 import { cache } from "react"
-import { getProductsList } from "./products"
+import { getProductsById, getProductsList } from "./products"
 import { HttpTypes } from "@medusajs/types"
+import { getProductPrice } from "@lib/util/get-product-price"
 
 export const retrieveCollection = cache(async function (id: string) {
   return sdk.store.collection
@@ -27,8 +28,11 @@ export const getCollectionByHandle = cache(async function (
 })
 
 export const getCollectionsWithProducts = cache(
-  async (countryCode: string): Promise<HttpTypes.StoreCollection[] | null> => {
-    const { collections } = await getCollectionsList(0, 3)
+  async (
+    countryCode: string,
+    region: HttpTypes.StoreRegion
+  ): Promise<HttpTypes.StoreCollection[] | null> => {
+    const { collections } = await getCollectionsList(0, 5)
 
     if (!collections) {
       return null
@@ -39,23 +43,39 @@ export const getCollectionsWithProducts = cache(
       .filter(Boolean) as string[]
 
     const { response } = await getProductsList({
-      queryParams: { collection_id: collectionIds },
+      pageParam: 0,
+      queryParams: { limit: 12, collection_id: collectionIds },
       countryCode,
     })
 
-    response.products.forEach((product) => {
-      const collection = collections.find(
-        (collection) => collection.id === product.collection_id
-      )
+    await Promise.all(
+      response.products.map(async (product) => {
+        const collection = collections.find(
+          (collection) => collection.id === product.collection_id
+        )
 
-      if (collection) {
-        if (!collection.products) {
-          collection.products = []
+        if (collection) {
+          if (!collection.products) {
+            collection.products = []
+          }
+
+          const [pricedProduct] = await getProductsById({
+            ids: [product.id!],
+            regionId: region.id,
+          })
+
+          let cheapestPrice = {}
+
+          if (pricedProduct) {
+            cheapestPrice = getProductPrice({
+              product: pricedProduct,
+            })
+          }
+
+          collection.products.push({ ...cheapestPrice } as any)
         }
-
-        collection.products.push(product as any)
-      }
-    })
+      })
+    )
 
     return collections as unknown as HttpTypes.StoreCollection[]
   }

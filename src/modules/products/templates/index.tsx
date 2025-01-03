@@ -70,7 +70,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             dangerouslySetInnerHTML={{
               __html: product.description
                 ? product.description.replace(/\n/g, "<br />")
-                : "",
+                : "Mô tả sản phẩm đang được cập nhật.",
             }}
           ></div>
         </div>

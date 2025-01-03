@@ -239,12 +239,12 @@ export default function ProductActions({
               Mua ngay
             </button>
           </div>
-          <div className="mt-4 flex gap-x-2 items-center">
+          {/* <div className="mt-4 flex gap-x-2 items-center">
             <span className="cursor-pointer">
               <Heart />
             </span>
             <p>Thêm sản phẩm yêu thích</p>
-          </div>
+          </div> */}
         </div>
 
         <ProductMoreInfo product={product} variant={selectedVariant} />
@@ -252,18 +252,6 @@ export default function ProductActions({
         <ProductSocial />
 
         <ProductPolicy />
-
-        {/* <MobileActions
-          product={product}
-          variant={selectedVariant}
-          options={options}
-          updateOptions={setOptionValue}
-          inStock={inStock}
-          handleAddToCart={handleAddToCart}
-          isAdding={isAdding}
-          show={!inView}
-          optionsDisabled={!!disabled || isAdding}
-        /> */}
       </div>
     </>
   )

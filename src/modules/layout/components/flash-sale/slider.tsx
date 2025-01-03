@@ -1,8 +1,4 @@
 "use client"
-
-import { useOS } from "@lib/hooks/OSContext"
-import Icons from "@modules/common/icons"
-import IMGS from "@constants/IMGS"
 import React, { useCallback, useRef, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import {
@@ -17,51 +13,15 @@ import "swiper/css/navigation"
 import "swiper/css/thumbs"
 import "swiper/css/free-mode"
 import "swiper/css/pagination"
-import SaleProductItem from "../sale-product-item"
 
-const FlashSaleProductsSlider = () => {
+import { useOS } from "@lib/hooks/OSContext"
+import Icons from "@modules/common/icons"
+import SaleProductItem from "@modules/layout/components/sale-product-item"
+
+const FlashSaleProductsSlider = ({ products }: { products: any }) => {
   const { LeftArrow, RightArrow } = Icons
   const { os } = useOS()
   const sliderRef = useRef<any>(null)
-
-  const products = [
-    {
-      imgSrc: IMGS.HotProduct1,
-      brand: "Anco Care",
-      name: "Xịt xao vàng",
-      price: "285.000 đ",
-    },
-    {
-      imgSrc: IMGS.HotProduct2,
-      brand: "Anco Home",
-      name: "Lược chải sức khỏe",
-      price: "150.000 đ",
-    },
-    {
-      imgSrc: IMGS.HotProduct3,
-      brand: "Anco Foods",
-      name: "Trà thảo mộc",
-      price: "325.000 đ",
-    },
-    {
-      imgSrc: IMGS.HotProduct1,
-      brand: "Anco Care",
-      name: "Xịt xao vàng",
-      price: "285.000 đ",
-    },
-    {
-      imgSrc: IMGS.HotProduct2,
-      brand: "Anco Home",
-      name: "Lược chải sức khỏe",
-      price: "150.000 đ",
-    },
-    {
-      imgSrc: IMGS.HotProduct3,
-      brand: "Anco Foods",
-      name: "Trà thảo mộc",
-      price: "325.000 đ",
-    },
-  ]
 
   const handlePrev = useCallback(() => {
     if (sliderRef.current) {
@@ -91,11 +51,12 @@ const FlashSaleProductsSlider = () => {
             sliderRef.current = swiper
           }}
         >
-          {products.map((product, index) => (
-            <SwiperSlide key={index}>
-              <SaleProductItem />
-            </SwiperSlide>
-          ))}
+          {products.length > 0 &&
+            products.map((product: any, index: number) => (
+              <SwiperSlide key={index}>
+                <SaleProductItem productItem={product} />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
 

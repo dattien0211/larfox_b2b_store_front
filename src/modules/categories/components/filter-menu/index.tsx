@@ -74,8 +74,8 @@ export default function FilterMenu({
           />
         )}
         <PriceRange />
-        <SizeFilter />
-        <TagFilter />
+        {/* <SizeFilter />
+        <TagFilter /> */}
       </div>
 
       {/* Overlay for Smaller Screens */}
