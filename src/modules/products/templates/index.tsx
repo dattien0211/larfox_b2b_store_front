@@ -11,6 +11,7 @@ import { HttpTypes } from "@medusajs/types"
 import ImageSlider from "@modules/layout/components/img-slider"
 import { Heading } from "@medusajs/ui"
 import ProductReview from "@modules/products/components/product-review"
+import { getCustomer } from "@lib/data/customer"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
@@ -18,7 +19,7 @@ type ProductTemplateProps = {
   countryCode: string
 }
 
-const ProductTemplate: React.FC<ProductTemplateProps> = ({
+const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   product,
   region,
   countryCode,
@@ -26,6 +27,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   if (!product || !product.id) {
     return notFound()
   }
+  const customer = await getCustomer().catch(() => null)
 
   return (
     <div className="mb-24">
@@ -80,7 +82,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             Đánh giá sản phẩm
           </Heading>
 
-          <ProductReview />
+          <ProductReview customer={customer} />
         </div>
       </div>
 

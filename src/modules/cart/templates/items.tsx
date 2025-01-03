@@ -20,7 +20,7 @@ const ItemsTemplate = ({ items }: ItemsTemplateProps) => {
       <Table>
         <Table.Header className="border-t-0">
           <Table.Row>
-            <Table.HeaderCell className="!pl-0 text-base text-nowrap !pr-2 sm:!pr-6">
+            <Table.HeaderCell className="!pl-0 text-base text-nowrap !pr-0 sm:!pr-6">
               Sản phẩm
             </Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>

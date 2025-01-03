@@ -21,7 +21,7 @@ export default function CollectionTemplate({
   countryCode: string
 }) {
   const pageNumber = page ? parseInt(page) : 1
-  const sort = sortBy || "giam_dan"
+  const sort = sortBy || "moi_nhat"
 
   return (
     <div className="mb-24">

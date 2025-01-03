@@ -33,11 +33,11 @@ const ListProducts: React.FC<ListProductsProps> = ({
           <ProductItem key={index} productItem={product} />
         ))}
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-10 sm:mt-20">
         <LocalizedClientLink
           href={collectionHandle ? `/bo-suu-tap/${collectionHandle}` : "/"}
         >
-          <button className="mt-10 sm:mt-20 rounded-full px-4 py-[6px] sm:px-8 sm:py-2 mx-auto border border-primary text-primary hover:bg-primary hover:text-white">
+          <button className=" rounded-full px-4 py-[6px] sm:px-8 sm:py-2 mx-auto border border-primary text-primary hover:bg-primary hover:text-white">
             Xem tất cả
           </button>
         </LocalizedClientLink>

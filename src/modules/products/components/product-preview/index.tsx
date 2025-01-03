@@ -113,7 +113,7 @@ export default async function ProductPreview({
 
         {cheapestPrice && cheapestPrice.price_type === "sale" && (
           <div className="mt-1 rounded-full bg-[#FFDBB7] w-full h-5 relative">
-            <div className="absolute bg-gradient-to-r from-[#EA541E] to-[#FBD316] top-0 left-0 w-[20%] h-full rounded-full"></div>
+            <div className="absolute bg-gradient-to-r from-[#EA541E] to-[#FBD316] top-0 left-0 w-[28%] h-full rounded-full"></div>
             <div className="absolute uppercase inset-0 text-orang-30 text-xxs  sm:text-xs h-full w-full flex items-center justify-center">
               Đang bán chạy
             </div>

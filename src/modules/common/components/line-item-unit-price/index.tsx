@@ -26,7 +26,7 @@ const LineItemUnitPrice = ({
         <>
           <p>
             {style === "default" && (
-              <span className="text-ui-fg-muted">Original: </span>
+              <span className="text-ui-fg-muted">Giá gốc: </span>
             )}
             <span
               className="line-through"
@@ -35,15 +35,13 @@ const LineItemUnitPrice = ({
               {original_price}
             </span>
           </p>
-          {style === "default" && (
+          {/* {style === "default" && (
             <span className="text-ui-fg-interactive">-{percentage_diff}%</span>
-          )}
+          )} */}
         </>
       )}
       <span
-        className={clx("text-sm", {
-          "text-ui-fg-interactive": hasReducedPrice,
-        })}
+        className={clx("text-sm text-primary", {})}
         data-testid="product-unit-price"
       >
         {calculated_price}

@@ -90,3 +90,5 @@ export default async function CollectionPage({ params, searchParams }: Props) {
     />
   )
 }
+
+export const dynamic = "force-dynamic"

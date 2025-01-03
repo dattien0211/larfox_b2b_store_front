@@ -42,7 +42,7 @@ const Summary = ({ cart }: SummaryProps) => {
       <div className="flex items-center justify-between">
         <div className="flex flex-col">
           <h2>Thành tiền</h2>
-          <h1 className="text-xl font-semibold text-primary">
+          <h1 className="text-xl sm:text-2xl font-semibold text-primary">
             {convertToLocale({
               amount: cart.total ?? 0,
               currency_code: cart.currency_code,
@@ -53,7 +53,7 @@ const Summary = ({ cart }: SummaryProps) => {
           href={"/dat-hang?step=" + step}
           data-testid="checkout-button"
         >
-          <button className=" bg-primary text-white px-4 w-full h-10 cursor-pointer">
+          <button className=" bg-primary text-white px-4 w-full h-10 cursor-pointer hover:bg-orang-30">
             Thanh toán
           </button>
         </LocalizedClientLink>

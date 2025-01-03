@@ -38,7 +38,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       data-testid="product-row"
     >
       <Table.Cell
-        className={clx("!pl-0 pr-2 py-4 w-24", {
+        className={clx("!pl-0 !pr-0 sm:!pr-6 py-4 w-24", {
           "!w-20": type === "preview",
         })}
       >
@@ -115,7 +115,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
         </span>
       </Table.Cell>
 
-      <Table.Cell className="!px-1">
+      <Table.Cell className="!px-0">
         <DeleteButton id={item.id} data-testid="product-delete-button" />
       </Table.Cell>
     </Table.Row>
