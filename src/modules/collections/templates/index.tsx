@@ -26,7 +26,7 @@ export default function CollectionTemplate({
   return (
     <div className="mb-24">
       <div className="flex items-center gap-x-2 mt-6  content-container">
-        <h1 className="text-xl-semi md:text-2xl-semi text-primary">
+        <h1 className="text-xl-semi md:text-2xl-semi text-primary font-times">
           {collection.title}
         </h1>
       </div>

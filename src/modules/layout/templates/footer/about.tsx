@@ -6,9 +6,7 @@ export default async function FooterAbout() {
 
   return (
     <div className="sm:col-span-6 lg:col-span-2">
-      <h1 className="font-bold text-lg sm:text-2xl font-manrope-bold">
-        Về Anco
-      </h1>
+      <h1 className="font-bold text-lg sm:text-2xl font-times">Về Anco</h1>
       <div className="sm:mt-8 mt-2">
         <ul className="list-none space-y-2 sm:space-y-4">
           <li className=" hover:text-orang-5">

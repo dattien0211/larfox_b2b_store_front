@@ -5,7 +5,7 @@ export default async function FooterSocial() {
 
   return (
     <div className="w-full sm:w-fit flex items-center justify-between sm:justify-center gap-x-2">
-      <h1 className="text-white font-manrope-bold font-bold text-lg sm:text-xl ">
+      <h1 className="text-white  font-bold text-lg sm:text-xl font-times">
         Follow Us
       </h1>
       <div className="w-[65px] sm:w-[45px] h-[1px] bg-white"></div>
