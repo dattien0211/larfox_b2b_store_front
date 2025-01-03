@@ -29,8 +29,8 @@ const ListProducts: React.FC<ListProductsProps> = ({
   return (
     <div className="content-container mt-10">
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-12">
-        {displayedProducts?.map((product) => (
-          <ProductItem key={product.id} productItem={product} />
+        {displayedProducts?.map((product, index) => (
+          <ProductItem key={index} productItem={product} />
         ))}
       </div>
       <div className="flex justify-center">

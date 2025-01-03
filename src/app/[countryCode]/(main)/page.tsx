@@ -130,7 +130,7 @@ export default async function Home({
           backgroundText="Products"
           subTitle="Sản phẩm bán chạy"
           title="Sản phẩm"
-          classDesText="w-[50%] mx-auto"
+          classDesText="sm:w-[50%] mx-auto"
           description="Luôn đứng đầu trong danh sách bán chạy nhờ vào tính năng ưu việt và khả năng đáp ứng nhu cầu của khách hàng một cách hoàn hảo."
         />
         <ListProducts

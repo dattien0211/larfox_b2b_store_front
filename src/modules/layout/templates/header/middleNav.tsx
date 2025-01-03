@@ -30,9 +30,9 @@ export default async function MiddleNav() {
       <div className="flex items-center gap-x-1 md:gap-x-2">
         <SearchIconMobile />
         <UserDropDown customer={customer} />
-        <span className="cursor-pointer hover:text-primary py-2 px-1 lg:py-4 lg:px-2 ">
+        {/* <span className="cursor-pointer hover:text-primary py-2 px-1 lg:py-4 lg:px-2 ">
           <Heart />
-        </span>
+        </span> */}
         <Suspense
           fallback={
             <LocalizedClientLink

@@ -48,7 +48,7 @@ const RecommendProductsSlider: React.FC<RecommendProductsSliderProps> = ({
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="w-[90%] sm:w-full cursor-pointer">
+      <div className="w-[90%] sm:w-full ">
         <Swiper
           modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
           loop
@@ -84,20 +84,30 @@ const RecommendProductsSlider: React.FC<RecommendProductsSliderProps> = ({
                 index: number
               ) => (
                 <SwiperSlide key={index}>
-                  <div className="relative h-[330px]  sm:h-[360px] ">
-                    <Image
-                      src={
-                        product?.thumbnail ||
-                        (product?.images && product?.images.length > 0
-                          ? product.images[0].url
-                          : IMGS.Product)
+                  <div className="relative h-[330px] sm:h-[360px]">
+                    <LocalizedClientLink
+                      href={
+                        product?.categories && product?.categories.length > 0
+                          ? `/danh-muc-san-pham/${product?.categories[0].handle}`
+                          : "/"
                       }
-                      alt="hot product"
-                      width={380}
-                      height={280}
-                      className="w-full h-[85%] object-contain bg-white"
-                    />
-                    <div className="absolute w-[60%] sm:w-[70%] bg-white left-1/2 -translate-x-1/2 bottom-2  z-20 cursor-pointer rounded-md p-2 lg:p-4 shadow-md flex flex-col items-center justify-center">
+                      className="relative "
+                    >
+                      <Image
+                        src={
+                          product?.thumbnail ||
+                          (product?.images && product?.images.length > 0
+                            ? product.images[0].url
+                            : IMGS.Product)
+                        }
+                        alt="hot product"
+                        width={380}
+                        height={280}
+                        className="w-full h-[85%] object-contain bg-white"
+                      />
+                    </LocalizedClientLink>
+
+                    <div className="absolute w-[60%] sm:w-[70%] bg-white left-1/2 -translate-x-1/2 bottom-2  z-20 rounded-md p-2 lg:p-4 shadow-md flex flex-col items-center justify-center">
                       <LocalizedClientLink
                         href={
                           product?.categories && product?.categories.length > 0

@@ -22,8 +22,8 @@ export default function SearchNav() {
           className="px-4 hidden md:block md:w-[260px] lg:w-[420px] focus:outline-none h-full bg-grey-10 text-primary rounded-l-md"
           onFocus={handleOnFocus}
         />
-        <div className="bg-primary w-[46px] h-[46px] flex items-center justify-center rounded-r-md cursor-pointer">
-          <span className="text-black md:text-white" onClick={handleOnFocus}>
+        <div className="bg-primary w-[46px] h-[46px] flex items-center justify-center rounded-r-md cursor-pointer" onClick={handleOnFocus}>
+          <span className="text-black md:text-white" >
             <Search />
           </span>
         </div>

@@ -36,7 +36,7 @@ const Hits = ({
       )}
     >
       <div
-        className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xlarge:grid-cols-5 gap-4 mb-4"
+        className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xlarge:grid-cols-5 gap-2 sm:gap-4 mb-4"
         data-testid="search-results"
       >
         {hits.slice(0, width >= 1680 ? 15 : 8).map((hit, index) => (
