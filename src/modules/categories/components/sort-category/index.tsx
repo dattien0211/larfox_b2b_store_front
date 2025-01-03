@@ -17,11 +17,11 @@ const sortOptions = [
     label: "Mới nhất",
   },
   {
-    value: "giam_dan",
+    value: "tang_dan",
     label: "Giá từ: Thấp → Cao",
   },
   {
-    value: "tang_dan",
+    value: "giam_dan",
     label: "Giá từ: Cao → Thấp",
   },
 ]
