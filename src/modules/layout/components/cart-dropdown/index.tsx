@@ -69,7 +69,8 @@ const CartDropdown = ({
     if (
       itemRef.current !== totalItems &&
       !pathname.includes("/gio-hang") &&
-      !pathname.includes("/don-hang")
+      !pathname.includes("/don-hang") &&
+      !pathname.includes("/dat-hang")
     ) {
       timedOpen()
     }

@@ -41,7 +41,7 @@ const LineItemUnitPrice = ({
         </>
       )}
       <span
-        className={clx("text-sm text-primary", {})}
+        className={clx("text-xs sm:text-sm text-primary", {})}
         data-testid="product-unit-price"
       >
         {calculated_price}

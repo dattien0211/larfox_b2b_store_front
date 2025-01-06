@@ -29,8 +29,8 @@ const Item = ({ item, type = "full" }: ItemProps) => {
   const { handle } = item.variant?.product ?? {}
 
   // TODO: Update this to grab the actual max inventory
-  const maxQtyFromInventory = 10
-  const maxQuantity = item.variant?.manage_inventory ? 10 : maxQtyFromInventory
+  // const maxQtyFromInventory = 10
+  // const maxQuantity = item.variant?.manage_inventory ? 10 : maxQtyFromInventory
 
   return (
     <Table.Row
@@ -38,7 +38,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       data-testid="product-row"
     >
       <Table.Cell
-        className={clx("!pl-0 !pr-0 sm:!pr-6 py-4 w-24", {
+        className={clx("!pl-0 !pr-2 sm:!pr-4 py-4 w-24", {
           "!w-20": type === "preview",
         })}
       >
@@ -62,7 +62,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
           className={clsx(
             "text-sm sm:text-base truncate text-ui-fg-base w-[150px] sm:w-[200px]",
             {
-              "!text-sm": type === "preview",
+              "!text-base": type === "preview",
             }
           )}
           data-testid="product-title"
@@ -70,23 +70,22 @@ const Item = ({ item, type = "full" }: ItemProps) => {
           {item.product_title}
         </Text>
         {/* <LineItemOptions variant={item.variant} data-testid="product-variant" /> */}
-        <div className="mt-2">
-          <div
-            className={clsx("flex gap-2 items-center", {
-              "!h-[30px]": type === "preview",
-            })}
-          >
-            <QuantityItem
-              itemQuantity={item.quantity}
-              itemId={item.id}
-              setUpdating={setUpdating}
-              setError={setError}
-              isDisabled={updating || error !== null}
-            />
-            {updating && <Spinner />}
+
+        {type === "full" && (
+          <div className="mt-2">
+            <div className={clsx("flex gap-2 items-center !h-[30px]", {})}>
+              <QuantityItem
+                itemQuantity={item.quantity}
+                itemId={item.id}
+                setUpdating={setUpdating}
+                setError={setError}
+                isDisabled={updating || error !== null}
+              />
+              {updating && <Spinner />}
+            </div>
+            <ErrorMessage error={error} data-testid="product-error-message" />
           </div>
-          <ErrorMessage error={error} data-testid="product-error-message" />
-        </div>
+        )}
       </Table.Cell>
 
       {type === "full" && (
@@ -96,8 +95,9 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       )}
 
       <Table.Cell
-        className={clsx("!pr-2 sm:!pr-6", {
-          "!pr-2": type === "preview",
+        className={clsx("!pr-2", {
+          "!pr-0": type === "preview",
+          "sm:!pr-6": type === "full",
         })}
       >
         <span
@@ -105,19 +105,23 @@ const Item = ({ item, type = "full" }: ItemProps) => {
             "!text-lg flex flex-col items-end justify-center h-full"
           )}
         >
-          {/* {type === "preview" && (
+          {type === "preview" && (
             <span className="flex gap-x-1 ">
-              <Text className="text-ui-fg-muted">{item.quantity}x </Text>
+              <Text className="text-ui-fg-muted text-xs sm:text-sm">
+                {item.quantity}x{" "}
+              </Text>
               <LineItemUnitPrice item={item} style="tight" />
             </span>
-          )} */}
+          )}
           <LineItemPrice item={item} style="tight" />
         </span>
       </Table.Cell>
 
-      <Table.Cell className="!px-0">
-        <DeleteButton id={item.id} data-testid="product-delete-button" />
-      </Table.Cell>
+      {type === "full" && (
+        <Table.Cell className="!px-0">
+          <DeleteButton id={item.id} data-testid="product-delete-button" />
+        </Table.Cell>
+      )}
     </Table.Row>
   )
 }
