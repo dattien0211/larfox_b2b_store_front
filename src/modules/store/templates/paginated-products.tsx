@@ -12,10 +12,14 @@ type PaginatedProductsParams = {
   category_id?: string[]
   id?: string[]
   order?: string
+  min_price?: number
+  max_price?: number
 }
 
 export default async function PaginatedProducts({
   sortBy,
+  minPrice,
+  maxPrice,
   page,
   collectionId,
   categoryId,
@@ -23,6 +27,8 @@ export default async function PaginatedProducts({
   countryCode,
 }: {
   sortBy?: SortOptions
+  minPrice?: string
+  maxPrice?: string
   page: number
   collectionId?: string
   categoryId?: string[]
@@ -45,6 +51,14 @@ export default async function PaginatedProducts({
 
   if (sortBy === "moi_nhat") {
     queryParams["order"] = "created_at"
+  }
+
+  if (minPrice) {
+    queryParams["min_price"] = Number(minPrice)
+  }
+
+  if (maxPrice) {
+    queryParams["max_price"] = Number(maxPrice)
   }
 
   const sortOrder =

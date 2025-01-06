@@ -45,25 +45,23 @@ export const getCollectionsWithProducts = cache(
       countryCode,
     })
 
-    await Promise.all(
-      response.products.map(async (product) => {
-        const collection = collections.find(
-          (collection) => collection.id === product.collection_id
-        )
+    response.products.map((product) => {
+      const collection = collections.find(
+        (collection) => collection.id === product.collection_id
+      )
 
-        if (collection) {
-          if (!collection.products) {
-            collection.products = []
-          }
-
-          const cheapestPrice = getProductPrice({
-            product: product,
-          })
-
-          collection.products.push({ ...cheapestPrice } as any)
+      if (collection) {
+        if (!collection.products) {
+          collection.products = []
         }
-      })
-    )
+
+        const cheapestPrice = getProductPrice({
+          product: product,
+        })
+
+        collection.products.push(cheapestPrice as any)
+      }
+    })
 
     return collections as unknown as HttpTypes.StoreCollection[]
   }

@@ -52,6 +52,7 @@ export default async function Home({
     )
     return collection ? collection.products : []
   }
+
   return (
     <>
       <Hero />

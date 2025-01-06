@@ -10,12 +10,16 @@ import ProductBanner from "@modules/layout/components/product-banner"
 
 const StoreTemplate = ({
   sortBy,
+  minPrice,
+  maxPrice,
   page,
   countryCode,
   allCategories,
 }: {
   allCategories: HttpTypes.StoreProductCategory[]
   sortBy?: SortOptions
+  minPrice?: string
+  maxPrice?: string
   page?: string
   countryCode: string
 }) => {
@@ -45,6 +49,8 @@ const StoreTemplate = ({
           <Suspense fallback={<SkeletonProductGrid />}>
             <PaginatedProducts
               sortBy={sort}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
               page={pageNumber}
               countryCode={countryCode}
             />

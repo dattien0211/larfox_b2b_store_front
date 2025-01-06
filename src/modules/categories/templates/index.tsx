@@ -14,6 +14,8 @@ import ProductBanner from "@modules/layout/components/product-banner"
 export default function CategoryTemplate({
   categories,
   sortBy,
+  minPrice,
+  maxPrice,
   page,
   countryCode,
   allCategories,
@@ -22,6 +24,8 @@ export default function CategoryTemplate({
   categories: HttpTypes.StoreProductCategory[]
   allCategories: HttpTypes.StoreProductCategory[]
   sortBy?: SortOptions
+  minPrice?: string
+  maxPrice?: string
   page?: string
   countryCode: string
   paramsCategory: string[]
@@ -62,6 +66,8 @@ export default function CategoryTemplate({
             <PaginatedProducts
               sortBy={sort}
               page={pageNumber}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
               categoryId={categories.map((category) => category.id)}
               countryCode={countryCode}
             />

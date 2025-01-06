@@ -16,6 +16,8 @@ type Props = {
   searchParams: {
     ["sap-xep"]?: SortOptions
     page?: string
+    min_price?: string
+    max_price?: string
   }
 }
 
@@ -70,6 +72,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function CollectionPage({ params, searchParams }: Props) {
   const { page } = searchParams
   const sortBy = searchParams["sap-xep"]
+  const minPrice = searchParams["min_price"]
+  const maxPrice = searchParams["max_price"]
+
   const categories = await getCategoriesList()
 
   const collection = await getCollectionByHandle(params.handle).then(
@@ -86,6 +91,8 @@ export default async function CollectionPage({ params, searchParams }: Props) {
       allCategories={categories.product_categories}
       page={page}
       sortBy={sortBy}
+      minPrice={minPrice}
+      maxPrice={maxPrice}
       countryCode={params.countryCode}
     />
   )

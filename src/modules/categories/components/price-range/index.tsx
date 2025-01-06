@@ -1,37 +1,57 @@
 "use client"
 
-import { useState } from "react"
-import { useRouter, usePathname, useSearchParams } from "next/navigation"
+import { useState, useEffect } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 // @ts-ignore
 import RangeSlider from "react-range-slider-input"
 import "react-range-slider-input/dist/style.css"
 import "./styles.css"
 
 const PriceRange = () => {
-  const [value, setValue] = useState([100000, 2500000])
   const router = useRouter()
-  const pathname = usePathname()
   const searchParams = useSearchParams()
+
+  // Default slider range
+  const defaultRange = [10000, 250000]
+  const [value, setValue] = useState(defaultRange)
 
   // Format number with commas using Intl.NumberFormat
   const formatNumber = (num: number) =>
     new Intl.NumberFormat("vi-VN").format(num)
 
-  const setQueryParams = (name: string, value: string) =>
-    router.push(
-      `${pathname}?${new URLSearchParams(searchParams).set(name, value)}`
+  // Sync slider value with URL query parameters
+  useEffect(() => {
+    const minPrice = parseInt(
+      searchParams.get("min_price") || `${defaultRange[0]}`
     )
+    const maxPrice = parseInt(
+      searchParams.get("max_price") || `${defaultRange[1]}`
+    )
+    setValue([minPrice, maxPrice])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams])
+
+  const handlePriceFilterChange = () => {
+    const currentParams = new URLSearchParams(searchParams.toString())
+
+    // Update the query parameters
+    currentParams.set("min_price", value[0].toString())
+    currentParams.set("max_price", value[1].toString())
+
+    // Push the updated URL
+    router.push(`?${currentParams.toString()}`)
+  }
 
   return (
     <>
       <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 pb-4 sm:py-4 mt-6 sm:mt-8">
         Giá
       </h2>
-      <div className="my-6 sm:my-12">
+      <div className="my-6 sm:my-12 w-[98%]">
         <RangeSlider
           id="range-slider-yellow"
           min={10000}
-          max={10000000}
+          max={5000000}
           value={value}
           step={10000}
           onInput={setValue}
@@ -48,7 +68,10 @@ const PriceRange = () => {
         </span>
       </p>
       <div className="mt-4 sm:mt-6">
-        <button className="px-8 py-2 bg-primary text-white rounded-md hover:bg-orang-10 text-sm sm:text-base">
+        <button
+          className="px-8 py-2 bg-primary text-white rounded-md hover:bg-orang-10 text-sm sm:text-base"
+          onClick={handlePriceFilterChange}
+        >
           Áp dụng
         </button>
       </div>

@@ -4,6 +4,7 @@ import { cache } from "react"
 import { getRegion } from "./regions"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import { sortProducts } from "@lib/util/sort-products"
+import { getProductPrice } from "@lib/util/get-product-price"
 
 export const getProductsById = cache(async function ({
   ids,
@@ -103,7 +104,8 @@ export const getProductsListWithSort = cache(async function ({
   countryCode,
 }: {
   page?: number
-  queryParams?: HttpTypes.FindParams & HttpTypes.StoreProductParams
+  queryParams?: HttpTypes.FindParams &
+    HttpTypes.StoreProductParams & { min_price?: number; max_price?: number }
   sortBy?: SortOptions
   countryCode: string
 }): Promise<{
@@ -112,20 +114,43 @@ export const getProductsListWithSort = cache(async function ({
   queryParams?: HttpTypes.FindParams & HttpTypes.StoreProductParams
 }> {
   const limit = queryParams?.limit || 12
+  // Destructure min_price and max_price from queryParams
+  const { min_price, max_price, ...restQueryParams } = queryParams || {}
 
   const {
     response: { products, count },
   } = await getProductsList({
     pageParam: 0,
     queryParams: {
-      ...queryParams,
+      ...restQueryParams,
       limit: 1000,
     },
     countryCode,
   })
 
-  const sortedProducts = sortProducts(products, sortBy)
+  // Map through products and calculate the price for each
+  const mappedProducts = products.map((product) => {
+    const { cheapestPrice } = getProductPrice({ product }) // Assuming getProductPrice returns a price object
+    return { ...product, ...cheapestPrice } // Merge product with price details
+  })
 
+  // Apply price filtering based on min_price and max_price
+  const filteredProducts = mappedProducts.filter((product) => {
+    const productPrice = product.calculated_price_number || 0 // Use the price field populated by getProductPrice
+    const meetsMinPrice =
+      min_price !== undefined ? productPrice >= min_price : true
+    const meetsMaxPrice =
+      max_price !== undefined ? productPrice <= max_price : true
+    return meetsMinPrice && meetsMaxPrice
+  })
+
+  // Sort products
+  const sortedProducts = sortProducts(
+    min_price && max_price ? filteredProducts : products,
+    sortBy
+  )
+
+  // Paginate products
   const pageParam = (page - 1) * limit
 
   const nextPage = count > pageParam + limit ? pageParam + limit : null
