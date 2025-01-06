@@ -25,8 +25,8 @@ export default async function StorePage({ searchParams, params }: Params) {
   const { page } = searchParams
   const sortBy = searchParams["sap-xep"]
   const categories = await getCategoriesList()
-    const minPrice = searchParams["min_price"]
-    const maxPrice = searchParams["max_price"]
+  const minPrice = searchParams["min_price"]
+  const maxPrice = searchParams["max_price"]
 
   return (
     <StoreTemplate
