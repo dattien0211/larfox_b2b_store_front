@@ -9,6 +9,8 @@ import CategoryHeader from "@modules/categories/components/category-header"
 
 export default function CollectionTemplate({
   sortBy,
+  minPrice,
+  maxPrice,
   collection,
   page,
   countryCode,
@@ -16,6 +18,8 @@ export default function CollectionTemplate({
 }: {
   allCategories: HttpTypes.StoreProductCategory[]
   sortBy?: SortOptions
+  minPrice?: string
+  maxPrice?: string
   collection: HttpTypes.StoreCollection
   page?: string
   countryCode: string
@@ -51,6 +55,8 @@ export default function CollectionTemplate({
             <PaginatedProducts
               sortBy={sort}
               page={pageNumber}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
               collectionId={collection.id}
               countryCode={countryCode}
             />
