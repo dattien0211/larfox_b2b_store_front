@@ -12,6 +12,7 @@ import ImageSlider from "@modules/layout/components/img-slider"
 import { Heading } from "@medusajs/ui"
 import ProductReview from "@modules/products/components/product-review"
 import { getCustomer } from "@lib/data/customer"
+import { cookies } from "next/headers"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
@@ -28,6 +29,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
     return notFound()
   }
   const customer = await getCustomer().catch(() => null)
+  const token = cookies().get("_medusa_jwt")?.value
 
   return (
     <div className="mb-24">
@@ -82,7 +84,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
             Đánh giá sản phẩm
           </Heading>
 
-          <ProductReview customer={customer} />
+          <ProductReview customer={customer} product={product} token={token} />
         </div>
       </div>
 

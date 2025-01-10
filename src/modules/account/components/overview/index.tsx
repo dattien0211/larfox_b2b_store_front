@@ -17,7 +17,9 @@ const Overview = ({ customer, orders }: OverviewProps) => {
         <div className="text-lg sm:text-xl flex flex-col sm:flex-row justify-between items-center mb-4 font-times">
           <span data-testid="welcome-message" data-value={customer?.first_name}>
             Xin chào{" "}
-            <span className="text-primary">{customer?.first_name}</span>
+            <span className="text-primary font-semibold">
+              {customer?.first_name}
+            </span>
           </span>
           <span className="text-lg sm:text-xl">
             Email:{" "}

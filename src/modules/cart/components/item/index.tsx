@@ -28,7 +28,6 @@ const Item = ({ item, type = "full" }: ItemProps) => {
 
   const { handle } = item.variant?.product ?? {}
 
-  // TODO: Update this to grab the actual max inventory
   // const maxQtyFromInventory = 10
   // const maxQuantity = item.variant?.manage_inventory ? 10 : maxQtyFromInventory
 

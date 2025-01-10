@@ -10,17 +10,28 @@ import Icons from "@modules/common/icons"
 export default async function ProductPreview({
   product,
   isFeatured,
-  region,
 }: {
   product: HttpTypes.StoreProduct
   isFeatured?: boolean
-  region: HttpTypes.StoreRegion
 }) {
   const { Star, Thunder } = Icons
 
   const { cheapestPrice } = getProductPrice({
     product: product,
   })
+
+  const reviews = Array.isArray(product?.metadata?.reviews)
+    ? product.metadata.reviews
+    : []
+
+  const averageRating =
+    reviews.length > 0
+      ? (reviews.reduce((sum, r) => sum + r.star, 0) / reviews.length).toFixed(
+          1
+        )
+      : "5"
+
+  const soldCount = Number(product?.metadata?.sold) || 0
 
   return (
     <div className="group">
@@ -92,13 +103,13 @@ export default async function ProductPreview({
           <div className="flex items-center gap-x-1">
             <Star color="#EA9934" size={16} />
             <p className="text-xs sm:text-base">
-              <span className="mr-1">4.8</span>
+              <span className="mr-1">{averageRating}</span>
+              <span className="mr-1">({reviews.length})</span>
             </p>
           </div>
-
           <p className="text-xs sm:text-base">
             <span className="text-grey-30 mr-1">Đã bán:</span>
-            <span className="text-black-30">130</span>
+            <span className="text-black-30">{soldCount}</span>
           </p>
         </div>
 

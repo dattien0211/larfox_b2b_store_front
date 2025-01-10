@@ -70,13 +70,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProductPage({ params }: Props) {
-  const region = await getRegion(params.countryCode)
+  // const region = await getRegion(params.countryCode)
+
+  //TODO - remove it
+  const region = {
+    id: "reg_01JDV4DD8PWVRHDMPDK24GNZ65",
+    name: "Việt Nam",
+    currency_code: "vnd",
+    created_at: "2024-11-29T04:56:05.659Z",
+    updated_at: "2024-11-29T04:56:05.659Z",
+    deleted_at: null,
+    automatic_taxes: false,
+    metadata: null,
+  }
 
   if (!region) {
     notFound()
   }
 
-  const pricedProduct = await getProductByHandle(params.handle, region.id)
+  const pricedProduct = await getProductByHandle(params.handle, region?.id)
 
   if (!pricedProduct) {
     notFound()

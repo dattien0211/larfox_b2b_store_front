@@ -371,6 +371,24 @@ export async function placeOrder() {
   if (cartRes?.type === "order") {
     const countryCode =
       cartRes.order.shipping_address?.country_code?.toLowerCase()
+
+    //add sold quantity to product
+    if (cartRes?.order?.items && cartRes?.order?.items.length > 0) {
+      const productArr = cartRes?.order?.items.map((item) => ({
+        product_id: item.product_id,
+        quantity: item.quantity,
+        metadata: item.metadata,
+      }))
+
+      await sdk.client.fetch("/store/add-sold-product", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: { products: productArr },
+      })
+    }
+
     removeCartId()
     redirect(`/${countryCode}/don-hang/${cartRes?.order.id}/confirmed`)
   }

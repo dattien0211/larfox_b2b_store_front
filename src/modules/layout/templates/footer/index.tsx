@@ -20,6 +20,7 @@ export default async function Footer() {
         <div className="relative w-full">
           <Image
             src={IMGS.Leaf}
+            priority
             alt="leaf"
             width={1200} // Set the original width of the image
             height={56} // Set the original height to maintain the aspect ratio

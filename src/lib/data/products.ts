@@ -5,7 +5,8 @@ import { getRegion } from "./regions"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import { sortProducts } from "@lib/util/sort-products"
 import { getProductPrice } from "@lib/util/get-product-price"
-import { off } from "process"
+import client from "@lib/util/client"
+import { UploadedFile } from "./upload-file"
 
 export const getProductsById = cache(async function ({
   ids,
@@ -20,7 +21,7 @@ export const getProductsById = cache(async function ({
         id: ids,
         region_id: regionId,
         fields:
-          "*variants.calculated_price,+variants.inventory_quantity,*categories",
+          "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
       },
       { next: { tags: ["products"] } }
     )
@@ -37,7 +38,7 @@ export const getProductByHandle = cache(async function (
         handle,
         region_id: regionId,
         fields:
-          "*variants.calculated_price,+variants.inventory_quantity,*categories",
+          "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
       },
 
       { next: { tags: ["products"] } }
@@ -76,7 +77,7 @@ export const getProductsList = cache(async function ({
         offset,
         region_id: region.id,
         fields:
-          "*variants.calculated_price,+variants.inventory_quantity,*categories",
+          "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
         ...queryParams,
       },
       { next: { tags: ["products"] } }
@@ -121,7 +122,8 @@ export const getProductsListWithSort = cache(async function ({
   const defaultFetchLimit = 1000
   const offset =
     page * limit > defaultFetchLimit
-      ? defaultFetchLimit * Math.floor(page * limit) - defaultFetchLimit
+      ? Math.floor((page * limit) / defaultFetchLimit) * defaultFetchLimit -
+        defaultFetchLimit
       : 0
 
   const {
@@ -177,6 +179,28 @@ export const getProductsListWithSort = cache(async function ({
     queryParams,
   }
 })
+
+export const reviewProduct = async (
+  token: string,
+  productID: string,
+  data: {
+    star: number
+    description: string
+    images?: UploadedFile[]
+  }
+) => {
+  try {
+    const res = await client.put(`/store/review/${productID}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
 
 // export const getProductsListWithSort = cache(async function ({
 //   page = 0,

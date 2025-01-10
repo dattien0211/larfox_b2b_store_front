@@ -7,7 +7,21 @@ type ProductInfoProps = {
 }
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
-  const { Star } = Icons
+  const { Star, StarHalf } = Icons
+
+  const reviews = Array.isArray(product?.metadata?.reviews)
+    ? product.metadata.reviews
+    : []
+
+  const averageRating =
+    reviews.length > 0
+      ? (reviews.reduce((sum, r) => sum + r.star, 0) / reviews.length).toFixed(
+          1
+        )
+      : "5"
+  const rating = parseFloat(averageRating)
+  const soldCount = Number(product?.metadata?.sold) || 0
+
   return (
     <div id="product-info " className="mt-2 sm:mt-4">
       <div className="flex flex-col gap-y-2 sm:gap-y-4">
@@ -19,18 +33,30 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
           {product.title}
         </Heading>
         <div className="flex items-center gap-x-2">
-          <div className="text-primary flex gap-x-[2px]">
-            <Star size={20} />
-            <Star size={20} />
-            <Star size={20} />
-            <Star size={20} />
-            <Star size={20} />
+          <div className=" flex gap-x-[2px]">
+            {[...Array(5)].map((_, index) => {
+              if (index < Math.floor(rating)) {
+                // Full star with primary color
+                return <Star key={index} size={20} className="text-primary" />
+              }
+              if (index < Math.ceil(rating)) {
+                // Half star with primary color
+                return (
+                  <StarHalf key={index} size={20} className="text-primary" />
+                )
+              }
+              // Empty star with gray color
+              return <Star key={index} size={20} className="text-grey-20" />
+            })}
           </div>
           <p className="text-sm">
-            4.8<span className="text-black-20 ml-1">(12k đánh giá)</span>
+            {averageRating}
+            <span className="text-black-20 ml-1">
+              ( {reviews.length} đánh giá)
+            </span>
           </p>
           <div className="w-[2px] h-3 bg-grey-45"></div>
-          <p className="text-sm">Đã bán 129</p>
+          <p className="text-sm">Đã bán {soldCount}</p>
         </div>
 
         <Text

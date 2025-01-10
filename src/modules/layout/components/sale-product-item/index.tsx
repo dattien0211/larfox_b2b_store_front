@@ -23,6 +23,19 @@ export default function SaleProductItem({ productItem }: { productItem: any }) {
     } | null
   } = productItem
 
+  const reviews = Array.isArray(product?.metadata?.reviews)
+    ? product.metadata.reviews
+    : []
+
+  const averageRating =
+    reviews.length > 0
+      ? (reviews.reduce((sum, r) => sum + r.star, 0) / reviews.length).toFixed(
+          1
+        )
+      : "5"
+
+  const soldCount = Number(product?.metadata?.sold) || 0
+
   return (
     <div className="p-2 sm:p-4 rounded-md bg-white group">
       <div className="bg-grey-15 relative">
@@ -79,8 +92,10 @@ export default function SaleProductItem({ productItem }: { productItem: any }) {
 
           <div className="flex items-center">
             <Star color="#EA9934" />
-            <p className="text-xs sm:text-sm ml-1">4.8</p>
-            <p className="text-black-20 text-xs sm:text-sm">(120K)</p>
+            <p className="text-xs sm:text-sm ml-1">{averageRating}</p>
+            <p className="text-black-20 text-xs sm:text-sm">
+              ({reviews.length})
+            </p>
           </div>
         </div>
         <h1 className="text-sm sm:text-lg  line-clamp-1 mt-1">

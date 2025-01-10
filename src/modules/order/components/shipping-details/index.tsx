@@ -54,12 +54,12 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
               {order.shipping_address?.phone}
             </Text>
           </div>
-          <div className="flex items-center ">
-            <Text className="text-base text-ui-fg-base mr-2">Email:</Text>
-            <Text className="text-base text-ui-fg-subtle">
-              {order.email && order.email !== DEFAULT_EMAIL ? order.email : ""}
-            </Text>
-          </div>
+          {order.email && order.email !== DEFAULT_EMAIL && (
+            <div className="flex items-center ">
+              <Text className="text-base text-ui-fg-base mr-2">Email:</Text>
+              <Text className="text-base text-ui-fg-subtle">{order.email}</Text>
+            </div>
+          )}
         </div>
 
         <div

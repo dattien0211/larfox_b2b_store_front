@@ -76,27 +76,27 @@ export default function BottomNav({ categories }: BottomNavProps) {
             </span>
             <Menu categories={categories} />
           </div>
-
-          <div className="flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group">
-            <h1 className=" text-sm text-nowrap lg:text-base">Giới thiệu</h1>
-            <span className="text-grey-30 group-hover:text-primary">
-              <DropDown />
-            </span>
-          </div>
           <div className="flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group">
             <h1 className=" text-sm text-nowrap lg:text-base">Blog</h1>
             <span className="text-grey-30 group-hover:text-primary">
               <DropDown />
             </span>
           </div>
-          <h1 className="p-2 lg:p-4 cursor-pointer hover:text-primary">
-            <LocalizedClientLink
-              href="/"
-              className=" text-sm text-nowrap lg:text-base"
-            >
-              Liên hệ
-            </LocalizedClientLink>
-          </h1>
+          <LocalizedClientLink
+            href="/ve-chung-toi"
+            className="flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group"
+          >
+            <h1 className=" text-sm text-nowrap lg:text-base">Giới thiệu</h1>
+            {/* <span className="text-grey-30 group-hover:text-primary">
+              <DropDown />
+            </span> */}
+          </LocalizedClientLink>
+          <LocalizedClientLink
+            href="/"
+            className=" text-sm text-nowrap lg:text-base p-2 lg:p-4 cursor-pointer hover:text-primary"
+          >
+            Liên hệ
+          </LocalizedClientLink>
         </div>
       </div>
 

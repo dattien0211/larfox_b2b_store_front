@@ -231,15 +231,12 @@ const Addresses = ({
                           : ""}
                       </span>
                     </Text>
-
-                    <Text className="text-sm sm:text-base text-ui-fg-subtle">
-                      Email:{" "}
-                      <span className="font-semibold">
-                        {cart.email && cart.email !== DEFAULT_EMAIL
-                          ? cart.email
-                          : ""}
-                      </span>
-                    </Text>
+                    {cart.email && cart.email !== DEFAULT_EMAIL && (
+                      <Text className="text-sm sm:text-base text-ui-fg-subtle">
+                        Email:{" "}
+                        <span className="font-semibold">{cart.email}</span>
+                      </Text>
+                    )}
                   </div>
                 </div>
               </div>

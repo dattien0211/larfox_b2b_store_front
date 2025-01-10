@@ -26,6 +26,7 @@ import { default as Inventory } from "./inventory"
 import { default as Shield } from "./shield"
 import { default as Thunder } from "./thunder"
 import { default as Star } from "./star"
+import { default as StarHalf } from "./star-half"
 import { default as Car } from "./car"
 import { default as Verified } from "./verified"
 import { default as Camera } from "./camera"
@@ -62,6 +63,7 @@ export default {
   Shield,
   Thunder,
   Star,
+  StarHalf,
   Car,
   Verified,
   Camera,

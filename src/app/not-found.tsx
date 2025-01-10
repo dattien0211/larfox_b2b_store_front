@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col gap-4 items-center justify-center min-h-[calc(100vh-64px)] px-4">
+    <div className="flex flex-col gap-4 items-center justify-center min-h-[500px] px-4 mb-16 sm:mb-24">
       <h1 className="text-xl-semi sm:text-2xl-semi text-ui-fg-base">
         Không tìm thấy trang
       </h1>

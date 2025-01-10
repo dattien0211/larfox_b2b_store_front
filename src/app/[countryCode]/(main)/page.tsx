@@ -34,30 +34,30 @@ export default async function Home({
 }) {
   const region = await getRegion(countryCode)
 
-  if (!region) {
-    return null
-  }
+  // if (!region) {
+  //   return null
+  // }
 
-  const collections = await getCollectionsWithProducts(countryCode)
+  // const collections = await getCollectionsWithProducts(countryCode)
 
-  if (!collections) {
-    return null
-  }
+  // if (!collections) {
+  //   return null
+  // }
 
-  // Function to get products based on collection handle
-  function getProductsByHandle(handle: string) {
-    if (!collections) return []
-    const collection = collections.find(
-      (collection) => collection.handle === handle
-    )
-    return collection ? collection.products : []
-  }
+  // // Function to get products based on collection handle
+  // function getProductsByCollectionHandle(handle: string) {
+  //   if (!collections) return []
+  //   const collection = collections.find(
+  //     (collection) => collection.handle === handle
+  //   )
+  //   return collection ? collection.products : []
+  // }
 
   return (
     <>
       <Hero />
 
-      <div className="py-12 sm:py-20 relative">
+      {/* <div className="py-12 sm:py-20 relative">
         <TextAnco
           backgroundText="Production"
           subTitle="Giá trị Anco đem lại"
@@ -93,7 +93,7 @@ export default async function Home({
           />
         </div>
         <FlashSale
-          products={getProductsByHandle(FLASH_SALE_HANDLE)}
+          products={getProductsByCollectionHandle(FLASH_SALE_HANDLE)}
           collectionHandle={FLASH_SALE_HANDLE}
         />
       </div>
@@ -121,7 +121,7 @@ export default async function Home({
           description="Sản phẩm mới giúp nâng cao hiệu quả công việc và cuộc sống hàng ngày."
         />
         <ListProducts
-          products={getProductsByHandle(NEW_PRODUCT_HANDLE)}
+          products={getProductsByCollectionHandle(NEW_PRODUCT_HANDLE)}
           collectionHandle={NEW_PRODUCT_HANDLE}
         />
       </div>
@@ -135,7 +135,7 @@ export default async function Home({
           description="Luôn đứng đầu trong danh sách bán chạy nhờ vào tính năng ưu việt và khả năng đáp ứng nhu cầu của khách hàng một cách hoàn hảo."
         />
         <ListProducts
-          products={getProductsByHandle(BEST_SELLER_PRODUCT_HANDLE)}
+          products={getProductsByCollectionHandle(BEST_SELLER_PRODUCT_HANDLE)}
           collectionHandle={BEST_SELLER_PRODUCT_HANDLE}
         />
         <Image
@@ -157,10 +157,10 @@ export default async function Home({
           description="Những sản phẩm đặc biệt của chúng tôi, được thiết kế và sản xuất với công nghệ tiên tiến."
         />
         <RecommendProducts
-          products={getProductsByHandle(EQUIPMENT_PRODUCT_HANDLE)}
+          products={getProductsByCollectionHandle(EQUIPMENT_PRODUCT_HANDLE)}
           collectionHandle={EQUIPMENT_PRODUCT_HANDLE}
         />
-      </div>
+      </div> */}
 
       <OurStory />
 

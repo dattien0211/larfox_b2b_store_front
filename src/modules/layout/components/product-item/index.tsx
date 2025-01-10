@@ -23,6 +23,19 @@ export default function ProductItem({ productItem }: { productItem: any }) {
     } | null
   } = productItem
 
+  const reviews = Array.isArray(product?.metadata?.reviews)
+    ? product.metadata.reviews
+    : []
+
+  const averageRating =
+    reviews.length > 0
+      ? (reviews.reduce((sum, r) => sum + r.star, 0) / reviews.length).toFixed(
+          1
+        )
+      : "5"
+
+  const soldCount = Number(product?.metadata?.sold) || 0
+
   return (
     <div className="w-full flex flex-col gap-y-1 sm:gap-y-2 group cursor-pointer">
       <div className="bg-grey-15 relative w-full shadow-md">
@@ -83,13 +96,13 @@ export default function ProductItem({ productItem }: { productItem: any }) {
       <div className="flex items-center gap-x-2">
         <Star color="#EA9934" />
         <p className="text-xs sm:text-sm">
-          <span>4.8</span>
-          <span className="text-grey-5">(120K)</span>
+          <span>{averageRating}</span>
+          <span className="text-grey-5">({reviews.length})</span>
         </p>
         <div className="h-2 bg-grey-30 w-[1px]"></div>
         <p className="text-xs sm:text-sm">
-          <span className="text-grey-30">Đã bán:</span>
-          <span className="text-grey-5">130</span>
+          <span className="text-grey-30 mr-1">Đã bán:</span>
+          <span className="text-grey-5">{soldCount}</span>
         </p>
       </div>
     </div>
