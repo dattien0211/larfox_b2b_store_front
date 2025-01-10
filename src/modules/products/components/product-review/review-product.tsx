@@ -248,10 +248,15 @@ export default function ReviewProduct({
               <div className="w-[275px] h-4 bg-gray-200 rounded-sm relative">
                 <div
                   className="absolute inset-0 z-[1] h-full rounded-sm bg-primary"
-                  style={{ width: `${percentage}%` }}
+                  style={{
+                    width: `${!isNaN(Number(percentage)) ? percentage : 0}%`,
+                  }}
                 ></div>
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[2] text-grey-40 text-xs">
-                  {percentage.toFixed(0)}%
+                  {!isNaN(Number(percentage.toFixed(0)))
+                    ? percentage.toFixed(0)
+                    : 0}
+                  %
                 </div>
               </div>
             </div>

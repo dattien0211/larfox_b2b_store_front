@@ -25,9 +25,7 @@ type ReviewsItemProps = {
 const ReviewsList: React.FC<ReviewsItemProps> = ({ reviews }) => {
   const { Star } = ICons
 
-  console.log(reviews)
-
-  return (
+  return reviews.length > 0 ? (
     <div className="space-y-4 sm:space-y-6 transition-all duration-300 ease-in-out">
       {reviews.map((review, index) => (
         <div
@@ -73,7 +71,7 @@ const ReviewsList: React.FC<ReviewsItemProps> = ({ reviews }) => {
               ))}
             </div>
           )}
-          <p className="text-gray-700 text-sm sm:text-base">
+          <p className="text-gray-700 text-sm sm:text-base line-clamp-3">
             <span className="text-primary font-semibold">Đánh giá:</span>{" "}
             {review.description}
           </p>
@@ -85,6 +83,10 @@ const ReviewsList: React.FC<ReviewsItemProps> = ({ reviews }) => {
         </div>
       ))}
     </div>
+  ) : (
+    <h1 className="text-center text-black-20 text-sm  sm:text-base md:text-lg mt-4">
+      Sản phẩm chưa có đánh giá.
+    </h1>
   )
 }
 
