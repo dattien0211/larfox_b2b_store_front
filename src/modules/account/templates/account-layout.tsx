@@ -16,11 +16,11 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
   children,
 }) => {
   return (
-    <div className="flex-1 mb-12 sm:mb-24" data-testid="account-page">
+    <div className="flex-1 mb-16 sm:mb-24" data-testid="account-page">
       <div className="flex-1 flex flex-col content-container h-full mx-auto bg-white  ">
         <div className="py-4 sm:py-8 flex  flex-col md:flex-row-reverse ">
           <div className="flex-1">{children}</div>
-          <div className="block sm:hidden">
+          <div className="block sm:hidden mt-8">
             <Divider />
           </div>
           {customer && (

@@ -51,7 +51,7 @@ const Addresses = ({
       // Helper function to append fields to FormData
       const appendFields = (prefix: string, fields: any) => {
         Object.keys(fields).forEach((key) => {
-          formData.append(`${prefix}.${key}`, fields[key] || "")
+          formData.append(`${prefix}.${key}`, fields[key]?.trim() || "")
         })
       }
 
@@ -105,7 +105,7 @@ const Addresses = ({
           <Text>
             <button
               onClick={handleEdit}
-              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base sm:text-lg"
+              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base"
               data-testid="edit-address-button"
             >
               Sửa

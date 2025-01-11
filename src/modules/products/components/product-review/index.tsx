@@ -17,7 +17,6 @@ export default function ProductReview({
 }) {
   const [isReview, setIsReview] = useState(true)
 
-  console.log(product)
   const [reviews, setReviews] = useState(
     Array.isArray(product?.metadata?.reviews) ? product.metadata.reviews : []
   )

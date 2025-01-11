@@ -28,13 +28,13 @@ const AccountNav = ({
     <div>
       {/* AccountNavMobile */}
       <div
-        className="small:hidden w-full mt-4"
+        className="sm:hidden w-full mt-8 relative z-20"
         data-testid="mobile-account-nav"
       >
         {route !== `/${countryCode}/tai-khoan` ? (
           <LocalizedClientLink
             href="/tai-khoan"
-            className="flex items-center gap-x-2 text-base py-2"
+            className="flex items-center gap-x-2 text-base py-2 cursor-pointer"
             data-testid="account-main-link"
           >
             <>
@@ -49,7 +49,7 @@ const AccountNav = ({
                 <li>
                   <LocalizedClientLink
                     href="/tai-khoan/thong-tin"
-                    className="flex items-center justify-between py-4"
+                    className="flex items-center justify-between py-4 cursor-pointer"
                     data-testid="profile-link"
                   >
                     <>
@@ -79,7 +79,7 @@ const AccountNav = ({
                 <li>
                   <LocalizedClientLink
                     href="/tai-khoan/don-hang"
-                    className="flex items-center justify-between py-4"
+                    className="flex items-center justify-between py-4 cursor-pointer"
                     data-testid="orders-link"
                   >
                     <div className="flex items-center gap-x-2">
@@ -96,7 +96,7 @@ const AccountNav = ({
                     onClick={handleLogout}
                     data-testid="logout-button"
                   >
-                    <div className="flex items-center gap-x-2">
+                    <div className="flex items-center gap-x-2 cursor-pointer">
                       <ArrowRightOnRectangle />
                       <span>Đăng xuất</span>
                     </div>
@@ -108,8 +108,9 @@ const AccountNav = ({
           </>
         )}
       </div>
+
       {/* AccountNavDesktop */}
-      <div className="hidden small:block mb-24" data-testid="account-nav">
+      <div className="hidden sm:block mb-24" data-testid="account-nav">
         <div>
           <div className="text-base">
             <ul className="flex mb-0 justify-start items-start flex-col gap-y-6">

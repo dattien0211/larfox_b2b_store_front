@@ -67,6 +67,13 @@ const SortCategories: React.FC<SortCategoriesProps> = ({
       data-testid={dataTestId}
       isSearchable={false}
       instanceId="my-select-instance"
+      classNames={{
+        control: () => "custom-control",
+        placeholder: () => "custom-placeholder",
+        singleValue: () => "custom-single-value",
+        menu: () => "custom-menu",
+        option: () => "custom-option",
+      }}
     />
   )
 }

@@ -3,6 +3,7 @@ import { Container, Text } from "@medusajs/ui"
 import Thumbnail from "@modules/products/components/thumbnail"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { HttpTypes } from "@medusajs/types"
+import { Dispatch, SetStateAction } from "react"
 
 export type ProductHit = {
   id: string
@@ -17,11 +18,13 @@ export type ProductHit = {
 
 type HitProps = {
   hit: ProductHit
+  setShow: Dispatch<SetStateAction<boolean>>
 }
 
-const Hit = ({ hit }: HitProps) => {
+const Hit = ({ hit, setShow }: HitProps) => {
   return (
     <LocalizedClientLink
+      onClick={() => setShow(false)}
       href={`/san-pham/${hit.handle}`}
       data-testid="search-result"
     >

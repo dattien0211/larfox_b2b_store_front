@@ -124,14 +124,14 @@ export const addCustomerAddress = async (
 ): Promise<any> => {
   const address = {
     first_name: formData.get("first_name") as string,
-    last_name: formData.get("last_name") as string,
-    company: formData.get("company") as string,
+    last_name: (formData.get("last_name") as string) || "",
+    company: (formData.get("company") as string) || "",
     address_1: formData.get("address_1") as string,
-    address_2: formData.get("address_2") as string,
+    address_2: (formData.get("address_2") as string) || "",
     city: formData.get("city") as string,
-    postal_code: formData.get("postal_code") as string,
+    postal_code: (formData.get("postal_code") as string) || "",
     province: formData.get("province") as string,
-    country_code: formData.get("country_code") as string,
+    country_code: (formData.get("country_code") as string) || "vn",
     phone: formData.get("phone") as string,
   }
 
@@ -153,7 +153,7 @@ export const deleteCustomerAddress = async (
     .deleteAddress(addressId, getAuthHeaders())
     .then(() => {
       revalidateTag("customer")
-      return { success: true, error: null }
+      return true
     })
     .catch((err) => {
       return { success: false, error: err.toString() }

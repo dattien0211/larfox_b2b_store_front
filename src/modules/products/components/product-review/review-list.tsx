@@ -78,7 +78,7 @@ const ReviewsList: React.FC<ReviewsItemProps> = ({ reviews }) => {
           <p className="text-xs sm:text-sm text-gray-500">
             {moment(review.created_at)
               .tz("Asia/Ho_Chi_Minh") // Set the desired time zone
-              .format("HH:mm:ss - DD/MM/YYYY")}
+              .format(" DD/MM/YYYY - HH:mm:ss")}
           </p>
         </div>
       ))}

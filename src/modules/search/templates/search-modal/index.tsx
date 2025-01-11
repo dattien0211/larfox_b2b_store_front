@@ -13,7 +13,7 @@ import { useEffect, useRef, Dispatch, SetStateAction } from "react"
 export default function SearchModal({
   setShow,
 }: {
-  setShow?: Dispatch<SetStateAction<boolean>>
+  setShow: Dispatch<SetStateAction<boolean>>
 }) {
   const router = useRouter()
   const searchRef = useRef(null)
@@ -76,7 +76,7 @@ export default function SearchModal({
                 <SearchBox />
               </div>
               <div className="flex-1 mt-6">
-                <Hits hitComponent={Hit} />
+                <Hits hitComponent={Hit} setShow={setShow} />
               </div>
             </div>
           </InstantSearch>

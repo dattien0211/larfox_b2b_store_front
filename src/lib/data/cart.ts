@@ -7,7 +7,7 @@ import { omit } from "lodash"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 import { getAuthHeaders, getCartId, removeCartId, setCartId } from "./cookies"
-import { getProductsById } from "./products"
+import { getProductByHandle, getProductsById } from "./products"
 import { getRegion } from "./regions"
 import { DEFAULT_EMAIL } from "@constants/defaultEmail"
 
@@ -374,18 +374,34 @@ export async function placeOrder() {
 
     //add sold quantity to product
     if (cartRes?.order?.items && cartRes?.order?.items.length > 0) {
-      const productArr = cartRes?.order?.items.map((item) => ({
+      const productCart = cartRes?.order?.items.map((item) => ({
         product_id: item.product_id,
         quantity: item.quantity,
-        metadata: item.metadata,
       }))
+
+      const queryParams = {
+        ids: productCart.map((product) => product.product_id!),
+        regionId: cartRes.order.region_id!,
+      }
+
+      const productDetails = await getProductsById(queryParams)
+
+      const enrichedProduct = productCart.map((product) => {
+        const detail = productDetails.find(
+          (item) => item.id === product.product_id
+        )
+        return {
+          ...product,
+          metadata: detail ? detail.metadata : null,
+        }
+      })
 
       await sdk.client.fetch("/store/add-sold-product", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: { products: productArr },
+        body: { products: enrichedProduct },
       })
     }
 

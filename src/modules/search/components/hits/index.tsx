@@ -1,5 +1,6 @@
 import { clx } from "@medusajs/ui"
 import React from "react"
+import { Dispatch, SetStateAction } from "react"
 import {
   UseHitsProps,
   useHits,
@@ -12,12 +13,18 @@ import { tree } from "next/dist/build/templates/app-page"
 
 type HitsProps<THit> = React.ComponentProps<"div"> &
   UseHitsProps & {
-    hitComponent: (props: { hit: THit }) => JSX.Element
+    hitComponent: (props: {
+      hit: THit
+      setShow: Dispatch<SetStateAction<boolean>>
+    }) => JSX.Element
+  } & {
+    setShow: Dispatch<SetStateAction<boolean>>
   }
 
 const Hits = ({
   hitComponent: Hit,
   className,
+  setShow,
   ...props
 }: HitsProps<ProductHit>) => {
   const { query } = useSearchBox()
@@ -46,7 +53,7 @@ const Hits = ({
               "hidden sm:block": index > 2,
             })}
           >
-            <Hit hit={hit as unknown as ProductHit} />
+            <Hit hit={hit as unknown as ProductHit} setShow={setShow} />
           </li>
         ))}
       </div>

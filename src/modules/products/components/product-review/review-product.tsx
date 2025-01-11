@@ -10,6 +10,7 @@ import uploadFile, { UploadedFile } from "@lib/data/upload-file"
 import { toast } from "@medusajs/ui"
 import { reviewProduct } from "@lib/data/products"
 import { Review } from "./review-list"
+import { useOS } from "@lib/hooks/OSContext"
 
 export default function ReviewProduct({
   customer,
@@ -24,6 +25,7 @@ export default function ReviewProduct({
   reviews: Review[]
   setReviews: Dispatch<SetStateAction<any[]>>
 }) {
+  const { os } = useOS()
   const { Star, Camera, XMark } = ICons
 
   const [rating, setRating] = useState<number>(5)
@@ -221,8 +223,11 @@ export default function ReviewProduct({
     <>
       <div className="flex flex-col md:flex-row gap-y-6 sm:gap-y-4 md:gap-x-24 items-center transition-all duration-300 ease-in-out">
         <div className="w-full sm:w-fit flex flex-row-reverse gap-4 sm:flex-col justify-between sm:justify-center items-center text-center md:text-left">
-          <div className="text-2xl sm:text-4xl md:text-5xl font-bold text-primary">
+          <div className="text-xl sm:text-4xl md:text-5xl font-bold text-primary flex items-center gap-x-1 sm:gap-x-2 ">
             {averageRating}
+            <span className="text-primary">
+              <Star size={os !== "mobile" ? 34 : 20} />
+            </span>
           </div>
           <p className="text-[#404040] font-semibold">
             Dựa trên {reviews.length} đánh giá
@@ -304,7 +309,7 @@ export default function ReviewProduct({
                   rating > i ? "text-primary" : "text-gray-300"
                 }`}
               >
-                <Star size={24} />
+                <Star size={os !== "mobile" ? 24 : 18} />
               </span>
             ))}
           </div>

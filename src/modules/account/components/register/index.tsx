@@ -27,6 +27,7 @@ const Register = ({ setCurrentView }: Props) => {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormInputs>()
 
@@ -37,7 +38,7 @@ const Register = ({ setCurrentView }: Props) => {
 
       const formData = new FormData()
       Object.entries(filteredData).forEach(([key, value]) =>
-        formData.append(key, value)
+        formData.append(key, value?.trim())
       )
 
       await signup(null, formData)
@@ -83,8 +84,13 @@ const Register = ({ setCurrentView }: Props) => {
               {...register("email", {
                 required: "Vui lòng nhập email!",
                 pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                   message: "Email không đúng định dạng!",
+                },
+                onChange: (e) => {
+                  setValue("email", e.target.value.trim(), {
+                    shouldValidate: true, // Trigger validation after trimming
+                  })
                 },
               })}
               autoComplete="email"

@@ -46,7 +46,7 @@ const AccountInfo = ({
       <div className="flex items-center justify-between gap-x-2">
         <div className="flex flex-col">
           <span className="text-sm sm:text-base">{label}</span>
-          <div className="flex items-center flex-1 basis-0 justify-end gap-x-4">
+          <div className="flex items-center flex-1 basis-0 gap-x-4 mt-2">
             {typeof currentInfo === "string" ? (
               <span className="font-semibold " data-testid="current-info">
                 {currentInfo}
@@ -59,7 +59,7 @@ const AccountInfo = ({
         <div>
           <Button
             variant="secondary"
-            className="w-[45px] sm:w-[100px] min-h-[25px] py-1 "
+            className="w-[45px] sm:w-[100px] min-h-[25px] py-1 text-sm"
             onClick={handleToggle}
             type={state ? "reset" : "button"}
             data-testid="edit-button"
@@ -124,11 +124,11 @@ const AccountInfo = ({
             <div className="flex items-center justify-end mt-2">
               <Button
                 isLoading={pending}
-                className="w-full small:max-w-[140px] bg-primary shadow-none"
+                className="w-full sm:w-[100px] bg-primary shadow-none text-sm"
                 type="submit"
                 data-testid="save-button"
               >
-                Lưu thay đổi
+                Lưu
               </Button>
             </div>
           </div>

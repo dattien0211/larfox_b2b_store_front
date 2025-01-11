@@ -20,6 +20,7 @@ const Login = ({ setCurrentView }: Props) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<LoginFormInputs>()
 
@@ -57,8 +58,13 @@ const Login = ({ setCurrentView }: Props) => {
               {...register("email", {
                 required: "Vui lòng nhập Email!",
                 pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                   message: "Email không đúng định dạng!",
+                },
+                onChange: (e) => {
+                  setValue("email", e.target.value.trim(), {
+                    shouldValidate: true,
+                  })
                 },
               })}
             />
@@ -103,7 +109,7 @@ const Login = ({ setCurrentView }: Props) => {
           {isSubmitting ? "Đang đăng nhập ..." : "Đăng nhập"}
         </button>
       </form>
-      <span className="text-center mt-4">
+      <span className="text-center mt-4 text-sm sm:text-base">
         Chưa phải là thành viên?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.REGISTER)}

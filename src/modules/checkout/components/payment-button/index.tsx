@@ -34,7 +34,6 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
   // if (paidByGiftcard) {
   //   return <GiftCardPaymentButton />
   // }
-
   const paymentSession = cart.payment_collection?.payment_sessions?.[0]
 
   switch (true) {

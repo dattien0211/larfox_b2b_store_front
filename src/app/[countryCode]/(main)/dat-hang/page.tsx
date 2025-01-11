@@ -28,7 +28,11 @@ const fetchCart = async () => {
   return cart
 }
 
-export default async function Checkout() {
+export default async function Checkout({
+  params: { countryCode },
+}: {
+  params: { countryCode: string }
+}) {
   const cart = await fetchCart()
   const customer = await getCustomer()
 
@@ -38,7 +42,11 @@ export default async function Checkout() {
         <>
           <div className="flex-1">
             <Wrapper cart={cart}>
-              <CheckoutForm cart={cart} customer={customer} />
+              <CheckoutForm
+                cart={cart}
+                customer={customer}
+                countryCode={countryCode}
+              />
             </Wrapper>
           </div>
           <Divider className="small:hidden" />

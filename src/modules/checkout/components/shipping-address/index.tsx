@@ -155,7 +155,13 @@ const ShippingAddress = ({
                     ? { label: field.value, value: field.value }
                     : null
                 }
-                styles={{ control: (base) => ({ ...base, height: 44 }) }}
+                classNames={{
+                  control: () => "custom-control",
+                  placeholder: () => "custom-placeholder",
+                  singleValue: () => "custom-single-value",
+                  menu: () => "custom-menu",
+                  option: () => "custom-option",
+                }}
               />
             )}
           />
@@ -184,7 +190,13 @@ const ShippingAddress = ({
                     ? { label: field.value, value: field.value }
                     : null
                 }
-                styles={{ control: (base) => ({ ...base, height: 44 }) }}
+                classNames={{
+                  control: () => "custom-control",
+                  placeholder: () => "custom-placeholder",
+                  singleValue: () => "custom-single-value",
+                  menu: () => "custom-menu",
+                  option: () => "custom-option",
+                }}
               />
             )}
           />

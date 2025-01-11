@@ -2,6 +2,15 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+body {
+  font-family: "Manrope-Regular", sans-serif;
+  color: #323232;
+}
+
+/* ::-webkit-scrollbar {
+  width: 0;
+} */
+
 @layer fonts {
   @font-face {
     font-family: "Times";
@@ -60,44 +69,83 @@
   }
 }
 
-body {
-  font-family: "Manrope-Regular", sans-serif;
-  color: #323232;
+@layer select {
+  .custom-control {
+    font-family: "Manrope";
+    font-weight: 300;
+    font-size: 16px;
+    padding-left: 4px;
+    height: 44px;
+  }
+
+  .custom-placeholder {
+    font-family: "Manrope";
+    font-weight: 300;
+    font-size: 16px;
+    color: #aaa; /* Optional color */
+    padding-left: 4px;
+  }
+
+  .custom-single-value {
+    font-family: "Manrope";
+    font-weight: 300;
+    font-size: 16px;
+    color: #333; /* Optional color */
+    padding-left: 4px;
+  }
+
+  .custom-menu {
+    font-family: "Manrope";
+    font-weight: 300;
+    font-size: 16px;
+    background-color: #f8f8f8; /* Optional background */
+    padding-left: 4px;
+  }
+
+  .custom-option {
+    font-family: "Manrope";
+    font-weight: 300;
+    font-size: 16px;
+    color: #000; /* Optional color */
+    padding-left: 4px;
+  }
 }
 
-.swiper-pagination-bullet.custom-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: white; /* Default color for active dots */
-  margin: 0 8px !important; /* Spacing between dots */
-  display: inline-block;
-  cursor: pointer;
-  position: relative; /* Positioning the child element inside */
-}
-
-.swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
-  opacity: 0.5; /* Inactive bullets have 50% opacity */
-  background-color: #e0e0e0; /* Inactive bullets have white background */
-}
-
-.swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color: white; /* Active bullet color */
-  opacity: 1; /* Active bullets have full opacity */
-  box-shadow: 0 4px 8px rgba(224, 129, 5, 0.1);
-}
-
-.swiper-pagination-bullet:hover {
-  transform: scale(1.1); /* Slightly enlarge on hover */
-  background-color: #ffd700; /* Highlight on hover with gold tone */
-  opacity: 1; /* Ensure full visibility on hover */
-}
-
-@media (max-width: 640px) {
+@layer swiper {
   .swiper-pagination-bullet.custom-dot {
-    width: 10px;
-    height: 10px;
-    margin: 0 4px !important; /* Spacing between dots */
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white; /* Default color for active dots */
+    margin: 0 8px !important; /* Spacing between dots */
+    display: inline-block;
+    cursor: pointer;
+    position: relative; /* Positioning the child element inside */
+  }
+
+  .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+    opacity: 0.5; /* Inactive bullets have 50% opacity */
+    background-color: #e0e0e0; /* Inactive bullets have white background */
+  }
+
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: white; /* Active bullet color */
+    opacity: 1; /* Active bullets have full opacity */
+    box-shadow: 0 4px 8px rgba(224, 129, 5, 0.1);
+  }
+
+  .swiper-pagination-bullet:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    background-color: #ffd700; /* Highlight on hover with gold tone */
+    opacity: 1; /* Ensure full visibility on hover */
+  }
+
+  @media (max-width: 640px) {
+    .swiper-pagination-bullet.custom-dot {
+      width: 10px;
+      height: 10px;
+      margin: 0 4px !important; /* Spacing between dots */
+    }
   }
 }
 
@@ -147,9 +195,6 @@ body {
     -webkit-appearance: none;
   }
 }
-/* ::-webkit-scrollbar {
-  width: 0;
-} */
 
 @layer components {
   .content-container {
