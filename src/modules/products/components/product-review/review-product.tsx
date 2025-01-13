@@ -203,10 +203,10 @@ export default function ReviewProduct({
           upload: "",
         })
       }
-    } catch (submitError) {
+    } catch (error) {
       const errMessage =
-        submitError instanceof Error && "response" in submitError
-          ? (submitError as any).response?.data?.error
+        error instanceof Error && "response" in error
+          ? (error as any).response?.data?.message
           : "Lỗi khi đánh giá sản phẩm"
 
       toast.error("Lỗi", {
