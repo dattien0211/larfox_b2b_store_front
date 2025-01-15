@@ -20,6 +20,7 @@ import {
   BEST_SELLER_PRODUCT_HANDLE,
   EQUIPMENT_PRODUCT_HANDLE,
 } from "@constants/defaultHandleCollection"
+import { getListBlog } from "@lib/data/blog"
 
 export const metadata: Metadata = {
   title: "Anco",
@@ -53,10 +54,11 @@ export default async function Home({
     return collection ? collection.products : []
   }
 
+  const { blogs } = await getListBlog()
+
   return (
     <>
       <Hero />
-
       <div className="py-12 sm:py-20 relative">
         <TextAnco
           backgroundText="Production"
@@ -75,7 +77,6 @@ export default async function Home({
           />
         </div>
       </div>
-
       <div className="bg-beige-10 relative py-12 sm:py-20">
         <TextAnco
           backgroundText="Big Sale"
@@ -97,7 +98,6 @@ export default async function Home({
           collectionHandle={FLASH_SALE_HANDLE}
         />
       </div>
-
       <div className="bg-beige-10 relative py-12 sm:py-20">
         <TextAnco
           backgroundText="Assortm"
@@ -110,9 +110,7 @@ export default async function Home({
           collectionHandle={RECOMMEND_PRODUCT_HANDLE}
         />
       </div>
-
       <ProductBanner />
-
       <div className="relative py-12 sm:py-20">
         <TextAnco
           backgroundText="Products"
@@ -125,7 +123,6 @@ export default async function Home({
           collectionHandle={NEW_PRODUCT_HANDLE}
         />
       </div>
-
       <div className="relative py-12 sm:py-20">
         <TextAnco
           backgroundText="Products"
@@ -146,9 +143,7 @@ export default async function Home({
           className="w-full absolute -top-10 sm:top-[-40%] left-0 -z-10"
         />
       </div>
-
       <ProductBanner />
-
       <div className="bg-beige-10 relative py-12 sm:py-20">
         <TextAnco
           backgroundText="Assortm"
@@ -161,10 +156,8 @@ export default async function Home({
           collectionHandle={EQUIPMENT_PRODUCT_HANDLE}
         />
       </div>
-
       <OurStory />
-
-      <Blogs />
+      {blogs && blogs.length > 0 && <Blogs blogs={blogs} />}
     </>
   )
 }

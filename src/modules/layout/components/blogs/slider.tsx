@@ -15,37 +15,14 @@ import "swiper/css/navigation"
 import "swiper/css/thumbs"
 import "swiper/css/free-mode"
 import "swiper/css/pagination"
-import { StaticImageData } from "next/image"
 import BlogCard from "./blogCard"
-
-interface BlogData {
-  imageSrc: StaticImageData
-  title: string
-  description: string
+import { Blog } from "types/global"
+interface BlogSliderProps {
+  blogs: Blog[]
 }
 
-const BlogSlider = () => {
+const BlogSlider: React.FC<BlogSliderProps> = ({ blogs }) => {
   const sliderRef = useRef<any>(null)
-  const blogData: BlogData[] = [
-    {
-      imageSrc: IMGS.Blog,
-      title: "Làm thế nào để lựa chọn sống vui khoẻ",
-      description:
-        "Hơn một thập niên gắn bó với trà, rồi lập thương hiệu Trà bà Vân (Bavantea), câu chuyện làm trà của Xuân Hiến không thể bắt đầu nói về kinh doanh, mà đó chỉ...",
-    },
-    {
-      imageSrc: IMGS.Blog,
-      title: "Làm thế nào để lựa chọn sống vui khoẻ",
-      description:
-        "Hơn một thập niên gắn bó với trà, rồi lập thương hiệu Trà bà Vân (Bavantea), câu chuyện làm trà của Xuân Hiến không thể bắt đầu nói về kinh doanh, mà đó chỉ...",
-    },
-    {
-      imageSrc: IMGS.Blog,
-      title: "Làm thế nào để lựa chọn sống vui khoẻ",
-      description:
-        "Hơn một thập niên gắn bó với trà, rồi lập thương hiệu Trà bà Vân (Bavantea), câu chuyện làm trà của Xuân Hiến không thể bắt đầu nói về kinh doanh, mà đó chỉ...",
-    },
-  ]
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -63,16 +40,13 @@ const BlogSlider = () => {
             sliderRef.current = swiper
           }}
         >
-          {blogData.map((blog, index) => (
-            <SwiperSlide key={index}>
-              <BlogCard
-                key={index}
-                imageSrc={blog.imageSrc}
-                title={blog.title}
-                description={blog.description}
-              />
-            </SwiperSlide>
-          ))}
+          {blogs &&
+            blogs.length > 0 &&
+            blogs.map((blog, index) => (
+              <SwiperSlide key={index}>
+                <BlogCard blog={blog} />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </div>

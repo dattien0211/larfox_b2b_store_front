@@ -14,3 +14,14 @@ export type VariantPrice = {
   price_type: string
   percentage_diff: string
 }
+
+export type Blog = {
+  id: string
+  title: string
+  handle: string
+  type: string
+  thumbnail: string
+  short_description: string
+  description: string
+  metadata: Record<string, any>
+}

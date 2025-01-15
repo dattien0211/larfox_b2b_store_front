@@ -8,43 +8,16 @@ import { useOS } from "@lib/hooks/OSContext"
 import { StaticImageData } from "next/image"
 import BlogCard from "./blogCard"
 import BlogSlider from "./slider"
-
-interface BlogData {
-  imageSrc: StaticImageData
-  title: string
-  description: string
+import { Blog } from "types/global"
+interface BlogsProps {
+  blogs: Blog[]
 }
 
-const Blogs: React.FC = () => {
+const Blogs: React.FC<BlogsProps> = ({ blogs }) => {
   const { RightArrow } = Icons
   const { os } = useOS()
-  const blogData: BlogData[] = [
-    {
-      imageSrc: IMGS.Blog,
-      title: "Làm thế nào để lựa chọn sống vui khoẻ",
-      description:
-        "Hơn một thập niên gắn bó với trà, rồi lập thương hiệu Trà bà Vân (Bavantea), câu chuyện làm trà của Xuân Hiến không thể bắt đầu nói về kinh doanh, mà đó chỉ...",
-    },
-    {
-      imageSrc: IMGS.Blog,
-      title: "Làm thế nào để lựa chọn sống vui khoẻ",
-      description:
-        "Hơn một thập niên gắn bó với trà, rồi lập thương hiệu Trà bà Vân (Bavantea), câu chuyện làm trà của Xuân Hiến không thể bắt đầu nói về kinh doanh, mà đó chỉ...",
-    },
-    {
-      imageSrc: IMGS.Blog,
-      title: "Làm thế nào để lựa chọn sống vui khoẻ",
-      description:
-        "Hơn một thập niên gắn bó với trà, rồi lập thương hiệu Trà bà Vân (Bavantea), câu chuyện làm trà của Xuân Hiến không thể bắt đầu nói về kinh doanh, mà đó chỉ...",
-    },
-  ]
 
-  const displayedBlogs =
-    os === "desktop"
-      ? blogData
-      : os === "tablet"
-      ? blogData.slice(0, 2)
-      : blogData.slice(0, 1)
+  const displayedBlogs = os !== "mobile" ? blogs.slice(0, 3) : blogs.slice(0, 1)
 
   return (
     <div className="relative py-12 sm:py-20">
@@ -60,15 +33,10 @@ const Blogs: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 px-0">
           {os !== "mobile" ? (
             displayedBlogs.map((blog, index) => (
-              <BlogCard
-                key={index}
-                imageSrc={blog.imageSrc}
-                title={blog.title}
-                description={blog.description}
-              />
+              <BlogCard key={blog.id + index} blog={blog} />
             ))
           ) : (
-            <BlogSlider />
+            <BlogSlider blogs={blogs} />
           )}
         </div>
       </div>
