@@ -91,7 +91,7 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
-        times: ["Times", "sans-serif"],
+        times: ["Times New Roman", "sans-serif"],
         manrope: ["Manrope-Regular", "sans-serif"],
         "manrope-bold": ["Manrope-Bold", "sans-serif"],
         "manrope-extrabold": ["Manrope-ExtraBold", "sans-serif"],
