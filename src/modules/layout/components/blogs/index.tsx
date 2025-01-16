@@ -5,6 +5,7 @@ import Icons from "@modules/common/icons"
 import TextAnco from "@modules/layout/components/text-anco"
 import BlogSlider from "./slider"
 import { Blog, BlogType } from "types/global"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 interface BlogsProps {
   blogs: Blog[]
   blogTypes: BlogType[]
@@ -28,12 +29,15 @@ const Blogs: React.FC<BlogsProps> = ({ blogs, blogTypes }) => {
       </div>
 
       {/* Navigation Button */}
-      <div className="mt-12 flex items-center justify-center gap-x-4 relative z-20">
+      <LocalizedClientLink
+        href={`/loai-bai-viet/${blogTypes[0].value}`}
+        className="mt-12 flex items-center justify-center gap-x-4 relative z-20"
+      >
         <button className="hover:text-orange-600 hover:bg-white shadow-md rounded-full flex items-center justify-center px-4 py-[6px] sm:px-8 sm:py-2 bg-gradient-to-r from-[#EE9C23] to-[#FFBB56] text-white transition-all duration-300 ease-in-out">
           <p className="mr-2 text-base sm:text-lg text-nowrap">Xem thêm</p>
           <RightArrow size={12} />
         </button>
-      </div>
+      </LocalizedClientLink>
     </div>
   )
 }

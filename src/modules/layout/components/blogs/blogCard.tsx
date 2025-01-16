@@ -49,10 +49,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
         })}
       >
         {blog?.type && blogTypes && blogTypes?.length > 0 && (
-          <h3 className="text-primary font-semibold text-sm">
+          <LocalizedClientLink
+            href={`/loai-bai-viet/${blog.type}`}
+            className="text-primary font-semibold text-sm cursor-pointer hover:text-orang-30"
+          >
             {blogTypes?.find((blogType) => blogType?.value === blog?.type)
               ?.name || ""}
-          </h3>
+          </LocalizedClientLink>
         )}
         <h1 className="text-lg sm:text-2xl font-bold font-times">
           {blog?.title}

@@ -28,7 +28,7 @@ const BlogSlider: React.FC<BlogSliderProps> = ({ blogs, blogTypes }) => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="w-[90%] sm:w-full cursor-pointer">
+      <div className="w-[90%] sm:w-full">
         <Swiper
           modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
           loop
