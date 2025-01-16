@@ -106,7 +106,7 @@ export default function MobileMenu({
               </LocalizedClientLink>
               <div
                 className={clsx(
-                  "max-h-0 overflow-hidden ml-4 transition-all duration-300",
+                  "max-h-0 overflow-hidden ml-4 transition-all duration-300 text-sm space-y-2",
                   {
                     "max-h-[500px]": activeSubmenu === item.title,
                   }

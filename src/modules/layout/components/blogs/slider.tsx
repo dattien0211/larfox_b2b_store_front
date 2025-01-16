@@ -1,7 +1,7 @@
 "use client"
 
-import IMGS from "@constants/IMGS"
-import React, { useCallback, useRef, useState } from "react"
+import { useOS } from "@lib/hooks/OSContext"
+import React, { useRef } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import {
   Navigation,
@@ -16,13 +16,15 @@ import "swiper/css/thumbs"
 import "swiper/css/free-mode"
 import "swiper/css/pagination"
 import BlogCard from "./blogCard"
-import { Blog } from "types/global"
+import { Blog, BlogType } from "types/global"
 interface BlogSliderProps {
   blogs: Blog[]
+  blogTypes?: BlogType[]
 }
 
-const BlogSlider: React.FC<BlogSliderProps> = ({ blogs }) => {
+const BlogSlider: React.FC<BlogSliderProps> = ({ blogs, blogTypes }) => {
   const sliderRef = useRef<any>(null)
+  const { os } = useOS()
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -30,7 +32,7 @@ const BlogSlider: React.FC<BlogSliderProps> = ({ blogs }) => {
         <Swiper
           modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
           loop
-          slidesPerView={1}
+          slidesPerView={os === "desktop" ? 3 : os === "tablet" ? 2 : 1}
           spaceBetween={32}
           autoplay={{
             delay: 3000,
@@ -44,7 +46,7 @@ const BlogSlider: React.FC<BlogSliderProps> = ({ blogs }) => {
             blogs.length > 0 &&
             blogs.map((blog, index) => (
               <SwiperSlide key={index}>
-                <BlogCard blog={blog} />
+                <BlogCard blog={blog} blogTypes={blogTypes} />
               </SwiperSlide>
             ))}
         </Swiper>

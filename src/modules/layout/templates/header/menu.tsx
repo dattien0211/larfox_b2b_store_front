@@ -4,14 +4,9 @@ import RightArrow from "@modules/common/icons/right-arrow"
 import React from "react"
 import { useState } from "react"
 import clsx from "clsx"
-import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-const Menu = ({
-  categories,
-}: {
-  categories?: HttpTypes.StoreProductCategory[]
-}) => {
+const Menu = ({ menuItems, to }: { menuItems?: any[]; to: string }) => {
   const [isHovered, setIsHovered] = useState(false)
   return (
     <div
@@ -25,18 +20,18 @@ const Menu = ({
             {/* Sidebar Menu */}
             <div className="w-full">
               <ul className="space-y-2">
-                {categories &&
-                  categories?.length > 0 &&
-                  categories.map((category, index) => (
+                {menuItems &&
+                  menuItems?.length > 0 &&
+                  menuItems.map((menuItem, index) => (
                     <LocalizedClientLink
                       key={index}
                       className={clsx(
                         "flex justify-between items-center text-black-30 hover:bg-grey-15 py-3 px-4 rounded-md cursor-pointer group"
                       )}
-                      href={`/danh-muc-san-pham/${category.handle}`}
+                      href={`${to}/${menuItem.handle || menuItem.value}`}
                     >
                       <span className="text-base text-nowrap">
-                        {category.name}
+                        {menuItem.name}
                       </span>
                       <span className="text-grey-30 group-hover:text-primary">
                         <RightArrow />

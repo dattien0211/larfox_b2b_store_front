@@ -1,3 +1,4 @@
+import { values } from "lodash"
 export type FeaturedProduct = {
   id: string
   title: string
@@ -24,4 +25,31 @@ export type Blog = {
   short_description: string
   description: string
   metadata: Record<string, any>
+}
+
+export type BlogType = {
+  id: string
+  name: string
+  value: string
+  description: string
+  metadata: Record<string, any>
+}
+
+export type BlogTypeQueryParams = {
+  limit?: number
+  order?: string
+  offset?: number
+  q?: string
+  name?: string
+  value?: string
+}
+
+export type BlogQueryParams = {
+  limit?: number
+  order?: string
+  offset?: number
+  q?: string
+  title?: string
+  handle?: string
+  type?: string
 }

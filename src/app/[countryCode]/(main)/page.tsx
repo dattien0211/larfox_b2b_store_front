@@ -20,7 +20,8 @@ import {
   BEST_SELLER_PRODUCT_HANDLE,
   EQUIPMENT_PRODUCT_HANDLE,
 } from "@constants/defaultHandleCollection"
-import { getListBlog } from "@lib/data/blog"
+import { getBlogList } from "@lib/data/blog"
+import { getBlogTypesList } from "@lib/data/blog-types"
 
 export const metadata: Metadata = {
   title: "Anco",
@@ -54,7 +55,9 @@ export default async function Home({
     return collection ? collection.products : []
   }
 
-  const { blogs } = await getListBlog()
+  const { blogs } = await getBlogList()
+
+  const { blogTypes } = await getBlogTypesList()
 
   return (
     <>
@@ -157,7 +160,9 @@ export default async function Home({
         />
       </div>
       <OurStory />
-      {blogs && blogs.length > 0 && <Blogs blogs={blogs} />}
+      {blogs && blogs.length > 0 && (
+        <Blogs blogs={blogs} blogTypes={blogTypes} />
+      )}
     </>
   )
 }

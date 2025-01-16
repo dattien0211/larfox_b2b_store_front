@@ -1,30 +1,58 @@
 "use client"
 
+import clsx from "clsx"
 import React from "react"
 import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { Blog } from "types/global"
-
+import { Blog, BlogType } from "types/global"
+import { useOS } from "@lib/hooks/OSContext"
 interface BlogCardProps {
   blog: Blog
+  blogTypes?: BlogType[]
+  isRow?: boolean
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
+const BlogCard: React.FC<BlogCardProps> = ({
+  blog,
+  blogTypes,
+  isRow = false,
+}) => {
+  const { os } = useOS()
+
   return (
-    <div className="shadow-lg rounded-sm">
-      <div className="relative w-full h-[280px] ">
+    <div
+      className={clsx("shadow-lg rounded-sm flex flex-col", {
+        "!flex-row": isRow,
+        "!flex-col": os === "mobile",
+      })}
+    >
+      <div
+        className={clsx("relative w-full h-[260px]", {
+          "!w-1/2  !h-[290px]": isRow,
+          "!w-full": os === "mobile",
+        })}
+      >
         <Image
           src={blog?.thumbnail}
           alt={blog?.title}
           width={370}
-          height={280}
+          height={290}
           className="w-full h-full  object-cover"
         />
       </div>
 
-      <div className="bg-grey-15 pt-4 px-4 pb-6 sm:px-8 sm:pb-12 flex flex-col gap-y-2 sm:gap-y-4">
-        {blog?.type && (
-          <h3 className="text-primary font-semibold text-sm">{blog?.type}</h3>
+      <div
+        className={clsx("bg-grey-15 flex flex-col gap-y-2 sm:gap-y-4", {
+          "justify-center w-1/2 p-4 sm:p-8 lg:p-12": isRow,
+          "py-6 px-4 sm:px-8 sm:pb-12 ": !isRow,
+          "!py-6 !px-4 !sm:px-8 !sm:pb-12 w-full": os === "mobile",
+        })}
+      >
+        {blog?.type && blogTypes && blogTypes?.length > 0 && (
+          <h3 className="text-primary font-semibold text-sm">
+            {blogTypes?.find((blogType) => blogType?.value === blog?.type)
+              ?.name || ""}
+          </h3>
         )}
         <h1 className="text-lg sm:text-2xl font-bold font-times">
           {blog?.title}

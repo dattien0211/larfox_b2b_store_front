@@ -2,22 +2,16 @@
 
 import React from "react"
 import Icons from "@modules/common/icons"
-import IMGS from "@constants/IMGS"
 import TextAnco from "@modules/layout/components/text-anco"
-import { useOS } from "@lib/hooks/OSContext"
-import { StaticImageData } from "next/image"
-import BlogCard from "./blogCard"
 import BlogSlider from "./slider"
-import { Blog } from "types/global"
+import { Blog, BlogType } from "types/global"
 interface BlogsProps {
   blogs: Blog[]
+  blogTypes: BlogType[]
 }
 
-const Blogs: React.FC<BlogsProps> = ({ blogs }) => {
+const Blogs: React.FC<BlogsProps> = ({ blogs, blogTypes }) => {
   const { RightArrow } = Icons
-  const { os } = useOS()
-
-  const displayedBlogs = os !== "mobile" ? blogs.slice(0, 3) : blogs.slice(0, 1)
 
   return (
     <div className="relative py-12 sm:py-20">
@@ -30,15 +24,7 @@ const Blogs: React.FC<BlogsProps> = ({ blogs }) => {
 
       {/* Blog Cards */}
       <div className="content-container mt-4 sm:mt-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 px-0">
-          {os !== "mobile" ? (
-            displayedBlogs.map((blog, index) => (
-              <BlogCard key={blog.id + index} blog={blog} />
-            ))
-          ) : (
-            <BlogSlider blogs={blogs} />
-          )}
-        </div>
+        <BlogSlider blogs={blogs} blogTypes={blogTypes} />
       </div>
 
       {/* Navigation Button */}

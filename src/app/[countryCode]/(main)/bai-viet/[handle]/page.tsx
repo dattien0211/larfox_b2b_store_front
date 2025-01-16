@@ -5,7 +5,7 @@ import "react-quill/dist/quill.snow.css"
 
 import { getRegion, listRegions } from "@lib/data/regions"
 
-import { getBlogByHandle, getListBlog } from "@lib/data/blog"
+import { getBlogByHandle, getBlogList } from "@lib/data/blog"
 
 type Props = {
   params: { countryCode: string; handle: string }
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
       return []
     }
 
-    const { blogs } = await getListBlog()
+    const { blogs } = await getBlogList()
 
     return countryCodes
       .map((countryCode) =>
@@ -67,7 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ProductPage({ params }: Props) {
+export default async function BlogPage({ params }: Props) {
   const blog = await getBlogByHandle(params.handle)
 
   if (!blog) {

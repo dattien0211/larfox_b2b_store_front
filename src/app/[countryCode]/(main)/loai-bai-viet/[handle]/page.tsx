@@ -1,14 +1,15 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
-import ProductTemplate from "@modules/products/templates"
 import { getRegion, listRegions } from "@lib/data/regions"
-import { getProductByHandle } from "@lib/data/products"
-
-import { getBlogByHandle, getListBlog } from "@lib/data/blog"
+import { getBlogTypeByValue, getBlogTypesList } from "@lib/data/blog-types"
+import BlogTypesTemplate from "@modules/blogtypes/templates"
 
 type Props = {
-  params: { countryCode: string; handle: string }
+  params: { handle: string; countryCode: string }
+  searchParams: {
+    page?: string
+  }
 }
 
 export async function generateStaticParams() {
@@ -21,13 +22,13 @@ export async function generateStaticParams() {
       return []
     }
 
-    const { blogs } = await getListBlog()
+    const { blogTypes } = await getBlogTypesList()
 
     return countryCodes
       .map((countryCode) =>
-        blogs.map((blog) => ({
+        blogTypes.map((blogType) => ({
           countryCode,
-          handle: blog.handle,
+          handle: blogType.value,
         }))
       )
       .flat()
@@ -50,29 +51,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     notFound()
   }
 
-  const blog = await getBlogByHandle(handle)
+  const blogType = await getBlogTypeByValue(handle)
 
-  if (!blog) {
+  if (!blogType) {
     notFound()
   }
 
   return {
-    title: `${blog.title} | Anco`,
-    description: `${blog.short_description}`,
-    openGraph: {
-      title: `${blog.title} | Anco`,
-      description: `${blog.short_description}`,
-      images: blog.thumbnail ? [blog.thumbnail] : [],
-    },
+    title: `${blogType.name} | Anco`,
+    description: `${blogType.description}`,
   }
 }
 
-export default async function ProductPage({ params }: Props) {
-  const blog = await getBlogByHandle(params.handle)
+export default async function BlogTypePage({ params, searchParams }: Props) {
+  const blogType = await getBlogTypeByValue(params.handle)
 
-  if (!blog) {
+  if (!blogType) {
     notFound()
   }
 
-  return <></>
+  const { page } = searchParams
+
+  return (
+    <BlogTypesTemplate
+      page={page}
+      type={params.handle}
+      name={blogType.name}
+    ></BlogTypesTemplate>
+  )
 }
+
+export const dynamic = "force-dynamic"

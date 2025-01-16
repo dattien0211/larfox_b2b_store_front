@@ -8,5 +8,5 @@ export default function RedirectPage({ params }: { params: Params }) {
   const { countryCode } = params
 
   // Perform a server-side redirect
-  redirect(`/${countryCode}/tat-ca-san-pham`)
+  redirect(`/${countryCode}`)
 }

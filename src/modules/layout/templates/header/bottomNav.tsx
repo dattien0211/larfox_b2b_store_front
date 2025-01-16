@@ -6,12 +6,14 @@ import Icons from "@modules/common/icons"
 import Menu from "./menu"
 import { HttpTypes } from "@medusajs/types"
 import MobileMenu from "./mobile-menu"
+import { BlogType } from "types/global"
 
 interface BottomNavProps {
   categories?: HttpTypes.StoreProductCategory[]
+  blogTypes: BlogType[]
 }
 
-export default function BottomNav({ categories }: BottomNavProps) {
+export default function BottomNav({ categories, blogTypes }: BottomNavProps) {
   const { DropDown } = Icons
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
@@ -39,8 +41,10 @@ export default function BottomNav({ categories }: BottomNavProps) {
       {
         title: "Blog",
         submenus: [
-          { title: "Tin tức", href: "/" },
-          { title: "Sức khỏe", href: "/" },
+          ...(blogTypes?.map((blogType) => ({
+            title: blogType.name,
+            href: `/loai-bai-viet/${blogType.value}`,
+          })) || []),
         ],
       },
       { title: "Giới thiệu", href: "/ve-chung-toi" },
@@ -69,18 +73,22 @@ export default function BottomNav({ categories }: BottomNavProps) {
             </LocalizedClientLink>
           </div>
 
-          <div className="relative flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group">
+          <LocalizedClientLink
+            href="/tat-ca-san-pham"
+            className="relative flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group"
+          >
             <h1 className=" text-sm text-nowrap lg:text-base">Sản phẩm</h1>
             <span className="text-grey-30 group-hover:text-primary">
               <DropDown />
             </span>
-            <Menu categories={categories} />
-          </div>
-          <div className="flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group">
+            <Menu menuItems={categories} to={"/danh-muc-san-pham"} />
+          </LocalizedClientLink>
+          <div className="relative flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group">
             <h1 className=" text-sm text-nowrap lg:text-base">Blog</h1>
             <span className="text-grey-30 group-hover:text-primary">
               <DropDown />
             </span>
+            <Menu menuItems={blogTypes} to={"/loai-bai-viet"} />
           </div>
           <LocalizedClientLink
             href="/ve-chung-toi"
