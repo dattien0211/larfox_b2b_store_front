@@ -14,6 +14,7 @@ type PaginatedProductsParams = {
   order?: string
   min_price?: number
   max_price?: number
+  tag_id?: string[]
 }
 
 export default async function PaginatedProducts({
@@ -25,6 +26,7 @@ export default async function PaginatedProducts({
   categoryId,
   productsIds,
   countryCode,
+  tagId,
 }: {
   sortBy?: SortOptions
   minPrice?: string
@@ -34,6 +36,7 @@ export default async function PaginatedProducts({
   categoryId?: string[]
   productsIds?: string[]
   countryCode: string
+  tagId?: string[]
 }) {
   const queryParams: PaginatedProductsParams = {
     limit: PRODUCT_LIMIT,
@@ -42,6 +45,8 @@ export default async function PaginatedProducts({
   if (collectionId) {
     queryParams["collection_id"] = [collectionId]
   }
+
+  if (tagId) queryParams["tag_id"] = [...tagId]
 
   if (categoryId) queryParams["category_id"] = [...categoryId]
 
@@ -88,7 +93,7 @@ export default async function PaginatedProducts({
   return (
     <>
       <ul
-        className="grid grid-cols-2 w-full md:grid-cols-3  gap-x-6 sm:gap-x-8 gap-y-10 sm:gap-y-14"
+        className="grid grid-cols-2 w-full md:grid-cols-3  gap-x-6 sm:gap-x-10 gap-y-10 sm:gap-y-14"
         data-testid="products-list"
       >
         {products.map((p) => {

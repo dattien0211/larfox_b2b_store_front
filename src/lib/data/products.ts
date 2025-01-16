@@ -7,6 +7,7 @@ import { sortProducts } from "@lib/util/sort-products"
 import { getProductPrice } from "@lib/util/get-product-price"
 import client from "@lib/util/client"
 import { UploadedFile } from "./upload-file"
+import { ProductTag } from "types/global"
 
 export const getProductsById = cache(async function ({
   ids,
@@ -202,10 +203,16 @@ export const reviewProduct = async (
   }
 }
 
-export const getProductTags = cache(async function (
+type PaginatedProductTagList = {
+  product_tags: ProductTag[]
+  nextPage: number | null
+  count: number
+}
+
+export const getProductTagsList = cache(async function (
   pageParam: number = 1,
   queryParams?: HttpTypes.FindParams
-) {
+): Promise<PaginatedProductTagList> {
   const limit = queryParams?.limit || 12
   const offset = pageParam * limit
 

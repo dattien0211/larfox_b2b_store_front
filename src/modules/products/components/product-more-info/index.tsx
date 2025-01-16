@@ -54,13 +54,16 @@ const ProductMoreInfo = ({ product, variant }: ProductInfoProps) => {
         </div>
       </div>
       <div className="flex text-sm">
-        <span className="text-black-20">Thẻ:</span>
+        <span className="text-black-20">Tags:</span>
         <div className="flex gap-x-2 ml-1">
           {product?.tags &&
             product?.tags?.map((tag, index) => {
               return (
                 <div key={tag?.id}>
-                  <LocalizedClientLink href="#" className="hover:text-primary">
+                  <LocalizedClientLink
+                    href={`/tat-ca-san-pham?tag_id=${tag?.id}`}
+                    className="hover:text-primary"
+                  >
                     {tag?.value}
                   </LocalizedClientLink>
                   {product?.tags && index < product?.tags.length - 1

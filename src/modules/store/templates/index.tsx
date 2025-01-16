@@ -7,6 +7,7 @@ import CategoryHeader from "@modules/categories/components/category-header"
 import { SortOptions } from "@modules/categories/components/sort-category"
 import FilterMenu from "@modules/categories/components/filter-menu"
 import ProductBanner from "@modules/layout/components/product-banner"
+import { ProductTag } from "types/global"
 
 const StoreTemplate = ({
   sortBy,
@@ -15,6 +16,8 @@ const StoreTemplate = ({
   page,
   countryCode,
   allCategories,
+  productTags,
+  tagId,
 }: {
   allCategories: HttpTypes.StoreProductCategory[]
   sortBy?: SortOptions
@@ -22,6 +25,8 @@ const StoreTemplate = ({
   maxPrice?: string
   page?: string
   countryCode: string
+  productTags?: ProductTag[]
+  tagId?: string[]
 }) => {
   const pageNumber = page ? parseInt(page) : 1
   const sort = sortBy || "moi_nhat"
@@ -37,6 +42,7 @@ const StoreTemplate = ({
           allCategories={allCategories}
           paramsCategory={[]}
           data-testid="product-filter"
+          productTags={productTags}
         />
 
         <div className="flex-1">
@@ -51,6 +57,7 @@ const StoreTemplate = ({
               sortBy={sort}
               minPrice={minPrice}
               maxPrice={maxPrice}
+              tagId={tagId}
               page={pageNumber}
               countryCode={countryCode}
             />

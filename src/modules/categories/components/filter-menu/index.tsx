@@ -8,17 +8,19 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import IMGS from "@constants/IMGS"
 import CategoryFilter from "@modules/categories/components/category-filter"
 import PriceRange from "@modules/categories/components/price-range"
-import SizeFilter from "@modules/categories/components/size-filter"
 import TagFilter from "@modules/categories/components/tag-filter"
 import Icons from "@modules/common/icons"
 import Breadcrumb from "../bread-crumb"
+import { ProductTag } from "types/global"
 
 export default function FilterMenu({
   allCategories,
   paramsCategory,
+  productTags,
 }: {
   paramsCategory: string[]
   allCategories: HttpTypes.StoreProductCategory[]
+  productTags?: ProductTag[]
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -74,8 +76,10 @@ export default function FilterMenu({
           />
         )}
         <PriceRange />
-        {/* <SizeFilter />
-        <TagFilter /> */}
+        {/* <SizeFilter />*/}
+        {productTags && productTags.length > 0 && (
+          <TagFilter productTags={productTags} />
+        )}
       </div>
 
       {/* Overlay for Smaller Screens */}

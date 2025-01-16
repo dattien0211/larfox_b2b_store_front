@@ -3,6 +3,7 @@ import { Metadata } from "next"
 import StoreTemplate from "@modules/store/templates"
 import { SortOptions } from "@modules/categories/components/sort-category"
 import { getCategoriesList } from "@lib/data/categories"
+import { getProductTagsList } from "@lib/data/products"
 
 export const metadata: Metadata = {
   title: "Tất Cả Sản Phẩm | Anco",
@@ -15,6 +16,7 @@ type Params = {
     page?: string
     min_price?: string
     max_price?: string
+    tag_id?: string
   }
   params: {
     countryCode: string
@@ -27,6 +29,13 @@ export default async function StorePage({ searchParams, params }: Params) {
   const categories = await getCategoriesList()
   const minPrice = searchParams["min_price"]
   const maxPrice = searchParams["max_price"]
+  const tagId = Array.isArray(searchParams.tag_id)
+    ? searchParams.tag_id
+    : searchParams.tag_id
+    ? [searchParams.tag_id]
+    : []
+
+  const { product_tags } = await getProductTagsList()
 
   return (
     <StoreTemplate
@@ -36,6 +45,8 @@ export default async function StorePage({ searchParams, params }: Params) {
       maxPrice={maxPrice}
       page={page}
       countryCode={params.countryCode}
+      productTags={product_tags}
+      tagId={tagId}
     />
   )
 }

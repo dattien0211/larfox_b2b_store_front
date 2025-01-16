@@ -4,12 +4,11 @@ import { Suspense } from "react"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import { HttpTypes } from "@medusajs/types"
-import BannerProduct from "@modules/layout/components/banner"
-import IMGS from "@constants/IMGS"
 import CategoryHeader from "@modules/categories/components/category-header"
 import { SortOptions } from "@modules/categories/components/sort-category"
 import FilterMenu from "@modules/categories/components/filter-menu"
 import ProductBanner from "@modules/layout/components/product-banner"
+import { ProductTag } from "types/global"
 
 export default function CategoryTemplate({
   categories,
@@ -20,6 +19,8 @@ export default function CategoryTemplate({
   countryCode,
   allCategories,
   paramsCategory,
+  productTags,
+  tagId,
 }: {
   categories: HttpTypes.StoreProductCategory[]
   allCategories: HttpTypes.StoreProductCategory[]
@@ -29,6 +30,8 @@ export default function CategoryTemplate({
   page?: string
   countryCode: string
   paramsCategory: string[]
+  productTags?: ProductTag[]
+  tagId?: string[]
 }) {
   const pageNumber = page ? parseInt(page) : 1
   const sort = sortBy || "moi_nhat"
@@ -49,6 +52,7 @@ export default function CategoryTemplate({
           allCategories={allCategories}
           paramsCategory={paramsCategory}
           data-testid="product-filter"
+          productTags={productTags}
         />
 
         <div className="flex-1">
@@ -68,6 +72,7 @@ export default function CategoryTemplate({
               page={pageNumber}
               minPrice={minPrice}
               maxPrice={maxPrice}
+              tagId={tagId}
               categoryId={categories.map((category) => category.id)}
               countryCode={countryCode}
             />

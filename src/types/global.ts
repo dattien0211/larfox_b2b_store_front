@@ -54,8 +54,7 @@ export type BlogQueryParams = {
   type?: string
 }
 
-export type ProductTags = {
-  q?: string
-  id?: string | string[]
-  value?: string | string[]
+export type ProductTag = {
+  id: string 
+  value: string 
 }

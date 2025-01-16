@@ -10,6 +10,7 @@ import { listRegions } from "@lib/data/regions"
 import { StoreProductCategory, StoreRegion } from "@medusajs/types"
 import CategoryTemplate from "@modules/categories/templates"
 import { SortOptions } from "@modules/categories/components/sort-category"
+import { getProductTagsList } from "@lib/data/products"
 
 type Props = {
   params: { category: string[]; countryCode: string }
@@ -18,6 +19,7 @@ type Props = {
     page?: string
     min_price?: string
     max_price?: string
+    tag_id?: string
   }
 }
 
@@ -77,6 +79,11 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   const sortBy = searchParams["sap-xep"]
   const minPrice = searchParams["min_price"]
   const maxPrice = searchParams["max_price"]
+  const tagId = Array.isArray(searchParams.tag_id)
+    ? searchParams.tag_id
+    : searchParams.tag_id
+    ? [searchParams.tag_id]
+    : []
 
   const { product_categories } = await getCategoryByHandle(params.category)
 
@@ -85,7 +92,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   }
 
   const categories = await getCategoriesList()
-  // const tags = await getTagsList()
+  const { product_tags } = await getProductTagsList()
 
   return (
     <CategoryTemplate
@@ -94,9 +101,11 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       sortBy={sortBy}
       minPrice={minPrice}
       maxPrice={maxPrice}
+      tagId={tagId}
       page={page}
       countryCode={params.countryCode}
       paramsCategory={params.category}
+      productTags={product_tags}
     />
   )
 }

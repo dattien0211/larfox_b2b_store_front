@@ -1,49 +1,37 @@
 "use client"
 
-import { HttpTypes } from "@medusajs/types"
-import { values } from "lodash"
-import { usePathname, useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useState, useEffect } from "react"
 import clsx from "clsx"
+import { ProductTag } from "types/global"
 
-const TagFilter = () => {
+const TagFilter = ({ productTags }: { productTags?: ProductTag[] }) => {
   const router = useRouter()
-  const pathname = usePathname()
+  const searchParams = useSearchParams()
   const [selectedTags, setSelectedTags] = useState<string[]>([])
 
-  const tagArr = [
-    { id: 1, name: "Nhà cửa", handle: "150" },
-    { id: 2, name: "Trị liệu tại nhà", handle: "200" },
-    { id: 3, name: "Thải độc", handle: "350" },
-    { id: 4, name: "Thảo dược", handle: "450" },
-    { id: 5, name: "Chăm sóc sức khoẻ", handle: "550" },
-    { id: 6, name: "Túi làm ấm", handle: "650" },
-    { id: 7, name: "Tẩy da", handle: "750" },
-    { id: 8, name: "Miếng dán", handle: "850" },
-  ]
+  useEffect(() => {
+    const tags = searchParams.getAll("tag_id")
+    setSelectedTags(tags)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams])
 
-  // useEffect(() => {
-  //   if (paramsCategory) {
-  //     setSelectedTags(paramsCategory)
-  //   }
-  // }, [paramsCategory])
+  const handleOnclick = (id: string) => {
+    const currentParams = new URLSearchParams(searchParams.toString())
 
-  const toggleCategory = (handle: string) => {
-    setSelectedTags((prev) => {
-      const isSelected = prev.includes(handle)
-      const updatedTags = isSelected
-        ? prev.filter((categoryHandle) => categoryHandle !== handle) // Remove the category if already selected
-        : [...prev, handle] // Add the category if not selected
+    // Toggle the selected tag
+    if (selectedTags.includes(id)) {
+      // Remove the tag if it is already selected
+      const updatedTags = selectedTags.filter((tag) => tag !== id)
+      currentParams.delete("tag_id") // Clear existing tag_id params
+      updatedTags.forEach((tag) => currentParams.append("tag_id", tag)) // Re-add updated tags
+    } else {
+      // Add the tag if it is not selected
+      currentParams.append("tag_id", id)
+    }
 
-      // // Construct the new URL
-      // const basePath = pathname.split("/").slice(0, 3).join("/") // Extract the base path, e.g., "/vn/danh-muc-san-pham/anco-care"
-      // const newPath = `${basePath}/${updatedTags.join("/")}` // Add selected categories to the path
-
-      // // Push the new route
-      // router.push(newPath)
-
-      return updatedTags
-    })
+    // Push the updated URL
+    router.push(`?${currentParams.toString()}`)
   }
 
   return (
@@ -52,25 +40,28 @@ const TagFilter = () => {
         Tags
       </h2>
       <div className="flex flex-wrap mt-4 sm:mt-8 gap-2">
-        {tagArr.map((tag) => (
-          <div
-            className={clsx(
-              "px-2 py-1 bg-grey-20 cursor-pointer hover:bg-primary hover:text-white transition",
-              {
-                "bg-primary border-primary": selectedTags.includes(tag.handle),
-              }
-            )}
-            key={tag.id}
-          >
-            <span
-              className={clsx("text-nowrap text-xs sm:text-sm", {
-                "text-white": selectedTags.includes(tag.handle),
-              })}
+        {productTags &&
+          productTags.length > 0 &&
+          productTags.map((tag) => (
+            <div
+              className={clsx(
+                "px-2 py-1 bg-grey-20 cursor-pointer hover:bg-primary hover:text-white transition",
+                {
+                  "bg-primary border-primary": selectedTags.includes(tag.id),
+                }
+              )}
+              key={tag.id}
+              onClick={() => handleOnclick(tag.id)}
             >
-              {tag.name}
-            </span>
-          </div>
-        ))}
+              <span
+                className={clsx("text-nowrap text-xs sm:text-sm", {
+                  "text-white": selectedTags.includes(tag.id),
+                })}
+              >
+                {tag.value}
+              </span>
+            </div>
+          ))}
       </div>
     </>
   )
