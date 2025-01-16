@@ -38,7 +38,7 @@ export default function CategoryTemplate({
   if (!category || !countryCode) notFound()
 
   return (
-    <div className="mb-24">
+    <div className="mb-16 sm:mb-24">
       <ProductBanner />
 
       <div

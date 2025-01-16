@@ -110,7 +110,7 @@ const AccountNav = ({
       </div>
 
       {/* AccountNavDesktop */}
-      <div className="hidden sm:block mb-24" data-testid="account-nav">
+      <div className="hidden sm:block mb-16 sm:mb-24" data-testid="account-nav">
         <div>
           <div className="text-base">
             <ul className="flex mb-0 justify-start items-start flex-col gap-y-6">

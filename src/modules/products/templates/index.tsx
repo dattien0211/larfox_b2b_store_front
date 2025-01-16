@@ -32,7 +32,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   const token = cookies().get("_medusa_jwt")?.value
 
   return (
-    <div className="mb-24">
+    <div className="mb-16 sm:mb-24">
       <div
         className="content-container flex flex-col  small:items-start py-6 relative"
         data-testid="product-container"

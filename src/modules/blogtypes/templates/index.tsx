@@ -27,15 +27,16 @@ export default async function BlogTypesTemplate({
 
   const { blogs, count } = await getBlogList(pageNumber || 1, queryParams)
 
-  // TODO-NEED TO CHECK IF IT NEED PAGINATION
   const totalPages = Math.ceil(count / BLOG_LIMIT)
 
   if (!blogs) {
     notFound()
   }
 
+  const relatedBlogs = blogs.slice(BLOG_COL_SHOW)
+
   return (
-    <div className="content-container py-9 mt-6 sm:mt-12 mb-16 sm:mb-24">
+    <div className="content-container py-3 sm:py-9 mt-4 sm:mt-12 mb-16 sm:mb-24">
       <TextAnco backgroundText="Bài Viết" title="BLog" subTitle={name} />
       <div className="flex flex-col gap-y-4 sm:gap-y-8 mt-8 sm:mt-16">
         {blogs.slice(0, BLOG_COL_SHOW).map((blog, index) => (
@@ -49,12 +50,14 @@ export default async function BlogTypesTemplate({
           totalPages={totalPages}
         />
       )}
-      <div className="mt-8 sm:mt-12 mb-12 sm:mb-16">
-        <h1 className="mb-8 font-bold font-times text-xl md:text-2xl">
-          Bài viết liên quan
-        </h1>
-        <BlogSlider blogs={blogs.slice(BLOG_COL_SHOW)} />
-      </div>
+      {relatedBlogs.length > 0 && (
+        <div className="mt-8 sm:mt-12 mb-6 sm:mb-12">
+          <h1 className="mb-4 sm:mb-8 font-bold font-times text-xl md:text-2xl">
+            Bài viết liên quan
+          </h1>
+          <BlogSlider blogs={blogs.slice(BLOG_COL_SHOW)} />
+        </div>
+      )}
     </div>
   )
 }

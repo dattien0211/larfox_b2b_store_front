@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default async function PaymentPolicyPage() {
   return (
     <>
-      <div className="py-9 content-container !mb-24">
+      <div className="py-9 content-container mb-16 sm:mb-24">
         <h1 className="sm:text-3xl text-2xl  font-bold  mb-6">
           Chính Sách Mua Hàng Và Thanh Toán
         </h1>

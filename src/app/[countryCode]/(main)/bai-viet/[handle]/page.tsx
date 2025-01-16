@@ -6,6 +6,8 @@ import "react-quill/dist/quill.snow.css"
 import { getRegion, listRegions } from "@lib/data/regions"
 
 import { getBlogByHandle, getBlogList } from "@lib/data/blog"
+import BlogSlider from "@modules/layout/components/blogs/slider"
+import { Blog, BlogQueryParams } from "types/global"
 
 type Props = {
   params: { countryCode: string; handle: string }
@@ -73,7 +75,15 @@ export default async function BlogPage({ params }: Props) {
   if (!blog) {
     notFound()
   }
+
   const sanitizedContent = DOMPurify.sanitize(blog.description)
+
+  const queryParams: BlogQueryParams = {
+    type: blog.type,
+  }
+  const { blogs } = await getBlogList(1, queryParams)
+
+  const relatedBlogs = blogs?.filter((item) => item.id !== blog.id)
 
   return (
     <div className="content-container py-4 sm:py-8 mb-16 sm:mb-24">
@@ -81,6 +91,15 @@ export default async function BlogPage({ params }: Props) {
         className="ql-editor rich-text-content"
         dangerouslySetInnerHTML={{ __html: sanitizedContent }}
       ></div>
+
+      {relatedBlogs.length > 0 && (
+        <div className="mt-8 sm:mt-12 mb-6 sm:mb-12">
+          <h1 className="mb-4 sm:mb-8 font-bold font-times text-xl md:text-2xl">
+            Bài viết liên quan
+          </h1>
+          <BlogSlider blogs={relatedBlogs} />
+        </div>
+      )}
     </div>
   )
 }

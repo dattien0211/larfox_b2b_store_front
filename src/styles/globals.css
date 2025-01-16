@@ -310,6 +310,9 @@ body {
 }
 
 @layer quill {
+  .ql-editor {
+    @apply !p-0;
+  }
   /* Define font-family styles */
   .ql-font-times-new-roman {
     font-family: "Times New Roman", Times, serif;

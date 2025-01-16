@@ -27,7 +27,7 @@ const StoreTemplate = ({
   const sort = sortBy || "moi_nhat"
 
   return (
-    <div className="mb-24">
+    <div className="mb-16 sm:mb-24">
       <ProductBanner />
       <div
         className="flex flex-col small:flex-row small:items-start py-6 gap-x-10 gap-y-4 content-container small:!mb-24 relative z-20 "

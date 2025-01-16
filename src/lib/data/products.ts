@@ -202,74 +202,20 @@ export const reviewProduct = async (
   }
 }
 
-// export const getProductsListWithSort = cache(async function ({
-//   page = 0,
-//   queryParams,
-//   sortBy = "created_at",
-//   countryCode,
-// }: {
-//   page?: number
-//   queryParams?: HttpTypes.FindParams &
-//     HttpTypes.StoreProductParams & { min_price?: number; max_price?: number }
-//   sortBy?: SortOptions
-//   countryCode: string
-// }): Promise<{
-//   response: { products: HttpTypes.StoreProduct[]; count: number }
-//   nextPage: number | null
-//   queryParams?: HttpTypes.FindParams & HttpTypes.StoreProductParams
-// }> {
-//   const limit = queryParams?.limit || 12
-//   const offset = (page - 1) * limit // Directly calculate the offset
+export const getProductTags = cache(async function (
+  pageParam: number = 1,
+  queryParams?: HttpTypes.FindParams
+) {
+  const limit = queryParams?.limit || 12
+  const offset = pageParam * limit
 
-//   // Destructure min_price and max_price from queryParams
-//   const { min_price, max_price, ...restQueryParams } = queryParams || {}
+  const res = await client.get("/store/product-tags")
 
-//   const {
-//     response: { products, count },
-//   } = await getProductsList({
-//     pageParam: offset, // Use offset directly instead of _pageParam
-//     queryParams: {
-//       ...restQueryParams,
-//       limit: limit, // Ensure the limit is passed as per the request
-//     },
-//     countryCode,
-//   })
+  const nextPage = res.data.count > offset + limit ? pageParam + 1 : null
 
-//   let filteredProducts: HttpTypes.StoreProduct[] = []
-
-//   if (min_price && max_price) {
-//     // Map through products and calculate the price for each
-//     const mappedProducts = products.map((product) => {
-//       const { cheapestPrice } = getProductPrice({ product }) // Assuming getProductPrice returns a price object
-//       return { ...product, ...cheapestPrice } // Merge product with price details
-//     })
-
-//     // Apply price filtering based on min_price and max_price
-//     filteredProducts = mappedProducts.filter((product) => {
-//       const productPrice = product.calculated_price_number || 0 // Use the price field populated by getProductPrice
-//       const meetsMinPrice =
-//         min_price !== undefined ? productPrice >= min_price : true
-//       const meetsMaxPrice =
-//         max_price !== undefined ? productPrice <= max_price : true
-//       return meetsMinPrice && meetsMaxPrice
-//     })
-//   }
-
-//   // Sort products
-//   const sortedProducts = sortProducts(
-//     min_price && max_price ? filteredProducts : products,
-//     sortBy
-//   )
-
-//   // Paginate products
-//   const nextPage = count > offset + limit ? offset + limit : null
-
-//   return {
-//     response: {
-//       products: sortedProducts,
-//       count,
-//     },
-//     nextPage,
-//     queryParams,
-//   }
-// })
+  return {
+    product_tags: res.data?.product_tags || [],
+    count: res.data?.count || 0,
+    nextPage: nextPage,
+  }
+})
