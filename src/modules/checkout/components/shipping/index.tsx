@@ -83,7 +83,7 @@ const Shipping: React.FC<ShippingProps> = ({
             <Text>
               <button
                 onClick={handleEdit}
-                className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base"
+                className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base !font-manrope"
                 data-testid="edit-delivery-button"
               >
                 Sửa
@@ -113,7 +113,9 @@ const Shipping: React.FC<ShippingProps> = ({
                       <Radio
                         checked={option.id === selectedShippingMethod?.id}
                       />
-                      <span className="text-base-regular">{option.name}</span>
+                      <span className="text-sm sm:text-base">
+                        {option.name}
+                      </span>
                     </div>
                     <span className="justify-self-end text-base text-primary">
                       {convertToLocale({
@@ -148,7 +150,7 @@ const Shipping: React.FC<ShippingProps> = ({
           <div className="text-small-regular">
             {cart && (cart.shipping_methods?.length ?? 0) > 0 && (
               <div className="flex flex-col gap-y-4">
-                <Text className="text-nowrap text-base text-ui-fg-subtle">
+                <Text className="text-nowrap text-base text-ui-fg-subtle !font-manrope">
                   {selectedShippingMethod?.name}{" "}
                   {convertToLocale({
                     amount: selectedShippingMethod?.amount!,

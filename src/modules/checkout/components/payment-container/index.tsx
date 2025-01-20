@@ -40,20 +40,18 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
         <div className="flex items-center justify-between ">
           <div className="flex items-center gap-x-4">
             <Radio checked={selectedPaymentOptionId === paymentProviderId} />
-            <Text className="text-base-regular">
-              {paymentInfoMap[paymentProviderId]?.title || paymentProviderId}
+            <Text className="text-sm sm:text-base">
+              {isManual(paymentProviderId)
+                ? "Thanh toán khi nhận hàng - (COD)"
+                : paymentInfoMap[paymentProviderId]?.title || paymentProviderId}
             </Text>
-            {isManual(paymentProviderId) && isDevelopment && (
-              <PaymentTest className="hidden small:block" />
-            )}
           </div>
-          <span className="justify-self-end text-ui-fg-base">
-            {paymentInfoMap[paymentProviderId]?.icon}
-          </span>
+          {!isManual(paymentProviderId) && (
+            <span className="justify-self-end text-ui-fg-base">
+              {paymentInfoMap[paymentProviderId]?.icon}
+            </span>
+          )}
         </div>
-        {isManual(paymentProviderId) && isDevelopment && (
-          <PaymentTest className="small:hidden text-xxs" />
-        )}
       </RadioGroup.Option>
     </>
   )

@@ -37,7 +37,7 @@ const Review = ({ cart }: { cart: any }) => {
         <>
           <div className="flex items-start gap-x-1 w-full mb-6">
             <div className="w-full">
-              <Text className="txt-medium-plus text-justify text-ui-fg-base mb-1">
+              <Text className="txt-medium-plus sm:text-base text-justify text-ui-fg-base mb-1 !font-manrope">
                 Bằng cách nhấp vào nút Đặt Hàng, bạn xác nhận rằng bạn đã đọc,
                 hiểu và chấp nhận&nbsp;
                 <LocalizedClientLink
@@ -71,10 +71,7 @@ const Review = ({ cart }: { cart: any }) => {
               </Text>
             </div>
           </div>
-          <PaymentButton
-            cart={cart}
-            data-testid="submit-order-button"
-          />
+          <PaymentButton cart={cart} data-testid="submit-order-button" />
         </>
       )}
     </div>

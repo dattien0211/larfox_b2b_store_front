@@ -11,7 +11,11 @@ import { StripeCardElementOptions } from "@stripe/stripe-js"
 
 import Divider from "@modules/common/components/divider"
 import PaymentContainer from "@modules/checkout/components/payment-container"
-import { isStripe as isStripeFunc, paymentInfoMap } from "@lib/constants"
+import {
+  isManual,
+  isStripe as isStripeFunc,
+  paymentInfoMap,
+} from "@lib/constants"
 import { StripeContext } from "@modules/checkout/components/payment-wrapper"
 import { initiatePaymentSession } from "@lib/data/cart"
 
@@ -113,6 +117,8 @@ const Payment = ({
     setError(null)
   }, [isOpen])
 
+  console.log("OK", selectedPaymentMethod)
+
   return (
     <div className="bg-white">
       <div className="flex flex-row items-center justify-between mb-6">
@@ -132,7 +138,7 @@ const Payment = ({
           <Text>
             <button
               onClick={handleEdit}
-              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base"
+              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base !font-manrope"
               data-testid="edit-payment-button"
             >
               Sửa
@@ -225,37 +231,41 @@ const Payment = ({
           {cart && paymentReady && activeSession ? (
             <div className="flex items-start gap-x-1 w-full">
               <div className="flex flex-col w-1/2">
-                <Text className="text-base  text-ui-fg-base mb-1">
+                <Text className=" txt-medium text-base txt-ui-fg-base mb-1 !font-manrope-semibold">
                   Phương thức
                 </Text>
                 <Text
-                  className="txt-medium text-ui-fg-subtle"
+                  className="font-normal  txt-medium text-sm sm:text-base text-ui-fg-subtle !font-manrope"
                   data-testid="payment-method-summary"
                 >
-                  {paymentInfoMap[selectedPaymentMethod]?.title ||
-                    selectedPaymentMethod}
+                  {isManual(selectedPaymentMethod)
+                    ? "Thanh toán khi nhận hàng - (COD)"
+                    : paymentInfoMap[selectedPaymentMethod]?.title ||
+                      selectedPaymentMethod}
                 </Text>
               </div>
-              <div className="flex flex-col w-1/2">
-                <Text className="text-base text-ui-fg-base mb-1">
-                  Chi tiết thanh toán
-                </Text>
-                <div
-                  className="flex gap-2 txt-medium text-ui-fg-subtle items-center"
-                  data-testid="payment-details-summary"
-                >
-                  <Container className="flex items-center h-7 w-fit p-2 bg-ui-button-neutral-hover">
-                    {paymentInfoMap[selectedPaymentMethod]?.icon || (
-                      <CreditCard />
-                    )}
-                  </Container>
-                  <Text>
-                    {isStripeFunc(selectedPaymentMethod) && cardBrand
-                      ? cardBrand
-                      : "Another step will appear"}
+              {!isManual(selectedPaymentMethod) && (
+                <div className="flex flex-col w-1/2">
+                  <Text className="text-base text-ui-fg-base mb-1 ">
+                    Chi tiết thanh toán
                   </Text>
+                  <div
+                    className="flex gap-2 txt-medium text-ui-fg-subtle items-center"
+                    data-testid="payment-details-summary"
+                  >
+                    <Container className="flex items-center h-7 w-fit p-2 bg-ui-button-neutral-hover">
+                      {paymentInfoMap[selectedPaymentMethod]?.icon || (
+                        <CreditCard />
+                      )}
+                    </Container>
+                    <Text>
+                      {isStripeFunc(selectedPaymentMethod) && cardBrand
+                        ? cardBrand
+                        : "Bước tiếp theo sẽ xuất hiện"}
+                    </Text>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ) : paidByGiftcard ? (
             <div className="flex flex-col w-1/3">

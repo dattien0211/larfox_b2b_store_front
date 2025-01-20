@@ -105,7 +105,7 @@ const Addresses = ({
           <Text>
             <button
               onClick={handleEdit}
-              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base"
+              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base !font-manrope"
               data-testid="edit-address-button"
             >
               Sửa
@@ -159,18 +159,18 @@ const Addresses = ({
                     className="flex flex-col"
                     data-testid="shipping-address-summary"
                   >
-                    <Text className="text-base txt-ui-fg-base mb-1 font-semibold">
+                    <Text className="text-base txt-ui-fg-base mb-1 !font-manrope-semibold">
                       Thông tin giao hàng
                     </Text>
 
                     {cart?.shipping_address ? (
                       <div className="flex flex-col ">
                         <div className="flex">
-                          <Text className="text-sm sm:text-base text-ui-fg-subtle mr-1">
-                            Khách hàng
+                          <Text className="text-sm sm:text-base text-ui-fg-subtle mr-1 !font-manrope">
+                            Khách hàng:
                           </Text>
                           <Text className="text-sm sm:text-base text-ui-fg-subtle">
-                            <span className="font-semibold">
+                            <span className="!font-manrope-semibold">
                               {`${cart.shipping_address.last_name || ""} ${
                                 cart.shipping_address.first_name || ""
                               }`}
@@ -179,20 +179,20 @@ const Addresses = ({
                         </div>
 
                         <div className="flex">
-                          <Text className="text-sm sm:text-base text-ui-fg-subtle mr-1">
+                          <Text className="text-sm sm:text-base text-ui-fg-subtle mr-1 !font-manrope">
                             Địa chỉ:
                           </Text>
                           <div className="flex flex-wrap ">
-                            <Text className="text-sm sm:text-base text-ui-fg-subtle font-semibold">
+                            <Text className="text-sm sm:text-base text-ui-fg-subtle !font-manrope-semibold">
                               {`${cart.shipping_address.address_1 || ""}`}
                             </Text>
                             {cart.shipping_address.province && (
-                              <Text className="text-sm sm:text-base text-ui-fg-subtle font-semibold">
+                              <Text className="text-sm sm:text-base text-ui-fg-subtle !font-manrope-semibold">
                                 {`, ${cart.shipping_address.province}`}
                               </Text>
                             )}
                             {cart.shipping_address.city && (
-                              <Text className="text-sm sm:text-base text-ui-fg-subtle font-semibold">
+                              <Text className="text-sm sm:text-base text-ui-fg-subtle !font-manrope-semibold">
                                 {`, ${cart.shipping_address.city}.`}
                               </Text>
                             )}
@@ -210,7 +210,7 @@ const Addresses = ({
                         </Text> */}
                       </div>
                     ) : (
-                      <Text className="text-base text-ui-fg-subtle">
+                      <Text className="text-base text-ui-fg-subtle !font-manrope">
                         Chưa có thông tin địa chỉ nhận hàng.
                       </Text>
                     )}
@@ -220,21 +220,23 @@ const Addresses = ({
                     className="flex flex-col"
                     data-testid="shipping-contact-summary"
                   >
-                    <Text className="text-base txt-ui-fg-base mb-1 font-semibold">
+                    <Text className="text-base txt-ui-fg-base mb-1 !font-manrope-semibold ">
                       Thông tin liên hệ
                     </Text>
-                    <Text className="text-sm sm:text-base text-ui-fg-subtle">
+                    <Text className="text-sm sm:text-base text-ui-fg-subtle !font-manrope">
                       Số điện thoại:{" "}
-                      <span className="font-semibold">
+                      <span className="!font-manrope-semibold">
                         {cart.shipping_address.phone
                           ? cart.shipping_address.phone
                           : ""}
                       </span>
                     </Text>
                     {cart.email && cart.email !== DEFAULT_EMAIL && (
-                      <Text className="text-sm sm:text-base text-ui-fg-subtle">
+                      <Text className="text-sm sm:text-base text-ui-fg-subtle !font-manrope">
                         Email:{" "}
-                        <span className="font-semibold">{cart.email}</span>
+                        <span className="!font-manrope-semibold">
+                          {cart.email}
+                        </span>
                       </Text>
                     )}
                   </div>
