@@ -86,7 +86,7 @@ export default async function BlogPage({ params }: Props) {
   const relatedBlogs = blogs?.filter((item) => item.id !== blog.id)
 
   return (
-    <div className="content-container py-4 sm:py-8 mb-16 sm:mb-24">
+    <div className="content-container py-4 sm:py-8 mb-16 sm:mb-32">
       <div
         className="ql-editor rich-text-content"
         dangerouslySetInnerHTML={{ __html: sanitizedContent }}

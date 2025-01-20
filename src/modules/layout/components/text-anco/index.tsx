@@ -19,7 +19,7 @@ const TextAnco: React.FC<ListProductsProps> = ({
     <>
       <div className="content-container relative">
         <div
-          className={`${classBGText} text-nowrap absolute text-grey-15 font-bold font-times text-60px sm:text-80px  md:text-110px lg:text-140px  left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10`}
+          className={`${classBGText}  text-nowrap absolute text-grey-15 font-bold font-times text-60px sm:text-80px  md:text-110px lg:text-128px  left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10`}
         >
           {backgroundText}
         </div>
@@ -27,7 +27,7 @@ const TextAnco: React.FC<ListProductsProps> = ({
           <h2 className="italic text-primary font-times font-bold text-lg sm:text-xl lg:text-2xl">
             {title}
           </h2>
-          <h1 className="sm:text-3xl text-2xl   md:text-4xl md:text-44px font-bold font-times sm:mt-2">
+          <h1 className="sm:text-3xl text-2xl md:text-4xl md:text-44px font-bold font-times sm:mt-2">
             {subTitle}
           </h1>
         </div>

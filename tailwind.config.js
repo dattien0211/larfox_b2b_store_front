@@ -78,7 +78,7 @@ module.exports = {
         "60px": "60px",
         "80px": "80px",
         "110px": "110px",
-        "140px": "140px",
+        "128px": "128px",
       },
       fontFamily: {
         sans: [

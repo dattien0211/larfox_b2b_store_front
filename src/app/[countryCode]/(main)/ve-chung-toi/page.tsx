@@ -14,7 +14,7 @@ export default async function Chung() {
 
       <div className="content-container">
         <div className="relative">
-          <div className="absolute text-grey-15 font-bold  text-60px sm:text-80px  md:text-110px lg:text-140px left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 -z-10">
+          <div className="absolute text-grey-15 font-bold  text-60px sm:text-80px  md:text-110px lg:text-128px left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 -z-10">
             About us
           </div>
           <div className="flex flex-col items-center">

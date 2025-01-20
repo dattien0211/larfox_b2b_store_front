@@ -83,13 +83,16 @@ export default function BottomNav({ categories, blogTypes }: BottomNavProps) {
             </span>
             <Menu menuItems={categories} to={"/danh-muc-san-pham"} />
           </LocalizedClientLink>
-          <div className="relative flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group">
+          <LocalizedClientLink
+            href="/tat-ca-bai-viet"
+            className="relative flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group"
+          >
             <h1 className=" text-sm text-nowrap lg:text-base">Blog</h1>
             <span className="text-grey-30 group-hover:text-primary">
               <DropDown />
             </span>
             <Menu menuItems={blogTypes} to={"/loai-bai-viet"} />
-          </div>
+          </LocalizedClientLink>
           <LocalizedClientLink
             href="/ve-chung-toi"
             className="flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group"

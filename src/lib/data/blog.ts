@@ -1,4 +1,3 @@
-import { sdk } from "@lib/config"
 import { Blog, BlogQueryParams } from "types/global"
 import { cache } from "react"
 import client from "@lib/util/client"
@@ -22,9 +21,11 @@ export const getBlogList = cache(async function (
   queryParams?: BlogQueryParams
 ): Promise<PaginatedBlogList> {
   const limit = queryParams?.limit || 12
-  const offset = pageParam * limit
+  const offset = (pageParam - 1) * limit
 
-  const res = await client.get("/store/blogs")
+  const res = await client.get("/store/blogs", {
+    params: { limit, offset, ...queryParams },
+  })
 
   const nextPage = res.data.count > offset + limit ? pageParam + 1 : null
 
