@@ -122,15 +122,15 @@ export default function ProductActions({
   const handleBuyNow = async () => {
     if (!selectedVariant?.id) return null
 
-    setIsAdding(true)
-
-    await addToCart({
-      variantId: selectedVariant.id,
-      quantity,
-      countryCode,
-    })
-
-    setIsAdding(false)
+    try {
+      await addToCart({
+        variantId: selectedVariant.id,
+        quantity,
+        countryCode,
+      })
+    } catch (error) {
+      console.error(error)
+    }
 
     router.push(`/${countryCode}/gio-hang`)
   }

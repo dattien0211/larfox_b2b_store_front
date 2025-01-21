@@ -69,7 +69,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 fill
                 priority
                 sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
-                className="object-cover w-full h-full "
+                className="object-contain w-full h-full "
               />
             </div>
           </SwiperSlide>

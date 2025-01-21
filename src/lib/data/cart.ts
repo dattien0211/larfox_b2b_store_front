@@ -239,11 +239,13 @@ export async function applyPromotions(codes: string[]) {
     throw new Error("No existing cart found")
   }
 
-  await updateCart({ promo_codes: codes })
-    .then(() => {
-      revalidateTag("cart")
-    })
-    .catch(medusaError)
+  try {
+    const updatedCart = await updateCart({ promo_codes: codes }) // Capture the updated cart
+    revalidateTag("cart")
+    return updatedCart
+  } catch (error) {
+    medusaError(error)
+  }
 }
 
 export async function applyGiftCard(code: string) {

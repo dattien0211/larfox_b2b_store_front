@@ -6,7 +6,7 @@ import { useFormState } from "react-dom"
 
 import { applyPromotions, submitPromotionForm } from "@lib/data/cart"
 import { convertToLocale } from "@lib/util/money"
-import { InformationCircleSolid } from "@medusajs/icons"
+import { InformationCircleSolid, Spinner } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
 import Trash from "@modules/common/icons/trash"
 import ErrorMessage from "../error-message"
@@ -21,16 +21,33 @@ type DiscountCodeProps = {
 
 const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
   const [isOpen, setIsOpen] = React.useState(false)
+  const [error, setError] = React.useState<string | null>(null)
+  const [promoValue, setPromoValue] = React.useState<string | null>(null)
+  const [isApplyPromo, setIsApplyPromo] = React.useState(false)
+  const [isRemovePromo, setIsRemovePromo] = React.useState(false)
 
   const { items = [], promotions = [] } = cart
+
+  const handleOnchange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPromoValue(e.target.value)
+    error && setError(null)
+  }
+
   const removePromotionCode = async (code: string) => {
     const validPromotions = promotions.filter(
       (promotion) => promotion.code !== code
     )
 
-    await applyPromotions(
-      validPromotions.filter((p) => p.code === undefined).map((p) => p.code!)
-    )
+    try {
+      setIsRemovePromo(true)
+      await applyPromotions(
+        validPromotions.filter((p) => p.code === undefined).map((p) => p.code!)
+      )
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setIsRemovePromo(false)
+    }
   }
 
   const addPromotionCode = async (formData: FormData) => {
@@ -38,16 +55,29 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
     if (!code) {
       return
     }
-    const input = document.getElementById("promotion-input") as HTMLInputElement
     const codes = promotions
-      .filter((p) => p.code === undefined)
+      .filter((p) => p.code !== undefined)
       .map((p) => p.code!)
     codes.push(code.toString())
 
-    await applyPromotions(codes)
+    const oldCart = cart
 
-    if (input) {
-      input.value = ""
+    try {
+      setIsApplyPromo(true)
+      const updatedCart = await applyPromotions(codes)
+      const isValidPromotion =
+        JSON.stringify((updatedCart as any)?.promotions) !==
+        JSON.stringify(oldCart.promotions)
+      if (!isValidPromotion) {
+        setError("Mã giảm giá không hợp lệ")
+      } else {
+        setError(null)
+        setPromoValue("")
+      }
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setIsApplyPromo(false)
     }
   }
 
@@ -88,6 +118,8 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                   type="text"
                   autoFocus={false}
                   data-testid="discount-input"
+                  value={promoValue ?? ""}
+                  onChange={handleOnchange}
                 />
               </div>
               <SubmitButton
@@ -95,12 +127,12 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                 variant="secondary"
                 data-testid="discount-apply-button"
               >
-                Áp dụng
+                {isApplyPromo ? <Spinner /> : "Áp dụng"}
               </SubmitButton>
             </div>
 
             <ErrorMessage
-              error={message}
+              error={error || message}
               data-testid="discount-error-message"
             />
           </>
@@ -108,9 +140,11 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
       </form>
 
       {promotions.length > 0 && (
-        <div className="w-full flex items-center">
+        <div className="w-full flex items-center mt-4">
           <div className="flex flex-col w-full">
-            <Heading className="txt-medium ">Mã khuyến mãi đã áp dụng</Heading>
+            <Heading level="h3" className="txt-medium font-manrope mb-1">
+              Mã khuyến mãi đã áp dụng
+            </Heading>
 
             {promotions.map((promotion) => {
               return (
@@ -119,7 +153,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                   className="flex items-center justify-between w-full max-w-full mb-2"
                   data-testid="discount-row"
                 >
-                  <Text className="flex gap-x-1 items-baseline txt-small-plus w-4/5 pr-1">
+                  <Text className="flex items-baseline txt-small-plus w-4/5 pr-1">
                     <span className="truncate" data-testid="discount-code">
                       <Badge
                         color={promotion.is_automatic ? "green" : "grey"}
@@ -127,21 +161,23 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                       >
                         {promotion.code}
                       </Badge>{" "}
-                      (
-                      {promotion.application_method?.value !== undefined &&
-                        promotion.application_method.currency_code !==
-                          undefined && (
-                          <>
-                            {promotion.application_method.type === "percentage"
-                              ? `${promotion.application_method.value}%`
-                              : convertToLocale({
-                                  amount: promotion.application_method.value,
-                                  currency_code:
-                                    promotion.application_method.currency_code,
-                                })}
-                          </>
-                        )}
-                      )
+                      <span className="ml-2">
+                        {promotion.application_method?.value !== undefined &&
+                          promotion.application_method.currency_code !==
+                            undefined && (
+                            <>
+                              {promotion.application_method.type ===
+                              "percentage"
+                                ? `${promotion.application_method.value}%`
+                                : convertToLocale({
+                                    amount: promotion.application_method.value,
+                                    currency_code:
+                                      promotion.application_method
+                                        .currency_code,
+                                  })}
+                            </>
+                          )}
+                      </span>
                       {/* {promotion.is_automatic && (
                           <Tooltip content="This promotion is automatically applied">
                             <InformationCircleSolid className="inline text-zinc-400" />
@@ -161,7 +197,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                       }}
                       data-testid="remove-discount-button"
                     >
-                      <Trash size={14} />
+                      {isRemovePromo ? <Spinner /> : <Trash size={14} />}
                       <span className="sr-only">
                         Xóa mã giảm giá khỏi đơn hàng
                       </span>
