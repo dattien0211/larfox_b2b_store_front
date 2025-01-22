@@ -18,7 +18,7 @@ const OrderSummary = ({ order }: OrderSummaryProps) => {
   }
 
   return (
-    <div>
+    <div className="!font-manrope">
       <h2 className="h2-core flex flex-row text-2xl sm:text-3xl font-semibold text-primary font-times my-4">
         Tổng quan đơn hàng
       </h2>

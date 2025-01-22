@@ -13,6 +13,7 @@ import ImageSlider from "@modules/layout/components/img-slider"
 import ProductReview from "@modules/products/components/product-review"
 import { getCustomer } from "@lib/data/customer"
 import ProductActionsWrapper from "./product-actions-wrapper"
+import { getProductsById } from "@lib/data/products"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
@@ -30,6 +31,10 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   }
   const customer = await getCustomer().catch(() => null)
   const token = cookies().get("_medusa_jwt")?.value
+  const [productById] = await getProductsById({
+    ids: [product.id],
+    regionId: region.id,
+  })
 
   return (
     <div className="mb-16 sm:mb-24">
@@ -86,7 +91,11 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
             Đánh giá sản phẩm
           </Heading>
 
-          <ProductReview customer={customer} product={product} token={token} />
+          <ProductReview
+            customer={customer}
+            product={productById}
+            token={token}
+          />
         </div>
       </div>
 

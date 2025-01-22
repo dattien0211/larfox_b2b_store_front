@@ -21,8 +21,6 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
   paymentInfoMap,
   disabled = false,
 }) => {
-  const isDevelopment = process.env.NODE_ENV === "development"
-
   return (
     <>
       <RadioGroup.Option
@@ -40,10 +38,8 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
         <div className="flex items-center justify-between ">
           <div className="flex items-center gap-x-4">
             <Radio checked={selectedPaymentOptionId === paymentProviderId} />
-            <Text className="text-sm sm:text-base">
-              {isManual(paymentProviderId)
-                ? "Thanh toán khi nhận hàng - (COD)"
-                : paymentInfoMap[paymentProviderId]?.title || paymentProviderId}
+            <Text className="text-sm sm:text-base !font-manrope">
+              {paymentInfoMap[paymentProviderId]?.title || paymentProviderId}
             </Text>
           </div>
           {!isManual(paymentProviderId) && (

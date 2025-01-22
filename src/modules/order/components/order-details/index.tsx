@@ -28,7 +28,7 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
   const paymentStatusTranslations = {
     not_paid: "Chưa thanh toán",
     awaiting: "Đang chờ xử lý",
-    authorized: "Đã ủy quyền",
+    authorized: "Đang chờ xác nhận",
     partially_authorized: "Đã ủy quyền một phần",
     captured: "Đã thu tiền",
     partially_captured: "Đã thu tiền một phần",
@@ -39,8 +39,8 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-y-1 mb-2">
-      {order.email && order.email !== DEFAULT_EMAIL && (
+    <div className="flex flex-col gap-y-1 mb-2 ">
+      {/* {order.email && order.email !== DEFAULT_EMAIL && (
         <Text className="text-base">
           Chúng tôi đã gửi chi tiết xác nhận đơn hàng đến{" "}
           <span
@@ -51,14 +51,14 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
           </span>
           .
         </Text>
-      )}
-      <Text className="text-base">
+      )} */}
+      <Text className="text-base !font-manrope">
         Ngày đặt hàng:{" "}
         <span data-testid="order-date">
           {new Date(order.created_at).toLocaleDateString("vi-VN")}
         </span>
       </Text>
-      <Text className=" text-base">
+      <Text className="text-base !font-manrope">
         Mã đơn hàng:{" "}
         <span
           data-testid="order-id"
@@ -70,7 +70,7 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
 
       {showStatus && (
         <div className="flex items-center text-base gap-x-8 ">
-          <Text className="text-base">
+          <Text className="text-base !font-manrope">
             Trạng thái đơn hàng:{" "}
             <span className="text-ui-fg-subtle " data-testid="order-status">
               {/* TODO: Check where the statuses should come from */}
@@ -79,7 +79,7 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
               )}
             </span>
           </Text>
-          <Text className="text-base">
+          <Text className="text-base !font-manrope">
             Trạng thái thanh toán:{" "}
             <span
               className="text-ui-fg-subtle "

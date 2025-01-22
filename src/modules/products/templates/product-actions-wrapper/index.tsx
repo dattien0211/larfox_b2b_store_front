@@ -17,7 +17,6 @@ export default async function ProductActionsWrapper({
     regionId: region.id,
   })
 
-
   if (!product) {
     return null
   }

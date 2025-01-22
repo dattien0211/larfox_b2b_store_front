@@ -13,11 +13,14 @@ import Divider from "@modules/common/components/divider"
 import PaymentContainer from "@modules/checkout/components/payment-container"
 import {
   isManual,
+  isQR,
   isStripe as isStripeFunc,
   paymentInfoMap,
 } from "@lib/constants"
 import { StripeContext } from "@modules/checkout/components/payment-wrapper"
 import { initiatePaymentSession } from "@lib/data/cart"
+import Image from "next/image"
+import IMGS from "@constants/IMGS"
 
 const Payment = ({
   cart,
@@ -152,20 +155,16 @@ const Payment = ({
                 value={selectedPaymentMethod}
                 onChange={(value: string) => setSelectedPaymentMethod(value)}
               >
-                {availablePaymentMethods
-                  .sort((a, b) => {
-                    return a.provider_id > b.provider_id ? 1 : -1
-                  })
-                  .map((paymentMethod) => {
-                    return (
-                      <PaymentContainer
-                        paymentInfoMap={paymentInfoMap}
-                        paymentProviderId={paymentMethod.id}
-                        key={paymentMethod.id}
-                        selectedPaymentOptionId={selectedPaymentMethod}
-                      />
-                    )
-                  })}
+                {availablePaymentMethods.map((paymentMethod) => {
+                  return (
+                    <PaymentContainer
+                      paymentInfoMap={paymentInfoMap}
+                      paymentProviderId={paymentMethod.id}
+                      key={paymentMethod.id}
+                      selectedPaymentOptionId={selectedPaymentMethod}
+                    />
+                  )
+                })}
               </RadioGroup>
               {isStripe && stripeReady && (
                 <div className="mt-5 transition-all duration-150 ease-in-out">
@@ -203,6 +202,36 @@ const Payment = ({
             </div>
           )}
 
+          {isQR(selectedPaymentMethod) && (
+            <div className="flex flex-col items-center justify-center gap-y-2 text-small-regular cursor-pointer py-5 border rounded-rounded px-8 mb-2 mt-4">
+              <div className="w-64 h-64">
+                <Image
+                  src={IMGS.QR}
+                  alt="QR image"
+                  width={250}
+                  height={250}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="mt-4">
+                <p className="indent-4 text-sm sm:text-base text-justify">
+                  <span className="text-primary font-manrope-bold mr-2 uppercase">
+                    Lưu ý:
+                  </span>
+                  Vui lòng ghi chú tên và số điện thoại đặt hàng trong phần nội
+                  dung chuyển khoản để nhân viên kiểm tra lại.
+                </p>
+                <p className="indent-4 text-sm sm:text-base text-justify mt-2">
+                  Nếu không nhập hoặc có lỗi hãy liên lạc theo số điện thoại
+                  <span className="font-semibold text-primary mx-1">
+                    0946174888
+                  </span>
+                  để được hỗ trợ nhanh nhất.
+                </p>
+              </div>
+            </div>
+          )}
+
           <ErrorMessage
             error={error}
             data-testid="payment-method-error-message"
@@ -229,41 +258,37 @@ const Payment = ({
           {cart && paymentReady && activeSession ? (
             <div className="flex items-start gap-x-1 w-full">
               <div className="flex flex-col w-1/2">
-                <Text className=" txt-medium text-base txt-ui-fg-base mb-1 !font-manrope-semibold">
-                  Phương thức
-                </Text>
                 <Text
                   className="font-normal  txt-medium text-sm sm:text-base text-ui-fg-subtle !font-manrope"
                   data-testid="payment-method-summary"
                 >
-                  {isManual(selectedPaymentMethod)
-                    ? "Thanh toán khi nhận hàng - (COD)"
-                    : paymentInfoMap[selectedPaymentMethod]?.title ||
-                      selectedPaymentMethod}
+                  {paymentInfoMap[selectedPaymentMethod]?.title ||
+                    selectedPaymentMethod}
                 </Text>
               </div>
-              {!isManual(selectedPaymentMethod) && (
-                <div className="flex flex-col w-1/2">
-                  <Text className="text-base text-ui-fg-base mb-1 ">
-                    Chi tiết thanh toán
-                  </Text>
-                  <div
-                    className="flex gap-2 txt-medium text-ui-fg-subtle items-center"
-                    data-testid="payment-details-summary"
-                  >
-                    <Container className="flex items-center h-7 w-fit p-2 bg-ui-button-neutral-hover">
-                      {paymentInfoMap[selectedPaymentMethod]?.icon || (
-                        <CreditCard />
-                      )}
-                    </Container>
-                    <Text>
-                      {isStripeFunc(selectedPaymentMethod) && cardBrand
-                        ? cardBrand
-                        : "Bước tiếp theo sẽ xuất hiện"}
+              {!isManual(selectedPaymentMethod) &&
+                !isQR(selectedPaymentMethod) && (
+                  <div className="flex flex-col w-1/2">
+                    <Text className="text-base text-ui-fg-base mb-1 ">
+                      Chi tiết thanh toán
                     </Text>
+                    <div
+                      className="flex gap-2 txt-medium text-ui-fg-subtle items-center"
+                      data-testid="payment-details-summary"
+                    >
+                      <Container className="flex items-center h-7 w-fit p-2 bg-ui-button-neutral-hover">
+                        {paymentInfoMap[selectedPaymentMethod]?.icon || (
+                          <CreditCard />
+                        )}
+                      </Container>
+                      <Text>
+                        {isStripeFunc(selectedPaymentMethod) && cardBrand
+                          ? cardBrand
+                          : "Bước tiếp theo sẽ xuất hiện"}
+                      </Text>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
             </div>
           ) : paidByGiftcard ? (
             <div className="flex flex-col w-1/3">

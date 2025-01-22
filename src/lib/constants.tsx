@@ -27,7 +27,11 @@ export const paymentInfoMap: Record<
     icon: <PayPal />,
   },
   pp_system_default: {
-    title: "Manual Payment",
+    title: "Thanh toán khi nhận hàng - (COD)",
+    icon: <CreditCard />,
+  },
+  pp_manual_manual: {
+    title: "Thanh toán qua mã QR",
     icon: <CreditCard />,
   },
   // Add more payment providers here
@@ -43,7 +47,9 @@ export const isPaypal = (providerId?: string) => {
 export const isManual = (providerId?: string) => {
   return providerId?.startsWith("pp_system_default")
 }
-
+export const isQR = (providerId?: string) => {
+  return providerId?.startsWith("pp_manual_manual")
+}
 // Add currencies that don't need to be divided by 100
 export const noDivisionCurrencies = [
   "krw",

@@ -85,7 +85,7 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals }) => {
       <div className="flex items-center justify-between  mb-2 mt-2">
         <h1 className="text-ui-fg-subtle">Thành tiền</h1>
         <span
-          className="txt-xlarge-plus text-primary font-semibold"
+          className="txt-xlarge-plus text-primary font-semibold !font-manrope"
           data-testid="cart-total"
           data-value={total || 0}
         >

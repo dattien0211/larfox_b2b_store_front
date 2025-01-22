@@ -103,7 +103,7 @@ export default function BottomNav({ categories, blogTypes }: BottomNavProps) {
             </span> */}
           </LocalizedClientLink>
           <LocalizedClientLink
-            href="/"
+            href="/lien-he"
             className=" text-sm text-nowrap lg:text-base p-2 lg:p-4 cursor-pointer hover:text-primary"
           >
             Liên hệ

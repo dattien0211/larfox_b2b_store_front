@@ -24,14 +24,17 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
         {payment && (
           <div className="flex items-start gap-x-1 w-full">
             <div className="flex flex-col w-1/3">
-              <Text className="text-base text-ui-fg-base mb-1">
+              {/* <Text className="text-base text-ui-fg-base mb-1">
                 Phương thức thanh toán
-              </Text>
-              <Text className=" text-ui-fg-subtle" data-testid="payment-method">
+              </Text> */}
+              <Text
+                className=" text-ui-fg-subtle text-sm sm:text-base"
+                data-testid="payment-method"
+              >
                 {paymentInfoMap[payment.provider_id].title}
               </Text>
             </div>
-            <div className="flex flex-col w-2/3">
+            {/* <div className="flex flex-col w-2/3">
               <Text className="text-base text-ui-fg-base mb-1">
                 Chi tiết thanh toán
               </Text>
@@ -50,7 +53,7 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
                       ).toLocaleString("vi-VN")}`}
                 </Text>
               </div>
-            </div>
+            </div> */}
           </div>
         )}
       </div>

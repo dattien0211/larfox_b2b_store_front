@@ -21,7 +21,7 @@ const LineItemUnitPrice = ({
   const hasReducedPrice = calculated_price_number < original_price_number
 
   return (
-    <div className="flex flex-col text-ui-fg-muted justify-center h-full">
+    <div className="flex flex-col text-ui-fg-muted justify-center items-end h-full !font-manrope">
       {hasReducedPrice && (
         <>
           <p>
@@ -29,7 +29,7 @@ const LineItemUnitPrice = ({
               <span className="text-ui-fg-muted">Giá gốc: </span>
             )}
             <span
-              className="line-through"
+              className="line-through text-xs"
               data-testid="product-unit-original-price"
             >
               {original_price}
@@ -40,12 +40,12 @@ const LineItemUnitPrice = ({
           )} */}
         </>
       )}
-      <span
+      {/* <span
         className={clx("text-xs sm:text-sm text-primary", {})}
         data-testid="product-unit-price"
       >
         {calculated_price}
-      </span>
+      </span> */}
     </div>
   )
 }

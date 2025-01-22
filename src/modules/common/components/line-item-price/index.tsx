@@ -24,10 +24,10 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
   const hasReducedPrice = currentPrice < originalPrice
 
   return (
-    <div className="flex flex-col gap-x-2 items-end">
+    <div className="flex flex-col gap-x-2 items-end !font-manrope">
       <div className="text-left">
         <span
-          className={clx("text-primary text-base sm:text-lg font-semibold", {})}
+          className={clx("text-primary text-sm sm:text-base font-semibold", {})}
           data-testid="product-price"
         >
           {convertToLocale({

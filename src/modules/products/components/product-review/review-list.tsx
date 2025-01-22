@@ -33,7 +33,7 @@ const ReviewsList: React.FC<ReviewsItemProps> = ({ reviews }) => {
           className="p-4 border rounded-lg shadow-md bg-white space-y-2"
         >
           <div className="flex gap-x-2 md:gap-x-8 items-center">
-            <h4 className="text-base sm:text-lg font-semibold">
+            <h4 className="text-sm sm:text-base font-semibold">
               {review.user_name}
             </h4>
             <div className="font-bold text-sm sm:text-base flex items-center">
@@ -71,7 +71,7 @@ const ReviewsList: React.FC<ReviewsItemProps> = ({ reviews }) => {
               ))}
             </div>
           )}
-          <p className="text-gray-700 text-sm sm:text-base line-clamp-3">
+          <p className="text-gray-700 text-xs sm:text-sm line-clamp-3">
             <span className="text-primary font-semibold">Đánh giá:</span>{" "}
             {review.description}
           </p>

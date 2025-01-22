@@ -59,7 +59,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       <Table.Cell className="text-lef !pr-2 sm:!pr-6">
         <Text
           className={clsx(
-            "text-sm sm:text-base truncate text-ui-fg-base w-[150px] sm:w-[200px]",
+            "text-sm sm:text-base truncate text-ui-fg-base w-[150px] sm:w-[200px] !font-manrope",
             {
               "!text-base": type === "preview",
             }
@@ -106,7 +106,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
         >
           {type === "preview" && (
             <span className="flex gap-x-1 ">
-              <Text className="text-ui-fg-muted text-xs sm:text-sm">
+              <Text className="text-ui-fg-muted text-xs !font-manrope mt-2">
                 {item.quantity}x{" "}
               </Text>
               <LineItemUnitPrice item={item} style="tight" />

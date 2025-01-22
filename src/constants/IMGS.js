@@ -28,6 +28,7 @@ import LinkedInIcon from "@assets/images/linkedin-icon.png"
 import YTIcon from "@assets/images/yt-icon.png"
 import MobileBanner from "@assets/images/mobile-banner.jpg"
 import MobileBanner2 from "@assets/images/mobile-banner-2.jpg"
+import QR from "@assets/images/QR.jpg"
 
 export default {
   Logo,
@@ -59,4 +60,5 @@ export default {
   YTIcon,
   MobileBanner,
   MobileBanner2,
+  QR,
 }

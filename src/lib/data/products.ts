@@ -7,7 +7,7 @@ import { sortProducts } from "@lib/util/sort-products"
 import { getProductPrice } from "@lib/util/get-product-price"
 import client from "@lib/util/client"
 import { UploadedFile } from "./upload-file"
-import { PaginatedProductTagList, ProductTag } from "types/global"
+import { PaginatedProductTagList } from "types/global"
 
 export const getProductsById = cache(async function ({
   ids,
@@ -22,7 +22,7 @@ export const getProductsById = cache(async function ({
         id: ids,
         region_id: regionId,
         fields:
-          "*variants.calculated_price,+variants.inventory_quantity,*categories,+metadata",
+          "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
       },
       { next: { tags: ["products"] } }
     )
@@ -39,7 +39,7 @@ export const getProductByHandle = cache(async function (
         handle,
         region_id: regionId,
         fields:
-          "*variants.calculated_price,+variants.inventory_quantity,*categories,+metadata",
+          "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
       },
       { next: { tags: ["products"] } }
     )
@@ -77,7 +77,7 @@ export const getProductsList = cache(async function ({
         offset,
         region_id: region.id,
         fields:
-          "*variants.calculated_price,+variants.inventory_quantity,*categories,+metadata",
+          "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
         ...queryParams,
       },
       { next: { tags: ["products"] } }

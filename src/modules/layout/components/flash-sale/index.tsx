@@ -37,7 +37,7 @@ const FlashSale: React.FC<FlashSaleProps> = ({
             <Image
               src={IMGS.Banner2}
               alt="banner"
-              width={500}
+              width={700}
               height={282}
               className="w-full h-full object-contain"
             />
@@ -46,7 +46,7 @@ const FlashSale: React.FC<FlashSaleProps> = ({
             <Image
               src={IMGS.Banner3}
               alt="banner"
-              width={500}
+              width={700}
               height={282}
               className="w-full h-full object-contain"
             />

@@ -35,6 +35,5 @@ export default async function OrderConfirmedPage({ params }: Props) {
   if (!order) {
     return notFound()
   }
-
   return <OrderCompletedTemplate order={order} />
 }

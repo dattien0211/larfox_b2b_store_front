@@ -20,17 +20,17 @@ const ItemsTemplate = ({ items }: ItemsTemplateProps) => {
       <Table>
         <Table.Header className="border-t-0">
           <Table.Row>
-            <Table.HeaderCell className="!pl-0 text-base text-nowrap !pr-0 sm:!pr-6">
+            <Table.HeaderCell className="!pl-0 text-base text-nowrap !pr-0 sm:!pr-6 !font-manrope-bold">
               Sản phẩm
             </Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>
             {/* <Table.HeaderCell className="text-base text-nowrap">
               Số lượng
             </Table.HeaderCell> */}
-            <Table.HeaderCell className="hidden small:table-cell text-base text-nowrap">
+            <Table.HeaderCell className="hidden small:table-cell text-base text-nowrap !font-manrope-bold">
               Giá
             </Table.HeaderCell>
-            <Table.HeaderCell className="!pr-2 sm:!pr-6 text-right text-base text-nowrap">
+            <Table.HeaderCell className="!pr-2 sm:!pr-6 text-right text-base text-nowrap !font-manrope-bold">
               Tổng tiền
             </Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>
