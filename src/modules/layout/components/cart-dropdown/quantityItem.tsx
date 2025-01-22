@@ -17,7 +17,11 @@ const QuantityItem = ({
   setError,
   isDisabled,
 }: QuantityItemProps) => {
-  const [quantity, setQuantity] = useState(itemQuantity)
+  const [quantity, setQuantity] = useState<number>(1)
+
+  useEffect(() => {
+    setQuantity(itemQuantity)
+  }, [itemQuantity])
 
   const debouncedUpdate = debounce(async (newQuantity: number) => {
     setError(null)

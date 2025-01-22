@@ -5,7 +5,6 @@ import client from "@lib/util/client"
 
 type PaginatedBlogList = {
   blogTypes: BlogType[]
-  nextPage: number | null
   count: number
 }
 
@@ -20,16 +19,15 @@ export const getBlogTypesList = cache(async function (
   pageParam: number = 1,
   queryParams?: BlogTypeQueryParams
 ): Promise<PaginatedBlogList> {
-  const limit = queryParams?.limit || 12
+  const limit = queryParams?.limit || 20
   const offset = pageParam * limit
 
-  const res = await client.get("/store/blog-types")
-
-  const nextPage = res.data.count > offset + limit ? pageParam + 1 : null
+  const res = await client.get("/store/blog-types", {
+    params: { ...queryParams, limit, offset },
+  })
 
   return {
     blogTypes: res.data?.blogTypes || [],
     count: res.data?.count || 0,
-    nextPage: nextPage,
   }
 })

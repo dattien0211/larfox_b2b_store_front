@@ -39,10 +39,10 @@ const CategoryFilter = ({
       )}` // Add selected categories to the path
 
       if (updatedCategories.length === 0) {
-        router.push(`${basePath}/tat-ca-san-pham`)
+        router.push(`${basePath}/tat-ca-san-pham`, { scroll: false })
       } else {
         // Push the new route
-        router.push(newPath)
+        router.push(newPath, { scroll: false })
       }
 
       return updatedCategories

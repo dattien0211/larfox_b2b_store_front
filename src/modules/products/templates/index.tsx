@@ -1,18 +1,17 @@
 import React, { Suspense } from "react"
+import { notFound } from "next/navigation"
+import { Heading } from "@medusajs/ui"
+import { HttpTypes } from "@medusajs/types"
+import { cookies } from "next/headers"
 
 import ProductActions from "@modules/products/components/product-actions"
 import ProductOnboardingCta from "@modules/products/components/product-onboarding-cta"
 import RelatedProducts from "@modules/products/components/related-products"
-// import ProductInfo from "@modules/products/templates/product-info"
 import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
-import { notFound } from "next/navigation"
-import ProductActionsWrapper from "./product-actions-wrapper"
-import { HttpTypes } from "@medusajs/types"
 import ImageSlider from "@modules/layout/components/img-slider"
-import { Heading } from "@medusajs/ui"
 import ProductReview from "@modules/products/components/product-review"
 import { getCustomer } from "@lib/data/customer"
-import { cookies } from "next/headers"
+import ProductActionsWrapper from "./product-actions-wrapper"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct

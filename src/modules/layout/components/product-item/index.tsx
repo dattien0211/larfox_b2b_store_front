@@ -82,7 +82,7 @@ export default function ProductItem({ productItem }: { productItem: any }) {
           </LocalizedClientLink>
         )}
       </div>
-      <div className="h-10 sm:h-fit line-clamp-2  text-sm sm:text-lg">
+      <div className="line-clamp-2 text-sm sm:text-lg h-10 sm:h-14">
         {product?.title}
       </div>
       <div>

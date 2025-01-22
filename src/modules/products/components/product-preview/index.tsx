@@ -54,7 +54,7 @@ export default async function ProductPreview({
             {cheapestPrice?.percentage_diff &&
               parseFloat(cheapestPrice?.percentage_diff) > 0 && (
                 <>
-                  <div className="absolute top-2 right-10 z-20">
+                  <div className="absolute top-2 right-10 z-10">
                     <Thunder size={24} />
                   </div>
                   <div className="text-red-500 bg-orang-15 flex  absolute top-[10px] right-2 text-xs pl-3 pr-1 py-[1px] rounded-r-sm font-semibold">
@@ -91,7 +91,7 @@ export default async function ProductPreview({
               ))}
         </div>
 
-        <div className="line-clamp-2 text-black-30 text-sm sm:text-lg">
+        <div className="line-clamp-2 text-black-30 text-sm sm:text-lg h-10 sm:h-14">
           {product?.title || "Sản phẩm AnCo phiên bản mới 2025"}
         </div>
 

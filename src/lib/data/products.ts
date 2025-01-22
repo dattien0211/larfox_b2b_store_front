@@ -7,7 +7,7 @@ import { sortProducts } from "@lib/util/sort-products"
 import { getProductPrice } from "@lib/util/get-product-price"
 import client from "@lib/util/client"
 import { UploadedFile } from "./upload-file"
-import { ProductTag } from "types/global"
+import { PaginatedProductTagList, ProductTag } from "types/global"
 
 export const getProductsById = cache(async function ({
   ids,
@@ -22,7 +22,7 @@ export const getProductsById = cache(async function ({
         id: ids,
         region_id: regionId,
         fields:
-          "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
+          "*variants.calculated_price,+variants.inventory_quantity,*categories,+metadata",
       },
       { next: { tags: ["products"] } }
     )
@@ -39,9 +39,8 @@ export const getProductByHandle = cache(async function (
         handle,
         region_id: regionId,
         fields:
-          "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
+          "*variants.calculated_price,+variants.inventory_quantity,*categories,+metadata",
       },
-
       { next: { tags: ["products"] } }
     )
     .then(({ products }) => products[0])
@@ -78,7 +77,7 @@ export const getProductsList = cache(async function ({
         offset,
         region_id: region.id,
         fields:
-          "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
+          "*variants.calculated_price,+variants.inventory_quantity,*categories,+metadata",
         ...queryParams,
       },
       { next: { tags: ["products"] } }
@@ -105,12 +104,14 @@ export const getProductsListWithSort = cache(async function ({
   queryParams,
   sortBy = "created_at",
   countryCode,
+  defaultFetchLimit = 100,
 }: {
   page?: number
   queryParams?: HttpTypes.FindParams &
     HttpTypes.StoreProductParams & { min_price?: number; max_price?: number }
   sortBy?: SortOptions
   countryCode: string
+  defaultFetchLimit?: number
 }): Promise<{
   response: { products: HttpTypes.StoreProduct[]; count: number }
   nextPage: number | null
@@ -120,12 +121,7 @@ export const getProductsListWithSort = cache(async function ({
 
   // Destructure min_price and max_price from queryParams
   const { min_price, max_price, ...restQueryParams } = queryParams || {}
-  const defaultFetchLimit = 1000
-  const offset =
-    page * limit > defaultFetchLimit
-      ? Math.floor((page * limit) / defaultFetchLimit) * defaultFetchLimit -
-        defaultFetchLimit
-      : 0
+  const offset = page * limit > defaultFetchLimit ? (page - 1) * limit : 0
 
   const {
     response: { products, count },
@@ -138,7 +134,7 @@ export const getProductsListWithSort = cache(async function ({
     countryCode,
   })
 
-  let filteredProducts: HttpTypes.StoreProduct[] = []
+  let filteredProductsByPrice: HttpTypes.StoreProduct[] = []
 
   if (min_price && max_price) {
     // Map through products and calculate the price for each
@@ -148,7 +144,7 @@ export const getProductsListWithSort = cache(async function ({
     })
 
     // Apply price filtering based on min_price and max_price
-    filteredProducts = mappedProducts.filter((product) => {
+    filteredProductsByPrice = mappedProducts.filter((product) => {
       const productPrice = product.calculated_price_number || 0 // Use the price field populated by getProductPrice
       const meetsMinPrice =
         min_price !== undefined ? productPrice >= min_price : true
@@ -160,7 +156,7 @@ export const getProductsListWithSort = cache(async function ({
 
   // Sort products
   const sortedProducts = sortProducts(
-    min_price && max_price ? filteredProducts : products,
+    min_price && max_price ? filteredProductsByPrice : products,
     sortBy
   )
 
@@ -203,26 +199,19 @@ export const reviewProduct = async (
   }
 }
 
-type PaginatedProductTagList = {
-  product_tags: ProductTag[]
-  nextPage: number | null
-  count: number
-}
-
 export const getProductTagsList = cache(async function (
   pageParam: number = 1,
   queryParams?: HttpTypes.FindParams
 ): Promise<PaginatedProductTagList> {
-  const limit = queryParams?.limit || 12
+  const limit = queryParams?.limit || 30
   const offset = pageParam * limit
 
-  const res = await client.get("/store/product-tags")
-
-  const nextPage = res.data.count > offset + limit ? pageParam + 1 : null
+  const res = await client.get("/store/product-tags", {
+    params: { limit, offset },
+  })
 
   return {
     product_tags: res.data?.product_tags || [],
     count: res.data?.count || 0,
-    nextPage: nextPage,
   }
 })

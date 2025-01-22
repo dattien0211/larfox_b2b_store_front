@@ -12,6 +12,13 @@ const CartTemplate = ({
   cart: HttpTypes.StoreCart | null
   customer: HttpTypes.StoreCustomer | null
 }) => {
+  
+  const totalItems =
+    cart?.items?.reduce((acc, item) => {
+      return acc + item.quantity
+    }, 0) || 0
+
+
   return (
     <div
       className="content-container mb-16 sm:mb-24"

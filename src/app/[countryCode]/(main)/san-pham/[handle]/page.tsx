@@ -76,15 +76,15 @@ export default async function ProductPage({ params }: Props) {
     notFound()
   }
 
-  const pricedProduct = await getProductByHandle(params.handle, region?.id)
+  const product = await getProductByHandle(params.handle, region?.id)
 
-  if (!pricedProduct) {
+  if (!product) {
     notFound()
   }
 
   return (
     <ProductTemplate
-      product={pricedProduct}
+      product={product}
       region={region}
       countryCode={params.countryCode}
     />

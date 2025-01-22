@@ -21,7 +21,11 @@ const UserDropDown = ({
   const close = () => setUserDropdownOpen(false)
 
   const handleLogout = async () => {
-    await signout(countryCode)
+    try {
+      await signout(countryCode)
+    } catch (error) {
+      console
+    }
   }
   return (
     <div

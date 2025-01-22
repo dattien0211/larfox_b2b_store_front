@@ -10,6 +10,7 @@ import {
   getAuthHeaders,
   getCartId,
   removeAuthToken,
+  removeCartId,
   setAuthToken,
 } from "./cookies"
 
@@ -95,9 +96,11 @@ export async function login(_currentState: unknown, formData: FormData) {
 }
 
 export async function signout(countryCode: string) {
+  removeCartId()
   await sdk.auth.logout()
   removeAuthToken()
   revalidateTag("auth")
+  revalidateTag("cart")
   revalidateTag("customer")
   redirect(`/${countryCode}/tai-khoan`)
 }

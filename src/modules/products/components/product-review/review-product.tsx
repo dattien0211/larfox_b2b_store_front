@@ -41,18 +41,18 @@ export default function ReviewProduct({
   })
 
   const averageRating =
-    reviews.length > 0
-      ? (reviews.reduce((sum, r) => sum + r.star, 0) / reviews.length).toFixed(
+    reviews?.length > 0
+      ? (reviews?.reduce((sum, r) => sum + r.star, 0) / reviews.length).toFixed(
           1
         )
       : "5"
 
   // Calculate total number of reviews
-  const totalReviews = reviews.length
+  const totalReviews = reviews?.length || 0
 
   // Count reviews per star rating (1 to 5)
   const starCounts = [5, 4, 3, 2, 1].map((star) => {
-    const count = reviews.filter((review) => review.star === star).length
+    const count = reviews?.filter((review) => review.star === star).length
     return { star, count, percentage: (count / totalReviews) * 100 }
   })
 
@@ -230,7 +230,7 @@ export default function ReviewProduct({
             </span>
           </div>
           <p className="text-[#404040] font-semibold">
-            Dựa trên {reviews.length} đánh giá
+            Dựa trên {reviews?.length || 0} đánh giá
           </p>
         </div>
 
@@ -270,28 +270,33 @@ export default function ReviewProduct({
       </div>
 
       <div className="mt-4 flex flex-wrap gap-4 justify-center md:justify-normal">
-        <button className="flex px-4 py-1 items-center border border-grey-20 ">
+        <button className="flex px-4 py-1 items-center border border-grey-20 justify-center">
           <Camera color="#3E3E3E" />
           <p className="text-sm ml-2">
-            Có ảnh ({reviews.filter((item) => "images" in item).length})
+            Có ảnh ({reviews?.filter((item) => "images" in item).length || 0})
           </p>
         </button>
 
         <button className="flex px-4 py-1 items-center bg-primary text-white">
-          <p className="text-sm ml-2">Tổng đánh giá ({reviews.length})</p>
+          <p className="text-sm ml-2">Tổng đánh giá ({reviews?.length || 0})</p>
         </button>
       </div>
 
       {/* Review Form */}
-      <div className="mt-8 sm:mt-12">
-        <h1 className="font-manrope-semibold mb-4 text-base sm:text-lg">
-          Hãy là người đầu tiên đánh giá
-        </h1>
-        <div className="my-2 sm:my-4">
-          <p className="text-gray-500 text-sm sm:text-base">
-            Đánh giá ngay để nhận phiếu giảm giá!
-          </p>
-        </div>
+      <div className="mt-6 sm:mt-8">
+        {totalReviews === 0 && (
+          <>
+            <h1 className="font-manrope-semibold mb-4 text-base sm:text-lg">
+              Hãy là người đầu tiên đánh giá
+            </h1>
+            {/* <div className="my-2 sm:my-4">
+              <p className="text-gray-500 text-sm sm:text-base">
+                Đánh giá ngay để nhận phiếu giảm giá!
+              </p>
+            </div> */}
+          </>
+        )}
+
         {/* Star Rating */}
         <div className="my-4 flex flex-row items-center justify-between sm:justify-normal gap-x-8">
           <h1 className="text-gray-700  md:mb-0 text-base sm:text-lg ">

@@ -124,7 +124,7 @@ const RecommendProductsSlider: React.FC<RecommendProductsSliderProps> = ({
                         href={
                           product?.handle ? `/san-pham/${product?.handle}` : "/"
                         }
-                        className="text-lg md:text-xl line-clamp-1  "
+                        className="text-lg md:text-xl line-clamp-1"
                       >
                         {product?.title}
                       </LocalizedClientLink>

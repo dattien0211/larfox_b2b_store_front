@@ -14,14 +14,14 @@ const Overview = ({ customer, orders }: OverviewProps) => {
   return (
     <div data-testid="overview-page-wrapper">
       <div className="block">
-        <div className="text-lg sm:text-xl flex flex-col sm:flex-row justify-between items-center mb-4 font-times">
+        <div className="text-lg flex flex-col sm:flex-row justify-between items-center mb-4 font-times">
           <span data-testid="welcome-message" data-value={customer?.first_name}>
             Xin chào{" "}
             <span className="text-primary font-semibold">
               {customer?.first_name}
             </span>
           </span>
-          <span className="text-lg sm:text-xl">
+          <span className="text-lg ">
             Email:{" "}
             <span
               className="font-semibold text-primary"
@@ -36,7 +36,7 @@ const Overview = ({ customer, orders }: OverviewProps) => {
           <div className="flex flex-col gap-y-4 h-full col-span-1 row-span-2 flex-1">
             <div className="flex flex-col gap-y-4">
               <div className="flex items-center gap-x-2">
-                <h3 className="text-2xl sm:text-3xl font-times text-primary font-semibold ">
+                <h3 className="text-xl sm:text-2xl font-times text-primary font-semibold ">
                   Đơn hàng gần đây
                 </h3>
               </div>

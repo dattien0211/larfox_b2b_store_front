@@ -13,7 +13,7 @@ const ProductPolicy = () => {
           <p className="font-manrope-bold">Vận chuyển</p>
         </div>
         <div className="lg:p-4 p-2 text-sm sm:text-base h-[96px] sm:h-[128px]">
-          Đồng giá 30.000đ cho các  đơn hàng toàn quốc dưới 3kg. 
+          Đồng giá 30.000đ cho các  đơn hàng toàn quốc. 
         </div>
       </div>
 

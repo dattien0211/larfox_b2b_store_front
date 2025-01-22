@@ -55,6 +55,11 @@ export type BlogQueryParams = {
 }
 
 export type ProductTag = {
-  id: string 
-  value: string 
+  id: string
+  value: string
+}
+
+export type PaginatedProductTagList = {
+  product_tags: ProductTag[]
+  count: number
 }

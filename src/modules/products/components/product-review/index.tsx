@@ -1,25 +1,30 @@
 "use client"
 
 import { HttpTypes } from "@medusajs/types"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ReviewProduct from "./review-product"
-import ReviewsList from "./review-list"
+import ReviewsList, { Review } from "./review-list"
 import clsx from "clsx"
 
 export default function ProductReview({
   customer,
   product,
   token,
+  regionID,
 }: {
   customer: HttpTypes.StoreCustomer | null
   product: HttpTypes.StoreProduct
   token?: string
+  regionID?: string
 }) {
   const [isReview, setIsReview] = useState(true)
 
-  const [reviews, setReviews] = useState(
-    Array.isArray(product?.metadata?.reviews) ? product.metadata.reviews : []
-  )
+  const [reviews, setReviews] = useState<Review[]>([])
+
+  useEffect(() => {
+    // @ts-ignore
+    setReviews(product.metadata?.reviews || [])
+  }, [product])
 
   return (
     <div className="border border-grey-20mt-6 sm:mt-10">
