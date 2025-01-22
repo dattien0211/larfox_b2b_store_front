@@ -1,6 +1,7 @@
 import { XMarkMini } from "@medusajs/icons"
 import { FormEvent } from "react"
 import { useRouter } from "next/navigation"
+import { Dispatch, SetStateAction } from "react"
 
 import SearchBoxWrapper, {
   ControlledSearchBoxProps,
@@ -72,11 +73,15 @@ const ControlledSearchBox = ({
   )
 }
 
-const SearchBox = () => {
+const SearchBox = ({
+  setShow,
+}: {
+  setShow: Dispatch<SetStateAction<boolean>>
+}) => {
   const router = useRouter()
 
   return (
-    <SearchBoxWrapper>
+    <SearchBoxWrapper setShow={setShow}>
       {(props) => {
         return (
           <>

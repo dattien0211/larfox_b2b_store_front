@@ -24,7 +24,9 @@ const ShowAll = () => {
   return (
     <Container className="flex sm:flex-col small:flex-row gap-2 justify-center items-center h-fit py-4 small:py-2">
       <Text>Hiển thị {width > 1680 ? 15 : 8} kết quả đầu tiên.</Text>
-      {/* <InteractiveLink href={`/ket-qua/${query}`}>Xem tất cả</InteractiveLink> */}
+      <InteractiveLink href={`/tim-kiem/${query}`} >
+        Xem tất cả kết quả tìm kiếm.
+      </InteractiveLink>
     </Container>
   )
 }

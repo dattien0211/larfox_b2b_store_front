@@ -20,7 +20,7 @@ export const getBlogTypesList = cache(async function (
   queryParams?: BlogTypeQueryParams
 ): Promise<PaginatedBlogList> {
   const limit = queryParams?.limit || 20
-  const offset = pageParam * limit
+  const offset = (pageParam - 1) * limit
 
   const res = await client.get("/store/blog-types", {
     params: { ...queryParams, limit, offset },

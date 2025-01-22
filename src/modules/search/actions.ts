@@ -19,8 +19,8 @@ export async function search(query: string) {
     string,
     any
   >
-  const { hits } = results[0] as { hits: Hits[] }
 
+  const { hits } = results[0] as { hits: Hits[] }
   // In case you want to use Algolia instead of MeiliSearch, uncomment the following lines and delete the above lines.
 
   // const index = searchClient.initIndex(SEARCH_INDEX_NAME)

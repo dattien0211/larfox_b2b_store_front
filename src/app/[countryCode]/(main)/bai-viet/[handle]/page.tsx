@@ -7,7 +7,7 @@ import { getRegion, listRegions } from "@lib/data/regions"
 
 import { getBlogByHandle, getBlogList } from "@lib/data/blog"
 import BlogSlider from "@modules/layout/components/blogs/slider"
-import { Blog, BlogQueryParams } from "types/global"
+import { BlogQueryParams } from "types/global"
 
 type Props = {
   params: { countryCode: string; handle: string }

@@ -73,7 +73,7 @@ export default function SearchModal({
             >
               <div className="w-full flex items-center gap-x-2 p-4 bg-primary/60 font-semibold text-ui-fg-on-color backdrop-blur-2xl rounded-rounded">
                 <MagnifyingGlassMini />
-                <SearchBox />
+                <SearchBox setShow={setShow} />
               </div>
               <div className="flex-1 mt-6">
                 <Hits hitComponent={Hit} setShow={setShow} />

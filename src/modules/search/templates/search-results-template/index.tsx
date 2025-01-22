@@ -1,7 +1,4 @@
 import { Heading, Text } from "@medusajs/ui"
-import Link from "next/link"
-
-import RefinementList from "@modules/store/components/refinement-list"
 
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -25,7 +22,7 @@ const SearchResultsTemplate = ({
   const pageNumber = page ? parseInt(page) : 1
 
   return (
-    <div className="content-container">
+    <div className="content-container mb-24 sm:mb-48">
       <div className="flex justify-between border-b w-full py-6 pl-4 pr-8 small:px-0 small:pr-2 items-center">
         <div className="flex flex-col items-start">
           <Text className="text-ui-fg-muted txt-large">
@@ -50,6 +47,7 @@ const SearchResultsTemplate = ({
           <>
             <div className="content-container !px-0">
               <PaginatedProducts
+                isSearch={true}
                 productsIds={ids}
                 sortBy={sortBy}
                 page={pageNumber}
@@ -58,8 +56,8 @@ const SearchResultsTemplate = ({
             </div>
           </>
         ) : (
-          <Text className="ml-8 small:ml-14 mt-3">
-            Không có kết quả tương ứng những gì bạn vừa tìm kiếm.
+          <Text className="mt-3  font-manrope-semibold  text-base sm:text-lg">
+            Không có sản phẩm tương ứng những gì bạn vừa tìm kiếm.
           </Text>
         )}
       </div>

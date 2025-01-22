@@ -8,6 +8,7 @@ import {
   useState,
 } from "react"
 import { UseSearchBoxProps, useSearchBox } from "react-instantsearch-hooks-web"
+import { Dispatch, SetStateAction } from "react"
 
 export type ControlledSearchBoxProps = React.ComponentProps<"div"> & {
   inputRef: RefObject<HTMLInputElement>
@@ -27,11 +28,13 @@ type SearchBoxProps = {
     placeholder: string
   }) => React.ReactNode
   placeholder?: string
+  setShow: Dispatch<SetStateAction<boolean>>
 } & UseSearchBoxProps
 
 const SearchBoxWrapper = ({
   children,
   placeholder = "Tìm kiếm sản phẩm...",
+  setShow,
   ...rest
 }: SearchBoxProps) => {
   const { query, refine } = useSearchBox(rest)
@@ -50,7 +53,8 @@ const SearchBoxWrapper = ({
 
   const onSubmit = () => {
     if (value) {
-      router.push(`/results/${value}`)
+      setShow(false)
+      router.push(`/tim-kiem/${value}`)
     }
   }
 
