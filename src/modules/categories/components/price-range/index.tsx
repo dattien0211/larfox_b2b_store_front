@@ -7,12 +7,17 @@ import RangeSlider from "react-range-slider-input"
 import "react-range-slider-input/dist/style.css"
 import "./styles.css"
 
+const MIN_PRICE_DEFAULT = 0
+const MAX_PRICE_DEFAULT = 1000000
+const MIN_PRICE = 0
+const MAX_PRICE = 5000000
+
 const PriceRange = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
 
   // Default slider range
-  const defaultRange = [10000, 250000]
+  const defaultRange = [MIN_PRICE_DEFAULT, MAX_PRICE_DEFAULT]
   const [value, setValue] = useState(defaultRange)
 
   // Format number with commas using Intl.NumberFormat
@@ -50,8 +55,8 @@ const PriceRange = () => {
       <div className="my-6 sm:my-12 w-[98%]">
         <RangeSlider
           id="range-slider-yellow"
-          min={10000}
-          max={1000000}
+          min={MIN_PRICE}
+          max={MAX_PRICE}
           value={value}
           step={10000}
           onInput={setValue}
