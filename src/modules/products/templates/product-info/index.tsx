@@ -56,7 +56,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
             </span>
           </p>
           <div className="w-[2px] h-3 bg-grey-45"></div>
-          <p className="text-sm">Đã bán {soldCount}</p>
+          <p className="text-sm">Đã bán: {soldCount}</p>
         </div>
 
         <Text

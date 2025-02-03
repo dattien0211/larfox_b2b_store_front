@@ -61,10 +61,10 @@ const Shipping: React.FC<ShippingProps> = ({
 
   return (
     <div className="bg-white">
-      <div className="flex flex-row items-center justify-between mb-6">
+      <div className="flex flex-row items-center justify-between mb-2 sm:mb-6">
         <h1
           className={clx(
-            "flex flex-row sm:text-3xl text-2xl font-semibold font-times text-primary gap-x-2 items-baseline",
+            "flex flex-row sm:text-3xl text-xl font-semibold font-times text-primary gap-x-2 items-baseline",
             {
               "opacity-50 pointer-events-none select-none":
                 !isOpen && cart.shipping_methods?.length === 0,
@@ -83,7 +83,7 @@ const Shipping: React.FC<ShippingProps> = ({
             <Text>
               <button
                 onClick={handleEdit}
-                className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base !font-manrope"
+                className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-sm sm:text-base !font-manrope !text-primary"
                 data-testid="edit-delivery-button"
               >
                 Sửa
@@ -150,7 +150,7 @@ const Shipping: React.FC<ShippingProps> = ({
           <div className="text-small-regular">
             {cart && (cart.shipping_methods?.length ?? 0) > 0 && (
               <div className="flex flex-col gap-y-4">
-                <Text className="text-nowrap text-base text-ui-fg-subtle !font-manrope">
+                <Text className="text-nowrap text-sm sm:text-base text-ui-fg-subtle !font-manrope">
                   {selectedShippingMethod?.name}{" "}
                   {convertToLocale({
                     amount: selectedShippingMethod?.amount!,

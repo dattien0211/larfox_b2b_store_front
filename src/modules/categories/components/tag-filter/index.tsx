@@ -31,7 +31,7 @@ const TagFilter = ({ productTags }: { productTags?: ProductTag[] }) => {
     }
 
     // Push the updated URL
-    router.push(`?${currentParams.toString()}`)
+    router.push(`?${currentParams.toString()}`, { scroll: false })
   }
 
   return (
@@ -42,26 +42,29 @@ const TagFilter = ({ productTags }: { productTags?: ProductTag[] }) => {
       <div className="flex flex-wrap mt-4 sm:mt-8 gap-2">
         {productTags &&
           productTags.length > 0 &&
-          productTags.map((tag) => (
-            <div
-              className={clsx(
-                "px-2 py-1 bg-grey-20 cursor-pointer hover:bg-primary hover:text-white transition",
-                {
-                  "bg-primary border-primary": selectedTags.includes(tag.id),
-                }
-              )}
-              key={tag.id}
-              onClick={() => handleOnclick(tag.id)}
-            >
-              <span
-                className={clsx("text-nowrap text-xs sm:text-sm", {
-                  "text-white": selectedTags.includes(tag.id),
-                })}
+          productTags
+            .slice() // Create a shallow copy to avoid mutating the original array
+            .sort((a, b) => a.value.length - b.value.length) // Sort by length of name
+            .map((tag) => (
+              <div
+                className={clsx(
+                  "px-2 py-1 bg-grey-20 cursor-pointer hover:bg-primary hover:text-white transition",
+                  {
+                    "bg-primary border-primary": selectedTags.includes(tag.id),
+                  }
+                )}
+                key={tag.id}
+                onClick={() => handleOnclick(tag.id)}
               >
-                {tag.value}
-              </span>
-            </div>
-          ))}
+                <span
+                  className={clsx("text-nowrap text-xs sm:text-sm", {
+                    "text-white": selectedTags.includes(tag.id),
+                  })}
+                >
+                  {tag.value}
+                </span>
+              </div>
+            ))}
       </div>
     </>
   )

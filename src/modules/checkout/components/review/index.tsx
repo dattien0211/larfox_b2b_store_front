@@ -21,7 +21,7 @@ const Review = ({ cart }: { cart: any }) => {
 
   return (
     <div className="bg-white">
-      <div className="flex flex-row items-center justify-between mb-6">
+      <div className="flex flex-row items-center justify-between mb-2 sm:mb-6">
         <h1
           className={clx(
             "flex flex-row sm:text-3xl text-2xl font-semibold font-times text-primary gap-x-2 items-baseline",

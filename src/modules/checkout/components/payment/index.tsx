@@ -122,10 +122,10 @@ const Payment = ({
 
   return (
     <div className="bg-white">
-      <div className="flex flex-row items-center justify-between mb-6">
+      <div className="flex flex-row items-center justify-between mb-2 sm:mb-6">
         <h1
           className={clx(
-            "flex flex-row sm:text-3xl text-2xl font-semibold font-times text-primary text gap-x-2 items-baseline",
+            "flex flex-row sm:text-3xl text-xl font-semibold font-times text-primary text gap-x-2 items-baseline",
             {
               "opacity-50 pointer-events-none select-none":
                 !isOpen && !paymentReady,
@@ -139,7 +139,7 @@ const Payment = ({
           <Text>
             <button
               onClick={handleEdit}
-              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-base !font-manrope"
+              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-sm sm:text-base !font-manrope !text-primary"
               data-testid="edit-payment-button"
             >
               Sửa
@@ -203,7 +203,7 @@ const Payment = ({
           )}
 
           {isQR(selectedPaymentMethod) && (
-            <div className="flex flex-col items-center justify-center gap-y-2 text-small-regular cursor-pointer py-5 border rounded-rounded px-8 mb-2 mt-4">
+            <div className="animate-fade-in-right flex flex-col items-center justify-center gap-y-2 text-small-regular cursor-pointer py-5 border rounded-rounded px-8 mb-2 mt-4">
               <div className="w-64 h-64">
                 <Image
                   src={IMGS.QR}
@@ -213,7 +213,7 @@ const Payment = ({
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="mt-4">
+              <div className="mt-4 ">
                 <p className="indent-4 text-sm sm:text-base text-justify">
                   <span className="text-primary font-manrope-bold mr-2 uppercase">
                     Lưu ý:
@@ -257,7 +257,7 @@ const Payment = ({
         <div className={isOpen ? "hidden" : "block mb-4 sm:mb-0"}>
           {cart && paymentReady && activeSession ? (
             <div className="flex items-start gap-x-1 w-full">
-              <div className="flex flex-col w-1/2">
+              <div className="flex flex-col sm:w-1/2">
                 <Text
                   className="font-normal  txt-medium text-sm sm:text-base text-ui-fg-subtle !font-manrope"
                   data-testid="payment-method-summary"

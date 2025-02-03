@@ -46,7 +46,7 @@ const SortCategories: React.FC<SortCategoriesProps> = ({
 
   const setQueryParams = (name: string, value: string) => {
     const query = createQueryString(name, value)
-    router.push(`${pathname}?${query}`)
+    router.push(`${pathname}?${query}`, { scroll: false })
   }
 
   const handleChange = (

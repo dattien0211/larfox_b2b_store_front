@@ -56,7 +56,7 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals }) => {
           <span
             data-testid="cart-shipping"
             data-value={shipping_total || 0}
-            className="text-sm"
+            className="text-sm sm:text-base"
           >
             {convertToLocale({ amount: shipping_total ?? 0, currency_code })}
           </span>

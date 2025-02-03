@@ -30,12 +30,13 @@ const Item = ({ item }: ItemProps) => {
       </Table.Cell>
 
       <Table.Cell className="text-left">
-        <Text
-          className="txt-medium-plus text-ui-fg-base"
+        <LocalizedClientLink
+          href={`/san-pham/${item?.product_handle}`}
+          className="txt-medium-plus text-ui-fg-base !font-manrope"
           data-testid="product-name"
         >
           {item.product_title}
-        </Text>
+        </LocalizedClientLink>
         {/* <LineItemOptions variant={item.variant} data-testid="product-variant" /> */}
       </Table.Cell>
 

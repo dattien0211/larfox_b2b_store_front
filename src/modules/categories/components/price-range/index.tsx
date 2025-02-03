@@ -39,7 +39,7 @@ const PriceRange = () => {
     currentParams.set("max_price", value[1].toString())
 
     // Push the updated URL
-    router.push(`?${currentParams.toString()}`)
+    router.push(`?${currentParams.toString()}`, { scroll: false })
   }
 
   return (
@@ -51,7 +51,7 @@ const PriceRange = () => {
         <RangeSlider
           id="range-slider-yellow"
           min={10000}
-          max={5000000}
+          max={1000000}
           value={value}
           step={10000}
           onInput={setValue}

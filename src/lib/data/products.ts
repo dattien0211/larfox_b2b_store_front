@@ -204,7 +204,7 @@ export const getProductTagsList = cache(async function (
   queryParams?: HttpTypes.FindParams
 ): Promise<PaginatedProductTagList> {
   const limit = queryParams?.limit || 30
-  const offset = pageParam * limit
+  const offset = (pageParam - 1) * limit
 
   const res = await client.get("/store/product-tags", {
     params: { limit, offset },

@@ -27,7 +27,7 @@ const ItemsTemplate = ({ items }: ItemsTemplateProps) => {
             {/* <Table.HeaderCell className="text-base text-nowrap">
               Số lượng
             </Table.HeaderCell> */}
-            <Table.HeaderCell className="hidden small:table-cell text-base text-nowrap !font-manrope-bold">
+            <Table.HeaderCell className="hidden small:table-cell text-base text-nowrap !font-manrope-bold !text-center">
               Giá
             </Table.HeaderCell>
             <Table.HeaderCell className="!pr-2 sm:!pr-6 text-right text-base text-nowrap !font-manrope-bold">

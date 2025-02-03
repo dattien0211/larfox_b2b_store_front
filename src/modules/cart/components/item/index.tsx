@@ -57,17 +57,18 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       </Table.Cell>
 
       <Table.Cell className="text-lef !pr-2 sm:!pr-6">
-        <Text
+        <LocalizedClientLink
+          href={`/san-pham/${handle}`}
           className={clsx(
-            "text-sm sm:text-base truncate text-ui-fg-base w-[150px] sm:w-[200px] !font-manrope",
+            "text-sm sm:text-sm text-ui-fg-base w-[150px] sm:w-[200px] !font-manrope line-clamp-2 ",
             {
-              "!text-base": type === "preview",
+              "!text-sm": type === "preview",
             }
           )}
           data-testid="product-title"
         >
           {item.product_title}
-        </Text>
+        </LocalizedClientLink>
         {/* <LineItemOptions variant={item.variant} data-testid="product-variant" /> */}
 
         {type === "full" && (
@@ -105,8 +106,8 @@ const Item = ({ item, type = "full" }: ItemProps) => {
           )}
         >
           {type === "preview" && (
-            <span className="flex gap-x-1 ">
-              <Text className="text-ui-fg-muted text-xs !font-manrope mt-2">
+            <span className="flex gap-x-1">
+              <Text className="text-ui-fg-muted text-xs !font-manrope flex items-center">
                 {item.quantity}x{" "}
               </Text>
               <LineItemUnitPrice item={item} style="tight" />

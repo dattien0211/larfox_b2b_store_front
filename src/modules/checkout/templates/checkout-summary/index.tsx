@@ -17,7 +17,7 @@ const CheckoutSummary = ({ cart }: { cart: any }) => {
           <ItemsPreviewTemplate items={cart?.items} />
         </div>
         <CartTotals totals={cart} />
-        <div className="my-4">
+        <div className="mt-4 sm:my-4">
           <DiscountCode cart={cart} />
         </div>
       </div>

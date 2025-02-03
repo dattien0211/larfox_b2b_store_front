@@ -28,7 +28,7 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
                 Phương thức thanh toán
               </Text> */}
               <Text
-                className=" text-ui-fg-subtle text-sm sm:text-base"
+                className=" text-ui-fg-subtle text-sm sm:text-base !font-manrope"
                 data-testid="payment-method"
               >
                 {paymentInfoMap[payment.provider_id].title}
