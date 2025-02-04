@@ -11,7 +11,9 @@ const Help = () => {
       <div className="text-base-regular my-2">
         <ul className="gap-y-2 flex flex-col">
           <li>
-            <LocalizedClientLink href="/lien-he">Liên hệ</LocalizedClientLink>
+            <LocalizedClientLink href="/ve-chung-toi">
+              Liên hệ
+            </LocalizedClientLink>
           </li>
           <li>
             <LocalizedClientLink href="/chinh-sach-doi-tra-va-hoan-tien">

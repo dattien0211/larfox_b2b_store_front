@@ -16,9 +16,6 @@ import Banner6 from "@assets/images/banner-6.jpg"
 import Banner7 from "@assets/images/banner-7.png"
 import IntroImage from "@assets/images/intro-image.jpg"
 import Product from "@assets/images/product.png"
-import HotProduct1 from "@assets/images/hot-product-1.png"
-import HotProduct2 from "@assets/images/hot-product-2.png"
-import HotProduct3 from "@assets/images/hot-product-3.png"
 import LeafBG from "@assets/images/leaf-bg.png"
 import Vendor from "@assets/images/vendor.png"
 import Blog from "@assets/images/blog.png"
@@ -47,9 +44,6 @@ export default {
   Banner5,
   Banner6,
   Product,
-  HotProduct1,
-  HotProduct2,
-  HotProduct3,
   Banner7,
   LeafBG,
   Vendor,

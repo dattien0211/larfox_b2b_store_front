@@ -9,34 +9,35 @@ export const metadata: Metadata = {
 
 export default async function Chung() {
   return (
-    <div className="mb-36">
-      <Image src={IMGS.IntroImage} alt="" className="w-full pt-9" />
+    <div className="mb-16 sm:mb-24">
+      <Image src={IMGS.IntroImage} alt="" className="w-full" />
 
-      <div className="content-container">
+      <div className="content-container pb-9">
         <div className="relative">
-          <div className="absolute text-grey-15 font-bold  text-60px sm:text-80px  md:text-110px lg:text-128px left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 -z-10">
+          <div className="text-nowrap absolute text-grey-15 font-bold font-times  text-60px sm:text-80px  md:text-110px lg:text-128px left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 -z-10">
             About us
           </div>
           <div className="flex flex-col items-center">
             <h2 className="italic text-primary font-times font-bold text-lg sm:text-xl lg:text-2xl">
               Về chúng tôi
             </h2>
-            <h1 className="sm:text-3xl text-2xl   md:text-4xl md:text-44px font-bold font-times mt-2">
+            <h1 className="sm:text-3xl text-2xl md:text-4xl md:text-44px font-bold font-times mt-2">
               Câu chuyện thương hiệu
             </h1>
           </div>
         </div>
 
-        <h1 className=" sm:text-3xl text-2xl  mt-16">Câu chuyện thương hiệu</h1>
-        <div className="mt-4 mb-8">
+        <h1 className="sm:text-3xl text-2xl mt-8 sm:mt-16 font-times">
+          Câu chuyện thương hiệu
+        </h1>
+        <div className="mt-4 mb-8 text-sm sm:text-base text-justify sm:text-left">
           Được thành lập từ năm….. cho đến nay công ty chúng tôi đã ngày càng
           được mở rộng, ngày càng được khách hàng ưa chuộng. Hiện tại, trong
           thời gian sắp tới công ty đang đề ra mục tiêu sẽ trở thành một trong
           số những công ty đi đầu về ngành dịch vụ……
         </div>
-
-        <h1 className=" sm:text-3xl text-2xl ">Nhà sáng lập</h1>
-        <div className="space-y-2 mt-4 mb-8">
+        <h1 className=" sm:text-3xl text-2xl font-times">Nhà sáng lập</h1>
+        <div className="space-y-2 sm:space-y-4 mt-4 mb-8 text-sm sm:text-base text-justify sm:text-left">
           <p>
             Trong tình hình chính trị, xã hội hiện nay thì dịch vụ ……. đang là
             một trong số những dịch vụ nổi trội, có rất nhiều sự lựa chọn khác
@@ -57,8 +58,8 @@ export default async function Chung() {
           </p>
         </div>
 
-        <h1 className=" sm:text-3xl text-2xl ">Triết lý</h1>
-        <div className="space-y-2 mt-4 mb-8">
+        <h1 className=" sm:text-3xl text-2xl font-times">Triết lý</h1>
+        <div className="space-y-2 mt-4 mb-8 text-sm sm:text-base text-justify sm:text-left">
           <p>
             Đến với công ty chúng tôi bạn sẽ được hưởng rất nhiều lợi ích
             như………..
@@ -79,8 +80,8 @@ export default async function Chung() {
           </p>
         </div>
 
-        <h1 className=" sm:text-3xl text-2xl ">Sứ mệnh</h1>
-        <div className="space-y-2 mt-4 mb-8">
+        <h1 className=" sm:text-3xl text-2xl font-times">Sứ mệnh</h1>
+        <div className="space-y-2 mt-4 mb-8 text-sm sm:text-base text-justify sm:text-left">
           <p>
             Được thành lập từ năm….. cho đến nay công ty chúng tôi đã ngày càng
             được mở rộng, ngày càng được khách hàng ưa chuộng. Hiện tại, trong
