@@ -1,7 +1,7 @@
 "use client"
 
 import { HttpTypes } from "@medusajs/types"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useState, useEffect } from "react"
 import clsx from "clsx"
 
@@ -14,6 +14,7 @@ const CategoryFilter = ({
 }) => {
   const router = useRouter()
   const pathname = usePathname()
+  const searchParams = useSearchParams()
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
   useEffect(() => {
@@ -26,24 +27,21 @@ const CategoryFilter = ({
     setSelectedCategories((prev) => {
       const isSelected = prev.includes(handle)
       const updatedCategories = isSelected
-        ? prev.filter((categoryHandle) => categoryHandle !== handle) // Remove the category if already selected
-        : [...prev, handle] // Add the category if not selected
+        ? prev.filter((categoryHandle) => categoryHandle !== handle) // Remove category
+        : [...prev, handle] // Add category
 
-      if (updatedCategories.length === 0) {
-      }
-
-      // Construct the new URL
-      const basePath = pathname.split("/").slice(0, 2).join("/") // Extract the base path, e.g., "/vn/danh-muc-san-pham/Bông Lúa-care"
+      const basePath = pathname.split("/").slice(0, 2).join("/") // Extract base path
       const newPath = `${basePath}/danh-muc-san-pham/${updatedCategories.join(
         "/"
-      )}` // Add selected categories to the path
+      )}` // Updated category path
 
-      if (updatedCategories.length === 0) {
-        router.push(`${basePath}/tat-ca-san-pham`, { scroll: false })
-      } else {
-        // Push the new route
-        router.push(newPath, { scroll: false })
-      }
+      const params = new URLSearchParams(searchParams.toString()) // Clone current search params
+      const finalPath =
+        updatedCategories.length > 0
+          ? `${newPath}?${params}`
+          : `${basePath}/tat-ca-san-pham?${params}`
+
+      router.push(finalPath, { scroll: false }) // Navigate while keeping query parameters
 
       return updatedCategories
     })
