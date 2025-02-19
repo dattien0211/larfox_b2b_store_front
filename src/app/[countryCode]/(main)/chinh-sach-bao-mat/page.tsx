@@ -1,9 +1,9 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Chính Sách Bảo Mật Thông Tin | Anco",
+  title: "Chính Sách Bảo Mật Thông Tin | Bông Lúa",
   description:
-    "Các thông tin liên quan đến chính sách bảo mật thông tin của Anco.",
+    "Các thông tin liên quan đến chính sách bảo mật thông tin của Bông Lúa.",
 }
 
 export default async function SecurityPolicyPage() {

@@ -2,7 +2,7 @@ import Image from "next/image"
 
 import Icons from "@modules/common/icons"
 import IMGS from "@constants/IMGS"
-import TextAnco from "@modules/layout/components/text-anco"
+import Text from "@modules/layout/components/text"
 
 export default function OurStory() {
   const { RightArrow } = Icons
@@ -25,10 +25,10 @@ export default function OurStory() {
           className="absolute -top-12 left-0 w-full"
         />
         <div className="w-full h-full absolute inset-0 z-30   !text-white flex flex-col items-center justify-center ">
-          <TextAnco
+          <Text
             backgroundText=" About us"
             subTitle="Sứ mệnh của chúng tôi"
-            title="Câu chuyện của Anco"
+            title="Câu chuyện của Bông Lúa"
             description="Tôi bắt đầu Ước mơ Xanh của mình, nghiên cứu những sản phẩm thuần
               tuý, tối giản, chỉ tập trung vào mục đính sử dụng của chính nó."
             classBGText="!text-[#DCEAC5]/30"

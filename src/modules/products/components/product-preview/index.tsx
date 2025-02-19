@@ -92,7 +92,7 @@ export default async function ProductPreview({
         </div>
 
         <div className="line-clamp-2 text-black-30 text-sm sm:text-lg h-10 sm:h-14">
-          {product?.title || "Sản phẩm AnCo phiên bản mới 2025"}
+          {product?.title || "Sản phẩm Bông Lúa phiên bản mới 2025"}
         </div>
 
         <div className="flex items-center">

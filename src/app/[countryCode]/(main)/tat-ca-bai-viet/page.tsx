@@ -10,8 +10,8 @@ type Props = {
 }
 
 export const metadata: Metadata = {
-  title: "Tất Cả Bài Viết | Anco",
-  description: "Khám phá tất cả bài viết trên Anco.",
+  title: "Tất Cả Bài Viết | Bông Lúa",
+  description: "Khám phá tất cả bài viết trên Bông Lúa.",
 }
 
 export default async function AllBlogsPage({ searchParams }: Props) {

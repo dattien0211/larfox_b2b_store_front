@@ -1,12 +1,12 @@
-import { getCategoriesList } from "@lib/data/categories"
-
 import TopNav from "./topNav"
 import MiddleNav from "./middleNav"
 import BottomNav from "./bottomNav"
+
 import { getBlogTypesList } from "@lib/data/blog-types"
+import { getCategoriesList } from "@lib/data/categories"
 
 export default async function Header() {
-  const categories = await getCategoriesList()
+  const { product_categories } = await getCategoriesList()
   const { blogTypes } = await getBlogTypesList()
 
   return (
@@ -15,10 +15,7 @@ export default async function Header() {
       <div className="w-full ">
         <div className="content-container ">
           <MiddleNav />
-          <BottomNav
-            categories={categories.product_categories}
-            blogTypes={blogTypes}
-          />
+          <BottomNav categories={product_categories} blogTypes={blogTypes} />
         </div>
       </div>
     </header>

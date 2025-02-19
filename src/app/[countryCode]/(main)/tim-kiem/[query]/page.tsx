@@ -6,7 +6,7 @@ import { search } from "@modules/search/actions"
 import { SortOptions } from "@modules/categories/components/sort-category"
 
 export const metadata: Metadata = {
-  title: "Tìm Kiếm | Anco",
+  title: "Tìm Kiếm | Bông Lúa",
   description: "Khám phá tất cả sản phẩm.",
 }
 

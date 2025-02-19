@@ -14,7 +14,7 @@ const UserDropDown = ({
 }: {
   customer?: HttpTypes.StoreCustomer | null
 }) => {
-  const { UserAnco } = icons
+  const { UserBongLua } = icons
   const [userDropdownOpen, setUserDropdownOpen] = useState(false)
   const { countryCode } = useParams() as { countryCode: string }
   const open = () => setUserDropdownOpen(true)
@@ -35,7 +35,7 @@ const UserDropDown = ({
     >
       <Popover className="relative h-full flex items-center lg:z-30">
         <Popover.Button className="h-full py-2 px-1 lg:py-4 lg:px-2  cursor-pointer hover:text-primary">
-          <UserAnco />
+          <UserBongLua />
         </Popover.Button>
         <Transition
           show={userDropdownOpen}

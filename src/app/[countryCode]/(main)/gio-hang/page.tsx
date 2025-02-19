@@ -6,7 +6,7 @@ import { HttpTypes } from "@medusajs/types"
 import { getCustomer } from "@lib/data/customer"
 
 export const metadata: Metadata = {
-  title: "Giỏ Hàng | Anco",
+  title: "Giỏ Hàng | Bông Lúa",
   description: "Xem đơn hàng của bạn",
 }
 

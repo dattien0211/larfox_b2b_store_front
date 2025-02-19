@@ -7,7 +7,7 @@ import { default as Twitter } from "./twitter"
 import { default as Location } from "./location"
 import { default as Mail } from "./mail"
 import { default as Search } from "./search"
-import { default as UserAnco } from "./user-anco"
+import { default as UserBongLua } from "./user-bonglua"
 import { default as Heart } from "./heart"
 import { default as Bag } from "./bag"
 import { default as DropDown } from "./drop-down"
@@ -46,7 +46,7 @@ export default {
   Location,
   Mail,
   Search,
-  UserAnco,
+  UserBongLua,
   Heart,
   Bag,
   DropDown,

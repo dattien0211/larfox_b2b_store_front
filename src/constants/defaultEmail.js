@@ -1,1 +1,1 @@
-export const DEFAULT_EMAIL = "default_email_anco@gmail.com"
+export const DEFAULT_EMAIL = "default_email_bong@gmail.com"

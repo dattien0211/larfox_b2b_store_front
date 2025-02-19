@@ -6,8 +6,8 @@ import { getCategoriesList } from "@lib/data/categories"
 import { getProductTagsList } from "@lib/data/products"
 
 export const metadata: Metadata = {
-  title: "Tất Cả Sản Phẩm | Anco",
-  description: "Khám phá tất cả sản phẩm trên Anco.",
+  title: "Tất Cả Sản Phẩm | Bông Lúa",
+  description: "Khám phá tất cả sản phẩm trên Bông Lúa.",
 }
 
 type Params = {

@@ -67,7 +67,7 @@ const Review = ({ cart }: { cart: any }) => {
                 >
                   Chính Sách Bảo Mật
                 </LocalizedClientLink>
-                &nbsp;của Anco.
+                &nbsp;của Bông Lúa.
               </Text>
             </div>
           </div>

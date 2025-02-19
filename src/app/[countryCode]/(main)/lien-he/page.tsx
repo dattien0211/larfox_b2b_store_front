@@ -1,8 +1,8 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Liên hệ| Anco",
-  description: "Các thông tin liên quan đến liên hệ của Anco.",
+  title: "Liên hệ| Bông Lúa",
+  description: "Các thông tin liên quan đến liên hệ của Bông Lúa.",
 }
 
 export default async function ContactPage() {

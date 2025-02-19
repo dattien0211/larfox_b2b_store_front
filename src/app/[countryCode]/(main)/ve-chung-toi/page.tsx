@@ -3,8 +3,8 @@ import Image from "next/image"
 import IMGS from "@constants/IMGS"
 
 export const metadata: Metadata = {
-  title: "Về Chúng Tôi | Anco",
-  description: "Các thông tin liên quan đến Anco.",
+  title: "Về Chúng Tôi | Bông Lúa",
+  description: "Các thông tin liên quan đến Bông Lúa.",
 }
 
 export default async function Chung() {

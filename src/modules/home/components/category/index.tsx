@@ -1,0 +1,45 @@
+import CategoryItem from "./category-item"
+import { Heading } from "@medusajs/ui"
+import { StoreProductCategory } from "@medusajs/types"
+
+interface CategoryProps {
+  categories?: StoreProductCategory[]
+}
+
+const Category: React.FC<CategoryProps> = async ({ categories }) => {
+  return (
+    <div className="content-container">
+      <div className="bg-white pt-4">
+        <div className="w-full flex justify-between items-center">
+          <Heading
+            level="h1"
+            className=" py-2 font-semibold w-full  capitalize font-times text-primary text-xl sm:text-2xl"
+          >
+            Danh mục sản phẩm
+          </Heading>
+        </div>
+
+        <div className="grid grid-cols-3 small:grid-cols-6 w-full border-t border-l border-black/5">
+          <CategoryItem
+            key={100}
+            text={"Tất cả sản phẩm"}
+            link={"/tat-ca-san-pham"}
+            isAll={true}
+          />
+          {categories &&
+            categories.map((category) => (
+              <CategoryItem
+                key={category.id}
+                // @ts-ignore
+                imagesSRC={category?.metadata?.thumbnail?.url}
+                text={category.name}
+                link={category.handle}
+              />
+            ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Category

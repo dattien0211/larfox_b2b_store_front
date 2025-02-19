@@ -36,7 +36,7 @@ module.exports = {
           20: "#787777",
           30: "#323232",
         },
-        primary: "#ea9934",
+        primary: "#A7D129",
         orang: {
           5: "#FFB558",
           10: "#D96800",

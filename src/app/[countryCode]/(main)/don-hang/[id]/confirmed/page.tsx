@@ -26,7 +26,7 @@ async function getOrder(id: string) {
 }
 
 export const metadata: Metadata = {
-  title: "Xác nhân đơn hàng | Anco",
+  title: "Xác nhân đơn hàng | Bông Lúa",
   description: "Đơn hàng của bạn đã được xác nhận.",
 }
 

@@ -31,7 +31,7 @@ const SizeFilter = () => {
         : [...prev, handle] // Add the category if not selected
 
       // // Construct the new URL
-      // const basePath = pathname.split("/").slice(0, 3).join("/") // Extract the base path, e.g., "/vn/danh-muc-san-pham/anco-care"
+      // const basePath = pathname.split("/").slice(0, 3).join("/") // Extract the base path, e.g., "/vn/danh-muc-san-pham/Bông Lúa-care"
       // const newPath = `${basePath}/${updatedCategories.join("/")}` // Add selected categories to the path
 
       // // Push the new route

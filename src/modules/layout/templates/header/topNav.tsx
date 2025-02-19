@@ -70,7 +70,7 @@ export default function TopNav() {
             </div>
             <div className="flex items-center justify-center">
               <Mail />
-              <p className="ml-2 text-xs">ancoshop.support@gmail.com</p>
+              <p className="ml-2 text-xs">bongluashop.support@gmail.com</p>
             </div>
           </div>
         </div>

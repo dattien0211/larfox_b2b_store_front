@@ -53,8 +53,8 @@ export default async function RelatedProducts({
       {!products.length ? (
         <div>
           <h1 className="text-black-20 text-sm  sm:text-base md:text-lg text-center">
-            Sản phẩm đang được thêm, hãy đón chờ những sản phẩm tốt nhất từ Anco
-            bạn nhé.
+            Sản phẩm đang được thêm, hãy đón chờ những sản phẩm tốt nhất từ Bông
+            Lúa bạn nhé.
           </h1>
         </div>
       ) : (

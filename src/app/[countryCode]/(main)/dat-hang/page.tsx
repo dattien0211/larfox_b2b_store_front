@@ -11,7 +11,7 @@ import Divider from "@modules/common/components/divider"
 import EmptyCartMessage from "@modules/cart/components/empty-cart-message"
 
 export const metadata: Metadata = {
-  title: "Đặt hàng | Anco",
+  title: "Đặt hàng | Bông Lúa",
 }
 
 const fetchCart = async () => {

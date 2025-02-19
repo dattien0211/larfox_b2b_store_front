@@ -2,7 +2,7 @@
 
 import React from "react"
 import Icons from "@modules/common/icons"
-import TextAnco from "@modules/layout/components/text-anco"
+import Text from "@modules/layout/components/text"
 import BlogSlider from "./slider"
 import { Blog, BlogType } from "types/global"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -16,7 +16,7 @@ const Blogs: React.FC<BlogsProps> = ({ blogs, blogTypes }) => {
 
   return (
     <div className="relative py-12 sm:py-20">
-      <TextAnco
+      <Text
         backgroundText="Blogs"
         subTitle="Thật thú vị"
         title="Tin tức mới"

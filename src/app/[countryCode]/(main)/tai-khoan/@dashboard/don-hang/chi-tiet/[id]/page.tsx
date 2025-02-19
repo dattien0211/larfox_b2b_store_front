@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `Đơn Hàng #${order.display_id} | Anco`,
+    title: `Đơn Hàng #${order.display_id} | Bông Lúa`,
     description: `Xem đơn hàng của bạn`,
   }
 }

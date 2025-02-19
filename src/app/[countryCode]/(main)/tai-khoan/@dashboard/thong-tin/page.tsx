@@ -11,7 +11,7 @@ import { listRegions } from "@lib/data/regions"
 import { getCustomer } from "@lib/data/customer"
 
 export const metadata: Metadata = {
-  title: "Thông Tin Tài Khoản | Anco",
+  title: "Thông Tin Tài Khoản | Bông Lúa",
   description: "Xem và sửa tài khoản của bạn.",
 }
 

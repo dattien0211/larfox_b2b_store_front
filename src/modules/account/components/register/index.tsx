@@ -166,7 +166,7 @@ const Register = ({ setCurrentView }: Props) => {
           >
             Chính sách mua hàng và thanh toán
           </LocalizedClientLink>{" "}
-          của Anco.
+          của Bông Lúa.
         </span>
 
         <button

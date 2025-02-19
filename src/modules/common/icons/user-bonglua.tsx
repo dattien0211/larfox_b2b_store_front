@@ -2,7 +2,7 @@ import React from "react"
 
 import { IconProps } from "types/icon"
 
-const UserAnco: React.FC<IconProps> = ({
+const UserBongLua: React.FC<IconProps> = ({
   size = "24",
   color = "currentColor",
   ...attributes
@@ -26,4 +26,4 @@ const UserAnco: React.FC<IconProps> = ({
   )
 }
 
-export default UserAnco
+export default UserBongLua

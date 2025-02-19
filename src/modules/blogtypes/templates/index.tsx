@@ -1,5 +1,5 @@
 import { getBlogList } from "@lib/data/blog"
-import TextAnco from "@modules/layout/components/text-anco"
+import Text from "@modules/layout/components/text"
 import { notFound } from "next/navigation"
 import { BlogQueryParams, BlogType } from "types/global"
 import BlogCard from "@modules/layout/components/blogs/blogCard"
@@ -43,7 +43,7 @@ export default async function BlogTypesTemplate({
 
   return (
     <div className="content-container py-3 sm:py-9 mt-4 sm:mt-12 mb-16 sm:mb-32">
-      <TextAnco backgroundText="Bài Viết" title="BLog" subTitle={name} />
+      <Text backgroundText="Bài Viết" title="BLog" subTitle={name} />
       <div
         className={clsx("mt-8 sm:mt-16", {
           "flex flex-col gap-y-4 sm:gap-y-8": !isAllBLogs,

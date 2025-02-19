@@ -7,7 +7,7 @@ interface ListProductsProps {
   classDesText?: string
 }
 
-const TextAnco: React.FC<ListProductsProps> = ({
+const Text: React.FC<ListProductsProps> = ({
   backgroundText,
   subTitle,
   title,
@@ -43,4 +43,4 @@ const TextAnco: React.FC<ListProductsProps> = ({
   )
 }
 
-export default TextAnco
+export default Text

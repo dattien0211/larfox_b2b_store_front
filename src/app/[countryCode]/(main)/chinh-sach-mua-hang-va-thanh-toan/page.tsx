@@ -1,9 +1,9 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Chính Sách Mua Hàng Và Thanh Toán | Anco",
+  title: "Chính Sách Mua Hàng Và Thanh Toán | Bông Lúa",
   description:
-    "Các thông tin liên quan đến chính sách mua hàng và thanh toán của Anco.",
+    "Các thông tin liên quan đến chính sách mua hàng và thanh toán của Bông Lúa.",
 }
 
 export default async function PaymentPolicyPage() {

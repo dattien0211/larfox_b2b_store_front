@@ -6,7 +6,7 @@ import { getCustomer } from "@lib/data/customer"
 import { listOrders } from "@lib/data/orders"
 
 export const metadata: Metadata = {
-  title: "Tài Khoản | Anco",
+  title: "Tài Khoản | Bông Lúa",
   description: "Đánh giá lại các hoạt động của tài khoản của bạn.",
 }
 

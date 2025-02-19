@@ -1,18 +1,16 @@
 import { Metadata } from "next"
 import Image from "next/image"
 import Hero from "@modules/home/components/hero"
-import { getCollectionsWithProducts } from "@lib/data/collections"
-import { getRegion } from "@lib/data/regions"
-
+import Category from "@modules/home/components/category"
 import AboutUs from "@modules/layout/components/about-us"
 import FlashSale from "@modules/layout/components/flash-sale"
 import ListProducts from "@modules/layout/components/list-products"
 import RecommendProducts from "@modules/layout/components/recommend-products"
-import IMGS from "@constants/IMGS"
 import OurStory from "@modules/layout/components/our-story"
 import Blogs from "@modules/layout/components/blogs"
-import TextAnco from "@modules/layout/components/text-anco"
+import Text from "@modules/layout/components/text"
 import ProductBanner from "@modules/layout/components/product-banner"
+import IMGS from "@constants/IMGS"
 import {
   FLASH_SALE_HANDLE,
   RECOMMEND_PRODUCT_HANDLE,
@@ -22,9 +20,12 @@ import {
 } from "@constants/defaultHandleCollection"
 import { getBlogList } from "@lib/data/blog"
 import { getBlogTypesList } from "@lib/data/blog-types"
+import { getCollectionsWithProducts } from "@lib/data/collections"
+import { getRegion } from "@lib/data/regions"
+import { getCategoriesList } from "@lib/data/categories"
 
 export const metadata: Metadata = {
-  title: "Anco",
+  title: "Bông Lúa",
   description:
     "Trang Web bán các sản phẩm về làm đẹp theo một cách tự nhiên và an toàn",
 }
@@ -59,13 +60,18 @@ export default async function Home({
 
   const { blogTypes } = await getBlogTypesList()
 
+  const { product_categories } = await getCategoriesList()
+
   return (
     <>
       <Hero />
       <div className="py-12 sm:py-20 relative">
-        <TextAnco
+        <Category categories={product_categories} />
+      </div>
+      <div className="py-12 sm:py-20 relative">
+        <Text
           backgroundText="Production"
-          subTitle="Giá trị Anco đem lại"
+          subTitle="Giá trị Bông Lúa đem lại"
           title="Về chúng tôi"
           description="Sự đổi mới sáng tạo - Chìa khóa thành công - Sự bền vững và phát triển lâu dài."
         />
@@ -81,7 +87,7 @@ export default async function Home({
         </div>
       </div>
       <div className="bg-beige-10 relative py-12 sm:py-20">
-        <TextAnco
+        <Text
           backgroundText="Big Sale"
           subTitle="Flash Sale"
           title="Ưu đãi"
@@ -102,10 +108,10 @@ export default async function Home({
         />
       </div>
       <div className="bg-beige-10 relative py-12 sm:py-20">
-        <TextAnco
+        <Text
           backgroundText="Assortm"
           subTitle="Sản phẩm nổi bật"
-          title="Anco Shop"
+          title="Bông Lúa Shop"
           description="Những sản phẩm đặc biệt của chúng tôi, được thiết kế và sản xuất với công nghệ tiên tiến."
         />
         <RecommendProducts
@@ -115,7 +121,7 @@ export default async function Home({
       </div>
       <ProductBanner />
       <div className="relative py-12 sm:py-20">
-        <TextAnco
+        <Text
           backgroundText="Products"
           subTitle="Sản phẩm mới"
           title="Sản phẩm"
@@ -127,7 +133,7 @@ export default async function Home({
         />
       </div>
       <div className="relative py-12 sm:py-20">
-        <TextAnco
+        <Text
           backgroundText="Products"
           subTitle="Sản phẩm bán chạy"
           title="Sản phẩm"
@@ -148,9 +154,9 @@ export default async function Home({
       </div>
       <ProductBanner />
       <div className="bg-beige-10 relative py-12 sm:py-20">
-        <TextAnco
+        <Text
           backgroundText="Assortm"
-          subTitle="Anco Shop"
+          subTitle="Bông Lúa Shop"
           title="Trang thiết bị"
           description="Những sản phẩm đặc biệt của chúng tôi, được thiết kế và sản xuất với công nghệ tiên tiến."
         />

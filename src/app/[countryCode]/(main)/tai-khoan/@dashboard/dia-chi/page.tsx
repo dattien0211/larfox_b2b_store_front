@@ -8,7 +8,7 @@ import { getRegion } from "@lib/data/regions"
 import { getCustomer } from "@lib/data/customer"
 
 export const metadata: Metadata = {
-  title: "Địa chỉ | Anco",
+  title: "Địa chỉ | Bông Lúa",
   description: "Xem lại địa chỉ của bạn",
 }
 
