@@ -8,7 +8,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 type BannerProps = {
   imageSrc: string | StaticImageData
   altText?: string
-  title: string
+  title?: string
   containerClass?: string
   buttonClass?: string
   titleClass?: string
@@ -27,38 +27,45 @@ export default function Banner({
   const { RightArrow } = Icons
 
   return (
-    <div className="relative">
-      <Image
-        src={imageSrc}
-        alt={altText}
-        width={2000}
-        height={456}
-        priority={true}
-        className="w-full"
-      />
-      <div
-        className={clsx("content-container absolute inset-0", containerClass)}
-      >
-        <LocalizedClientLink href={href}>
-          <button
-            className={clsx(
-              "text-orang-35 absolute bg-white rounded-full flex items-center justify-center px-4 lg:px-8 py-2 hover:bg-orang-35 hover:text-white transition-all",
-              buttonClass
-            )}
-          >
-            <p
+    <div className="content-container">
+      <LocalizedClientLink href={href ? "/" + href.replace(/^\/+/, "") : "/"}>
+        <div className="relative w-full">
+          <Image
+            src={imageSrc}
+            alt={altText}
+            width={2000}
+            height={456}
+            priority={true}
+            className="w-full max-h-[420px] object-cover"
+          />
+          {title && (
+            <div
               className={clsx(
-                "mr-2 text-sm md:text-base lg:text-lg",
-                titleClass
+                "content-container absolute inset-0",
+                containerClass
               )}
             >
-              {title}
-            </p>
+              <button
+                className={clsx(
+                  "text-primary absolute bg-white rounded-full flex items-center justify-center px-4 lg:px-8 py-1 md:py-2 hover:bg-primary hover:text-white transition-all",
+                  buttonClass
+                )}
+              >
+                <p
+                  className={clsx(
+                    "mr-2 text-sm md:text-base lg:text-lg",
+                    titleClass
+                  )}
+                >
+                  {title}
+                </p>
 
-            <RightArrow size={10} />
-          </button>
-        </LocalizedClientLink>
-      </div>
+                <RightArrow size={10} />
+              </button>
+            </div>
+          )}
+        </div>
+      </LocalizedClientLink>
     </div>
   )
 }

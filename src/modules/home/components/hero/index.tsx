@@ -17,12 +17,19 @@ import "swiper/css/free-mode"
 import "swiper/css/pagination" // Import pagination styles
 import BannerProduct from "@modules/layout/components/banner"
 import { useOS } from "@lib/hooks/OSContext"
+import { Banner } from "types/global"
 
-const Hero = () => {
+interface HeroProps {
+  banners: Banner[]
+}
+
+const Hero: React.FC<HeroProps> = ({ banners }) => {
   const { os } = useOS()
 
+  if (!banners) return null
+
   return (
-    <div className="w-full cursor-pointer mb-4">
+    <div className="w-full cursor-pointer mt-4">
       <Swiper
         modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
         loop={true}
@@ -40,50 +47,20 @@ const Hero = () => {
           },
         }}
       >
-        <SwiperSlide>
-          <BannerProduct
-            imageSrc={os !== "mobile" ? IMGS.Banner6 : IMGS.MobileBanner}
-            title="Xem thêm"
-            buttonClass={
-              os !== "mobile"
-                ? "bottom-[25%] left-[25%]"
-                : "top-[35%] left-[12%]   "
-            }
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <BannerProduct
-            imageSrc={os !== "mobile" ? IMGS.Banner4 : IMGS.MobileBanner}
-            title="Xem thêm"
-            buttonClass={
-              os !== "mobile"
-                ? "bottom-[25%] left-[25%]"
-                : "top-[35%] left-[12%]   "
-            }
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <BannerProduct
-            imageSrc={os !== "mobile" ? IMGS.Banner6 : IMGS.MobileBanner}
-            title="Xem thêm"
-            buttonClass={
-              os !== "mobile"
-                ? "bottom-[25%] left-[25%]"
-                : "top-[35%] left-[12%]   "
-            }
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <BannerProduct
-            imageSrc={os !== "mobile" ? IMGS.Banner4 : IMGS.MobileBanner}
-            title="Xem thêm"
-            buttonClass={
-              os !== "mobile"
-                ? "bottom-[25%] left-[25%]"
-                : "top-[35%] left-[12%]   "
-            }
-          />
-        </SwiperSlide>
+        {banners.map((banner) => (
+          <SwiperSlide key={banner.id}>
+            <BannerProduct
+              imageSrc={banner.image}
+              title={banner.button_text}
+              buttonClass={
+                os !== "mobile"
+                  ? "bottom-[25%] left-[25%]"
+                  : "bottom-[25%] left-[12%]"
+              }
+              href={banner.link}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   )

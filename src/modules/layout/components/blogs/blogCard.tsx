@@ -32,13 +32,15 @@ const BlogCard: React.FC<BlogCardProps> = ({
           "!w-full": os === "mobile",
         })}
       >
-        <Image
-          src={blog?.thumbnail}
-          alt={blog?.title}
-          width={370}
-          height={290}
-          className="w-full h-full  object-cover"
-        />
+        {blog?.thumbnail && (
+          <Image
+            src={blog?.thumbnail}
+            alt={blog?.title}
+            width={370}
+            height={290}
+            className="w-full h-full  object-cover"
+          />
+        )}
       </div>
 
       <div

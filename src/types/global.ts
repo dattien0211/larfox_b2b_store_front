@@ -1,4 +1,3 @@
-import { values } from "lodash"
 export type FeaturedProduct = {
   id: string
   title: string
@@ -35,24 +34,41 @@ export type BlogType = {
   metadata: Record<string, any>
 }
 
-export type BlogTypeQueryParams = {
+export type Banner = {
+  id: string
+  title?: string
+  image: string
+  link?: string
+  is_active: boolean
+  position_type: string
+  start_date?: Date
+  end_date?: Date
+  alt_text?: string
+  button_text?: string
+  metadata?: Record<string, any>
+  created_at: string
+  updated_at: string
+}
+
+export type QueryParams = {
   limit?: number
   order?: string
   offset?: number
   q?: string
+}
+
+export type BlogTypeQueryParams = QueryParams & {
   name?: string
   value?: string
 }
 
-export type BlogQueryParams = {
-  limit?: number
-  order?: string
-  offset?: number
-  q?: string
+export type BlogQueryParams = QueryParams & {
   title?: string
   handle?: string
   type?: string
 }
+
+export type BannerQueryParams = QueryParams
 
 export type ProductTag = {
   id: string

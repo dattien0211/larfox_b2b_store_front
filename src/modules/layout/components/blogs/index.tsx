@@ -12,7 +12,11 @@ interface BlogsProps {
 }
 
 const Blogs: React.FC<BlogsProps> = ({ blogs, blogTypes }) => {
+  if (!blogs || !blogTypes) return null
+
   const { RightArrow } = Icons
+
+  console.log("Blogs", blogs)
 
   return (
     <div className="relative py-12 sm:py-20">

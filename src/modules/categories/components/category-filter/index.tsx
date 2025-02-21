@@ -63,8 +63,9 @@ const CategoryFilter = ({
               className={clsx(
                 "relative flex items-center justify-center w-5 h-5 rounded border-2 cursor-pointer",
                 {
-                  "bg-orange-500 border-orange-500":
-                    selectedCategories.includes(category.handle),
+                  "bg-primary border-primary": selectedCategories.includes(
+                    category.handle
+                  ),
                   "border-grey-5": !selectedCategories.includes(
                     category.handle
                   ),

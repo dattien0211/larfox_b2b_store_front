@@ -18,7 +18,7 @@ export default async function FooterOfferForm() {
             placeholder="Nhập email"
             className="px-4 flex-1 focus:outline-none h-full bg-grey-10 rounded-l-md text-primary"
           />
-          <div className="bg-orang-5 w-[46px] h-[46px] flex items-center justify-center rounded-r-md cursor-pointer">
+          <div className="bg-primary w-[46px] h-[46px] flex items-center justify-center rounded-r-md cursor-pointer">
             <span className="text-white">
               <Send />
             </span>

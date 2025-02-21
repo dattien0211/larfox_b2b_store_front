@@ -46,7 +46,7 @@ export default function FilterMenu({
       </div>
 
       <div
-        className={`p-4 lg:p-0 fixed lg:static top-0 left-0 z-[100] h-svh lg:h-full bg-white w-[85%] lg:w-[280px] transform transition-transform duration-300 overflow-y-auto ${
+        className={`p-4 lg:p-0 fixed lg:static top-0 left-0 z-[100] h-svh lg:h-full bg-white w-[85%] lg:w-60 transform transition-transform duration-300 overflow-y-auto ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 lg:block`}
       >

@@ -4,12 +4,12 @@
 }
 
 #range-slider-yellow .range-slider__range {
-  background: #ffbf00;
+  @apply bg-primary;
   transition: height 0.3s;
 }
 
 #range-slider-yellow .range-slider__thumb {
-  background: #faa307;
+  @apply bg-primary;
   transition: transform 0.3s;
 }
 

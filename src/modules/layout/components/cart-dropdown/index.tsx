@@ -211,7 +211,7 @@ const CartDropdown = ({
                         <span className="sr-only"> Xem tất cả sản phẩm</span>
                         <button
                           onClick={close}
-                          className="hover:bg-orang-30 bg-primary outline-none text-base px-4 py-2 rounded-md text-white"
+                          className="transition-all duration-300 hover:bg-primary/80 bg-primary outline-none text-base px-4 py-2 rounded-md text-white"
                         >
                           Khám phá sản phẩm
                         </button>

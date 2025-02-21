@@ -18,15 +18,15 @@ export default async function SecurityPolicyPage() {
           1. Mục đích và phạm vi thu thập
         </h2>
         <div className="text-sm sm:text-base space-y-2 sm:space-y-4">
-          anco.mitujsc.com không bán, chia sẻ hay trao đổi thông tin cá nhân của
+          bonglua.com không bán, chia sẻ hay trao đổi thông tin cá nhân của
           khách hàng thu thập trên trang web cho một bên thứ ba nào khác.
           <p>
             Thông tin cá nhân thu thập được sẽ chỉ được sử dụng trong nội bộ
             công ty.
           </p>
           <p>
-            Khi bạn liên hệ đăng ký dịch vụ, thông tin cá nhân mà
-            anco.mitujsc.com thu thập bao gồm:
+            Khi bạn liên hệ đăng ký dịch vụ, thông tin cá nhân mà bonglua.com
+            thu thập bao gồm:
           </p>
           <p>Họ và tên</p>
           <p>Địa chỉ</p>
@@ -42,7 +42,7 @@ export default async function SecurityPolicyPage() {
         </h2>
         <div className="text-sm sm:text-base space-y-2 sm:space-y-4 text-justify sm:text-left">
           <p>
-            Thông tin cá nhân thu thập được sẽ chỉ được anco.mitujsc.com sử dụng
+            Thông tin cá nhân thu thập được sẽ chỉ được bonglua.com sử dụng
             trong nội bộ công ty và cho một hoặc tất cả các mục đích sau đây:
           </p>
           <p>- Hỗ trợ khách hàng</p>
@@ -66,9 +66,9 @@ export default async function SecurityPolicyPage() {
           3. Thời gian lưu trữ thông tin
         </h2>
         <div className="text-justify sm:text-left sm:text-base text-sm">
-          Đối với thông tin cá nhân, anco.mitujsc.com chỉ xóa đi dữ liệu này nếu
+          Đối với thông tin cá nhân, bonglua.com chỉ xóa đi dữ liệu này nếu
           khách hàng có yêu cầu, khách hàng yêu cầu gửi mail về
-          cskh@anco.mitujsc.com/vn
+          cskh@bonglua.com/vn
           <p></p>
         </div>
         <h2 className="mb-3 mt-4 sm:mt-8 sm:mb-6 text-xl sm:text-2xl font-bold font-times">
@@ -100,8 +100,8 @@ export default async function SecurityPolicyPage() {
             Nội.
           </li>
           <li> Điện thoại: 1800646890.</li>
-          <li> Website: anco.mitujsc.com</li>
-          <li> Email: cskh@anco.mitujsc.com/vn</li>
+          <li> Website: bonglua.com</li>
+          <li> Email: cskh@bonglua.com/vn</li>
         </ul>
         <h2 className="mb-3 mt-4 sm:mt-8 sm:mb-6 text-xl sm:text-2xl font-bold font-times">
           6. Phương tiện và công cụ để người dùng tiếp cập và chỉnh sử dữ liệu
@@ -109,15 +109,15 @@ export default async function SecurityPolicyPage() {
         </h2>
         <div className="text-justify sm:text-left sm:text-base text-sm space-y-2 sm:space-y-4">
           <p>
-            anco.mitujsc.com không thu thập thông tin khách hàng qua trang web,
-            thông tin cá nhân khách hàng được thực hiện thu thập qua email liên
-            hệ đặt mua sản phẩm, dịch vụ gửi về hộp mail của chúng tôi:
-            cskh@anco.mitujsc.com/vn hoặc số điện thoại liên hệ đặt mua sản phẩm
-            gọi về 1800646890
+            bonglua.com không thu thập thông tin khách hàng qua trang web, thông
+            tin cá nhân khách hàng được thực hiện thu thập qua email liên hệ đặt
+            mua sản phẩm, dịch vụ gửi về hộp mail của chúng tôi:
+            cskh@bonglua.com/vn hoặc số điện thoại liên hệ đặt mua sản phẩm gọi
+            về 1800646890
           </p>
           <p>
             Bạn có thể liên hệ địa chỉ email cùng số điện thoại trên để yêu cầu
-            anco.mitujsc.com chỉnh sửa dữ liệu cá nhân của mình<p></p>
+            bonglua.com chỉnh sửa dữ liệu cá nhân của mình<p></p>
           </p>
         </div>
         <h2 className="mb-3 mt-4 sm:mt-8 sm:mb-6 text-xl sm:text-2xl font-bold font-times">
@@ -127,23 +127,22 @@ export default async function SecurityPolicyPage() {
         </h2>
         <div className="text-justify sm:text-left sm:text-base text-sm space-y-2 sm:space-y-4">
           <p>
-            Tại anco.mitujsc.com , việc bảo vệ thông tin cá nhân của bạn là rất
-            quan trọng, bạn được đảm bảo rằng thông tin cung cấp cho chúng tôi
-            sẽ được mật anco.mitujsc.com cam kết không chia sẻ, bán hoặc cho
-            thuê thông tin cá nhân của bạn cho bất kỳ người nào khác.
-            anco.mitujsc.com cam kết chỉ sử dụng các thông tin của bạn vào các
-            trường hợp sau:
+            Tại bonglua.com , việc bảo vệ thông tin cá nhân của bạn là rất quan
+            trọng, bạn được đảm bảo rằng thông tin cung cấp cho chúng tôi sẽ
+            được mật bonglua.com cam kết không chia sẻ, bán hoặc cho thuê thông
+            tin cá nhân của bạn cho bất kỳ người nào khác. bonglua.com cam kết
+            chỉ sử dụng các thông tin của bạn vào các trường hợp sau:
           </p>
           <p>- Nâng cao chất lượng dịch vụ dành cho khách hàng</p>
           <p>- Giải quyết các tranh chấp, khiếu nại</p>
           <p>- Khi cơ quan pháp luật có yêu cầu.</p>
           <p>
-            anco.mitujsc.com hiểu rằng quyền lợi của bạn trong việc bảo vệ thông
-            tin cá nhân cũng chính là trách nhiệm của chúng tôi nên trong bất kỳ
+            bonglua.com hiểu rằng quyền lợi của bạn trong việc bảo vệ thông tin
+            cá nhân cũng chính là trách nhiệm của chúng tôi nên trong bất kỳ
             trường hợp có thắc mắc, góp ý nào liên quan đến chính sách bảo mật
-            của anco.mitujsc.com , và liên quan đến việc thông tin cá nhân bị sử
-            dụng sai mục đích hoặc phạm vi đã thông báo vui lòng liên hệ qua số
-            hotline 1800646890 hoặc email: cskh@anco.mitujsc.com/vn
+            của bonglua.com , và liên quan đến việc thông tin cá nhân bị sử dụng
+            sai mục đích hoặc phạm vi đã thông báo vui lòng liên hệ qua số
+            hotline 1800646890 hoặc email: cskh@bonglua.com/vn
           </p>
         </div>
       </div>

@@ -23,6 +23,7 @@ import { getBlogTypesList } from "@lib/data/blog-types"
 import { getCollectionsWithProducts } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 import { getCategoriesList } from "@lib/data/categories"
+import { getBannersList } from "@lib/data/banners"
 
 export const metadata: Metadata = {
   title: "Bông Lúa",
@@ -62,10 +63,16 @@ export default async function Home({
 
   const { product_categories } = await getCategoriesList()
 
+  const { banners } = await getBannersList()
+
   return (
     <>
-      <Hero />
-      <div className="py-12 sm:py-20 relative">
+      <Hero
+        banners={banners.filter(
+          (banner) => banner.position_type === "main_banner"
+        )}
+      />
+      <div className="mt-4 sm:mt-8 relative">
         <Category categories={product_categories} />
       </div>
       <div className="py-12 sm:py-20 relative">
@@ -166,7 +173,7 @@ export default async function Home({
         />
       </div>
       <OurStory />
-      {blogs && blogs.length > 0 && (
+      {blogs && blogTypes && blogs.length > 0 && (
         <Blogs blogs={blogs} blogTypes={blogTypes} />
       )}
     </>

@@ -66,8 +66,8 @@ export default async function ProductPreview({
 
           <div className="px-8 sm:px-4 w-full absolute bottom-4 left-0 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible">
             <LocalizedClientLink href={`/san-pham/${product.handle}`}>
-              <button className="w-full h-7 sm:h-9 rounded-md bg-primary text-white hover:bg-orang-30 text-sm sm:text-base">
-                Xem chi tiết
+              <button className="w-full h-7 sm:h-9 rounded-md bg-primary text-white text-sm sm:text-base transition-all duration-300 hover:bg-primary/80">
+                Chi Tiết Sản Phẩm
               </button>
             </LocalizedClientLink>
           </div>

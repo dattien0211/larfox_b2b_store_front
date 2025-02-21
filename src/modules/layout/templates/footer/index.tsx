@@ -16,7 +16,7 @@ export default async function Footer() {
 
   return (
     <footer className="w-full">
-      <div className="w-full  bg-orang-10">
+      <div className="w-full  bg-primary/80">
         <div className="relative w-full">
           <Image
             src={IMGS.Leaf}
@@ -51,7 +51,7 @@ export default async function Footer() {
           </div>
         </div>
       </div>
-      <div className="w-full text-white  py-4 bg-orang-20 flex items-center justify-center">
+      <div className="w-full text-white  py-4 bg-primary flex items-center justify-center">
         <h1 className="text-center text-sm sm:text-base">
           © {new Date().getFullYear()} Bông Lúa Company (201201016057)
           (1001568-K)
