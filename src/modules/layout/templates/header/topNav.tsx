@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import moment from "moment-timezone"
 import Icons from "@modules/common/icons"
+import StoreConfig from "@constants/storeConfig"
 
 moment.locale("vi")
 
@@ -66,11 +67,11 @@ export default function TopNav() {
             </div>
             <div className="flex items-center justify-center">
               <Location />
-              <p className="ml-2 text-xs">180 Trần Hưng Đạo, Hà Nội</p>
+              <p className="ml-2 text-xs">{StoreConfig.STORE_ADDRESS}</p>
             </div>
             <div className="flex items-center justify-center">
               <Mail />
-              <p className="ml-2 text-xs">bongluashop.support@gmail.com</p>
+              <p className="ml-2 text-xs">{StoreConfig.STORE_EMAIL}</p>
             </div>
           </div>
         </div>

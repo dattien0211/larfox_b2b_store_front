@@ -20,12 +20,7 @@ const Blogs: React.FC<BlogsProps> = ({ blogs, blogTypes }) => {
 
   return (
     <div className="relative py-12 sm:py-20">
-      <Text
-        backgroundText="Blogs"
-        subTitle="Thật thú vị"
-        title="Tin tức mới"
-        classBGText="!text-[#FFF6E8]"
-      />
+      <Text subTitle="Thật thú vị" title="Tin tức mới" />
 
       {/* Blog Cards */}
       <div className="content-container mt-4 sm:mt-20">

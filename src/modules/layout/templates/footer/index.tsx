@@ -12,30 +12,18 @@ export default async function Footer() {
   // const { collections } = await getCollectionsList(0, 6)
   // const { product_categories } = await getCategoriesList(0, 6)
 
-  const { Twitter, FaceBook, Instagram, Google } = Icons
-
   return (
     <footer className="w-full">
-      <div className="w-full  bg-primary/80">
-        <div className="relative w-full">
-          <Image
-            src={IMGS.Leaf}
-            priority
-            alt="leaf"
-            width={1200} // Set the original width of the image
-            height={56} // Set the original height to maintain the aspect ratio
-            className="absolute left-0 -top-12 sm:-top-36 w-screen  z-10" // Ensures the image fills the window width
-          />
-        </div>
+      <div className="w-full  bg-[#7c6540]">
         <div className="content-container">
           <div className="flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center justify-between py-4 sm:py-8">
-            <div className="relative w-[120px] h-[54px]">
+            <div className="w-20 h-auto relative">
               <Image
-                src={IMGS.Logo2}
+                src={IMGS.Logo}
                 alt="Logo"
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-contain"
+                width={96}
+                height={120}
+                className="w-auto h-auto"
               />
             </div>
             <FooterSocial />

@@ -233,7 +233,7 @@ export default function ProductActions({
               {inStock ? "Thêm giỏ hàng" : "Hết hàng"}
             </Button>
             <button
-              className="bg-primary px-2 sm:px-4 lg:px-6 h-full rounded-sm text-white sm:text-base text-sm hover:bg-orang-30"
+              className="bg-primary px-2 sm:px-4 lg:px-6 h-full rounded-sm text-white sm:text-base text-sm hover:shadow-md  transition-all"
               onClick={handleBuyNow}
             >
               Mua ngay

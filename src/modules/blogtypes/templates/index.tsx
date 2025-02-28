@@ -43,7 +43,7 @@ export default async function BlogTypesTemplate({
 
   return (
     <div className="content-container py-3 sm:py-9 mt-4 sm:mt-12 mb-16 sm:mb-32">
-      <Text backgroundText="Bài Viết" title="BLog" subTitle={name} />
+      <Text  title="BLog" subTitle={name} />
       <div
         className={clsx("mt-8 sm:mt-16", {
           "flex flex-col gap-y-4 sm:gap-y-8": !isAllBLogs,

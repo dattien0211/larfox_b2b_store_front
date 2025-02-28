@@ -7,7 +7,7 @@ import { HttpTypes } from "@medusajs/types"
 import CategoryHeader from "@modules/categories/components/category-header"
 import { SortOptions } from "@modules/categories/components/sort-category"
 import FilterMenu from "@modules/categories/components/filter-menu"
-import ProductBanner from "@modules/layout/components/product-banner"
+import ProductBanner from "@modules/layout/components/collection-banner"
 import { ProductTag } from "types/global"
 
 export default function CategoryTemplate({

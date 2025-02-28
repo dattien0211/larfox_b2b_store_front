@@ -1,8 +1,8 @@
 export const FLASH_SALE_HANDLE = "flash-sale"
 
-export const RECOMMEND_PRODUCT_HANDLE = "san-pham-noi-bat"
+export const RECOMMEND_PRODUCT_HANDLE = "tuoi-ngon-moi-ngay"
 
-export const NEW_PRODUCT_HANDLE = "san-pham-moi"
+export const DAC_SAN_OCOP_HANDLE = "quy-hoi-dac-san-ocop"
 
 export const BEST_SELLER_PRODUCT_HANDLE = "san-pham-ban-chay"
 

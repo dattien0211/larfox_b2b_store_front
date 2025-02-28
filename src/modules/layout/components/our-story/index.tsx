@@ -26,13 +26,8 @@ export default function OurStory() {
         />
         <div className="w-full h-full absolute inset-0 z-30   !text-white flex flex-col items-center justify-center ">
           <Text
-            backgroundText=" About us"
             subTitle="Sứ mệnh của chúng tôi"
             title="Câu chuyện của Bông Lúa"
-            description="Tôi bắt đầu Ước mơ Xanh của mình, nghiên cứu những sản phẩm thuần
-              tuý, tối giản, chỉ tập trung vào mục đính sử dụng của chính nó."
-            classBGText="!text-[#DCEAC5]/30"
-            classDesText="sm:w-[50%]"
           />
           <button className="mt-12 hover:text-orange-600 hover:bg-white shadow-md rounded-full flex items-center justify-center px-4 py-[6px] sm:px-8 sm:py-2 bg-gradient-to-r from-[#EE9C23] to-[#FFBB56] text-white transition-all duration-300 ease-in-out mx-auto">
             <p className="mr-2 text-base sm:text-lg">Xem chi tiết</p>

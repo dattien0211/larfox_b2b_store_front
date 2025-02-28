@@ -26,6 +26,8 @@ import YTIcon from "@assets/images/yt-icon.png"
 import MobileBanner from "@assets/images/mobile-banner.jpg"
 import MobileBanner2 from "@assets/images/mobile-banner-2.jpg"
 import QR from "@assets/images/QR.jpg"
+import RiceSpike from "@assets/images/rice-spike.png"
+import AllProducts from "@assets/images/all-product.jpg"
 
 export default {
   Logo,
@@ -55,4 +57,6 @@ export default {
   MobileBanner,
   MobileBanner2,
   QR,
+  RiceSpike,
+  AllProducts,
 }

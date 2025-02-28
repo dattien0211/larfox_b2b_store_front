@@ -1,5 +1,6 @@
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Image from "next/image"
+import IMGS from "@constants/IMGS"
 
 interface CategoryItemProp {
   imagesSRC?: string
@@ -31,9 +32,9 @@ const CategoryItem: React.FC<CategoryItemProp> = ({
     >
       <div className="w-full flex flex-col items-center justify-center p-2 gap-y-1 sm:p-3 sm:gap-y-3">
         <div className="w-[80%] aspect-square relative flex flex-col items-center justify-center">
-          {imagesSRC && (
+          {(isAll || imagesSRC) && (
             <Image
-              src={imagesSRC}
+              src={isAll ? IMGS.AllProducts : imagesSRC || ""}
               alt="img"
               width={200}
               height={200}

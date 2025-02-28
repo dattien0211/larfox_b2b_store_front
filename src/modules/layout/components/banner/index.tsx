@@ -27,45 +27,46 @@ export default function Banner({
   const { RightArrow } = Icons
 
   return (
-    <div className="content-container">
-      <LocalizedClientLink href={href ? "/" + href.replace(/^\/+/, "") : "/"}>
+    <LocalizedClientLink href={href ? "/" + href.replace(/^\/+/, "") : "/"}>
+      <div className="relative w-full">
         <div className="relative w-full">
           <Image
             src={imageSrc}
             alt={altText}
-            width={2000}
-            height={456}
-            priority={true}
-            className="w-full max-h-[420px] object-cover"
+            width={2000} // Set only width
+            height={0} // Allow automatic height calculation
+            priority
+            className="h-auto max-h-[440px] object-contain"
           />
-          {title && (
-            <div
+        </div>
+
+        {title && (
+          <div
+            className={clsx(
+              "content-container absolute inset-0",
+              containerClass
+            )}
+          >
+            <button
               className={clsx(
-                "content-container absolute inset-0",
-                containerClass
+                "text-primary absolute bg-white rounded-full flex items-center justify-center px-4 lg:px-8 py-1 md:py-2 hover:border hover:border-primary hover:scale-105 transition-all shadow-md",
+                buttonClass
               )}
             >
-              <button
+              <p
                 className={clsx(
-                  "text-primary absolute bg-white rounded-full flex items-center justify-center px-4 lg:px-8 py-1 md:py-2 hover:bg-primary hover:text-white transition-all",
-                  buttonClass
+                  "mr-2 text-sm md:text-base lg:text-lg",
+                  titleClass
                 )}
               >
-                <p
-                  className={clsx(
-                    "mr-2 text-sm md:text-base lg:text-lg",
-                    titleClass
-                  )}
-                >
-                  {title}
-                </p>
+                {title}
+              </p>
 
-                <RightArrow size={10} />
-              </button>
-            </div>
-          )}
-        </div>
-      </LocalizedClientLink>
-    </div>
+              <RightArrow size={10} />
+            </button>
+          </div>
+        )}
+      </div>
+    </LocalizedClientLink>
   )
 }

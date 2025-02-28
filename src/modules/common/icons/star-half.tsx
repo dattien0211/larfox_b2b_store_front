@@ -2,7 +2,7 @@ import React from "react"
 
 import { IconProps } from "types/icon"
 
-const Star: React.FC<IconProps> = ({
+const StarHalf: React.FC<IconProps> = ({
   size = "14",
   color = "currentColor",
   ...attributes
@@ -23,4 +23,4 @@ const Star: React.FC<IconProps> = ({
   )
 }
 
-export default Star
+export default StarHalf

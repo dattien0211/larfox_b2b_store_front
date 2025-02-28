@@ -37,7 +37,7 @@ export type BlogType = {
 export type Banner = {
   id: string
   title?: string
-  image: string
+  image: Record<string, any>
   link?: string
   is_active: boolean
   position_type: string

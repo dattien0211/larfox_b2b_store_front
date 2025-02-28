@@ -29,7 +29,7 @@ const Hero: React.FC<HeroProps> = ({ banners }) => {
   if (!banners) return null
 
   return (
-    <div className="w-full cursor-pointer mt-4">
+    <div className="content-container cursor-pointer mt-4">
       <Swiper
         modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
         loop={true}
@@ -50,11 +50,11 @@ const Hero: React.FC<HeroProps> = ({ banners }) => {
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
             <BannerProduct
-              imageSrc={banner.image}
+              imageSrc={banner.image.url}
               title={banner.button_text}
               buttonClass={
                 os !== "mobile"
-                  ? "bottom-[25%] left-[25%]"
+                  ? "bottom-[12%] left-[6%]"
                   : "bottom-[25%] left-[12%]"
               }
               href={banner.link}

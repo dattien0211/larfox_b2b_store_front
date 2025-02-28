@@ -1,21 +1,25 @@
+// @ts-nocheck
+
 "use client"
+
 import { HttpTypes } from "@medusajs/types"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { useOS } from "@lib/hooks/OSContext"
 import ProductPreview from "@modules/products/components/product-preview"
 import ProductItem from "../product-item"
+import CollectionBanner from "../collection-banner"
 
-interface ListProductsProps {
-  products?: HttpTypes.StoreProduct[]
-  collectionHandle?: string
+interface CollectionProps {
+  collection?: HttpTypes.StoreCollection
 }
 
-const ListProducts: React.FC<ListProductsProps> = ({
-  products,
-  collectionHandle,
-}) => {
+const Collection: React.FC<CollectionProps> = ({ collection }) => {
   const { os } = useOS()
+
+  const products = collection?.products
+
+  console.log(collection)
 
   const displayedProducts =
     products && products.length > 0
@@ -27,15 +31,19 @@ const ListProducts: React.FC<ListProductsProps> = ({
       : []
 
   return (
-    <div className="content-container mt-10">
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-12">
+    <div className="relative content-container py-12">
+      <CollectionBanner
+        imageSrc={collection?.metadata?.thumbnail?.url}
+        href={collection?.handle ? `/bo-suu-tap/${collection?.handle}` : "/"}
+      />
+      <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-12">
         {displayedProducts?.map((product, index) => (
           <ProductItem key={index} productItem={product} />
         ))}
       </div>
-      <div className="flex justify-center mt-10 sm:mt-20">
+      <div className="flex justify-center mt-10 sm:mt-14">
         <LocalizedClientLink
-          href={collectionHandle ? `/bo-suu-tap/${collectionHandle}` : "/"}
+          href={collection?.handle ? `/bo-suu-tap/${collection?.handle}` : "/"}
         >
           <button className=" rounded-full px-4 py-[6px] sm:px-8 sm:py-2 mx-auto border border-primary text-primary hover:bg-primary hover:text-white">
             Xem tất cả
@@ -46,4 +54,4 @@ const ListProducts: React.FC<ListProductsProps> = ({
   )
 }
 
-export default ListProducts
+export default Collection

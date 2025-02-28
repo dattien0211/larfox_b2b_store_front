@@ -1,8 +1,8 @@
-export const STORE_ADDRESS = ""
+export const STORE_ADDRESS = "70 ngõ 27 Đại Cồ Việt, Hai Bà Trưng, Hà Nội"
 
-export const STORE_EMAIL = ""
+export const STORE_EMAIL = "CSKHbonglua@gmail.com"
 
-export const STORE_PHONE = ""
+export const STORE_PHONE = "0862142582"
 
 export const STORE_NAME = ""
 
