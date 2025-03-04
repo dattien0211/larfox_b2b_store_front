@@ -1,6 +1,6 @@
 import { sdk } from "@lib/config"
 import { cache } from "react"
-import { getProductsById, getProductsList } from "./products"
+import { getProductsList } from "./products"
 import { HttpTypes } from "@medusajs/types"
 import { getProductPrice } from "@lib/util/get-product-price"
 
@@ -30,7 +30,11 @@ export const getCollectionByHandle = cache(async function (
   handle: string
 ): Promise<HttpTypes.StoreCollection> {
   return sdk.store.collection
-    .list({ handle, fields: "*metadata" }, { next: { tags: ["collections"] } })
+    .list(
+      { handle, fields: "*metadata" },
+      { cache: "no-store" }
+      // { next: { tags: ["collections"] } }
+    )
     .then(({ collections }) => collections[0])
 })
 
