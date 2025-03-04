@@ -24,8 +24,8 @@ export const getProductsById = cache(async function ({
         fields:
           "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
       },
-      { cache: "no-store" }
-
+      { next: { revalidate: 60 } } as any
+      // { cache: "no-store" }
       // { next: { tags: ["products"] } }
     )
     .then(({ products }) => products)
@@ -43,7 +43,8 @@ export const getProductByHandle = cache(async function (
         fields:
           "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
       },
-      { cache: "no-store" }
+      { next: { revalidate: 60 } } as any
+      // { cache: "no-store" }
       // { next: { tags: ["products"] } }
     )
     .then(({ products }) => products[0])
@@ -83,7 +84,8 @@ export const getProductsList = cache(async function ({
           "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
         ...queryParams,
       },
-      { cache: "no-store" }
+      { next: { revalidate: 60 } } as any
+      // { cache: "no-store" }
       // { next: { tags: ["products"] } }
     )
     .then(({ products, count }) => {

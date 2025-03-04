@@ -4,12 +4,6 @@ import { getProductsList } from "./products"
 import { HttpTypes } from "@medusajs/types"
 import { getProductPrice } from "@lib/util/get-product-price"
 
-export const retrieveCollection = cache(async function (id: string) {
-  return sdk.store.collection
-    .retrieve(id, {}, { next: { tags: ["collections"] } })
-    .then(({ collection }) => collection)
-})
-
 export const getCollectionsList = cache(async function (
   offset: number = 0,
   limit: number = 100
@@ -17,11 +11,13 @@ export const getCollectionsList = cache(async function (
   return sdk.store.collection
     .list(
       {
+        offset,
         limit,
-        offset: 0,
         fields: "*metadata",
       },
-      { next: { tags: ["collections"] } }
+      { next: { revalidate: 60 } } as any
+      // { cache: "no-store" }
+      // { next: { tags: ["collections"] } }
     )
     .then(({ collections }) => ({ collections, count: collections.length }))
 })
@@ -32,7 +28,8 @@ export const getCollectionByHandle = cache(async function (
   return sdk.store.collection
     .list(
       { handle, fields: "*metadata" },
-      { cache: "no-store" }
+      { next: { revalidate: 60 } } as any
+      // { cache: "no-store" }
       // { next: { tags: ["collections"] } }
     )
     .then(({ collections }) => collections[0])

@@ -15,7 +15,9 @@ export const getCategoriesList = cache(async function (
     // TODO: Look into fixing the type
     // @ts-ignore
     { limit, offset },
-    { next: { tags: ["categories"] } }
+    { next: { revalidate: 60 } } as any
+    // { cache: "no-store" }
+    // { next: { tags: ["categories"] } }
   )
 })
 
@@ -26,7 +28,8 @@ export const getCategoryByHandle = cache(async function (
     // TODO: Look into fixing the type
     // @ts-ignore
     { handle: categoryHandle },
-    { cache: "no-store" }
+    { next: { revalidate: 60 } } as any
+    // { cache: "no-store" }
     // { next: { tags: ["categories"] } }
   )
 })
