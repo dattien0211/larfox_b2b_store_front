@@ -4,6 +4,7 @@ import ProductPreview from "@modules/products/components/product-preview"
 import { Pagination } from "@modules/store/components/pagination"
 import { SortOptions } from "@modules/categories/components/sort-category"
 import clsx from "clsx"
+import ProductItem from "../../layout/components/product-item/index"
 
 const PRODUCT_LIMIT = 12
 
@@ -97,7 +98,7 @@ export default async function PaginatedProducts({
     <>
       <ul
         className={clsx(
-          "grid  w-full grid-cols-2 md:grid-cols-3  gap-x-6 sm:gap-x-8 gap-y-8 sm:gap-y-12",
+          "grid  w-full grid-cols-2 md:grid-cols-3  gap-x-6 sm:gap-x-10 gap-y-8 sm:gap-y-12",
           { "grid-cols-3 md:grid-cols-4": isSearch }
         )}
         data-testid="products-list"

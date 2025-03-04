@@ -67,28 +67,28 @@ export default function MobileMenu({
         }`}
       >
         <div className="p-4 flex items-center justify-between border-b border-grey-20">
-          <div className="w-[80px] md:w-[100px] lg:w-[120px] h-auto">
+          <div className="w-[30px] h-auto">
             <LocalizedClientLink href="/">
-              {/* <Image
+              <Image
                 src={IMGS.Logo}
                 alt="Logo"
-                width={120}
-                height={56}
+                width={30}
+                height={30}
                 className="w-auto h-auto"
-              /> */}
+              />
             </LocalizedClientLink>
           </div>
           <button onClick={onClose} className="hover:text-grey-30 text-primary">
             <XMark size={24} />
           </button>
         </div>
-        <div className="p-4 flex flex-col gap-y-2">
+        <div className="px-4 py-2 flex flex-col gap-y-2 overflow-auto">
           {menuItems["main"].map((item) => (
             <div key={item.title} className="relative">
               <LocalizedClientLink
                 href={item.href || "/"}
                 className={clsx(
-                  "py-2 flex items-center justify-between w-full hover:text-primary",
+                  "py-1 flex items-center justify-between w-full hover:text-primary",
                   { "text-primary": activeSubmenu === item.title }
                 )}
                 onClick={() =>
@@ -108,7 +108,7 @@ export default function MobileMenu({
                 className={clsx(
                   "max-h-0 overflow-hidden ml-4 transition-all duration-300 text-sm space-y-2",
                   {
-                    "max-h-[500px]": activeSubmenu === item.title,
+                    "max-h-[700px]": activeSubmenu === item.title,
                   }
                 )}
               >

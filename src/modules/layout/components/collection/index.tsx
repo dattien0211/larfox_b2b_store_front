@@ -31,21 +31,21 @@ const Collection: React.FC<CollectionProps> = ({ collection }) => {
       : []
 
   return (
-    <div className="relative content-container py-12">
+    <div className="relative content-container py-6 sm:py-12">
       <CollectionBanner
         imageSrc={collection?.metadata?.thumbnail?.url}
         href={collection?.handle ? `/bo-suu-tap/${collection?.handle}` : "/"}
       />
-      <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-12">
+      <div className="mt-2 sm:mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6 sm:gap-x-8 sm:gap-y-12">
         {displayedProducts?.map((product, index) => (
           <ProductItem key={index} productItem={product} />
         ))}
       </div>
-      <div className="flex justify-center mt-10 sm:mt-14">
+      <div className="flex justify-center mt-6 sm:mt-14">
         <LocalizedClientLink
           href={collection?.handle ? `/bo-suu-tap/${collection?.handle}` : "/"}
         >
-          <button className=" rounded-full px-4 py-[6px] sm:px-8 sm:py-2 mx-auto border border-primary text-primary hover:bg-primary hover:text-white">
+          <button className=" rounded-full px-8 py-1  sm:py-2 mx-auto border border-primary text-primary hover:bg-primary hover:text-white">
             Xem tất cả
           </button>
         </LocalizedClientLink>

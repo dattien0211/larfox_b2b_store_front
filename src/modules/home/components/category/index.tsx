@@ -15,7 +15,7 @@ const Category: React.FC<CategoryProps> = async ({ categories }) => {
     <div className="content-container mt-4 sm:mt-8 relative">
       <Heading
         level="h1"
-        className="sm:mb-4 font-semibold capitalize font-times text-primary text-lg sm:text-2xl"
+        className="mb-2 sm:mb-4 font-semibold capitalize font-times text-primary text-lg sm:text-2xl"
       >
         Danh mục sản phẩm
       </Heading>

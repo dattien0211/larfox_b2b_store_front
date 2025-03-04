@@ -40,13 +40,19 @@ export default async function ProductPreview({
         className="overflow-hidden flex flex-col gap-y-1"
       >
         <div className="relative shadow-md bg-grey-15 ">
-          <Thumbnail
-            thumbnail={product.thumbnail}
-            images={product.images}
-            size="full"
-            isFeatured={isFeatured}
-            className="!aspect-square !rounded-none"
-          />
+          <div className="overflow-hidden">
+            <Thumbnail
+              thumbnail={
+                product?.thumbnail ||
+                (product?.images && product?.images[0]?.url)
+              }
+              images={product.images}
+              size="full"
+              isFeatured={isFeatured}
+              className="!aspect-square !rounded-none overflow-hidden group-hover:scale-110 transition-transform duration-300 ease-in-out object-cover"
+            />
+          </div>
+
           <div className="absolute top-4 left-0 px-4 w-full flex items-center justify-between">
             {/* <div className="cursor-pointer text-grey-40 hover:bg-primary hover:text-white w-7 h-7 rounded-full bg-white flex items-center justify-center z-10">
               <Heart size={18} />

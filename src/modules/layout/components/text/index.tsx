@@ -6,7 +6,7 @@ interface ListProductsProps {
 const Text: React.FC<ListProductsProps> = ({ subTitle, title }) => {
   return (
     <>
-      <div className="content-container relative">
+      <div className="relative">
         <div className="flex flex-col items-center relative z-20">
           <h2 className="italic text-primary font-times font-bold text-lg sm:text-xl lg:text-2xl">
             {title}

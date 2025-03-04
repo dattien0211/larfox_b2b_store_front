@@ -29,7 +29,7 @@ const ProductMoreInfo = ({ product, variant }: ProductInfoProps) => {
       </div>
       <div className="flex  text-sm">
         <span className="text-black-20 mr-2 text-nowrap">Loại Sản Phẩm:</span>
-        <div className="flex gap-x-2 flex-wrap gap-y-1">
+        <ul className="flex gap-x-2 flex-wrap gap-y-1 text-primary">
           {product?.categories &&
             product?.categories?.length > 0 &&
             product?.categories
@@ -37,7 +37,7 @@ const ProductMoreInfo = ({ product, variant }: ProductInfoProps) => {
               ?.sort((a, b) => a.name.length - b.name.length) // Sort by length of name
               ?.map((category, index) => {
                 return (
-                  <div key={category?.id}>
+                  <li key={category?.id}>
                     <LocalizedClientLink
                       href={`/danh-muc-san-pham/${category?.handle}`}
                       className="hover:text-primary"
@@ -48,10 +48,10 @@ const ProductMoreInfo = ({ product, variant }: ProductInfoProps) => {
                     index < product?.categories.length - 1
                       ? ", "
                       : ""}
-                  </div>
+                  </li>
                 )
               })}
-        </div>
+        </ul>
       </div>
       <div className="flex text-sm">
         <span className="text-black-20">Tags:</span>

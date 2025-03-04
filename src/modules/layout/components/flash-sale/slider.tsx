@@ -16,7 +16,7 @@ import "swiper/css/pagination"
 
 import { useOS } from "@lib/hooks/OSContext"
 import Icons from "@modules/common/icons"
-import SaleProductItem from "@modules/layout/components/sale-product-item"
+import ProductItem from "../product-item"
 
 const FlashSaleProductsSlider = ({ products }: { products: any }) => {
   const { LeftArrow, RightArrow } = Icons
@@ -54,7 +54,7 @@ const FlashSaleProductsSlider = ({ products }: { products: any }) => {
           {products.length > 0 &&
             products.map((product: any, index: number) => (
               <SwiperSlide key={index}>
-                <SaleProductItem productItem={product} />
+                <ProductItem productItem={product} isSale={true} />
               </SwiperSlide>
             ))}
         </Swiper>

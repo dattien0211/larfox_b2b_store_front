@@ -37,12 +37,14 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
             {[...Array(5)].map((_, index) => {
               if (index < Math.floor(rating)) {
                 // Full star with primary color
-                return <Star key={index} size={20} className="text-primary" />
+                return (
+                  <Star key={index} size={20} className="text-yellow-500" />
+                )
               }
               if (index < Math.ceil(rating)) {
                 // Half star with primary color
                 return (
-                  <StarHalf key={index} size={20} className="text-primary" />
+                  <StarHalf key={index} size={20} className="text-yellow-500" />
                 )
               }
               // Empty star with gray color

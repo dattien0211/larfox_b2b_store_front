@@ -223,15 +223,17 @@ export default function ReviewProduct({
     <>
       <div className="flex flex-col md:flex-row gap-y-6 sm:gap-y-4 md:gap-x-24 items-center transition-all duration-300 ease-in-out">
         <div className="w-full sm:w-fit flex flex-row-reverse gap-4 sm:flex-col justify-between sm:justify-center items-center text-center md:text-left">
-          <div className="text-xl sm:text-4xl md:text-5xl font-bold text-primary flex items-center gap-x-1 sm:gap-x-2 ">
+          <div className="text-xl sm:text-4xl md:text-5xl font-bold text-yellow-500 flex items-center gap-x-1 sm:gap-x-2 ">
             {averageRating}
-            <span className="text-primary">
+            <span className="text-yellow-500">
               <Star size={os !== "mobile" ? 34 : 20} />
             </span>
           </div>
-          <p className="text-[#404040] font-semibold">
-            Dựa trên {reviews?.length || 0} đánh giá
-          </p>
+          {reviews?.length > 0 && (
+            <p className="text-[#404040] font-semibold">
+              Dựa trên {reviews?.length || 0} đánh giá
+            </p>
+          )}
         </div>
 
         <div className="hidden md:block w-[2px] h-[110px] bg-grey-15"></div>
@@ -239,12 +241,14 @@ export default function ReviewProduct({
         <div className="hidden sm:flex flex-col gap-y-2">
           {starCounts.map(({ star, count, percentage }) => (
             <div key={star} className="flex items-center">
-              <div className="text-primary mr-4 flex gap-x-2">
+              <div className="text-yellow-500 mr-4 flex gap-x-2">
                 {/* Render stars */}
                 {Array.from({ length: 5 }, (_, i) => (
                   <span
                     key={i}
-                    className={`${i < star ? "text-primary" : "text-gray-200"}`}
+                    className={`${
+                      i < star ? "text-yellow-500" : "text-gray-200"
+                    }`}
                   >
                     <Star size={18} />
                   </span>
@@ -311,7 +315,7 @@ export default function ReviewProduct({
                     setErrors((prevErrors) => ({ ...prevErrors, rating: "" }))
                 }}
                 className={`cursor-pointer text-2xl ${
-                  rating > i ? "text-primary" : "text-gray-300"
+                  rating > i ? "text-yellow-500" : "text-gray-300"
                 }`}
               >
                 <Star size={os !== "mobile" ? 24 : 18} />

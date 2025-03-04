@@ -15,13 +15,13 @@ export default async function MiddleNav() {
 
   return (
     <div className="flex items-center justify-between my-2 md:my-4">
-      <div className="w-20 h-auto relative">
+      <div className="w-10 sm:w-14 h-auto relative">
         <LocalizedClientLink href="/">
           <Image
             src={IMGS.Logo}
             alt="Logo"
-            width={96}
-            height={120}
+            width={56}
+            height={56}
             className="w-auto h-auto"
           />
         </LocalizedClientLink>

@@ -1,11 +1,17 @@
 import { HttpTypes } from "@medusajs/types"
 import Image from "next/image"
 
-import Icons from "@modules/common/icons"
 import IMGS from "@constants/IMGS"
+import Icons from "@modules/common/icons"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-export default function ProductItem({ productItem }: { productItem: any }) {
+export default function ProductItem({
+  productItem,
+  isSale = false,
+}: {
+  productItem: any
+  isSale?: boolean
+}) {
   const { Star, StarHalf, Thunder } = Icons
   const {
     product,
@@ -37,19 +43,22 @@ export default function ProductItem({ productItem }: { productItem: any }) {
   const fullStars = Math.floor(Number(averageRating))
   const hasHalfStar = Number(averageRating) % 1 !== 0
 
-  const soldCount = Number(product?.metadata?.sold) || 0
+  // const soldCount = Number(product?.metadata?.sold) || 0
 
   return (
-    <div className="w-full flex flex-col  group cursor-pointer border-primary border rounded-md ">
+    <div className="w-full flex flex-col group cursor-pointer border-primary border rounded-md ">
       <div className="p-2">
-        <div className="bg-grey-15 relative w-full shadow-md ">
+        <div className="bg-grey-15 relative w-full shadow-md overflow-hidden">
           <Image
-            src={IMGS.Product}
+            src={
+              product?.thumbnail ?? product?.images?.[0]?.url ?? IMGS.Product
+            }
             alt="banner"
             width={245}
-            height={255}
-            className="w-full h-full"
+            height={245}
+            className="w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-110 object-cover"
           />
+
           {cheapestPrice?.percentage_diff &&
             parseFloat(cheapestPrice?.percentage_diff) > 0 && (
               <>
@@ -62,17 +71,17 @@ export default function ProductItem({ productItem }: { productItem: any }) {
               </>
             )}
 
-          <div className="px-12 w-full absolute bottom-[10%] left-0 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible">
-            <LocalizedClientLink
-              href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
-            >
-              <button
-                className="w-full h-7 sm:h-9 text-sm sm:text-base rounded-md bg-primary text-white duration-300 transition-all
+          <div className="w-full absolute bottom-[10%] left-0 opacity-0 invisible transition-all duration-300  flex items-center justify-center group-hover:opacity-100 group-hover:visible">
+            <button
+              className="px-4 sm:px-12 h-7 sm:h-9 text-sm sm:text-base rounded-md bg-primary text-white duration-300 transition-all text-nowrap
                         hover:scale-105 hover:shadow-sm "
+            >
+              <LocalizedClientLink
+                href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
               >
                 Xem chi tiết
-              </button>
-            </LocalizedClientLink>
+              </LocalizedClientLink>
+            </button>
           </div>
         </div>
       </div>
@@ -103,7 +112,7 @@ export default function ProductItem({ productItem }: { productItem: any }) {
             {cheapestPrice?.original_price}
           </span>
         </div>
-        <div>
+        <div className="flex flex-col sm:flex-row justify-between">
           <p className="text-xs sm:text-sm flex items-center gap-x-2">
             <span className="flex items-center gap-x-1">
               {Array.from({ length: 5 }).map((_, index) => {
@@ -122,6 +131,14 @@ export default function ProductItem({ productItem }: { productItem: any }) {
             </span>
           </p>
         </div>
+        {isSale && (
+          <div className="mt-2 sm:mt-4 rounded-full bg-[#FFDBB7] w-full h-5 relative">
+            <div className="absolute bg-gradient-to-r from-[#EA541E] to-[#FBD316] top-0 left-0 w-[20%] h-full rounded-full"></div>
+            <div className="absolute uppercase inset-0 text-orang-30 text-xxs  sm:text-xs h-full w-full flex items-center justify-center">
+              Đang bán chạy
+            </div>
+          </div>
+        )}
 
         {/* <div className="h-2 bg-grey-30 w-[1px]"></div>
         <p className="text-xs sm:text-sm">

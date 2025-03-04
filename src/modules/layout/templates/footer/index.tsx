@@ -17,12 +17,12 @@ export default async function Footer() {
       <div className="w-full  bg-[#7c6540]">
         <div className="content-container">
           <div className="flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center justify-between py-4 sm:py-8">
-            <div className="w-20 h-auto relative">
+            <div className="w-14 sm:w-16 h-auto relative">
               <Image
                 src={IMGS.Logo}
                 alt="Logo"
-                width={96}
-                height={120}
+                width={64}
+                height={64}
                 className="w-auto h-auto"
               />
             </div>
@@ -40,7 +40,7 @@ export default async function Footer() {
         </div>
       </div>
       <div className="w-full text-white  py-4 bg-primary flex items-center justify-center">
-        <h1 className="text-center text-sm sm:text-base">
+        <h1 className="text-center text-xs sm:text-base text-wrap">
           © {new Date().getFullYear()} Bông Lúa Company (201201016057)
           (1001568-K)
         </h1>

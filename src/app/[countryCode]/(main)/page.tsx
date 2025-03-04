@@ -72,25 +72,24 @@ export default async function Home({
 
       <Category categories={product_categories} />
 
-      <div className="relative  py-12 content-container">
+      <div className="relative py-6 sm:py-12 content-container">
         <Text subTitle="Flash Sale" title="Ưu đãi" />
-        <div className="absolute top-[5%] left-0  w-[60px] h-[60px] sm:w-[100px] sm:h-[100px]">
+        <div className="absolute top-[5%] left-6">
           <Image
             src={IMGS.RiceSpike}
             alt="banner"
             width={100}
             height={100}
-            className="w-full h-full object-contain rotate-45"
+            className=" w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] object-contain rotate-45"
           />
         </div>
-
-        <div className="absolute top-[20%] right-0  w-[60px] h-[60px] sm:w-[100px] sm:h-[100px]">
+        <div className="absolute top-[15%] sm:top-[20%] right-6">
           <Image
             src={IMGS.RiceSpike}
             alt="banner"
             width={100}
             height={100}
-            className="w-full h-full object-contain scale-x-[-1] rotate-[-35deg]"
+            className=" w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] object-contain scale-x-[-1] rotate-[-35deg]"
           />
         </div>
         <FlashSale
