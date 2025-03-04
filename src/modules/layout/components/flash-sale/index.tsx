@@ -29,7 +29,7 @@ const FlashSale: React.FC<FlashSaleProps> = ({ products }) => {
         <p className="sm:text-lg">Ngày</p>
       </div>
       <div className="mt-6 sm:mt-14 flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-8">
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 shadow-lg">
           <Image
             src={IMGS.Banner2}
             alt="banner"
@@ -38,7 +38,7 @@ const FlashSale: React.FC<FlashSaleProps> = ({ products }) => {
             className="w-full h-full object-contain"
           />
         </div>
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 shadow-lg">
           <Image
             src={IMGS.Banner3}
             alt="banner"

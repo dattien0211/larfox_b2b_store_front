@@ -9,10 +9,12 @@ const Menu = ({
   menuItems,
   to,
   isGrid = false,
+  isCategory = true,
 }: {
   menuItems?: any[]
   to: string
   isGrid?: boolean
+  isCategory?: boolean
 }) => {
   const [isHovered, setIsHovered] = useState(false)
 
@@ -36,19 +38,24 @@ const Menu = ({
               "grid grid-cols-2 gap-x-14 gap-y-4": isGrid,
             })}
           >
-            <li>
-              <LocalizedClientLink
-                className={clsx(
-                  "flex justify-between items-center text-black-30 hover:bg-grey-15 py-3 px-4 rounded-md cursor-pointer group"
-                )}
-                href={`/tat-ca-san-pham`}
-              >
-                <span className="text-base text-nowrap">Tất cả sản phảm </span>
-                <span className="text-grey-30 group-hover:text-primary">
-                  <RightArrow />
-                </span>
-              </LocalizedClientLink>
-            </li>
+            {isCategory && (
+              <li>
+                <LocalizedClientLink
+                  className={clsx(
+                    "flex justify-between items-center text-black-30 hover:bg-grey-15 py-3 px-4 rounded-md cursor-pointer group"
+                  )}
+                  href={`/tat-ca-san-pham`}
+                >
+                  <span className="text-base text-nowrap">
+                    Tất cả sản phảm{" "}
+                  </span>
+                  <span className="text-grey-30 group-hover:text-primary">
+                    <RightArrow />
+                  </span>
+                </LocalizedClientLink>
+              </li>
+            )}
+
             {menuItems &&
               menuItems?.length > 0 &&
               menuItems.map((menuItem, index) => (

@@ -23,6 +23,7 @@ export default async function Footer() {
                 alt="Logo"
                 width={64}
                 height={64}
+                priority={true}
                 className="w-auto h-auto"
               />
             </div>

@@ -29,16 +29,14 @@ export default function Banner({
   return (
     <LocalizedClientLink href={href ? "/" + href.replace(/^\/+/, "") : "/"}>
       <div className="relative w-full">
-        <div className="relative w-full">
-          <Image
-            src={imageSrc}
-            alt={altText}
-            width={2000} // Set only width
-            height={0} // Allow automatic height calculation
-            priority
-            className="h-auto max-h-[440px] object-contain"
-          />
-        </div>
+        <Image
+          src={imageSrc}
+          alt={altText}
+          width={2000} // Set only width
+          height={0} // Allow automatic height calculation
+          priority
+          className="h-auto max-h-[440px] object-contain shadow-lg"
+        />
 
         {title && (
           <div

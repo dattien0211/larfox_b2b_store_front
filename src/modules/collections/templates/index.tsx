@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Suspense } from "react"
 
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
@@ -6,6 +7,7 @@ import { HttpTypes } from "@medusajs/types"
 import { SortOptions } from "@modules/categories/components/sort-category"
 import FilterMenu from "@modules/categories/components/filter-menu"
 import CategoryHeader from "@modules/categories/components/category-header"
+import Image from "next/image"
 
 export default function CollectionTemplate({
   sortBy,
@@ -29,14 +31,20 @@ export default function CollectionTemplate({
 
   return (
     <div className="mb-16 sm:mb-24">
-      <div className="flex items-center gap-x-2 mt-6  content-container">
-        <h1 className="text-xl-semi md:text-2xl-semi text-primary font-times">
-          {collection.title}
-        </h1>
+      <div className="content-container mt-4">
+        {collection?.metadata?.thumbnail?.url && (
+          <Image
+            src={collection?.metadata?.thumbnail?.url}
+            width={1200}
+            height={400}
+            className="w-full shadow-lg"
+            alt="thumbnail collection"
+          />
+        )}
       </div>
       <div
         className="flex flex-col small:flex-row small:items-start py-6 gap-x-10 gap-y-4 content-container small:!mb-24 relative z-20 "
-        data-testid="category-container"
+        data-testid="collection-container"
       >
         <FilterMenu
           allCategories={allCategories}

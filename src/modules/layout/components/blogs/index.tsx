@@ -16,8 +16,6 @@ const Blogs: React.FC<BlogsProps> = ({ blogs, blogTypes }) => {
 
   const { RightArrow } = Icons
 
-  console.log("Blogs", blogs)
-
   return (
     <div className="relative py-12 sm:py-20">
       <Text subTitle="Thật thú vị" title="Tin tức mới" />

@@ -19,7 +19,6 @@ const Collection: React.FC<CollectionProps> = ({ collection }) => {
 
   const products = collection?.products
 
-  console.log(collection)
 
   const displayedProducts =
     products && products.length > 0

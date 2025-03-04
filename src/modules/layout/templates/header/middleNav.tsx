@@ -22,6 +22,7 @@ export default async function MiddleNav() {
             alt="Logo"
             width={56}
             height={56}
+            priority={true}
             className="w-auto h-auto"
           />
         </LocalizedClientLink>

@@ -74,6 +74,7 @@ export default function MobileMenu({
                 alt="Logo"
                 width={30}
                 height={30}
+                priority={true}
                 className="w-auto h-auto"
               />
             </LocalizedClientLink>

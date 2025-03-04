@@ -59,6 +59,7 @@ export default function FilterMenu({
                 width={120}
                 height={56}
                 className="w-auto h-auto"
+                priority={true}
               />
             </LocalizedClientLink>
           </div>

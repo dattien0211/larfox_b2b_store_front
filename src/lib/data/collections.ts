@@ -30,7 +30,7 @@ export const getCollectionByHandle = cache(async function (
   handle: string
 ): Promise<HttpTypes.StoreCollection> {
   return sdk.store.collection
-    .list({ handle }, { next: { tags: ["collections"] } })
+    .list({ handle, fields: "*metadata" }, { next: { tags: ["collections"] } })
     .then(({ collections }) => collections[0])
 })
 

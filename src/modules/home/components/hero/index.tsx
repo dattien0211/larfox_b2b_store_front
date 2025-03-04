@@ -26,10 +26,10 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ banners }) => {
   const { os } = useOS()
 
-  if (!banners) return null
+  if (banners.length <= 0) return <></>
 
   return (
-    <div className="content-container cursor-pointer mt-4">
+    <div className="content-container cursor-pointer my-4">
       <Swiper
         modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
         loop={true}

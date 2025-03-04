@@ -17,7 +17,7 @@ export default async function FooterAbout() {
           </li>
           <li className=" hover:text-orang-5">
             <LocalizedClientLink
-              href="/ve-chung-toi"
+              href="/gioi-thieu"
               className="flex items-center"
             >
               <RightArrow />

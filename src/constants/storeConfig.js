@@ -1,6 +1,8 @@
+export const STORE_WEB_NAME = "https://bonglua.com"
+
 export const STORE_ADDRESS = "70 ngõ 27 Đại Cồ Việt, Hai Bà Trưng, Hà Nội"
 
-export const STORE_EMAIL = "CSKHbonglua@gmail.com"
+export const STORE_EMAIL = "cskh@bonglua.com"
 
 export const STORE_PHONE = "0862142582"
 
@@ -23,6 +25,7 @@ const storeConfig = {
   STORE_DESC,
   STORE_COPYRIGHT,
   STORE_FOOTER_DESC,
+  STORE_WEB_NAME,
 }
 
 export default storeConfig

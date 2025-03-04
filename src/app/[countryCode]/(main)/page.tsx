@@ -66,7 +66,7 @@ export default async function Home({
     <>
       <Hero
         banners={banners.filter(
-          (banner) => banner.position_type === "main_banner"
+          (banner) => banner.position_type === "main_banner" && banner.is_active
         )}
       />
 
