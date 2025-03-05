@@ -24,9 +24,8 @@ export const getProductsById = cache(async function ({
         fields:
           "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
       },
-      { next: { revalidate: 60 } } as any
-      // { cache: "no-store" }
-      // { next: { tags: ["products"] } }
+      { cache: "no-store" }
+      // { next: { revalidate: 60 } } as any
     )
     .then(({ products }) => products)
 })
@@ -43,9 +42,8 @@ export const getProductByHandle = cache(async function (
         fields:
           "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
       },
-      { next: { revalidate: 60 } } as any
-      // { cache: "no-store" }
-      // { next: { tags: ["products"] } }
+      { cache: "no-store" }
+      // { next: { revalidate: 60 } } as any
     )
     .then(({ products }) => products[0])
 })
@@ -84,8 +82,8 @@ export const getProductsList = cache(async function ({
           "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
         ...queryParams,
       },
-      { next: { revalidate: 60 } } as any
-      // { cache: "no-store" }
+      // { next: { revalidate: 60 } } as any
+      { cache: "no-store" }
       // { next: { tags: ["products"] } }
     )
     .then(({ products, count }) => {

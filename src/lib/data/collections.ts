@@ -8,6 +8,8 @@ export const getCollectionsList = cache(async function (
   offset: number = 0,
   limit: number = 100
 ): Promise<{ collections: HttpTypes.StoreCollection[]; count: number }> {
+  console.log("Fetching collections")
+
   return sdk.store.collection
     .list(
       {
@@ -15,9 +17,7 @@ export const getCollectionsList = cache(async function (
         limit,
         fields: "*metadata",
       },
-      { next: { revalidate: 60 } } as any
-      // { cache: "no-store" }
-      // { next: { tags: ["collections"] } }
+      { cache: "no-store" }
     )
     .then(({ collections }) => ({ collections, count: collections.length }))
 })
@@ -26,18 +26,13 @@ export const getCollectionByHandle = cache(async function (
   handle: string
 ): Promise<HttpTypes.StoreCollection> {
   return sdk.store.collection
-    .list(
-      { handle, fields: "*metadata" },
-      { next: { revalidate: 60 } } as any
-      // { cache: "no-store" }
-      // { next: { tags: ["collections"] } }
-    )
+    .list({ handle, fields: "*metadata" }, { cache: "no-store" })
     .then(({ collections }) => collections[0])
 })
 
 export const getCollectionsWithProducts = cache(
   async (countryCode: string): Promise<HttpTypes.StoreCollection[] | null> => {
-    const { collections } = await getCollectionsList(0, 5)
+    const { collections } = await getCollectionsList(0, 20)
 
     if (!collections) {
       return null

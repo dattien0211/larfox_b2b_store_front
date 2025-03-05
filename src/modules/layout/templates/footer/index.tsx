@@ -1,6 +1,5 @@
 import Image from "next/image"
 
-import Icons from "@modules/common/icons"
 import IMGS from "@constants/IMGS"
 import FooterContact from "./contact"
 import FooterAbout from "./about"
@@ -9,9 +8,6 @@ import FooterOfferForm from "./offer-form"
 import FooterSocial from "./social"
 
 export default async function Footer() {
-  // const { collections } = await getCollectionsList(0, 6)
-  // const { product_categories } = await getCategoriesList(0, 6)
-
   return (
     <footer className="w-full">
       <div className="w-full  bg-[#7c6540]">
