@@ -49,8 +49,8 @@ const CategoryFilter = ({
 
   return (
     <>
-      <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 pb-4 sm:py-4">
-        Loại sản phẩm
+      <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 pb-4 sm:py-4 capitalize">
+        Danh mục sản phẩm
       </h2>
       <div className="space-y-6 mt-6 sm:space-y-8 sm:mt-8">
         {allCategories.map((category) => (

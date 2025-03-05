@@ -3,7 +3,11 @@ import { cache } from "react"
 
 export const listCategories = cache(async function () {
   return sdk.store.category
-    .list({ fields: "+category_children" }, { next: { tags: ["categories"] } })
+    .list(
+      { fields: "+category_children" },
+      { cache: "no-store" }
+      //  { next: { tags: ["categories"] } }
+    )
     .then(({ product_categories }) => product_categories)
 })
 
@@ -15,8 +19,8 @@ export const getCategoriesList = cache(async function (
     // TODO: Look into fixing the type
     // @ts-ignore
     { limit, offset },
-    { next: { revalidate: 60 } } as any
-    // { cache: "no-store" }
+    // { next: { revalidate: 60 } } as any
+    { cache: "no-store" }
     // { next: { tags: ["categories"] } }
   )
 })
@@ -28,8 +32,8 @@ export const getCategoryByHandle = cache(async function (
     // TODO: Look into fixing the type
     // @ts-ignore
     { handle: categoryHandle },
-    { next: { revalidate: 60 } } as any
-    // { cache: "no-store" }
+    // { next: { revalidate: 60 } } as any
+    { cache: "no-store" }
     // { next: { tags: ["categories"] } }
   )
 })

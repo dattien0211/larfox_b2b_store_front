@@ -28,7 +28,9 @@ const ProductMoreInfo = ({ product, variant }: ProductInfoProps) => {
         </div>
       </div>
       <div className="flex  text-sm">
-        <span className="text-black-20 mr-2 text-nowrap">Loại Sản Phẩm:</span>
+        <span className="text-black-20 mr-2 text-nowrap capitalize">
+          Danh Mục Sản Phẩm:
+        </span>
         <ul className="flex gap-x-2 flex-wrap gap-y-1 text-primary">
           {product?.categories &&
             product?.categories?.length > 0 &&
