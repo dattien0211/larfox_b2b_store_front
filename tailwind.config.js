@@ -64,7 +64,7 @@ module.exports = {
       },
       screens: {
         "2xsmall": "375px",
-        xsmall: "512px",
+        xsmall: "425px",
         small: "1024px",
         medium: "1280px",
         large: "1440px",

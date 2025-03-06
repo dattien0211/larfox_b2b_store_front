@@ -1,8 +1,8 @@
 import Image from "next/image"
-import { HttpTypes } from "@medusajs/types"
 
 import IMGS from "@constants/IMGS"
 import FlashSaleProductsSlider from "./slider"
+import CountdownTimer from "./count-down"
 interface FlashSaleProps {
   products?: any
   collectionHandle?: string
@@ -10,25 +10,28 @@ interface FlashSaleProps {
 
 const FlashSale: React.FC<FlashSaleProps> = ({ products }) => {
   return (
-    <>
-      <div className="mt-4 flex gap-x-4 items-center justify-center ">
-        <p className="sm:text-lg">Còn lại:</p>
-        <div className="flex items-center gap-x-1 sm:gap-x-2">
-          <div className="w-8 h-8 sm:w-11 sm:h-11 bg-[#404040] rounded-md font-bold text-2xl sm:text-3xl text-white flex items-center justify-center">
-            01
-          </div>
-          <p className="sm:text-3xl text-2xl  font-bold">:</p>
-          <div className="w-8 h-8 sm:w-11 sm:h-11 bg-[#404040] rounded-md font-bold text-2xl sm:text-3xl text-white flex items-center justify-center">
-            02
-          </div>
-          <p className="sm:text-3xl text-2xl  font-bold">:</p>
-          <div className="w-8 h-8 sm:w-11 sm:h-11 bg-[#404040] rounded-md font-bold text-2xl sm:text-3xl text-white flex items-center justify-center">
-            16
-          </div>
-        </div>
-        <p className="sm:text-lg">Ngày</p>
+    <div className="relative py-3 sm:py-6 my-3 sm:my-8 content-container bg-white rounded-md shadow-md">
+      <div className="absolute -top-[2%] left-0 w-9 h-9 sm:w-16 sm:h-16  ">
+        <Image
+          src={IMGS.RiceSpike}
+          alt="banner"
+          width={64}
+          height={64}
+          className="w-full h-full object-contain rotate-45"
+        />
       </div>
-      <div className="mt-6 sm:mt-14 flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-8">
+
+      <div className="absolute -bottom-[2%] right-0 w-9 h-9 sm:w-16 sm:h-16 ">
+        <Image
+          src={IMGS.RiceSpike}
+          alt="banner"
+          width={64}
+          height={64}
+          className="w-full h-full object-contain scale-x-[-1] rotate-[-35deg]"
+        />
+      </div>
+      <CountdownTimer />
+      <div className="mt-4 flex flex-col md:flex-row items-center justify-center gap-4 ">
         <div className="w-full md:w-1/2 shadow-lg">
           <Image
             src={IMGS.Banner2}
@@ -51,7 +54,7 @@ const FlashSale: React.FC<FlashSaleProps> = ({ products }) => {
       {products && products.length > 0 && (
         <FlashSaleProductsSlider products={products} />
       )}
-    </>
+    </div>
   )
 }
 

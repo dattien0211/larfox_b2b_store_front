@@ -18,12 +18,10 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
   return (
     <>
       <Header />
-      <div className="relative z-20 border-t border-grey-15">
-        {customer && cart && (
-          <CartMismatchBanner customer={customer} cart={cart} />
-        )}
-        {props.children}
-      </div>
+      {customer && cart && (
+        <CartMismatchBanner customer={customer} cart={cart} />
+      )}
+      {props.children}
       <Footer />
     </>
   )

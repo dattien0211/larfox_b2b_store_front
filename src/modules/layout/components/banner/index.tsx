@@ -28,7 +28,7 @@ export default function Banner({
 
   return (
     <LocalizedClientLink href={href ? "/" + href.replace(/^\/+/, "") : "/"}>
-      <div className="relative w-full">
+      <div className=" w-full">
         <Image
           src={imageSrc}
           alt={altText}

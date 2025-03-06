@@ -1,6 +1,9 @@
-import CategoryItem from "./category-item"
+import Image from "next/image"
 import { Heading } from "@medusajs/ui"
 import { StoreProductCategory } from "@medusajs/types"
+
+import IMGS from "@constants/IMGS"
+import CategoryItem from "./category-item"
 
 interface CategoryProps {
   categories: StoreProductCategory[]
@@ -12,7 +15,26 @@ const Category: React.FC<CategoryProps> = async ({ categories }) => {
   }
 
   return (
-    <div className="content-container py-6 relative">
+    <div className="relative content-container py-4 sm:pt-6 sm:pb-8 mb-4 sm:mb-8  bg-white rounded-md shadow-md">
+      <div className="absolute -top-[2%] left-0 w-9 h-9 sm:w-16 sm:h-16  ">
+        <Image
+          src={IMGS.RiceSpike}
+          alt="banner"
+          width={64}
+          height={64}
+          className="w-full h-full object-contain rotate-45"
+        />
+      </div>
+
+      <div className="absolute -bottom-[2%] right-0 w-9 h-9 sm:w-16 sm:h-16 ">
+        <Image
+          src={IMGS.RiceSpike}
+          alt="banner"
+          width={64}
+          height={64}
+          className="w-full h-full object-contain scale-x-[-1] rotate-[-35deg]"
+        />
+      </div>
       <Heading
         level="h1"
         className="mb-2 sm:mb-4 font-semibold capitalize font-times text-primary text-lg sm:text-2xl"

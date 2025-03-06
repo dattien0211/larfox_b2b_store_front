@@ -28,6 +28,7 @@ import MobileBanner2 from "@assets/images/mobile-banner-2.jpg"
 import QR from "@assets/images/QR.jpg"
 import RiceSpike from "@assets/images/rice-spike.png"
 import AllProducts from "@assets/images/all-product.jpg"
+import FlashSaleBanner from "@assets/images/flash-sale-banner.jpg"
 
 export default {
   Logo,
@@ -59,4 +60,5 @@ export default {
   QR,
   RiceSpike,
   AllProducts,
+  FlashSaleBanner,
 }

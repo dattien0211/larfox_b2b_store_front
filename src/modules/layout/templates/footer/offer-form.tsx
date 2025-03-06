@@ -27,7 +27,7 @@ export default async function FooterOfferForm() {
       </div>
       <div className="flex flex-col md:flex-row justify-between mt-2 sm:mt-14">
         <SelectSubsidiary dropDownColor="#FFFFFF" />
-        <div className="flex gap-x-2 mt-2 md:mt-0">
+        {/* <div className="flex gap-x-2 mt-2 md:mt-0">
           <div className="relative w-[62px] h-[30px]">
             <Image
               src={IMGS.Paypal}
@@ -46,7 +46,7 @@ export default async function FooterOfferForm() {
               className="object-contain"
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

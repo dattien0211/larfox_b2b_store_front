@@ -36,13 +36,13 @@ const FlashSaleProductsSlider = ({ products }: { products: any }) => {
   }, [])
 
   return (
-    <div className="mt-10 flex flex-col items-center justify-center">
+    <div className="mt-4 flex flex-col items-center justify-center">
       <div className="w-full sm:w-full cursor-pointer">
         <Swiper
           modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
           loop
-          slidesPerView={os !== "desktop" ? 2 : 4}
-          spaceBetween={os !== "desktop" ? 16 : 32}
+          slidesPerView={os !== "desktop" ? (os !== "tablet" ? 2 : 3) : 5}
+          spaceBetween={os !== "desktop" ? (os !== "tablet" ? 16 : 24) : 16}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
@@ -60,15 +60,15 @@ const FlashSaleProductsSlider = ({ products }: { products: any }) => {
         </Swiper>
       </div>
 
-      <div className="mt-12 md:mt-20 flex items-center justify-center gap-x-4 sm:gap-x-8 ">
+      <div className="mt-4 sm:mt-6 flex items-center justify-center gap-x-4 sm:gap-x-8 ">
         <button
-          className="w-9 h-9 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-orang-25 disabled:opacity-50"
+          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-primary "
           onClick={handlePrev}
         >
           <LeftArrow color="white" />
         </button>
         <button
-          className="w-9 h-9 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-orang-25 "
+          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-primary "
           onClick={handleNext}
         >
           <RightArrow color="white" />

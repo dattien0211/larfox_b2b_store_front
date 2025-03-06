@@ -23,7 +23,7 @@ export default async function Footer() {
                 className="w-auto h-auto"
               />
             </div>
-            <FooterSocial />
+            {/* <FooterSocial /> */}
           </div>
           <div className="relative w-full h-1">
             <Image src={IMGS.Line} alt="leaf" fill className="object-cover" />

@@ -29,7 +29,7 @@ const Hero: React.FC<HeroProps> = ({ banners }) => {
   if (banners.length <= 0) return <></>
 
   return (
-    <div className="content-container cursor-pointer my-4">
+    <div className="content-container cursor-pointer my-4 bg-white">
       <Swiper
         modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
         loop={true}

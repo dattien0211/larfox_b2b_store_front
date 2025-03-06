@@ -63,40 +63,19 @@ export default async function Home({
   const { banners } = await getBannersList()
 
   return (
-    <>
-      <Hero
+    <div className="bg-[#F5F7FD] py-3 sm:py-6">
+      {/* <Hero
         banners={banners.filter(
           (banner) => banner.position_type === "main_banner" && banner.is_active
         )}
-      />
+      /> */}
 
       <Category categories={product_categories} />
 
-      <div className="relative py-6 sm:py-12 content-container">
-        <Text subTitle="Flash Sale" title="Ưu đãi" />
-        <div className="absolute top-[5%] left-6">
-          <Image
-            src={IMGS.RiceSpike}
-            alt="banner"
-            width={100}
-            height={100}
-            className=" w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] object-contain rotate-45"
-          />
-        </div>
-        <div className="absolute top-[15%] sm:top-[20%] right-6">
-          <Image
-            src={IMGS.RiceSpike}
-            alt="banner"
-            width={100}
-            height={100}
-            className=" w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] object-contain scale-x-[-1] rotate-[-35deg]"
-          />
-        </div>
-        <FlashSale
-          products={getCollectionByHandle(FLASH_SALE_HANDLE)?.products}
-          collectionHandle={FLASH_SALE_HANDLE}
-        />
-      </div>
+      <FlashSale
+        products={getCollectionByHandle(FLASH_SALE_HANDLE)?.products}
+        collectionHandle={FLASH_SALE_HANDLE}
+      />
 
       <Collection
         collection={getCollectionByHandle(BEST_SELLER_PRODUCT_HANDLE)}
@@ -111,6 +90,6 @@ export default async function Home({
       {blogs && blogTypes && blogs.length > 0 && (
         <Blogs blogs={blogs} blogTypes={blogTypes} />
       )}
-    </>
+    </div>
   )
 }

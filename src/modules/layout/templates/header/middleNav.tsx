@@ -14,7 +14,7 @@ export default async function MiddleNav() {
   const customer = await getCustomer().catch(() => null)
 
   return (
-    <div className="flex items-center justify-between my-2 md:my-4">
+    <div className="flex items-center justify-between py-2 md:py-4">
       <div className="w-10 sm:w-14 h-auto relative">
         <LocalizedClientLink href="/">
           <Image
