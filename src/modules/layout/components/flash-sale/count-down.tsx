@@ -25,31 +25,31 @@ const CountdownTimer: React.FC = () => {
   const { hours, minutes, secs } = formatTime(timeLeft)
 
   return (
-    <div className="flex  w-full items-center gap-x-4">
-      <div className="text-primary text-lg sm:text-2xl font-times font-semibold">
+    <div className="flex w-full items-center sm:gap-x-4 justify-between sm:justify-normal">
+      <div className="text-primary text-lg sm:text-2xl font-times font-semibold text-nowrap">
         Khuyến Mãi
       </div>
-      <div className="text-lg sm:text-2xl w-8 h-[1px] bg-primary"></div>
-      <div className="flex items-center gap-x-2 sm:gap-x-3">
+      <div className="hidden sm:block w-8 h-[1px] bg-primary"></div>
+      <div className="flex items-center gap-x-1 sm:gap-x-3">
         <div className="flex items-center gap-x-1">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#404040] rounded-md font-bold text-base sm:text-xl text-white flex items-center justify-center">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#404040] rounded-md font-bold text-sm sm:text-xl text-white flex items-center justify-center">
             {String(hours).padStart(2, "0")}
           </div>
-          <p className="text-sm sm:text-lg font-times  text-primary">Giờ</p>
+          <p className="text-xs sm:text-lg font-times  text-primary">Giờ</p>
         </div>
 
         <div className="flex items-center gap-x-1">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#404040] rounded-md font-bold text-base sm:text-xl text-white flex items-center justify-center">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#404040] rounded-md font-bold text-sm sm:text-xl text-white flex items-center justify-center">
             {String(minutes).padStart(2, "0")}
           </div>
-          <p className="text-sm sm:text-lg font-times  text-primary">Phút</p>
+          <p className="text-xs sm:text-lg font-times  text-primary">Phút</p>
         </div>
 
         <div className="flex items-center gap-x-1">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#404040] rounded-md font-bold text-base sm:text-xl text-white flex items-center justify-center">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#404040] rounded-md font-bold text-sm sm:text-xl text-white flex items-center justify-center">
             {String(secs).padStart(2, "0")}
           </div>
-          <p className="text-sm sm:text-lg font-times  text-primary">Giây</p>
+          <p className="text-xs sm:text-lg font-times  text-primary">Giây</p>
         </div>
       </div>
     </div>

@@ -48,11 +48,11 @@ const CategoryFilter = ({
   }
 
   return (
-    <>
-      <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 pb-4 sm:py-4 capitalize">
+    <div className="lg:py-6 lg:px-4 lg:rounded-md lg:shadow-lg lg:bg-white">
+      <h2 className="text-base sm:text-lg font-semibold border-b border-gray-200 pb-4 capitalize text-primary">
         Danh mục sản phẩm
       </h2>
-      <div className="space-y-6 mt-6 sm:space-y-8 sm:mt-8">
+      <div className="space-y-6 mt-6">
         {allCategories.map((category) => (
           <label
             key={category.id}
@@ -61,7 +61,7 @@ const CategoryFilter = ({
           >
             <div
               className={clsx(
-                "relative flex items-center justify-center w-5 h-5 rounded border-2 cursor-pointer",
+                "relative flex items-center justify-center min-w-5 min-h-5 rounded border-2 cursor-pointer",
                 {
                   "bg-primary border-primary": selectedCategories.includes(
                     category.handle
@@ -88,16 +88,19 @@ const CategoryFilter = ({
               )}
             </div>
             <span
-              className={clsx("ml-2 sm:ml-4 font-medium text-sm sm:text-base", {
-                "text-primary": selectedCategories.includes(category.handle),
-              })}
+              className={clsx(
+                "ml-2  line-clamp-1 font-medium text-sm sm:text-[15px]",
+                {
+                  "text-primary": selectedCategories.includes(category.handle),
+                }
+              )}
             >
               {category.name}
             </span>
           </label>
         ))}
       </div>
-    </>
+    </div>
   )
 }
 

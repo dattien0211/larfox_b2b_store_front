@@ -46,12 +46,12 @@ export default function FilterMenu({
       </div>
 
       <div
-        className={`p-4 lg:p-0 fixed lg:static top-0 left-0 z-[100] h-svh lg:h-full bg-white w-[85%] lg:w-60 transform transition-transform duration-300 overflow-y-auto ${
+        className={`p-4 lg:p-0 lg:pb-4 fixed lg:static top-0 left-0 z-[100] h-svh lg:h-full w-[85%] lg:w-60 transform transition-transform duration-300 overflow-y-auto bg-white lg:bg-transparent ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 lg:block`}
       >
         <div className="lg:hidden flex justify-between mb-4">
-          <div className="w-[80px] md:w-[100px] lg:w-[120px] h-auto">
+          <div className="w-[40px] md:w-[100px] lg:w-[120px] h-auto">
             <LocalizedClientLink href="/">
               <Image
                 src={IMGS.Logo}
@@ -70,12 +70,14 @@ export default function FilterMenu({
             <XMark size={24} />
           </span>
         </div>
+
         {allCategories && allCategories.length > 0 && (
           <CategoryFilter
             allCategories={allCategories}
             paramsCategory={paramsCategory}
           />
         )}
+
         <PriceRange />
         {/* <SizeFilter />*/}
         {productTags && productTags.length > 0 && (

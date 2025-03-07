@@ -34,6 +34,8 @@ import { default as Trash } from "./trash"
 import { default as Discount } from "./discount"
 import { default as Filter } from "./filter"
 import { default as XMark } from "./x-mark"
+import { default as Cart } from "./cart"
+import { default as Flame } from "./flame"
 
 export default {
   DownArrow,
@@ -71,4 +73,6 @@ export default {
   Discount,
   Filter,
   XMark,
+  Cart,
+  Flame,
 }

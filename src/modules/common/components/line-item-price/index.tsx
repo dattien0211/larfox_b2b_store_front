@@ -25,17 +25,18 @@ const LineItemPrice = ({ item, style = "default" }: LineItemPriceProps) => {
 
   return (
     <div className="flex flex-col gap-x-2 items-end !font-manrope">
-      <div className="text-left">
-        <span
-          className={clx("text-primary text-sm sm:text-base font-semibold", {})}
-          data-testid="product-price"
-        >
-          {convertToLocale({
-            amount: currentPrice,
-            currency_code,
-          })}
-        </span>
-      </div>
+      <span
+        className={clx(
+          "text-primary text-sm sm:text-base font-semibold text-left",
+          {}
+        )}
+        data-testid="product-price"
+      >
+        {convertToLocale({
+          amount: currentPrice,
+          currency_code,
+        })}
+      </span>
     </div>
   )
 }

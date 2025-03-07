@@ -21,6 +21,8 @@ import { getCollectionsWithProducts } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 import { getCategoriesList } from "@lib/data/categories"
 import { getBannersList } from "@lib/data/banners"
+import { getBrandList } from "@lib/data/brand"
+import Brands from "@modules/layout/components/brand"
 
 export const metadata: Metadata = {
   title: "Bông Lúa",
@@ -62,6 +64,8 @@ export default async function Home({
 
   const { banners } = await getBannersList()
 
+  const { brands } = await getBrandList()
+
   return (
     <div className="bg-[#F5F7FD] py-3 sm:py-6">
       {/* <Hero
@@ -72,10 +76,7 @@ export default async function Home({
 
       <Category categories={product_categories} />
 
-      <FlashSale
-        products={getCollectionByHandle(FLASH_SALE_HANDLE)?.products}
-        collectionHandle={FLASH_SALE_HANDLE}
-      />
+      <FlashSale collection={getCollectionByHandle(FLASH_SALE_HANDLE)} />
 
       <Collection
         collection={getCollectionByHandle(BEST_SELLER_PRODUCT_HANDLE)}
@@ -86,6 +87,7 @@ export default async function Home({
       />
 
       <Collection collection={getCollectionByHandle(DAC_SAN_OCOP_HANDLE)} />
+      {brands && brands.length > 0 && <Brands brands={brands} />}
 
       {blogs && blogTypes && blogs.length > 0 && (
         <Blogs blogs={blogs} blogTypes={blogTypes} />

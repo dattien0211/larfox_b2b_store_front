@@ -8,8 +8,6 @@ export const getCollectionsList = cache(async function (
   offset: number = 0,
   limit: number = 100
 ): Promise<{ collections: HttpTypes.StoreCollection[]; count: number }> {
-  console.log("Fetching collections")
-
   return sdk.store.collection
     .list(
       {

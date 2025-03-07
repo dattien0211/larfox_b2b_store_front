@@ -10,7 +10,7 @@ export default async function Header() {
   const { blogTypes } = await getBlogTypesList()
 
   return (
-    <header className="border-b border-grey-20 shadow-lg">
+    <header className="border-b border-grey-20">
       <TopNav />
       <div className="w-full ">
         <div className="content-container ">

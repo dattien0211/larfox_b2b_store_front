@@ -32,7 +32,7 @@ const Summary = ({ cart }: SummaryProps) => {
     <div className="flex flex-col gap-y-4">
       <Heading
         level="h2"
-        className="text-2xl font-semibold sm:text-[2rem] leading-[2.75rem] text-primary font-times"
+        className="text-xl capitalize font-semibold sm:text-[2rem] leading-[2.75rem] text-primary font-times"
       >
         Tổng quan
       </Heading>
@@ -53,7 +53,7 @@ const Summary = ({ cart }: SummaryProps) => {
           href={"/dat-hang?step=" + step}
           data-testid="checkout-button"
         >
-          <button className=" bg-primary text-white px-4 w-full h-10 cursor-pointer hover:bg-orang-30">
+          <button className=" bg-primary/90 text-white px-4 w-full h-10 cursor-pointer hover:bg-primary">
             Thanh toán
           </button>
         </LocalizedClientLink>

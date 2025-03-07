@@ -32,8 +32,8 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals }) => {
   return (
     <div>
       <div className="flex flex-col gap-y-2 text-ui-fg-subtle">
-        <div className="flex items-center justify-between">
-          <span className="flex gap-x-1 items-center">Tổng tạm tính</span>
+        <div className="flex items-center justify-between text-sm sm:text-base">
+          <span className="flex gap-x-1 items-center ">Tổng tạm tính</span>
           <span data-testid="cart-subtotal" data-value={item_total || 0}>
             {convertToLocale({ amount: item_total ?? 0, currency_code })}
           </span>
@@ -52,7 +52,7 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals }) => {
           </div>
         )}
         <div className="flex items-center justify-between">
-          <span>Phí Ship</span>
+          <span className="text-sm sm:text-base">Phí Ship</span>
           <span
             data-testid="cart-shipping"
             data-value={shipping_total || 0}
@@ -82,10 +82,10 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals }) => {
         )} */}
       </div>
       {/* <div className="h-px w-full border-b border-gray-200 my-4" /> */}
-      <div className="flex items-center justify-between  mb-2 mt-2">
+      <div className="flex items-center justify-between  mb-2 mt-2 text-sm sm:text-base">
         <h1 className="text-ui-fg-subtle">Thành tiền</h1>
         <span
-          className="txt-xlarge-plus text-primary font-semibold !font-manrope"
+          className="text-base sm:txt-xlarge-plus text-primary font-semibold !font-manrope"
           data-testid="cart-total"
           data-value={total || 0}
         >

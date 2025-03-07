@@ -15,7 +15,7 @@ const Category: React.FC<CategoryProps> = async ({ categories }) => {
   }
 
   return (
-    <div className="relative content-container py-4 sm:pt-6 sm:pb-8 mb-4 sm:mb-8  bg-white rounded-md shadow-md">
+    <div className="relative content-container py-4 sm:pt-6 sm:pb-8 mb-4 sm:mb-8  bg-white rounded-lg shadow-lg">
       <div className="absolute -top-[2%] left-0 w-9 h-9 sm:w-16 sm:h-16  ">
         <Image
           src={IMGS.RiceSpike}
@@ -42,7 +42,7 @@ const Category: React.FC<CategoryProps> = async ({ categories }) => {
         Danh mục sản phẩm
       </Heading>
 
-      <div className="grid grid-cols-3 sm:grid-cols-4 small:grid-cols-6 w-full border-t border-l border-black/5">
+      <div className="grid grid-cols-3 sm:grid-cols-4 small:grid-cols-6 w-full border-t border-l border-primary/35">
         <CategoryItem
           key={100}
           text={"Tất cả sản phẩm"}

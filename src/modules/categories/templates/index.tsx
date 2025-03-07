@@ -41,11 +41,11 @@ export default function CategoryTemplate({
   if (!category || !countryCode) notFound()
 
   return (
-    <div className="mb-16 sm:mb-24">
+    <div className="pb-16 sm:pb-24 bg-[#f5f6f7]">
       {/* <ProductBanner /> */}
 
       <div
-        className="flex flex-col small:flex-row small:items-start py-6 gap-x-12 gap-y-4 content-container small:!mb-24 relative z-20"
+        className="flex flex-col small:flex-row small:items-start py-4 gap-4 content-container relative z-20"
         data-testid="category-container"
       >
         <FilterMenu

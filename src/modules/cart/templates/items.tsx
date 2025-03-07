@@ -13,14 +13,14 @@ const ItemsTemplate = ({ items }: ItemsTemplateProps) => {
   return (
     <div>
       <div className="sm:pb-3 flex items-center">
-        <Heading className="text-2xl font-semibold sm:text-[2rem] leading-[2.75rem] text-primary font-times">
+        <Heading className="text-xl capitalize font-semibold sm:text-[2rem] leading-[2.75rem] text-primary font-times">
           Giỏ hàng
         </Heading>
       </div>
       <Table>
         <Table.Header className="border-t-0">
           <Table.Row>
-            <Table.HeaderCell className="!pl-0 text-base text-nowrap !pr-0 sm:!pr-6 !font-manrope-bold">
+            <Table.HeaderCell className="!pl-0 text-sm sm:text-base text-primary capitalize text-nowrap !pr-0 sm:!pr-6 !font-manrope-bold">
               Sản phẩm
             </Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>
@@ -30,7 +30,7 @@ const ItemsTemplate = ({ items }: ItemsTemplateProps) => {
             <Table.HeaderCell className="hidden small:table-cell text-base text-nowrap !font-manrope-bold !text-center">
               Giá
             </Table.HeaderCell>
-            <Table.HeaderCell className="!pr-2 sm:!pr-6 text-right text-base text-nowrap !font-manrope-bold">
+            <Table.HeaderCell className="!pr-0 sm:!pr-6 text-primary capitalize text-right text-sm sm:text-base text-nowrap !font-manrope-bold">
               Tổng tiền
             </Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>

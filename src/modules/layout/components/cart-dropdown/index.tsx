@@ -114,7 +114,7 @@ const CartDropdown = ({
             {/* <h1 className="text-lg font-semibold p-4 text-center">Giỏ Hàng</h1> */}
             {cartState && cartState.items?.length ? (
               <>
-                <div className="overflow-y-scroll max-h-[402px] p-4 grid grid-cols-1 gap-y-8 no-scrollbar">
+                <div className="overflow-y-scroll max-h-[402px] px-4 pt-4 pb-2 grid grid-cols-1 gap-y-5 no-scrollbar">
                   {cartState.items
                     .sort((a, b) => {
                       return (a.created_at ?? "") > (b.created_at ?? "")
@@ -138,7 +138,7 @@ const CartDropdown = ({
                           />
                         </LocalizedClientLink>
                         <div className="flex flex-col flex-1">
-                          <h3 className="text-base overflow-hidden text-ellipsis truncate whitespace-nowrap">
+                          <h3 className="text-[15px] line-clamp-1">
                             <LocalizedClientLink
                               href={`/san-pham/${item.variant?.product?.handle}`}
                               data-testid="product-link"
@@ -174,10 +174,10 @@ const CartDropdown = ({
                       </div>
                     ))}
                 </div>
-                <div className="p-4 flex flex-col gap-y-4 text-small-regular">
+                <div className="px-4 pt-2 pb-4 flex flex-col gap-y-2 text-small-regular">
                   <div className="flex items-center justify-between">
-                    <span className="text-lg font-semibold">
-                      Tổng giá:
+                    <span className="text-lg  capitalize">
+                      Tổng Tiền:
                       {/* <span className="font-normal">(excl. taxes)</span> */}
                     </span>
                     <span
@@ -193,7 +193,7 @@ const CartDropdown = ({
                   </div>
                   <LocalizedClientLink href="/gio-hang" passHref>
                     <button
-                      className="hover:bg-orang-30 bg-primary outline-none text-base w-full py-2 rounded-md text-white"
+                      className="hover:bg-primary bg-primary/90 capitalize outline-none text-base w-full py-2 rounded-md text-white"
                       data-testid="go-to-cart-button"
                     >
                       Đi đến giỏ hàng
@@ -211,7 +211,7 @@ const CartDropdown = ({
                         <span className="sr-only"> Xem tất cả sản phẩm</span>
                         <button
                           onClick={close}
-                          className="transition-all duration-300 hover:bg-primary/80 bg-primary outline-none text-base px-4 py-2 rounded-md text-white"
+                          className="transition-all duration-300 hover:bg-primary/80 bg-primary outline-none text-base px-4 py-2 rounded-md text-white capitalize"
                         >
                           Khám phá sản phẩm
                         </button>

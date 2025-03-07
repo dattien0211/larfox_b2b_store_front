@@ -6,6 +6,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import Thumbnail from "../thumbnail"
 import PreviewPrice from "./price"
 import Icons from "@modules/common/icons"
+import formatNumber from "@lib/util/formatNumber"
 
 export default async function ProductPreview({
   product,
@@ -31,10 +32,10 @@ export default async function ProductPreview({
         )
       : "5"
 
-  const soldCount = Number(product?.metadata?.sold) || 0
+  const soldCount = formatNumber(Number(product?.metadata?.sold) || 0)
 
   return (
-    <div className="group">
+    <div className="group border border-primary rounded-md shadow-sm p-1 sm:p-2">
       <div
         data-testid="product-wrapper"
         className="overflow-hidden flex flex-col gap-y-1"
@@ -72,8 +73,8 @@ export default async function ProductPreview({
 
           <div className="px-8 sm:px-4 w-full absolute bottom-4 left-0 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible">
             <LocalizedClientLink href={`/san-pham/${product.handle}`}>
-              <button className="w-full h-7 sm:h-9 rounded-md bg-primary text-white text-sm sm:text-base transition-all duration-300 hover:bg-primary/80">
-                Chi Tiết Sản Phẩm
+              <button className="w-full py-1 rounded-md bg-primary/85 text-white text-sm  transition-all duration-300 hover:scale-105 hover:bg-primary/95 hover:shadow-sm">
+                Xem Chi Tiết
               </button>
             </LocalizedClientLink>
           </div>
@@ -97,7 +98,7 @@ export default async function ProductPreview({
               ))}
         </div>
 
-        <div className="line-clamp-2 text-black-30 text-sm sm:text-lg h-10 sm:h-14">
+        <div className="line-clamp-2 text-black-30 text-sm sm:text-[15px] h-10 ">
           {product?.title || "Sản phẩm Bông Lúa phiên bản mới 2025"}
         </div>
 
@@ -107,15 +108,15 @@ export default async function ProductPreview({
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-x-1">
-            <Star color="#EA9934" size={16} />
-            <p className="text-xs sm:text-base">
+            <Star color="#EA9934" size={14} />
+            <p className="text-xs sm:text-sm">
               <span className="mr-1">{averageRating}</span>
               <span className="mr-1">({reviews.length})</span>
             </p>
           </div>
-          <p className="text-xs sm:text-base">
+          <p className="text-xs sm:text-sm">
             <span className="text-grey-30 mr-1">Đã bán:</span>
-            <span className="text-black-30">{soldCount}</span>
+            <span className="text-black-30 ">{soldCount}</span>
           </p>
         </div>
 

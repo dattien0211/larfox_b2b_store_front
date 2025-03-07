@@ -87,15 +87,15 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
     <div className="w-full bg-white flex flex-col">
       <form action={(a) => addPromotionCode(a)} className="w-full">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-x-2">
-            <Icons.Discount />
+          <div className="flex items-center gap-x-2 sm:text-base text-sm">
+            <Icons.Discount color="#b38439" />
             <h1>Mã giảm giá</h1>
           </div>
           <Label className="flex gap-x-1 items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="text-primary hover:text-black-10 text-base !font-manrope"
+              className="text-primary hover:text-black-10 sm:text-base text-sm !font-manrope"
               data-testid="add-discount-button"
             >
               Nhập mã giảm giá

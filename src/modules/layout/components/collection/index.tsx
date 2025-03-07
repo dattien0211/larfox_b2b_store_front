@@ -3,6 +3,7 @@
 import { HttpTypes } from "@medusajs/types"
 import Image from "next/image"
 
+import Icons from "@modules/common/icons"
 import IMGS from "@constants/IMGS"
 import ProductItem from "../product-item"
 import CollectionBanner from "../collection-banner"
@@ -17,6 +18,8 @@ interface CollectionProps {
 const Collection: React.FC<CollectionProps> = ({ collection }) => {
   const { os } = useOS()
 
+  const { RightArrow } = Icons
+
   const products = collection?.products
 
   const displayedProducts =
@@ -29,7 +32,7 @@ const Collection: React.FC<CollectionProps> = ({ collection }) => {
       : []
 
   return (
-    <div className="relative content-container py-4 sm:py-6 my-4 sm:my-8 rounded-md shadow-md bg-white">
+    <div className="relative content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white">
       <div className="absolute -top-[2%] left-0 w-9 h-9 sm:w-16 sm:h-16  ">
         <Image
           src={IMGS.RiceSpike}
@@ -62,8 +65,9 @@ const Collection: React.FC<CollectionProps> = ({ collection }) => {
         <LocalizedClientLink
           href={collection?.handle ? `/bo-suu-tap/${collection?.handle}` : "/"}
         >
-          <button className="text-sm sm:text-base rounded-full px-6 sm:px-8 py-1 mx-auto border border-primary text-primary hover:bg-primary hover:text-white">
+          <button className="text-sm sm:text-base capitalize rounded-full px-6 sm:px-8 py-1 mx-auto border border-primary text-primary hover:bg-primary hover:text-white flex gap-x-2 items-center justify-center">
             Xem tất cả
+            <RightArrow size={12} />
           </button>
         </LocalizedClientLink>
       </div>

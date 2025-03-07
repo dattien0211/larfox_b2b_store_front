@@ -28,9 +28,12 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
   return (
     <nav aria-label="breadcrumb" className={className}>
-      <ul className="list-none p-0 flex flex-wrap gap-y-1 items-center text-sm sm:text-base">
+      <ul className="list-none p-0 flex flex-wrap gap-y-1 items-center text-sm sm:text-base text-primary">
         <li>
-          <LocalizedClientLink href="/" className="hover:text-primary">
+          <LocalizedClientLink
+            href="/"
+            className="hover:text-primary font-semibold"
+          >
             Trang chủ
           </LocalizedClientLink>
         </li>
@@ -40,7 +43,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
         <li>
           <LocalizedClientLink
             href="/tat-ca-san-pham"
-            className="hover:text-primary"
+            className="hover:text-primary font-semibold"
           >
             Sản phẩm
           </LocalizedClientLink>
@@ -62,7 +65,10 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
                 </span>
               )}
 
-              <LocalizedClientLink href={href} className="hover:text-primary">
+              <LocalizedClientLink
+                href={href}
+                className="hover:text-primary font-semibold"
+              >
                 {item.name}
               </LocalizedClientLink>
             </li>

@@ -32,11 +32,11 @@ const StoreTemplate = ({
   const sort = sortBy || "moi_nhat"
 
   return (
-    <div className="mb-16 sm:mb-24">
+    <div className="pb-16 sm:pb-24 bg-[#f5f6f7]">
       <ProductBanner />
       <div
-        className="flex flex-col small:flex-row small:items-start py-6 gap-x-10 gap-y-4 content-container small:!mb-24 relative z-20 "
-        data-testid="category-container"
+        className="flex flex-col small:flex-row small:items-start py-4 gap-x-4 gap-y-4 content-container relative z-20 "
+        data-testid="all-category-container"
       >
         <FilterMenu
           allCategories={allCategories}

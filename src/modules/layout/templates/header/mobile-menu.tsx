@@ -67,18 +67,17 @@ export default function MobileMenu({
         }`}
       >
         <div className="p-4 flex items-center justify-between border-b border-grey-20">
-          <div className="w-[30px] h-auto">
+          <div className="w-[30px] h-auto relative">
             <LocalizedClientLink href="/">
               <Image
                 src={IMGS.Logo}
                 alt="Logo"
-                width={30}
-                height={30}
                 priority={true}
                 className="w-auto h-auto"
               />
             </LocalizedClientLink>
           </div>
+
           <button onClick={onClose} className="hover:text-grey-30 text-primary">
             <XMark size={24} />
           </button>

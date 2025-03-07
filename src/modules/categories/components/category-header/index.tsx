@@ -13,12 +13,12 @@ const CategoryHeader = ({
   sortBy?: SortOptions
 }) => {
   return (
-    <div className="flex items-center justify-between  sm:p-4 sm:h-[60px] sm:bg-grey-15 mb-4 sm:mb-8">
+    <div className="flex px-2 py-1 lg:py-0  items-center justify-between  sm:p-4 sm:h-[60px] bg-white rounded-lg shadow-lg mb-4">
       <div className="hidden lg:block">
         <Breadcrumb allCategories={allCategories} path={path} />
       </div>
 
-      <h1 className="lg:hidden">Sắp xếp</h1>
+      <h1 className="lg:hidden  text-sm">Sắp xếp</h1>
 
       <div className="flex items-center justify-between space-x-6">
         {/* <span className="text-gray-600">Showing 1-12</span> */}

@@ -1,16 +1,18 @@
 import Image from "next/image"
+import { HttpTypes } from "@medusajs/types"
 
 import IMGS from "@constants/IMGS"
 import FlashSaleProductsSlider from "./slider"
 import CountdownTimer from "./count-down"
 interface FlashSaleProps {
-  products?: any
-  collectionHandle?: string
+  collection?: HttpTypes.StoreCollection
 }
 
-const FlashSale: React.FC<FlashSaleProps> = ({ products }) => {
+const FlashSale: React.FC<FlashSaleProps> = ({ collection }) => {
+  const products = collection?.products
+
   return (
-    <div className="relative py-3 sm:py-6 my-3 sm:my-8 content-container bg-white rounded-md shadow-md">
+    <div className="relative py-3 sm:py-6 my-3 sm:my-8 content-container bg-white rounded-lg shadow-lg">
       <div className="absolute -top-[2%] left-0 w-9 h-9 sm:w-16 sm:h-16  ">
         <Image
           src={IMGS.RiceSpike}

@@ -6,6 +6,7 @@ import FooterAbout from "./about"
 import FooterPolicy from "./policy"
 import FooterOfferForm from "./offer-form"
 import FooterSocial from "./social"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export default async function Footer() {
   return (
@@ -13,15 +14,17 @@ export default async function Footer() {
       <div className="w-full  bg-[#7c6540]">
         <div className="content-container">
           <div className="flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center justify-between py-4 sm:py-8">
-            <div className="w-14 sm:w-16 h-auto relative">
-              <Image
-                src={IMGS.Logo}
-                alt="Logo"
-                width={64}
-                height={64}
-                priority={true}
-                className="w-auto h-auto"
-              />
+            <div className="w-[80px] md:w-[100px] lg:w-[120px] h-auto">
+              <LocalizedClientLink href="/">
+                <Image
+                  src={IMGS.Logo}
+                  alt="Logo"
+                  width={120}
+                  height={56}
+                  className="w-auto h-auto"
+                  priority={true}
+                />
+              </LocalizedClientLink>
             </div>
             {/* <FooterSocial /> */}
           </div>

@@ -10,7 +10,7 @@ import "./styles.css"
 const MIN_PRICE_DEFAULT = 0
 const MAX_PRICE_DEFAULT = 1000000
 const MIN_PRICE = 0
-const MAX_PRICE = 5000000
+const MAX_PRICE = 3000000
 
 const PriceRange = () => {
   const router = useRouter()
@@ -48,11 +48,11 @@ const PriceRange = () => {
   }
 
   return (
-    <>
-      <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 pb-4 sm:py-4 mt-6 sm:mt-8">
+    <div className="bg-white mt-8 lg:mt-4 lg:px-4 lg:py-6 lg:rounded-lg lg:shadow-lg">
+      <h2 className="text-base sm:text-lg font-semibold border-b border-gray-200 pb-4 text-primary">
         Giá
       </h2>
-      <div className="my-6 sm:my-12 w-[98%]">
+      <div className="my-5 lg:my-7 w-[98%]">
         <RangeSlider
           id="range-slider-yellow"
           min={MIN_PRICE}
@@ -72,15 +72,15 @@ const PriceRange = () => {
           {formatNumber(value[1])}
         </span>
       </p>
-      <div className="mt-4 sm:mt-6">
+      <div className="mt-2 lg:mt-4">
         <button
-          className="px-8 py-2 bg-primary text-white rounded-md hover:bg-orang-10 text-sm sm:text-base"
+          className="px-8 py-1 bg-primary text-white rounded-md hover:bg-orang-10 text-sm sm:text-base"
           onClick={handlePriceFilterChange}
         >
           Áp dụng
         </button>
       </div>
-    </>
+    </div>
   )
 }
 

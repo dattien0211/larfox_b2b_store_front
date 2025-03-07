@@ -30,8 +30,8 @@ export default function CollectionTemplate({
   const sort = sortBy || "moi_nhat"
 
   return (
-    <div className="mb-16 sm:mb-24">
-      <div className="content-container mt-4">
+    <div className="pb-16 sm:pb-24 pt-4 bg-[#f5f6f7]">
+      <div className="content-container">
         {collection?.metadata?.thumbnail?.url && (
           <Image
             src={collection?.metadata?.thumbnail?.url}
@@ -43,7 +43,7 @@ export default function CollectionTemplate({
         )}
       </div>
       <div
-        className="flex flex-col small:flex-row small:items-start py-6 gap-x-10 gap-y-4 content-container small:!mb-24 relative z-20 "
+        className="flex flex-col small:flex-row small:items-start py-4 gap-4 content-container relative z-20 "
         data-testid="collection-container"
       >
         <FilterMenu

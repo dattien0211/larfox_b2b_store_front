@@ -1,3 +1,4 @@
+import Image from "next/image"
 export type FeaturedProduct = {
   id: string
   title: string
@@ -78,4 +79,28 @@ export type ProductTag = {
 export type PaginatedProductTagList = {
   product_tags: ProductTag[]
   count: number
+}
+
+export type ImageType = {
+  id: string
+  url: string
+}
+
+export type Brand = {
+  id: string
+  name: string
+  handle: string
+  logo: ImageType | null
+  thumbnail: ImageType | null
+  short_description: string | null
+  description: string | null
+  website: string | null
+  founded_year: number | null
+  headquarters: string | null
+  is_active: boolean
+  social_links: object | null
+  metadata: object | null
+  created_at: string
+  updated_at: string
+  deleted_at: string | null
 }

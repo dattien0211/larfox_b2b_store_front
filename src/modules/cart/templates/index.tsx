@@ -12,46 +12,46 @@ const CartTemplate = ({
   cart: HttpTypes.StoreCart | null
   customer: HttpTypes.StoreCustomer | null
 }) => {
-  
   const totalItems =
     cart?.items?.reduce((acc, item) => {
       return acc + item.quantity
     }, 0) || 0
 
-
   return (
     <div
-      className="content-container mb-16 sm:mb-24"
+      className="pb-16 sm:pb-24 pt-4 bg-[#f5f6f7]"
       data-testid="cart-container"
     >
-      {cart?.items?.length ? (
-        <div className="grid grid-cols-1 small:grid-cols-[1fr_360px] gap-x-20">
-          <div className="flex flex-col bg-white py-6 gap-y-6">
-            {/* {!customer && (
+      <div className="content-container ">
+        {cart?.items?.length ? (
+          <div className="grid grid-cols-1 small:grid-cols-[1fr_360px] gap-6">
+            <div className="flex flex-col bg-white py-3 px-2 sm:px-4 rounded-lg shadow-lg gap-y-6">
+              {/* {!customer && (
                 <>
                   <SignInPrompt />
                   <Divider />
                 </>
               )} */}
-            <ItemsTemplate items={cart?.items} />
-          </div>
-          <div className="relative">
-            <div className="flex flex-col gap-y-8 sticky top-12">
-              {cart && cart.region && (
-                <>
-                  <div className="bg-white py-6">
-                    <Summary cart={cart as any} />
-                  </div>
-                </>
-              )}
+              <ItemsTemplate items={cart?.items} />
+            </div>
+            <div className="relative">
+              <div className="flex flex-col gap-y-8 sticky top-12">
+                {cart && cart.region && (
+                  <>
+                    <div className="bg-white py-3 px-2 lg:px-4 rounded-lg shadow-lg gap-y-6">
+                      <Summary cart={cart as any} />
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <div>
-          <EmptyCartMessage />
-        </div>
-      )}
+        ) : (
+          <div>
+            <EmptyCartMessage />
+          </div>
+        )}
+      </div>
     </div>
   )
 }

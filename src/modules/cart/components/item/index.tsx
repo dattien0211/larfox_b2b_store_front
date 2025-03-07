@@ -37,7 +37,7 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       data-testid="product-row"
     >
       <Table.Cell
-        className={clx("!pl-0 !pr-2 sm:!pr-4 py-4 w-24", {
+        className={clx("!pl-0 !pr-2 sm:!pr-4 py-4 sm:w-24", {
           "!w-20": type === "preview",
         })}
       >
@@ -56,11 +56,11 @@ const Item = ({ item, type = "full" }: ItemProps) => {
         </LocalizedClientLink>
       </Table.Cell>
 
-      <Table.Cell className="text-lef !pr-2 sm:!pr-6">
+      <Table.Cell className="text-lef !pr-0 sm:!pr-6">
         <LocalizedClientLink
           href={`/san-pham/${handle}`}
           className={clsx(
-            "text-sm sm:text-sm text-ui-fg-base w-[150px] sm:w-[200px] !font-manrope line-clamp-2 ",
+            "text-xs sm:text-sm text-ui-fg-base w-[150px] sm:w-[200px] !font-manrope line-clamp-2 ",
             {
               "!text-sm": type === "preview",
             }
@@ -95,12 +95,12 @@ const Item = ({ item, type = "full" }: ItemProps) => {
       )}
 
       <Table.Cell
-        className={clsx("!pr-2", {
+        className={clsx("!pr-0", {
           "!pr-0": type === "preview",
           "sm:!pr-6": type === "full",
         })}
       >
-        <span
+        <div
           className={clx(
             "!text-lg flex flex-col items-end justify-center h-full"
           )}
@@ -114,12 +114,14 @@ const Item = ({ item, type = "full" }: ItemProps) => {
             </span>
           )}
           <LineItemPrice item={item} style="tight" />
-        </span>
+        </div>
       </Table.Cell>
 
       {type === "full" && (
-        <Table.Cell className="!px-0">
-          <DeleteButton id={item.id} data-testid="product-delete-button" />
+        <Table.Cell className="!px-0 ">
+          <div className="flex flex-col items-center justify-end">
+            <DeleteButton id={item.id} data-testid="product-delete-button" />
+          </div>
         </Table.Cell>
       )}
     </Table.Row>
