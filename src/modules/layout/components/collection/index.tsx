@@ -10,6 +10,7 @@ import CollectionBanner from "../collection-banner"
 import { useOS } from "@lib/hooks/OSContext"
 import ProductPreview from "@modules/products/components/product-preview"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 interface CollectionProps {
   collection?: HttpTypes.StoreCollection
@@ -33,25 +34,7 @@ const Collection: React.FC<CollectionProps> = ({ collection }) => {
 
   return (
     <div className="relative content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white">
-      <div className="absolute -top-[2%] left-0 w-9 h-9 sm:w-16 sm:h-16  ">
-        <Image
-          src={IMGS.RiceSpike}
-          alt="banner"
-          width={64}
-          height={64}
-          className="w-full h-full object-contain rotate-45"
-        />
-      </div>
-
-      <div className="absolute -bottom-[2%] right-0 w-9 h-9 sm:w-16 sm:h-16 ">
-        <Image
-          src={IMGS.RiceSpike}
-          alt="banner"
-          width={64}
-          height={64}
-          className="w-full h-full object-contain scale-x-[-1] rotate-[-35deg]"
-        />
-      </div>
+      <RiceSpike />
       <CollectionBanner
         imageSrc={collection?.metadata?.thumbnail?.url}
         href={collection?.handle ? `/bo-suu-tap/${collection?.handle}` : "/"}

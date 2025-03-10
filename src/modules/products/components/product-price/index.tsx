@@ -23,7 +23,7 @@ export default function ProductPrice({
 
   return (
     <div className="flex flex-col text-ui-fg-base ">
-      <span className={clx("font-semibold sm:text-3xl text-2xl  text-primary")}>
+      <span className={clx("font-semibold sm:text-[28px] text-xl   text-primary")}>
         <span
           data-testid="product-price"
           data-value={selectedPrice.calculated_price_number}

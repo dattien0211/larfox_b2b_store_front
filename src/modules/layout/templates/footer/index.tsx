@@ -14,7 +14,7 @@ export default async function Footer() {
       <div className="w-full  bg-[#7c6540]">
         <div className="content-container">
           <div className="flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center justify-between py-4 sm:py-8">
-            <div className="w-[80px] md:w-[100px] lg:w-[120px] h-auto">
+            <div className="w-[60px] md:w-[80px] h-auto">
               <LocalizedClientLink href="/">
                 <Image
                   src={IMGS.Logo}

@@ -16,19 +16,19 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
     <div>
       <Heading
         level="h2"
-        className="flex flex-row sm:text-3xl text-2xl  text-primary my-6 font-times font-bold"
+        className="flex flex-row sm:text-[28px] text-xl text-primary my-6 font-times font-bold capitalize"
       >
         Phương thức thanh toán
       </Heading>
       <div>
         {payment && (
           <div className="flex items-start gap-x-1 w-full">
-            <div className="flex flex-col w-1/3">
+            <div className="flex flex-col w-full sm:w-1/3">
               {/* <Text className="text-base text-ui-fg-base mb-1">
                 Phương thức thanh toán
               </Text> */}
               <Text
-                className=" text-ui-fg-subtle text-sm sm:text-base !font-manrope"
+                className=" text-ui-fg-subtle text-sm sm:text-base !font-manrope text-nowrap"
                 data-testid="payment-method"
               >
                 {paymentInfoMap[payment.provider_id].title}

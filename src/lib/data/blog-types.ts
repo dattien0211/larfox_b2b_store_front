@@ -1,7 +1,6 @@
-import { sdk } from "@lib/config"
 import { BlogType, BlogTypeQueryParams } from "types/global"
 import { cache } from "react"
-import client from "@lib/util/client"
+import fetchWithCache from "@lib/util/fetch-with-cache"
 
 type PaginatedBlogList = {
   blogTypes: BlogType[]
@@ -10,9 +9,13 @@ type PaginatedBlogList = {
 
 export const getBlogTypeByValue = cache(async function (
   value: string
-): Promise<BlogType> {
-  const res = await client.get("/store/blog-types", { params: { value } })
-  return res.data?.blogTypes[0]
+): Promise<BlogType | null> {
+  const data = await fetchWithCache<{ blogTypes: BlogType[] }>(
+    "/store/blog-types",
+    { value },
+    ["blog-types"]
+  )
+  return data?.blogTypes?.[0] || null
 })
 
 export const getBlogTypesList = cache(async function (
@@ -22,12 +25,14 @@ export const getBlogTypesList = cache(async function (
   const limit = queryParams?.limit || 20
   const offset = (pageParam - 1) * limit
 
-  const res = await client.get("/store/blog-types", {
-    params: { ...queryParams, limit, offset },
-  })
+  const data = await fetchWithCache<PaginatedBlogList>(
+    "/store/blog-types",
+    { ...queryParams, limit, offset },
+    ["blog-types"]
+  )
 
   return {
-    blogTypes: res.data?.blogTypes || [],
-    count: res.data?.count || 0,
+    blogTypes: data?.blogTypes || [],
+    count: data?.count || 0,
   }
 })

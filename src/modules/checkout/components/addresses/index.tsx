@@ -97,7 +97,7 @@ const Addresses = ({
   return (
     <>
       <div className="flex flex-row items-center justify-between mb-2 sm:mb-6">
-        <h1 className="flex flex-row sm:text-3xl text-xl font-semibold font-times  gap-x-2 items-baseline text-primary sm:mb-4">
+        <h1 className="flex flex-row sm:text-[28px] text-xl font-semibold font-times  gap-x-2 items-baseline text-primary sm:mb-4">
           Địa chỉ nhận hàng
           {!isOpen && <CheckCircleSolid />}
         </h1>
@@ -105,7 +105,7 @@ const Addresses = ({
           <Text>
             <button
               onClick={handleEdit}
-              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-sm sm:text-base !font-manrope !text-primary"
+              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-sm sm:text-base !font-manrope-semibold !text-primary"
               data-testid="edit-address-button"
             >
               Sửa
@@ -116,7 +116,7 @@ const Addresses = ({
       {isOpen ? (
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
-            <div className="pb-8">
+            <div className="pb-2">
               <ShippingAddress
                 customer={customer}
                 checked={sameAsBilling}
@@ -128,7 +128,7 @@ const Addresses = ({
                 <div>
                   <Heading
                     level="h2"
-                    className="sm:text-3xl text-2xl -regular gap-x-4 pb-6 pt-8"
+                    className="sm:text-[28px] text-xl  -regular gap-x-4 pb-6 pt-8"
                   >
                     Địa chỉ nhận hóa đơn
                   </Heading>
@@ -137,7 +137,7 @@ const Addresses = ({
                 </div>
               )}
               <SubmitButton
-                className="mt-4 bg-primary hover:bg-orang-10 rounded-none !shadow-none"
+                className="mt-2 bg-primary/90 hover:bg-primary !shadow-none capitalize rounded-md"
                 data-testid="submit-address-button"
               >
                 Tiếp tục để đặt hàng

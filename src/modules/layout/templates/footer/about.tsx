@@ -8,7 +8,7 @@ export default async function FooterAbout() {
     <div className="sm:col-span-6 lg:col-span-2">
       <h1 className="font-bold text-lg sm:text-2xl font-times">Về Bông Lúa</h1>
       <div className="sm:mt-8 mt-2">
-        <ul className="list-none space-y-2 sm:space-y-4">
+        <ul className="list-none space-y-1 sm:space-y-2">
           <li className=" hover:text-orang-5">
             <LocalizedClientLink href="/" className="flex items-center">
               <RightArrow />{" "}

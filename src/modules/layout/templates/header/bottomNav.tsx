@@ -7,6 +7,7 @@ import Menu from "./menu"
 import { HttpTypes } from "@medusajs/types"
 import MobileMenu from "./mobile-menu"
 import { BlogType } from "types/global"
+import storeConfig from "@constants/storeConfig"
 
 interface BottomNavProps {
   categories?: HttpTypes.StoreProductCategory[]
@@ -146,7 +147,9 @@ export default function BottomNav({ categories, blogTypes }: BottomNavProps) {
             />
           </svg>
         </button>
-        <div className="text-sm text-grey-45">Hotline: 19001080</div>
+        <div className="text-sm text-grey-45">
+          Hotline: {storeConfig.STORE_PHONE}
+        </div>
       </div>
 
       {/* Mobile Menu Component */}

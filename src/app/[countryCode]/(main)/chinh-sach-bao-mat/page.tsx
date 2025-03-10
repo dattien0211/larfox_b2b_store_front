@@ -1,3 +1,4 @@
+import RiceSpike from "@modules/common/components/rice-spike"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -8,16 +9,17 @@ export const metadata: Metadata = {
 
 export default async function SecurityPolicyPage() {
   return (
-    <>
-      <div className="py-9 content-container mb-16 sm:mb-24">
-        <h1 className="flex font-bold flex-col gap-x-6 sm:text-3xl text-2xl font-times">
+    <div className="bg-[#F5F7FD] pt-3 pb-8 sm:pt-6 sm:pb-14">
+      <div className="content-container bg-white rounded-lg shadow-lg pt-4 pb-12  sm:pt-6 sm:pb-16 mb-4 sm:mb-8 relative">
+        <RiceSpike />
+        <h1 className="font-bold text-xl sm:text-2xl lg:text-[28px] font-times text-primary">
           Chính Sách Bảo Mật Thông Tin
         </h1>
 
-        <h2 className="mb-3 mt-4 sm:mt-8 sm:mb-6 text-xl sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
           1. Mục đích và phạm vi thu thập
         </h2>
-        <div className="text-sm sm:text-base space-y-2 sm:space-y-4">
+        <div className="text-sm sm:text-base space-y-1 sm:space-y-2 sm:pl-6">
           bonglua.com không bán, chia sẻ hay trao đổi thông tin cá nhân của
           khách hàng thu thập trên trang web cho một bên thứ ba nào khác.
           <p>
@@ -37,10 +39,10 @@ export default async function SecurityPolicyPage() {
           <p>Số lượng</p>
           <p>Thời gian giao nhận sản phẩm</p>
         </div>
-        <h2 className="mb-3 mt-4 sm:mt-8 sm:mb-6 text-xl sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
           2. Phạm vi sử dụng thông tin
         </h2>
-        <div className="text-sm sm:text-base space-y-2 sm:space-y-4 text-justify sm:text-left">
+        <div className="text-sm sm:text-base space-y-1 sm:space-y-2 text-justify sm:text-left sm:pl-6">
           <p>
             Thông tin cá nhân thu thập được sẽ chỉ được bonglua.com sử dụng
             trong nội bộ công ty và cho một hoặc tất cả các mục đích sau đây:
@@ -62,19 +64,19 @@ export default async function SecurityPolicyPage() {
             tài chính liên quan đến các khoản thanh toán trực tuyến của bạn.
           </p>
         </div>
-        <h2 className="mb-3 mt-4 sm:mt-8 sm:mb-6 text-xl sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
           3. Thời gian lưu trữ thông tin
         </h2>
-        <div className="text-justify sm:text-left sm:text-base text-sm">
+        <div className="text-justify sm:text-left sm:text-base text-sm sm:pl-6">
           Đối với thông tin cá nhân, bonglua.com chỉ xóa đi dữ liệu này nếu
           khách hàng có yêu cầu, khách hàng yêu cầu gửi mail về
           cskh@bonglua.com/vn
           <p></p>
         </div>
-        <h2 className="mb-3 mt-4 sm:mt-8 sm:mb-6 text-xl sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
           4. Những người hoặc tổ chức có thể được tiếp cận với thông tin cá nhân
         </h2>
-        <div className="text-justify sm:text-left sm:text-base text-sm space-y-2 sm:space-y-4">
+        <div className="text-justify sm:text-left sm:text-base text-sm space-y-1 sm:space-y-2 sm:pl-6">
           <p>
             Đối tượng được tiếp cận với thông tin cá nhân của khách hàng thuộc
             một trong những trường hợp sau:
@@ -90,10 +92,10 @@ export default async function SecurityPolicyPage() {
             dịch vụ do Công ty cung cấp.
           </p>
         </div>
-        <h2 className="mb-3 mt-4 sm:mt-8 sm:mb-6 text-xl sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
           5. Địa chỉ của đơn vị thu thập và quản lý thông tin cá nhân
         </h2>
-        <ul className="list-disc pl-6 text-sm sm:text-base space-y-2 sm:space-y-4">
+        <ul className="list-disc pl-6 text-sm sm:text-base space-y-1 sm:space-y-2 sm:pl-10">
           <li>CÔNG TY CP MỸ PHẨM THIÊN NHIÊN CỎ MỀM</li>
           <li>
             Địa chỉ: Số 225, Trần Đăng Ninh, P. Dịch Vọng, Q. Cầu Giấy, TP. Hà
@@ -103,11 +105,11 @@ export default async function SecurityPolicyPage() {
           <li> Website: bonglua.com</li>
           <li> Email: cskh@bonglua.com/vn</li>
         </ul>
-        <h2 className="mb-3 mt-4 sm:mt-8 sm:mb-6 text-xl sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
           6. Phương tiện và công cụ để người dùng tiếp cập và chỉnh sử dữ liệu
           cá nhân của mình
         </h2>
-        <div className="text-justify sm:text-left sm:text-base text-sm space-y-2 sm:space-y-4">
+        <div className="text-justify sm:text-left sm:text-base text-sm space-y-1 sm:space-y-2 sm:pl-6">
           <p>
             bonglua.com không thu thập thông tin khách hàng qua trang web, thông
             tin cá nhân khách hàng được thực hiện thu thập qua email liên hệ đặt
@@ -120,12 +122,12 @@ export default async function SecurityPolicyPage() {
             bonglua.com chỉnh sửa dữ liệu cá nhân của mình<p></p>
           </p>
         </div>
-        <h2 className="mb-3 mt-4 sm:mt-8 sm:mb-6 text-xl sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
           7. Cơ chế tiếp nhận và giải quyết khiếu nại của người tiêu dùng liên
           quan đến việc thông tin cá nhân bị sử dụng sai mục đích hoặc phạm vi
           đã thông báo
         </h2>
-        <div className="text-justify sm:text-left sm:text-base text-sm space-y-2 sm:space-y-4">
+        <div className="text-justify sm:text-left sm:text-base text-sm space-y-1 sm:space-y-2 sm:pl-6">
           <p>
             Tại bonglua.com , việc bảo vệ thông tin cá nhân của bạn là rất quan
             trọng, bạn được đảm bảo rằng thông tin cung cấp cho chúng tôi sẽ
@@ -146,6 +148,6 @@ export default async function SecurityPolicyPage() {
           </p>
         </div>
       </div>
-    </>
+    </div>
   )
 }

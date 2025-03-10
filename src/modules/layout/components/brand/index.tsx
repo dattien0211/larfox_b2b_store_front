@@ -28,7 +28,7 @@ const Brands: React.FC<BlogsProps> = ({ brands }) => {
         {brands.map((brand) => (
           <div
             key={brand.id}
-            className="flex justify-center items-center border border-primary/35 hover:border-primary/45 p-4 rounded hover:shadow-lg"
+            className="flex justify-center items-center border border-primary/35 hover:border-primary/45 p-4 rounded hover:shadow-lg cursor-pointer"
           >
             {brand.logo?.url ? (
               <Image

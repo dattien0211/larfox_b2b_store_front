@@ -21,7 +21,7 @@ export default async function Orders() {
   return (
     <div className="w-full" data-testid="orders-page-wrapper">
       <div className="mb-8 flex flex-col gap-y-4">
-        <h1 className="text-2xl sm:text-3xl font-semibold text-primary font-times">
+        <h1 className="sm:text-[28px]text-xl font-semibold text-primary font-times">
           Đơn hàng
         </h1>
         <p className="text-base-regular">

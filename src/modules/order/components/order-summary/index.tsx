@@ -19,7 +19,7 @@ const OrderSummary = ({ order }: OrderSummaryProps) => {
 
   return (
     <div className="!font-manrope">
-      <h2 className="h2-core flex flex-row text-2xl sm:text-3xl font-semibold text-primary font-times my-4">
+      <h2 className="h2-core flex flex-row sm:text-[28px] text-xl font-semibold text-primary font-times my-4">
         Tổng quan đơn hàng
       </h2>
       <div className="my-2">
@@ -51,7 +51,7 @@ const OrderSummary = ({ order }: OrderSummaryProps) => {
         </div>
         <div className="h-px w-full border-b border-gray-200 border-dashed my-6" />
         <div className="flex items-center justify-between mb-2">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-primary font-times">
+          <h2 className="sm:text-[28px] text-xl font-semibold text-primary font-times">
             Thành tiền
           </h2>
           <span className="text-xl">{getAmount(order.total)}</span>

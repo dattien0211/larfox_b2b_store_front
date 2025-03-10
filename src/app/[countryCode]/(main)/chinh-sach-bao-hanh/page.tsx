@@ -1,3 +1,4 @@
+import RiceSpike from "@modules/common/components/rice-spike"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -7,13 +8,14 @@ export const metadata: Metadata = {
 
 export default async function SecurityPolicyPage() {
   return (
-    <>
-      <div className="py-9 content-container mb-16 sm:mb-24">
-        <h1 className="font-bold  sm:text-3xl text-2xl font-times">
+    <div className="bg-[#F5F7FD] pt-3 pb-8 sm:pt-6 sm:pb-14">
+      <div className="content-container bg-white rounded-lg shadow-lg pt-4 pb-12  sm:pt-6 sm:pb-16 mb-4 sm:mb-8 relative">
+        <RiceSpike />
+        <h1 className="font-bold text-xl sm:text-2xl lg:text-[28px] font-times text-primary">
           Chính Sách Bảo Hành
         </h1>
 
-        <div className="mt-4 sm:mt-8 space-y-4 text-sm sm:text-base text-justify sm:text-normal ">
+        <div className="mt-3 sm:mt-6 space-y-1 sm:space-y-2 text-sm sm:text-base text-justify sm:text-normal indent-4">
           <p>
             Sản phẩm Bông Lúa có thành phần thiên nhiên và hầu hết không chứa
             chất bảo quản nên có hạn sử dụng ngắn và dễ bị tác động xấu từ môi
@@ -45,6 +47,6 @@ export default async function SecurityPolicyPage() {
           </p>
         </div>
       </div>
-    </>
+    </div>
   )
 }

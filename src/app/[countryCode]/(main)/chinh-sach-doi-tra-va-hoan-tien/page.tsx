@@ -1,3 +1,5 @@
+import storeConfig from "@constants/storeConfig"
+import RiceSpike from "@modules/common/components/rice-spike"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -8,12 +10,13 @@ export const metadata: Metadata = {
 
 export default async function RefundPolicyPage() {
   return (
-    <>
-      <div className="py-9 content-container mb-16 sm:mb-24">
-        <h1 className=" sm:text-3xl text-2xl  mb-6 font-bold font-times">
+    <div className="bg-[#F5F7FD] pt-3 pb-8 sm:pt-6 sm:pb-14">
+      <div className="content-container bg-white rounded-lg shadow-lg pt-4 pb-12  sm:pt-6 sm:pb-16 mb-4 sm:mb-8 relative">
+        <RiceSpike />
+        <h1 className="font-bold text-xl sm:text-2xl lg:text-[28px] font-times text-primary">
           Chính Sách Đổi Trả Và Hoàn Tiền
         </h1>
-        <p className="text-justify sm:text-normal sm:text-base text-sm ">
+        <p className="text-justify sm:text-normal sm:text-base text-sm mt-2 indent-4">
           Quý khách vui lòng kiểm tra hàng ngay sau khi nhận được, đảm bảo sản
           phẩm đúng số lượng, chủng loại, mẫu mã và chất lượng như yêu cầu. Nếu
           có sai sót hoặc phát sinh ngoài ý muốn, quý khách vui lòng thông báo
@@ -21,11 +24,11 @@ export default async function RefundPolicyPage() {
           hàng và toàn bộ sản phẩm nhận được. Bông Lúa sẽ tiếp nhận và điều
           chỉnh đơn hàng cho quý khách trong vòng 48h từ khi nhận được yêu cầu.
         </p>
-        <h2 className="mt-4 mb-3 sm:mt-8 sm:mb-6 sm:text-2xl text-xl font-semibold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
           1. Đổi trả do lỗi sai đơn hoặc lỗi vận chuyển:
         </h2>
         <div className="text-justify sm:text-normal sm:text-base text-sm">
-          <p>
+          <p className="indent-4">
             Để đảm bảo chất lượng dịch vụ và đem lại cho Quý Khách những trải
             nghiệm tốt nhất với sản phẩm, Bông Lúa áp dụng chính sách đổi hàng
             với các trường hợp sau:
@@ -39,12 +42,12 @@ export default async function RefundPolicyPage() {
             <p>2.Sản phẩm bị móp vỡ, gãy hỏng do vận chuyển</p>
             <p>3.Sản phẩm có lỗi kỹ thuật phát hiện khi sử dụng</p>
           </div>
-          <div className="space-y-2 sm:space-y-4">
-            <p>
+          <div className="space-y-1 sm:space-y-2">
+            <p className="indent-4 sm:indent-0">
               Trong 3 trường hợp trên, Bông Lúa đổi hàng cho quý khách theo
               trình tự sau:
             </p>
-            <div className="pl-3 sm:pl-6 space-y-2 sm:space-y-4">
+            <div className="pl-3 sm:pl-6 space-y-1 sm:space-y-2">
               <p>
                 Bước 1. Quý khách vui lòng thông báo cho Bông Lúa trong vòng 24h
                 kể từ khi nhận hàng, kèm theo ảnh chụp gói hàng và toàn bộ sản
@@ -57,8 +60,7 @@ export default async function RefundPolicyPage() {
               </p>
               <p>
                 Bước 3. Quý khách gửi lại mặt hàng thừa/lỗi, hỏng về địa chỉ
-                công ty: số 225 phố Trần Đăng Ninh, phường Dịch Vọng, quân Cầu
-                Giấy, Hà Nội
+                công ty: {storeConfig.STORE_ADDRESS}
               </p>
               <p>
                 Bước 4. Trong trường hợp có phát sinh chênh lệch, Bông Lúa
@@ -67,7 +69,7 @@ export default async function RefundPolicyPage() {
                 Bông Lúa khi nhận được hàng đổi
               </p>
             </div>
-            <p>
+            <p className="indent-4">
               Phí vận chuyển đổi trả: với sản phẩm cần đổi do 03 lý do trên, quý
               khách không phải trả phí vận chuyển, mọi chi phí vận chuyển phát
               sinh sẽ do Bông Lúa thanh toán bằng hình thức thanh toán trực tiếp
@@ -75,11 +77,11 @@ export default async function RefundPolicyPage() {
             </p>
           </div>
         </div>
-        <h2 className="mt-4 mb-3 sm:mt-8 sm:mb-6 sm:text-2xl text-xl font-semibold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
           2. Đổi trả sản phẩm theo mong muốn riêng của khách hàng:
         </h2>
         <div className="text-justify sm:text-normal sm:text-base text-sm ">
-          <p>
+          <p className="indent-4">
             Với mong muốn Khách lựa chọn được sản phẩm tốt và có trải nghiệm hài
             lòng nhất, cũng như đảm bảo niềm tin vào sản phẩm Bông Lúa, khách
             hàng có thể đổi trả sản phẩm đã mua tại Bông Lúa trong vòng 05 ngày
@@ -128,11 +130,11 @@ export default async function RefundPolicyPage() {
             </li>
           </ul>
         </div>
-        <h2 className="mt-4 mb-3 sm:mt-8 sm:mb-6 sm:text-2xl text-xl font-semibold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
           3. Hoàn trả sản phẩm:
         </h2>
-        <div className="text-justify sm:text-normal sm:text-base text-sm space-y-2 sm:space-y-4">
-          <p>
+        <div className="text-justify sm:text-normal sm:text-base text-sm space-y-1 sm:space-y-2">
+          <p className="indent-4">
             Trong trường hợp khách hàng gặp phản ứng không mong muốn với sản
             phẩm. Quý khách vui lòng cung cấp hình ảnh về tình trạng gặp phải
             hoặc giấy khám sức khỏe từ cơ sở y tế để Bông Lúa xác nhận.
@@ -141,7 +143,7 @@ export default async function RefundPolicyPage() {
           <ul className="list-disc pl-6 mb-2">
             <li>Cách thức hoàn trả:</li>
           </ul>
-          <div className="pl-3 sm:pl-6 space-y-2 sm:space-y-4">
+          <div className="pl-3 sm:pl-6 space-y-1 sm:space-y-2">
             <p>
               Bước 1: Quý khách gửi hàng về cho Bông Lúa theo quy định (Phí vận
               chuyển sẽ do Bông Lúa thanh toán)
@@ -159,7 +161,7 @@ export default async function RefundPolicyPage() {
           <ul className="list-disc pl-6 mb-2">
             <li>Gửi hàng về Bông Lúa:</li>
           </ul>
-          <p>
+          <p className="indent-4">
             Trong các trường hợp Bảo hành hoặc Đổi trả có yêu cầu gửi hàng về Cỏ
             Mềm, Quý khách vui lòng đóng gói sản phẩm cẩn thận nhằm đảm bảo
             trạng thái nguyên vẹn và gửi hàng cho đối tác vận chuyển trong vòng
@@ -167,11 +169,9 @@ export default async function RefundPolicyPage() {
             Lúa về đơn hàng. Bông Lúa rất tiếc sẽ phải từ chối sản phẩm bị hư
             hại do lỗi đóng gói sơ sài từ Quý khách.
           </p>
-          <p>
-            Địa chỉ nhận hàng đổi trả: số 180 Trần Hưng Đạo, Hoàn Kiếm, Hà Nội
-          </p>
+          <p>Địa chỉ nhận hàng đổi trả: {storeConfig.STORE_ADDRESS}</p>
         </div>
       </div>
-    </>
+    </div>
   )
 }

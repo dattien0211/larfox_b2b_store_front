@@ -249,12 +249,12 @@ body {
     @apply text-[30px] leading-[48px] font-semibold;
   }
 
-  .sm:text-3xl text-2xl -regular {
-    @apply sm:text-3xl text-2xl  leading-[44px] font-normal;
+  .sm:text-3xl text-xl -regular {
+    @apply sm:text-3xl text-xl   leading-[44px] font-normal;
   }
 
-  .sm:text-3xl text-2xl -semi {
-    @apply sm:text-3xl text-2xl  leading-[44px] font-semibold;
+  .sm:text-3xl text-xl -semi {
+    @apply sm:text-3xl text-xl   leading-[44px] font-semibold;
   }
 }
 

@@ -26,7 +26,7 @@ export default async function Profile() {
   return (
     <div className="w-full" data-testid="profile-page-wrapper">
       <div className="mb-8 flex flex-col gap-y-4">
-        <h1 className="text-2xl sm:text-3xl font-semibold text-primary font-times">
+        <h1 className="sm:text-[28px]text-xl font-semibold text-primary font-times">
           Thông tin tài khoản
         </h1>
         <p className="text-sm sm:text-base">

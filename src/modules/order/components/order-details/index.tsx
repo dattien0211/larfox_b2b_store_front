@@ -52,18 +52,15 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
           .
         </Text>
       )} */}
-      <Text className="text-base !font-manrope">
+      <Text className="text-sm sm:text-base text-ui-fg-subtle !font-manrope ">
         Ngày đặt hàng:{" "}
-        <span data-testid="order-date">
+        <span data-testid="order-date " className="text-ui-fg-base">
           {new Date(order.created_at).toLocaleDateString("vi-VN")}
         </span>
       </Text>
-      <Text className="text-base !font-manrope">
+      <Text className="text-sm sm:text-base text-ui-fg-subtle !font-manrope ">
         Mã đơn hàng:{" "}
-        <span
-          data-testid="order-id"
-          className="uppercase text-ui-fg-interactive"
-        >
+        <span data-testid="order-id" className="uppercase  text-ui-fg-base">
           {order?.id}
         </span>
       </Text>

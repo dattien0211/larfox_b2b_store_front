@@ -125,7 +125,7 @@ const Payment = ({
       <div className="flex flex-row items-center justify-between mb-2 sm:mb-6">
         <h1
           className={clx(
-            "flex flex-row sm:text-3xl text-xl font-semibold font-times text-primary text gap-x-2 items-baseline",
+            "flex flex-row sm:text-[28px] text-xl font-semibold font-times text-primary text gap-x-2 items-baseline capitalize",
             {
               "opacity-50 pointer-events-none select-none":
                 !isOpen && !paymentReady,
@@ -139,7 +139,7 @@ const Payment = ({
           <Text>
             <button
               onClick={handleEdit}
-              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-sm sm:text-base !font-manrope !text-primary"
+              className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-sm sm:text-base !font-manrope-semibold !text-primary "
               data-testid="edit-payment-button"
             >
               Sửa
@@ -190,7 +190,7 @@ const Payment = ({
 
           {paidByGiftcard && (
             <div className="flex flex-col w-1/3">
-              <Text className="text-base text-ui-fg-base mb-1">
+              <Text className="text-base text-ui-fg-base mb-1 capitalize">
                 Phương thức thanh toán
               </Text>
               <Text
@@ -239,7 +239,7 @@ const Payment = ({
 
           <Button
             size="large"
-            className="mt-6 mb-4 sm:mb-0 bg-primary hover:bg-orang-10 rounded-none !shadow-none"
+            className="mt-6 mb-4 sm:mb-0 bg-primary/90 hover:bg-primary rounded-md !shadow-none capitalize"
             onClick={handleSubmit}
             isLoading={isLoading}
             disabled={
@@ -292,7 +292,7 @@ const Payment = ({
             </div>
           ) : paidByGiftcard ? (
             <div className="flex flex-col w-1/3">
-              <Text className="text-base text-ui-fg-base mb-1">
+              <Text className="text-base text-ui-fg-base mb-1 capitalize">
                 Phương thức thanh toán
               </Text>
               <Text

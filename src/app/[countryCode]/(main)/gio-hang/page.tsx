@@ -4,6 +4,7 @@ import CartTemplate from "@modules/cart/templates"
 import { enrichLineItems, retrieveCart } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
 import { getCustomer } from "@lib/data/customer"
+import SkeletonCartPage from "@modules/skeletons/templates/skeleton-cart-page"
 
 export const metadata: Metadata = {
   title: "Giỏ Hàng | Bông Lúa",

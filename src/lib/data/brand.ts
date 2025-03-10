@@ -1,33 +1,38 @@
 import { Brand, BlogQueryParams } from "types/global"
 import { cache } from "react"
-import client from "@lib/util/client"
+import fetchWithCache from "@lib/util/fetch-with-cache"
 
-type PaginatedBlogList = {
+type PaginatedBrandList = {
   brands: Brand[]
   count: number
 }
 
 export const getBrandByHandle = cache(async function (
   handle: string
-): Promise<Brand> {
-  const res = await client.get("/store/brands", { params: { handle } })
-
-  return res.data?.brands[0]
+): Promise<Brand | null> {
+  const data = await fetchWithCache<{ brands: Brand[] }>(
+    "/store/brands",
+    { handle },
+    ["brands"]
+  )
+  return data?.brands?.[0] || null
 })
 
 export const getBrandList = cache(async function (
   pageParam: number = 1,
   queryParams?: BlogQueryParams
-): Promise<PaginatedBlogList> {
+): Promise<PaginatedBrandList> {
   const limit = queryParams?.limit || 12
   const offset = (pageParam - 1) * limit
 
-  const res = await client.get("/store/brands", {
-    params: { limit, offset, ...queryParams },
-  })
+  const data = await fetchWithCache<PaginatedBrandList>(
+    "/store/brands",
+    { ...queryParams, limit, offset },
+    ["brands"]
+  )
 
   return {
-    brands: res.data?.brands || [],
-    count: res.data?.count || 0,
+    brands: data?.brands || [],
+    count: data?.count || 0,
   }
 })

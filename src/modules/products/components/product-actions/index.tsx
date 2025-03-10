@@ -249,7 +249,7 @@ export default function ProductActions({
 
         <ProductMoreInfo product={product} variant={selectedVariant} />
 
-        <ProductSocial />
+        {/* <ProductSocial /> */}
 
         <ProductPolicy />
       </div>

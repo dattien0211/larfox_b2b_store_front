@@ -37,28 +37,30 @@ export default async function Checkout({
   const customer = await getCustomer()
 
   return (
-    <div className="flex flex-col-reverse small:flex-row content-container gap-y-8 gap-x-12 py-4 sm:py-12 mb-16 sm:mb-24">
-      {cart?.items?.length ? (
-        <>
-          <div className="flex-1">
-            <Wrapper cart={cart}>
-              <CheckoutForm
-                cart={cart}
-                customer={customer}
-                countryCode={countryCode}
-              />
-            </Wrapper>
+    <div className="pb-16 sm:pb-24 pt-4 sm:pt-6 bg-[#f5f6f7]">
+      <div className="flex flex-col-reverse small:flex-row content-container gap-8">
+        {cart?.items?.length ? (
+          <>
+            <div className="flex-1">
+              <Wrapper cart={cart}>
+                <CheckoutForm
+                  cart={cart}
+                  customer={customer}
+                  countryCode={countryCode}
+                />
+              </Wrapper>
+            </div>
+            <Divider className="small:hidden" />
+            <div className="sm:w-[416px]">
+              <CheckoutSummary cart={cart} />
+            </div>
+          </>
+        ) : (
+          <div>
+            <EmptyCartMessage />
           </div>
-          <Divider className="small:hidden" />
-          <div className="sm:w-[416px]">
-            <CheckoutSummary cart={cart} />
-          </div>
-        </>
-      ) : (
-        <div>
-          <EmptyCartMessage />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }

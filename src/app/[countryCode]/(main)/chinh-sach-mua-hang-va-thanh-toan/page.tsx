@@ -1,3 +1,5 @@
+import storeConfig from "@constants/storeConfig"
+import RiceSpike from "@modules/common/components/rice-spike"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -8,26 +10,27 @@ export const metadata: Metadata = {
 
 export default async function PaymentPolicyPage() {
   return (
-    <>
-      <div className="py-9 content-container mb-16 sm:mb-24">
-        <h1 className="sm:text-3xl text-2xl  font-bold  mb-6 font-times">
+    <div className="bg-[#F5F7FD] pt-3 pb-8 sm:pt-6 sm:pb-14">
+      <div className="content-container bg-white rounded-lg shadow-lg pt-4 pb-12  sm:pt-6 sm:pb-16 mb-4 sm:mb-8 relative">
+        <RiceSpike />
+        <h1 className="font-bold text-xl sm:text-2xl lg:text-[28px] font-times text-primary">
           1. Chính Sách Mua Hàng Và Thanh Toán
         </h1>
-        <ul className="pl-6 list-disc text-sm sm:text-base text-justify sm:text-normal ">
-          <li>Gọi điện thoại đến Hotline 1800.646.890 (Tổng đài miễn cước)</li>
-          <li>Truy cập website https://bonglua.com/vn</li>
-          <li>Facebook Page: Bông Lúa HomeLab có tích xanh chính hãng</li>
+        <ul className="pl-6 sm:pl-8 list-disc text-sm sm:text-base text-justify sm:text-normal mt-2">
+          <li>Gọi điện thoại đến Hotline {storeConfig.STORE_PHONE}</li>
+          <li>Truy cập website {storeConfig.STORE_WEB_NAME}</li>
+          <li>Facebook Page: Bông Lúa có tích xanh chính hãng</li>
           <li>
             Đến trải nghiệm không gian Xanh an lành tại chuỗi cửa hàng Bông Lúa.
             <br />
           </li>
         </ul>
-        <p>Cụ thể:</p>
+        {/* <p>Cụ thể:</p> */}
 
-        <h1 className="mt-4 mb-3 sm:mt-8 sm:mb-6 sm:text-2xl text-xl  font-bold font-times">
+        <h1 className="sm:mt-4 sm:mb-3 mt-2 mb-1 sm:text-xl text-base font-bold">
           Mua hàng tại website bonglua.com:
         </h1>
-        <div className="space-y-2 sm:space-y-4 sm:text-base text-sm text-justify sm:text-normal ">
+        <div className="space-y-1 sm:space-y-2 sm:text-base text-sm text-justify sm:text-normal sm:pl-4 ">
           <p>
             Bước 1: Truy cập website bonglua.com, tìm hiểu sản phẩm mình cần tại
             mục SẢN PHẨM hoặc vào mục KHUYẾN MÃI để tham khảo các chương trình
@@ -56,10 +59,10 @@ export default async function PaymentPolicyPage() {
             <br />
           </p>
         </div>
-        <h1 className="mt-4 mb-3 sm:mt-8 sm:mb-6 sm:text-2xl text-xl  font-bold font-times">
+        <h1 className="sm:mt-4 sm:mb-3 mt-2 mb-1 sm:text-xl text-base font-bold">
           Mua hàng tại Facebook Page Bông Lúa:
         </h1>
-        <div className="space-y-2 sm:space-y-4 sm:text-base text-sm text-justify sm:text-normal ">
+        <div className="space-y-1 sm:space-y-2 sm:text-base text-sm text-justify sm:text-normal sm:pl-4">
           <p>
             Xem bài đính ghim trên đầu trang, hoặc bài viết về sản phẩm bạn quan
             tâm
@@ -71,30 +74,29 @@ export default async function PaymentPolicyPage() {
           <p>Chỉ nghỉ lễ 01 dịp: Tết Nguyên đán (ngày 30 đến 05 Tết).</p>
           <p>Xem và tìm kiếm các Cửa hàng gần bạn:</p>
         </div>
-
-        <h1 className="mt-8 mb-6 sm:text-3xl text-2xl  font-bold font-times ">
+        <h1 className="font-bold text-xl sm:text-2xl lg:text-[28px] font-times text-primary mt-3 sm:mt-6">
           2. Vận chuyển và thanh toán
         </h1>
-        <div className="sm:text-base text-sm text-justify sm:text-normal">
-          <ul className="pl-6 list-disc ">
+        <div className="sm:text-base text-sm text-justify sm:text-normal mt-2 sm:pl-4">
+          {/* <ul className="pl-6 list-disc mt-2 sm:mt-4">
             <li>
               Quy trình giao nhận và vận chuyển
               <br />
             </li>
-          </ul>
-          <p>
+          </ul> */}
+          <p className="mt-2 sm:mt-4">
             Sau khi xác nhận đơn hàng và thông tin giao hàng từ Quý Khách, trong
             vòng 24h Bông Lúa sẽ tiến hành đóng gói hàng hóa và chuyển giao hàng
             cho đơn vị vận chuyển.
             <br />
           </p>
-          <p className="mt-4">
+          <p className="mt-2 sm:mt-4">
             Tại nội thành Hà Nội và Sài Gòn, nhân viên giao hàng của Bông Lúa sẽ
             trực tiếp giao hàng đến quý khách trong vòng 48h làm việc, trừ
             trường hợp có khó khăn đột xuất hoặc bất khả kháng.
             <br />
           </p>
-          <p className="mt-4">
+          <p className="mt-2 sm:mt-4">
             Tại các địa chỉ khác, Bông Lúa giao hàng qua công ty vận chuyển
             chuyên nghiệp với hình thức Hoả tốc. Thời gian từ 2-5 ngày làm việc
             tuỳ địa điểm. Các thành phố trung tâm sẽ nhận hàng nhanh hơn vùng
@@ -132,7 +134,7 @@ export default async function PaymentPolicyPage() {
             Master, ATM
             <br />
           </p>
-          <p className="pt-4 ">
+          <p className="mt-2 sm:mt-4">
             Đơn hàng vận chuyển: chuyển khoản trước, thanh toán qua các đơn vị
             thanh toán trực tuyến (áp dụng với đơn hàng đặt trên website), hoặc
             COD thanh toán tiền mặt tại nhà khi nhận hàng.
@@ -140,6 +142,6 @@ export default async function PaymentPolicyPage() {
           </p>
         </div>
       </div>
-    </>
+    </div>
   )
 }

@@ -11,7 +11,7 @@ const Text: React.FC<ListProductsProps> = ({ subTitle, title }) => {
           <h2 className="italic text-primary font-times font-bold text-lg sm:text-xl lg:text-2xl">
             {title}
           </h2>
-          <h1 className="sm:text-3xl text-2xl md:text-4xl md:text-44px font-bold font-times sm:mt-2">
+          <h1 className="sm:text-[28px] text-xl  md:text-4xl md:text-44px font-bold font-times sm:mt-2">
             {subTitle}
           </h1>
         </div>

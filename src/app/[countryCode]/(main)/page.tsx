@@ -1,14 +1,9 @@
 import { Metadata } from "next"
-import Image from "next/image"
-import Hero from "@modules/home/components/hero"
-import Category from "@modules/home/components/category"
 
+import Category from "@modules/home/components/category"
 import FlashSale from "@modules/layout/components/flash-sale"
 import Collection from "@modules/layout/components/collection"
-
 import Blogs from "@modules/layout/components/blogs"
-import Text from "@modules/layout/components/text"
-import IMGS from "@constants/IMGS"
 import {
   BEST_SELLER_PRODUCT_HANDLE,
   DAC_SAN_OCOP_HANDLE,
@@ -27,7 +22,7 @@ import Brands from "@modules/layout/components/brand"
 export const metadata: Metadata = {
   title: "Bông Lúa",
   description:
-    "Trang Web bán các sản phẩm về làm đẹp theo một cách tự nhiên và an toàn",
+    "Bông Lúa – Nơi cung cấp các sản phẩm nông nghiệp sạch, an toàn và chất lượng cao. Chúng tôi cam kết mang đến những mặt hàng tươi ngon, được nuôi trồng theo phương pháp tự nhiên, không hóa chất độc hại, giúp bảo vệ sức khỏe người tiêu dùng và môi trường. Khám phá đa dạng các loại rau củ, trái cây, gạo, đặc sản vùng miền và nhiều sản phẩm khác, được tuyển chọn kỹ lưỡng từ những nông trại uy tín. Hãy cùng Bông Lúa hướng tới một cuộc sống xanh, lành mạnh và bền vững!",
 }
 
 export default async function Home({
@@ -87,6 +82,7 @@ export default async function Home({
       />
 
       <Collection collection={getCollectionByHandle(DAC_SAN_OCOP_HANDLE)} />
+
       {brands && brands.length > 0 && <Brands brands={brands} />}
 
       {blogs && blogTypes && blogs.length > 0 && (

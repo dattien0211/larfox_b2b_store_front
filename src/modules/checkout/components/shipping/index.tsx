@@ -64,7 +64,7 @@ const Shipping: React.FC<ShippingProps> = ({
       <div className="flex flex-row items-center justify-between mb-2 sm:mb-6">
         <h1
           className={clx(
-            "flex flex-row sm:text-3xl text-xl font-semibold font-times text-primary gap-x-2 items-baseline",
+            "flex flex-row sm:text-[28px] text-xl font-semibold font-times text-primary gap-x-2 items-baseline",
             {
               "opacity-50 pointer-events-none select-none":
                 !isOpen && cart.shipping_methods?.length === 0,
@@ -83,7 +83,7 @@ const Shipping: React.FC<ShippingProps> = ({
             <Text>
               <button
                 onClick={handleEdit}
-                className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-sm sm:text-base !font-manrope !text-primary"
+                className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover text-sm sm:text-base !font-manrope-semibold !text-primary"
                 data-testid="edit-delivery-button"
               >
                 Sửa
@@ -136,7 +136,7 @@ const Shipping: React.FC<ShippingProps> = ({
 
           <Button
             size="large"
-            className="bg-primary rounded-none shadow-none hover:bg-orang-10 transition duration-300 sm:mb-0 mb-4"
+            className="bg-primary/90 hover:bg-primary rounded-md shadow-none transition duration-300 sm:mb-0 mb-4 capitalize"
             onClick={handleSubmit}
             isLoading={isLoading}
             disabled={!cart.shipping_methods?.[0]}

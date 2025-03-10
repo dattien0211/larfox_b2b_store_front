@@ -12,15 +12,15 @@ export const metadata: Metadata = {
 
 export default function AboutUs() {
   return (
-    <div className="mb-16 sm:mb-32">
-      <div className="content-container">
+    <div className="bg-[#F5F7FD] pt-3 pb-8 sm:pt-6 sm:pb-14">
+      <div className="content-container bg-white rounded-lg shadow-lg py-4 sm:pt-2 sm:pb-14 mb-4 sm:mb-8 relative">
         <Image
           src={IMGS.IntroImage}
           alt="Hình ảnh giới thiệu"
           className="w-full h-auto object-contain mt-4"
         />
 
-        <h1 className="text-2xl sm:text-3xl font-bold text-center text-primary mb-4 mt-3 sm:mb-8 sm:mt-6 font-times">
+        <h1 className="sm:text-[28px] text-xl font-bold text-center text-primary mb-4 mt-3 sm:mb-8 sm:mt-6 font-times">
           Về Chúng Tôi
         </h1>
 
@@ -45,7 +45,7 @@ export default function AboutUs() {
           <h2 className="text-lg sm:text-2xl font-semibold text-primary mb-2 sm:mb-4 font-times">
             Sứ Mệnh
           </h2>
-          <ul className="list-disc list-inside text-gray-700 pl-4 sm:pl-8 text-sm sm:text-base space-y-2">
+          <ul className="list-disc list-inside text-gray-700 pl-4 sm:pl-8 text-sm sm:text-base  space-y-1 sm:space-y-2">
             <li>
               <strong>Mang đến sự an tâm:</strong> Cam kết cung cấp nông sản
               được chọn lọc kỹ càng, đảm bảo tiêu chuẩn an toàn vệ sinh thực
@@ -86,7 +86,7 @@ export default function AboutUs() {
           <h2 className="text-lg sm:text-2xl font-semibold text-primary mb-2 sm:mb-4 font-times">
             Giá Trị Cốt Lõi
           </h2>
-          <ul className="list-disc list-inside text-gray-700 pl-4 sm:pl-8 text-sm sm:text-base space-y-2">
+          <ul className="list-disc list-inside text-gray-700 pl-4 sm:pl-8 text-sm sm:text-base space-y-1 sm:space-y-2">
             <li>
               <strong>Chất lượng:</strong> Mỗi sản phẩm đều trải qua quy trình
               kiểm định nghiêm ngặt từ trang trại đến bàn ăn.
@@ -137,14 +137,14 @@ export default function AboutUs() {
             Chúng tôi luôn sẵn sàng lắng nghe ý kiến và giải đáp mọi thắc mắc
             của khách hàng.
           </p>
-          <ul className="pl-4 sm:pl-8 list-disc list-inside space-y-2">
-            <li className="text-base sm:text-lg text-gray-700 font-times">
+          <ul className="pl-4 sm:pl-8 list-disc list-inside space-y-1 sm:space-y-2">
+            <li className="text-sm sm:text-lg text-gray-700 font-times">
               <strong>Email:</strong> {storeConfig.STORE_EMAIL}
             </li>
-            <li className="text-base sm:text-lg text-gray-700 font-times">
+            <li className="text-sm sm:text-lg text-gray-700 font-times">
               <strong>Số điện thoại:</strong> {storeConfig.STORE_PHONE}
             </li>
-            <li className="text-base sm:text-lg text-gray-700 font-times">
+            <li className="text-sm sm:text-lg text-gray-700 font-times">
               <strong>Địa chỉ:</strong> {storeConfig.STORE_ADDRESS}
             </li>
           </ul>

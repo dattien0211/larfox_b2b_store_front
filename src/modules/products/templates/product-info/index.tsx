@@ -27,7 +27,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
       <div className="flex flex-col gap-y-2 sm:gap-y-4">
         <Heading
           level="h2"
-          className="sm:text-3xl text-2xl  leading-10 "
+          className="sm:text-[28px] text-xl leading-10 "
           data-testid="product-title"
         >
           {product.title}
