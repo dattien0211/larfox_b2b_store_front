@@ -6,4 +6,4 @@ export const DAC_SAN_OCOP_HANDLE = "quy-hoi-dac-san-ocop"
 
 export const BEST_SELLER_PRODUCT_HANDLE = "san-pham-ban-chay"
 
-export const EQUIPMENT_PRODUCT_HANDLE = "trang-thiet-bi"
+export const FEATURED_PRODUCT_HANDLE = "featured-product"

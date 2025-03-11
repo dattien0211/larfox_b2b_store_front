@@ -14,6 +14,7 @@ import ProductReview from "@modules/products/components/product-review"
 import { getCustomer } from "@lib/data/customer"
 import ProductActionsWrapper from "./product-actions-wrapper"
 import { getProductsById } from "@lib/data/products"
+import ProductDescription from "../components/product-description"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
@@ -29,12 +30,22 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   if (!product || !product.id) {
     return notFound()
   }
-  const customer = await getCustomer().catch(() => null)
-  const token = cookies().get("_medusa_jwt")?.value
-  const [productById] = await getProductsById({
+  // const customer = await getCustomer().catch(() => null)
+  // const [productById] = await getProductsById({
+  //   ids: [product.id],
+  //   regionId: region.id,
+  // })
+
+  const customerPromise = getCustomer().catch(() => null)
+  const productPromise = getProductsById({
     ids: [product.id],
     regionId: region.id,
   })
+  const [customer, [productById]] = await Promise.all([
+    customerPromise,
+    productPromise,
+  ])
+  const token = cookies().get("_medusa_jwt")?.value
 
   return (
     <div className="mb-16 sm:mb-24">
@@ -70,33 +81,17 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
           </div>
         </div>
 
-        <div className="mt-6 md:mt-14 w-full">
-          <Heading level="h1" className="text-primary text-xl sm:text-2xl ">
-            Mô tả sản phẩm
-          </Heading>
-          <div className="border border-grey-20 sm:pt-4 md:pt-6 sm:pb-8 md:pb-12 sm:px-8 md:px-10 mt-6 sm:mt-10 p-4">
-            <div
-              className="ql-editor rich-text-content"
-              dangerouslySetInnerHTML={{
-                __html: product.description
-                  ? product.description.replace(/\n/g, "<br />")
-                  : "Mô tả sản phẩm đang được cập nhật.",
-              }}
-            ></div>
-          </div>
-        </div>
+        <Suspense fallback={<p>Đang tải mô tả sản phẩm...</p>}>
+          <ProductDescription description={product?.description || undefined} />
+        </Suspense>
 
-        <div className="mt-6 sm:mt-10 w-full">
-          <Heading level="h1" className="text-primary text-xl sm:text-2xl ">
-            Đánh giá sản phẩm
-          </Heading>
-
+        <Suspense fallback={<p>Đang tải đánh giá sản phẩm...</p>}>
           <ProductReview
             customer={customer}
             product={productById}
             token={token}
           />
-        </div>
+        </Suspense>
       </div>
 
       <div

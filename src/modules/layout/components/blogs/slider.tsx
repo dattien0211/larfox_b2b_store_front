@@ -1,7 +1,7 @@
 "use client"
 
 import { useOS } from "@lib/hooks/OSContext"
-import React, { useRef } from "react"
+import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import {
   Navigation,
@@ -23,34 +23,33 @@ interface BlogSliderProps {
 }
 
 const BlogSlider: React.FC<BlogSliderProps> = ({ blogs, blogTypes }) => {
-  const sliderRef = useRef<any>(null)
-  const { os } = useOS()
-
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="w-[90%] sm:w-full">
-        <Swiper
-          modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
-          loop
-          slidesPerView={os === "desktop" ? 3 : os === "tablet" ? 2 : 1}
-          spaceBetween={32}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          onSwiper={(swiper) => {
-            sliderRef.current = swiper
-          }}
-        >
-          {blogs &&
-            blogs.length > 0 &&
-            blogs.map((blog, index) => (
-              <SwiperSlide key={index}>
-                <BlogCard blog={blog} blogTypes={blogTypes} />
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      </div>
+    <div className="w-full rounded-lg overflow-hidden h-full">
+      <Swiper
+        modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
+        loop
+        slidesPerView={1}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: true,
+        }}
+        navigation
+        pagination={{
+          clickable: true,
+          type: "bullets",
+          renderBullet: (index, className) => {
+            return `<span class="${className} custom-dot" ><span class="custom-dot-child"></span></span>`
+          },
+        }}
+      >
+        {blogs &&
+          blogs.length > 0 &&
+          blogs.map((blog, index) => (
+            <SwiperSlide key={index}>
+              <BlogCard blog={blog} blogTypes={blogTypes} />
+            </SwiperSlide>
+          ))}
+      </Swiper>
     </div>
   )
 }

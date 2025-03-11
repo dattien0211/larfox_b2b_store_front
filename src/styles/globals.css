@@ -10,6 +10,25 @@ body {
 /* ::-webkit-scrollbar {
   width: 0;
 } */
+.swiper-button-prev,
+.swiper-button-next {
+  color: white !important; /* Change text color */
+}
+
+.loader {
+  width: 14px;
+  height: 14px;
+  border: 2px solid white;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 @layer fonts {
   @font-face {
@@ -108,44 +127,6 @@ body {
     font-size: 14px;
     color: #000; /* Optional color */
     padding-left: 4px;
-  }
-}
-
-@layer swiper {
-  .swiper-pagination-bullet.custom-dot {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: white; /* Default color for active dots */
-    margin: 0 8px !important; /* Spacing between dots */
-    display: inline-block;
-    cursor: pointer;
-    position: relative; /* Positioning the child element inside */
-  }
-
-  .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
-    opacity: 0.5; /* Inactive bullets have 50% opacity */
-    background-color: #e0e0e0; /* Inactive bullets have white background */
-  }
-
-  .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    background-color: white; /* Active bullet color */
-    opacity: 1; /* Active bullets have full opacity */
-    box-shadow: 0 4px 8px rgba(224, 129, 5, 0.1);
-  }
-
-  .swiper-pagination-bullet:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    background-color: #ffd700; /* Highlight on hover with gold tone */
-    opacity: 1; /* Ensure full visibility on hover */
-  }
-
-  @media (max-width: 640px) {
-    .swiper-pagination-bullet.custom-dot {
-      width: 10px;
-      height: 10px;
-      margin: 0 4px !important; /* Spacing between dots */
-    }
   }
 }
 
@@ -255,6 +236,33 @@ body {
 
   .sm:text-3xl text-xl -semi {
     @apply sm:text-3xl text-xl   leading-[44px] font-semibold;
+  }
+
+  .swiper-pagination-bullet.custom-dot {
+    @apply w-7 h-2 rounded-full bg-primary cursor-pointer relative;
+    margin: 0 6px !important;
+  }
+
+  .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+    @apply opacity-50 bg-gray-300;
+  }
+
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    @apply bg-white opacity-100 shadow-lg;
+    box-shadow: 0 4px 8px rgba(224, 129, 5, 0.1);
+  }
+
+  .swiper-pagination-bullet:hover {
+    @apply scale-110;
+    background-color: #ffd700; /* Hover màu vàng */
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .swiper-pagination-bullet.custom-dot {
+      @apply w-5 h-2.5;
+      margin: 0 4px !important;
+    }
   }
 }
 

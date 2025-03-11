@@ -9,7 +9,8 @@ import StoreConfig from "@constants/storeConfig"
 moment.locale("vi")
 
 export default function TopNav() {
-  const { FaceBook, Twitter, Mail, Skype, Clock, Location } = Icons
+  // const { FaceBook, Twitter,Skype, Mail,  Clock, Location } = Icons
+  const { FaceBook, Phone, Mail, Clock, Location } = Icons
 
   const [vietnameseTime, setVietnameseTime] = useState("")
 
@@ -41,7 +42,7 @@ export default function TopNav() {
       <div className="content-container h-full">
         <div className="w-full flex items-center justify-between h-full">
           <div className="flex gap-x-4 text-grey-45">
-            <LocalizedClientLink
+            {/* <LocalizedClientLink
               href="/"
               className="flex items-center justify-center"
             >
@@ -58,16 +59,24 @@ export default function TopNav() {
               className="flex items-center justify-center"
             >
               <Skype />
-            </LocalizedClientLink>
-          </div>
-          <div className="flex gap-x-4  text-grey-45">
+            </LocalizedClientLink> */}
             <div className="flex items-center justify-center">
               <Clock />
               <p className="ml-2 text-xs">{vietnameseTime}</p>
             </div>
+          </div>
+          <div className="flex gap-x-4  text-grey-45">
+            {/* <div className="flex items-center justify-center">
+              <Clock />
+              <p className="ml-2 text-xs">{vietnameseTime}</p>
+            </div>*/}
             <div className="flex items-center justify-center">
               <Location />
               <p className="ml-2 text-xs">{StoreConfig.STORE_ADDRESS}</p>
+            </div>
+            <div className="flex items-center justify-center">
+              <Phone size={12} />
+              <p className="ml-2 text-xs">{StoreConfig.STORE_PHONE}</p>
             </div>
             <div className="flex items-center justify-center">
               <Mail />

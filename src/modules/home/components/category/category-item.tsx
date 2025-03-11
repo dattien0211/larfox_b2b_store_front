@@ -28,24 +28,35 @@ const CategoryItem: React.FC<CategoryItemProp> = ({
             : "/bo-suu-tap/" + link
           : ""
       }
-      className="cursor-pointer  border-b border-r
-      border-primary/35 hover:border-primary/45
-        hover:z-[1] hover:shadow-md transition-all duration-0 ease-linear"
+      className="group cursor-pointer border-b border-r border-primary/35
+        hover:border-primary/45 hover:z-[1] hover:shadow-lg transition-all duration-150 ease-in-out"
     >
-      <div className="w-full flex flex-col items-center justify-center p-2 gap-y-1 sm:p-3 sm:gap-y-3">
-        <div className="w-[80%] aspect-square relative flex flex-col items-center justify-center">
+      <div className="w-full flex flex-col items-center justify-center p-2 gap-y-1 sm:p-3 sm:gap-y-[14px] overflow-hidden">
+        {/* Image Container */}
+        <div
+          className="w-[80%] aspect-square relative flex flex-col items-center justify-center 
+          group-hover:scale-[1.15]  transition-transform duration-200 ease-out"
+        >
           {(isAll || imagesSRC) && (
             <Image
               src={isAll ? IMGS.AllProducts : imagesSRC || ""}
-              alt="img"
+              alt={text || "Category image"}
               fill
-              className="object-contain w-full h-full rounded-sm"
-              sizes="(max-width: 768px) 75px, (max-width: 1200px) 120px, 120px"
-              priority
+              className="object-cover w-full h-full rounded-md transition-opacity duration-300 ease-in-out 
+                "
+              sizes="(max-width: 640px) 75px, (max-width: 1024px) 120px, 150px"
+              // priority={true}
+              placeholder="blur"
+              blurDataURL="/placeholder.jpg"
             />
           )}
         </div>
-        <h3 className="text-black/80 line-clamp-2 text-xs sm:text-sm h-8 sm:h-10 text-center max-w-full">
+
+        {/* Text */}
+        <h3
+          className="text-gray-600 line-clamp-2 text-xs sm:text-[15px] h-8 sm:h-12  text-center max-w-full 
+          group-hover:text-primary transition-colors duration-200  font-semibold flex items-center"
+        >
           {text}
         </h3>
       </div>

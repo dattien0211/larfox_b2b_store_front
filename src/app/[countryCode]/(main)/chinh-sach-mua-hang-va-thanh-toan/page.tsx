@@ -30,7 +30,7 @@ export default async function PaymentPolicyPage() {
         <h1 className="sm:mt-4 sm:mb-3 mt-2 mb-1 sm:text-xl text-base font-bold">
           Mua hàng tại website bonglua.com:
         </h1>
-        <div className="space-y-1 sm:space-y-2 sm:text-base text-sm text-justify sm:text-normal sm:pl-4 ">
+        <div className="space-y-1 sm:space-y-2 sm:text-base text-sm text-justify sm:text-normal indent-2 sm:indent-4">
           <p>
             Bước 1: Truy cập website bonglua.com, tìm hiểu sản phẩm mình cần tại
             mục SẢN PHẨM hoặc vào mục KHUYẾN MÃI để tham khảo các chương trình
@@ -62,7 +62,7 @@ export default async function PaymentPolicyPage() {
         <h1 className="sm:mt-4 sm:mb-3 mt-2 mb-1 sm:text-xl text-base font-bold">
           Mua hàng tại Facebook Page Bông Lúa:
         </h1>
-        <div className="space-y-1 sm:space-y-2 sm:text-base text-sm text-justify sm:text-normal sm:pl-4">
+        <div className="space-y-1 sm:space-y-2 sm:text-base text-sm text-justify sm:text-normal indent-2 sm:indent-4">
           <p>
             Xem bài đính ghim trên đầu trang, hoặc bài viết về sản phẩm bạn quan
             tâm
@@ -77,26 +77,26 @@ export default async function PaymentPolicyPage() {
         <h1 className="font-bold text-xl sm:text-2xl lg:text-[28px] font-times text-primary mt-3 sm:mt-6">
           2. Vận chuyển và thanh toán
         </h1>
-        <div className="sm:text-base text-sm text-justify sm:text-normal mt-2 sm:pl-4">
+        <div className="sm:text-base text-sm text-justify sm:text-normal mt-2 indent-2 sm:indent-4 space-y-1 sm:space-y-2">
           {/* <ul className="pl-6 list-disc mt-2 sm:mt-4">
             <li>
               Quy trình giao nhận và vận chuyển
               <br />
             </li>
           </ul> */}
-          <p className="mt-2 sm:mt-4">
+          <p>
             Sau khi xác nhận đơn hàng và thông tin giao hàng từ Quý Khách, trong
             vòng 24h Bông Lúa sẽ tiến hành đóng gói hàng hóa và chuyển giao hàng
             cho đơn vị vận chuyển.
             <br />
           </p>
-          <p className="mt-2 sm:mt-4">
+          <p>
             Tại nội thành Hà Nội và Sài Gòn, nhân viên giao hàng của Bông Lúa sẽ
             trực tiếp giao hàng đến quý khách trong vòng 48h làm việc, trừ
             trường hợp có khó khăn đột xuất hoặc bất khả kháng.
             <br />
           </p>
-          <p className="mt-2 sm:mt-4">
+          <p>
             Tại các địa chỉ khác, Bông Lúa giao hàng qua công ty vận chuyển
             chuyên nghiệp với hình thức Hoả tốc. Thời gian từ 2-5 ngày làm việc
             tuỳ địa điểm. Các thành phố trung tâm sẽ nhận hàng nhanh hơn vùng
@@ -104,7 +104,7 @@ export default async function PaymentPolicyPage() {
             các mặt hàng dạng khô.
             <br />
           </p>
-          <ul className="mt-4 pl-6 list-disc ">
+          <ul className=" pl-6 list-disc ">
             <li>
               Chính sách vận chuyển
               <br />
@@ -123,7 +123,7 @@ export default async function PaymentPolicyPage() {
             biểu phí của đơn vị vận chuyển (Grab, GHTK)
             <br />
           </p>
-          <ul className="pt-4 pl-6 list-disc ">
+          <ul className="pt-2 pl-6 list-disc ">
             <li>
               Hình thức thanh toán
               <br />
@@ -134,7 +134,7 @@ export default async function PaymentPolicyPage() {
             Master, ATM
             <br />
           </p>
-          <p className="mt-2 sm:mt-4">
+          <p>
             Đơn hàng vận chuyển: chuyển khoản trước, thanh toán qua các đơn vị
             thanh toán trực tuyến (áp dụng với đơn hàng đặt trên website), hoặc
             COD thanh toán tiền mặt tại nhà khi nhận hàng.

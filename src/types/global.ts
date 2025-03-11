@@ -21,7 +21,7 @@ export type Blog = {
   title: string
   handle: string
   type: string
-  thumbnail: string
+  thumbnail: Record<string, any>
   short_description: string
   description: string
   metadata: Record<string, any>
@@ -31,6 +31,7 @@ export type BlogType = {
   id: string
   name: string
   value: string
+  thumbnail: Record<string, any>
   description: string
   metadata: Record<string, any>
 }

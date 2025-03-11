@@ -26,20 +26,22 @@ const Collection: React.FC<CollectionProps> = ({ collection }) => {
   const displayedProducts =
     products && products.length > 0
       ? os === "desktop"
-        ? products.slice(0, 8)
+        ? products.slice(0, 10)
         : os === "tablet"
         ? products.slice(0, 6)
         : products.slice(0, 4)
       : []
 
+  if (!collection) return null
+
   return (
-    <div className="relative content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white">
+    <div className="relative content-container py-4 sm:py-6 my-5 sm:my-9 rounded-lg shadow-lg bg-white">
       <RiceSpike />
       <CollectionBanner
         imageSrc={collection?.metadata?.thumbnail?.url}
         href={collection?.handle ? `/bo-suu-tap/${collection?.handle}` : "/"}
       />
-      <div className="mt-2 sm:mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-y-12">
+      <div className="mt-2 sm:mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         {displayedProducts?.map((product, index) => (
           <ProductItem key={index} productItem={product} />
         ))}

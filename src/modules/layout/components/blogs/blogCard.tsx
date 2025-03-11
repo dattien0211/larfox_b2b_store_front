@@ -10,73 +10,63 @@ interface BlogCardProps {
   blog: Blog
   blogTypes?: BlogType[]
   isRow?: boolean
+  isSmall?: boolean
+  classBlog?: string
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({
   blog,
-  blogTypes,
   isRow = false,
+  isSmall = false,
+  classBlog,
 }) => {
   const { os } = useOS()
 
   return (
     <div
       className={clsx(
-        "shadow-lg  flex flex-col border border-primary rounded-md",
-        {
-          "!flex-row": isRow,
-          "!flex-col": os === "mobile",
-        }
+        "w-full shadow-lg relative h-[200px] md:h-[380px] ",
+        isRow ? "!flex-row" : "",
+        os === "mobile" ? "!flex-col" : "",
+        classBlog
       )}
     >
-      <div
-        className={clsx("relative w-full h-[340px] p-2 ", {
-          "!w-1/2  !h-[340px]": isRow,
-          "!w-full": os === "mobile",
-        })}
-      >
-        {blog?.thumbnail && (
-          <Image
-            //@ts-ignore
-            src={blog?.thumbnail?.url}
-            alt={blog?.title}
-            width={370}
-            height={290}
-            className="w-full h-full object-cover"
-          />
-        )}
+      <div className="absolute inset-0  ">
+        <div className={"relative w-full h-full "}>
+          {blog?.thumbnail && (
+            <Image
+              //@ts-ignore
+              src={blog?.thumbnail?.url}
+              alt={blog?.title}
+              width={1200}
+              height={340}
+              className="w-full h-full object-cover rounded-lg"
+            />
+          )}
+        </div>
       </div>
 
-      <div
-        className={clsx(
-          "bg-grey-15 flex flex-col gap-y-2 sm:gap-y-3 rounded-b rounded-md  border-b border-primary",
-          {
-            "justify-center w-1/2 p-4 sm:p-8 ": isRow,
-            "py-6 px-4 sm:pb-8 ": !isRow,
-            "!py-6 !px-4 !sm:px-8 !sm:pb-12 w-full": os === "mobile",
-          }
-        )}
-      >
-        {blog?.type && blogTypes && blogTypes?.length > 0 && (
+      <div className={clsx("absolute bottom-0 left-0 z-10 w-full rounded-lg")}>
+        <h1
+          className={clsx(
+            "px-4 shadow-inner  opacity-[45] flex items-end justify-start -rotate-180",
+            isSmall ? "items-center h-16 md-20" : "items-end h-20 md:h-24"
+          )}
+          style={{
+            background:
+              "linear-gradient(180deg, #000000 30.46%, rgba(0, 0, 0, 0) 100%)",
+          }}
+        >
           <LocalizedClientLink
-            href={`/loai-bai-viet/${blog.type}`}
-            className="text-primary font-semibold text-sm cursor-pointer hover:text-orang-30"
+            href={`/bai-viet/${blog?.handle}`}
+            className={clsx(
+              "-rotate-180 text-white font-semibold opacity-100 flex-1 line-clamp-2",
+              isSmall ? "text-sm sm:text-base" : "text-base sm:text-xl"
+            )}
           >
-            {blogTypes?.find((blogType) => blogType?.value === blog?.type)
-              ?.name || ""}
+            {blog?.title}
           </LocalizedClientLink>
-        )}
-        <h1 className="text-lg sm:text-xl font-bold font-times">
-          {blog?.title}
         </h1>
-        <p className="text-sm line-clamp-4 text-justify h-20">
-          {blog?.short_description}
-        </p>
-        <button className="hover:bg-primary hover:text-white text-nowrap border border-primary text-primary px-2 sm:text-base text-sm sm:px-4 py-1 rounded-full w-[40%]">
-          <LocalizedClientLink href={`/bai-viet/${blog?.handle}`}>
-            Xem Thêm
-          </LocalizedClientLink>
-        </button>
       </div>
     </div>
   )

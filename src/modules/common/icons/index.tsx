@@ -36,6 +36,7 @@ import { default as Filter } from "./filter"
 import { default as XMark } from "./x-mark"
 import { default as Cart } from "./cart"
 import { default as Flame } from "./flame"
+import { default as Phone } from "./phone"
 
 export default {
   DownArrow,
@@ -75,4 +76,5 @@ export default {
   XMark,
   Cart,
   Flame,
+  Phone,
 }

@@ -16,7 +16,7 @@ const Category: React.FC<CategoryProps> = async ({ categories }) => {
   }
 
   return (
-    <div className="relative content-container py-4 sm:pt-6 sm:pb-8 mb-4 sm:mb-8  bg-white rounded-lg shadow-lg">
+    <div className="relative content-container py-4 sm:pt-6 sm:pb-8 mb-5 sm:mb-9  bg-white rounded-lg shadow-lg">
       <RiceSpike />
       <Heading
         level="h1"

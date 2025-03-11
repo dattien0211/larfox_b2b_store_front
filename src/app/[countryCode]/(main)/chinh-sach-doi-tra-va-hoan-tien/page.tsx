@@ -16,7 +16,7 @@ export default async function RefundPolicyPage() {
         <h1 className="font-bold text-xl sm:text-2xl lg:text-[28px] font-times text-primary">
           Chính Sách Đổi Trả Và Hoàn Tiền
         </h1>
-        <p className="text-justify sm:text-normal sm:text-base text-sm mt-2 indent-4">
+        <p className="text-justify sm:text-normal sm:text-base text-sm mt-2 indent-2 sm:indent-4">
           Quý khách vui lòng kiểm tra hàng ngay sau khi nhận được, đảm bảo sản
           phẩm đúng số lượng, chủng loại, mẫu mã và chất lượng như yêu cầu. Nếu
           có sai sót hoặc phát sinh ngoài ý muốn, quý khách vui lòng thông báo
@@ -28,26 +28,26 @@ export default async function RefundPolicyPage() {
           1. Đổi trả do lỗi sai đơn hoặc lỗi vận chuyển:
         </h2>
         <div className="text-justify sm:text-normal sm:text-base text-sm">
-          <p className="indent-4">
+          <p className="indent-2 sm:indent-4">
             Để đảm bảo chất lượng dịch vụ và đem lại cho Quý Khách những trải
             nghiệm tốt nhất với sản phẩm, Bông Lúa áp dụng chính sách đổi hàng
             với các trường hợp sau:
           </p>
 
-          <div className="py-4 pl-4 space-y-2 sm:pace-y-4">
+          <div className="py-2 indent-2 sm:indent-4 space-y-1 sm:space-y-2 pl-2 sm:pl-4">
             <p>
-              1.Nhầm sản phẩm, thiếu hoặc thừa sản phẩm so với đơn hàng đã xác
+              1. Nhầm sản phẩm, thiếu hoặc thừa sản phẩm so với đơn hàng đã xác
               nhận
             </p>
-            <p>2.Sản phẩm bị móp vỡ, gãy hỏng do vận chuyển</p>
-            <p>3.Sản phẩm có lỗi kỹ thuật phát hiện khi sử dụng</p>
+            <p>2. Sản phẩm bị móp vỡ, gãy hỏng do vận chuyển</p>
+            <p>3. Sản phẩm có lỗi kỹ thuật phát hiện khi sử dụng</p>
           </div>
           <div className="space-y-1 sm:space-y-2">
-            <p className="indent-4 sm:indent-0">
+            <p className="indent-2 sm:indent-4 ">
               Trong 3 trường hợp trên, Bông Lúa đổi hàng cho quý khách theo
               trình tự sau:
             </p>
-            <div className="pl-3 sm:pl-6 space-y-1 sm:space-y-2">
+            <div className="space-y-1 sm:space-y-2 indent-2 sm:indent-4 ">
               <p>
                 Bước 1. Quý khách vui lòng thông báo cho Bông Lúa trong vòng 24h
                 kể từ khi nhận hàng, kèm theo ảnh chụp gói hàng và toàn bộ sản
@@ -69,7 +69,7 @@ export default async function RefundPolicyPage() {
                 Bông Lúa khi nhận được hàng đổi
               </p>
             </div>
-            <p className="indent-4">
+            <p className="indent-2 sm:indent-4">
               Phí vận chuyển đổi trả: với sản phẩm cần đổi do 03 lý do trên, quý
               khách không phải trả phí vận chuyển, mọi chi phí vận chuyển phát
               sinh sẽ do Bông Lúa thanh toán bằng hình thức thanh toán trực tiếp
@@ -81,7 +81,7 @@ export default async function RefundPolicyPage() {
           2. Đổi trả sản phẩm theo mong muốn riêng của khách hàng:
         </h2>
         <div className="text-justify sm:text-normal sm:text-base text-sm ">
-          <p className="indent-4">
+          <p className="indent-2 sm:indent-4">
             Với mong muốn Khách lựa chọn được sản phẩm tốt và có trải nghiệm hài
             lòng nhất, cũng như đảm bảo niềm tin vào sản phẩm Bông Lúa, khách
             hàng có thể đổi trả sản phẩm đã mua tại Bông Lúa trong vòng 05 ngày
@@ -134,7 +134,7 @@ export default async function RefundPolicyPage() {
           3. Hoàn trả sản phẩm:
         </h2>
         <div className="text-justify sm:text-normal sm:text-base text-sm space-y-1 sm:space-y-2">
-          <p className="indent-4">
+          <p className="indent-2  sm:indent-4">
             Trong trường hợp khách hàng gặp phản ứng không mong muốn với sản
             phẩm. Quý khách vui lòng cung cấp hình ảnh về tình trạng gặp phải
             hoặc giấy khám sức khỏe từ cơ sở y tế để Bông Lúa xác nhận.
@@ -161,7 +161,7 @@ export default async function RefundPolicyPage() {
           <ul className="list-disc pl-6 mb-2">
             <li>Gửi hàng về Bông Lúa:</li>
           </ul>
-          <p className="indent-4">
+          <p className="indent-2  sm:indent-4">
             Trong các trường hợp Bảo hành hoặc Đổi trả có yêu cầu gửi hàng về Cỏ
             Mềm, Quý khách vui lòng đóng gói sản phẩm cẩn thận nhằm đảm bảo
             trạng thái nguyên vẹn và gửi hàng cho đối tác vận chuyển trong vòng
@@ -169,7 +169,9 @@ export default async function RefundPolicyPage() {
             Lúa về đơn hàng. Bông Lúa rất tiếc sẽ phải từ chối sản phẩm bị hư
             hại do lỗi đóng gói sơ sài từ Quý khách.
           </p>
-          <p>Địa chỉ nhận hàng đổi trả: {storeConfig.STORE_ADDRESS}</p>
+          <p className="indent-2  sm:indent-4">
+            Địa chỉ nhận hàng đổi trả: {storeConfig.STORE_ADDRESS}
+          </p>
         </div>
       </div>
     </div>

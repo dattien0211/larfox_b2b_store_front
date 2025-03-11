@@ -1,6 +1,6 @@
-"use client" // For Next.js 13+ to ensure Swiper runs on the client side
+"use client"
 
-import React, { useRef, useState, useCallback, useEffect } from "react"
+import React, { useRef, useState, useCallback, useMemo } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Thumbs, Autoplay, Controller } from "swiper/modules"
 import "swiper/css"
@@ -12,6 +12,7 @@ import { HttpTypes } from "@medusajs/types"
 import Icons from "@modules/common/icons"
 import clsx from "clsx"
 import { useOS } from "@lib/hooks/OSContext"
+
 interface ImageSliderProps {
   images: HttpTypes.StoreProductImage[]
   showThumbnails?: boolean
@@ -21,22 +22,46 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   images,
   showThumbnails = false,
 }) => {
+  // const { os } = useOS()
   const mainSliderRef = useRef<any>(null)
   const [activeIndex, setActiveIndex] = useState(0)
-  const { os } = useOS()
   const { RightArrow, LeftArrow } = Icons
 
-  const handlePrev = useCallback(() => {
-    if (mainSliderRef.current) {
-      mainSliderRef.current?.slidePrev() // Move the main slider
-    }
-  }, [])
+  const handlePrev = useCallback(() => mainSliderRef.current?.slidePrev(), [])
+  const handleNext = useCallback(() => mainSliderRef.current?.slideNext(), [])
 
-  const handleNext = useCallback(() => {
-    if (mainSliderRef.current) {
-      mainSliderRef.current?.slideNext() // Move the main slider
-    }
-  }, [])
+  const handleSlideChange = useCallback(
+    (swiper: any) => setActiveIndex(swiper.realIndex),
+    []
+  )
+
+  const thumbnailElements = useMemo(
+    () =>
+      images.map((image, index) => {
+        const isActive = activeIndex === index
+        return (
+          <div
+            key={index}
+            className={clsx(
+              "p-2 w-[120px] h-[70px] sm:h-[120px] border transition-all duration-300 ease-in-out cursor-pointer relative",
+              isActive
+                ? "opacity-100 border-yellow-400"
+                : "opacity-50 border-[#AEAEAE]"
+            )}
+            onClick={() => mainSliderRef.current?.slideTo(index)}
+          >
+            <Image
+              src={image.url}
+              width={120}
+              height={120}
+              alt={`Thumbnail ${index + 1}`}
+              className="w-full h-full object-contain"
+            />
+          </div>
+        )
+      }),
+    [images, activeIndex]
+  )
 
   return (
     <div className="w-full max-w-[800px] mx-auto">
@@ -45,71 +70,38 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         modules={[Navigation, Thumbs, Controller, Autoplay]}
         loop={true}
         slidesPerView={1}
-        autoplay={{
-          delay: 3000, // Slide change interval (in ms)
-          disableOnInteraction: false, // Allow autoplay even when interacting
-        }}
-        onSwiper={(swiper) => {
-          mainSliderRef.current = swiper
-        }}
-        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        onSwiper={(swiper) => (mainSliderRef.current = swiper)}
+        onSlideChange={handleSlideChange}
         className="mb-4"
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <div
-              className={clsx(
-                "relative h-[300px] sm:h-[360px] md:h-[440px] lg:h-[520px] w-full",
-                { "cursor-pointer": images.length > 1 }
-              )}
-            >
+            <div className="relative h-[300px] sm:h-[360px] md:h-[440px] lg:h-[520px] w-full cursor-pointer">
               <Image
                 src={image.url}
                 alt={`Slide ${index + 1}`}
                 fill
                 priority
                 sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
-                className="object-cover object-center w-full h-full "
+                className="object-cover object-center w-full h-full"
               />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+
       {showThumbnails && (
-        <div className=" flex items-center justify-center gap-x-4 mt-4 md:mt-8 overflow-hidden">
+        <div className="flex items-center justify-center gap-x-4 mt-4 md:mt-8 overflow-hidden">
           <button
-            className={clsx("p-2 cursor-pointer text-black-20")}
+            className="p-2 cursor-pointer text-black-20"
             onClick={handlePrev}
           >
             <LeftArrow size={20} />
           </button>
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className={clsx(
-                "p-2 w-[120px] h-[70px] sm:h-[120px] border transition-all duration-300 ease-in-out cursor-pointer relative",
-                activeIndex === index
-                  ? "opacity-100 border-yellow-400"
-                  : "opacity-50 border-[#AEAEAE]"
-              )}
-              onClick={() => {
-                setActiveIndex(index)
-                if (mainSliderRef.current) {
-                  mainSliderRef.current.slideTo(index) // Sync main slider with thumbnail click
-                }
-              }}
-            >
-              <Image
-                src={image.url}
-                width={120}
-                height={120}
-                alt="thumbnail"
-                className="w-full h-full object-contain"
-              />
-            </div>
-          ))}
+          {thumbnailElements}
           <button
-            className={clsx("p-2 cursor-pointer text-black-20")}
+            className="p-2 cursor-pointer text-black-20"
             onClick={handleNext}
           >
             <RightArrow size={20} />

@@ -31,7 +31,7 @@ const ProductMoreInfo = ({ product, variant }: ProductInfoProps) => {
         <span className="text-black-20 mr-2 text-nowrap capitalize">
           Danh Mục Sản Phẩm:
         </span>
-        <ul className="flex gap-x-2 flex-wrap gap-y-1 text-primary">
+        <ul className="flex gap-x-2 flex-wrap gap-y-1 text-gray-800 font-semibold">
           {product?.categories &&
             product?.categories?.length > 0 &&
             product?.categories

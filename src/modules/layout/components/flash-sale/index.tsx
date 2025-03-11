@@ -13,7 +13,7 @@ const FlashSale: React.FC<FlashSaleProps> = ({ collection }) => {
   const products = collection?.products
 
   return (
-    <div className="relative py-3 sm:py-6 my-3 sm:my-8 content-container bg-white rounded-lg shadow-lg">
+    <div className="relative py-3 sm:py-6 my-5 sm:my-9 content-container bg-white rounded-lg shadow-lg">
       <RiceSpike />
       <CountdownTimer />
       <div className="mt-4 flex flex-col md:flex-row items-center justify-center gap-4 ">

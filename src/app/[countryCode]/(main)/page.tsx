@@ -9,6 +9,7 @@ import {
   DAC_SAN_OCOP_HANDLE,
   FLASH_SALE_HANDLE,
   RECOMMEND_PRODUCT_HANDLE,
+  FEATURED_PRODUCT_HANDLE,
 } from "@constants/defaultHandleCollection"
 import { getBlogList } from "@lib/data/blog"
 import { getBlogTypesList } from "@lib/data/blog-types"
@@ -18,9 +19,13 @@ import { getCategoriesList } from "@lib/data/categories"
 import { getBannersList } from "@lib/data/banners"
 import { getBrandList } from "@lib/data/brand"
 import Brands from "@modules/layout/components/brand"
+import BlogTypes from "@modules/layout/components/blog-types"
+import FeaturedProducts from "@modules/home/components/featured-products"
+import FeaturedProduct from "@modules/layout/components/featured-product"
 
 export const metadata: Metadata = {
-  title: "Bông Lúa",
+  title:
+    "Bông Lúa – Nơi cung cấp các sản phẩm nông nghiệp sạch, an toàn và chất lượng cao",
   description:
     "Bông Lúa – Nơi cung cấp các sản phẩm nông nghiệp sạch, an toàn và chất lượng cao. Chúng tôi cam kết mang đến những mặt hàng tươi ngon, được nuôi trồng theo phương pháp tự nhiên, không hóa chất độc hại, giúp bảo vệ sức khỏe người tiêu dùng và môi trường. Khám phá đa dạng các loại rau củ, trái cây, gạo, đặc sản vùng miền và nhiều sản phẩm khác, được tuyển chọn kỹ lưỡng từ những nông trại uy tín. Hãy cùng Bông Lúa hướng tới một cuộc sống xanh, lành mạnh và bền vững!",
 }
@@ -88,6 +93,12 @@ export default async function Home({
       {blogs && blogTypes && blogs.length > 0 && (
         <Blogs blogs={blogs} blogTypes={blogTypes} />
       )}
+
+      {blogTypes && blogTypes.length > 0 && <BlogTypes blogTypes={blogTypes} />}
+
+      <FeaturedProduct
+        collection={getCollectionByHandle(FEATURED_PRODUCT_HANDLE)}
+      />
     </div>
   )
 }

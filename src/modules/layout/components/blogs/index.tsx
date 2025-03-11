@@ -10,6 +10,7 @@ import { Blog, BlogType } from "types/global"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { Heading } from "@medusajs/ui"
 import RiceSpike from "@modules/common/components/rice-spike"
+import BlogCard from "./blogCard"
 interface BlogsProps {
   blogs: Blog[]
   blogTypes: BlogType[]
@@ -18,10 +19,14 @@ interface BlogsProps {
 const Blogs: React.FC<BlogsProps> = ({ blogs, blogTypes }) => {
   if (!blogs || !blogTypes) return null
 
+  const leftBlogs = blogs.slice(0, 6)
+  const rightBlogs = blogs.slice(0, 2)
+  // const rightBlogs = blogs.slice(-2)
+
   const { RightArrow } = Icons
 
   return (
-    <div className="relative content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white">
+    <div className="relative content-container py-4 sm:py-6 my-5 sm:my-9 rounded-lg shadow-lg bg-white">
       <RiceSpike />
 
       <Heading
@@ -32,12 +37,32 @@ const Blogs: React.FC<BlogsProps> = ({ blogs, blogTypes }) => {
       </Heading>
 
       {/* Blog Cards */}
-      <div className="mt-4 sm:mt-6">
-        <BlogSlider blogs={blogs} blogTypes={blogTypes} />
+      <div className="mt-4 sm:mt-6 flex flex-col-reverse sm:flex-row gap-4 items-center justify-center">
+        <div className="w-full md:w-3/5 ">
+          <BlogSlider blogs={leftBlogs} />
+        </div>
+
+        <div className="w-full hidden sm:flex flex-col gap-4 justify-between items-center h-full">
+          <div className="w-full rounded-lg overflow-hidden">
+            <BlogCard
+              blog={rightBlogs[0]}
+              classBlog="md:!h-[182px]"
+              isSmall={true}
+            />
+          </div>
+
+          <div className="w-full rounded-lg overflow-hidden">
+            <BlogCard
+              blog={rightBlogs[1]}
+              classBlog="md:!h-[182px]"
+              isSmall={true}
+            />
+          </div>
+        </div>
       </div>
 
       {/* Navigation Button */}
-      <LocalizedClientLink
+      {/* <LocalizedClientLink
         href={`/tat-ca-bai-viet`}
         className="mt-12 flex items-center justify-center gap-x-4 relative z-20"
       >
@@ -45,7 +70,7 @@ const Blogs: React.FC<BlogsProps> = ({ blogs, blogTypes }) => {
           Xem tất cả
           <RightArrow size={12} />
         </button>
-      </LocalizedClientLink>
+      </LocalizedClientLink> */}
     </div>
   )
 }

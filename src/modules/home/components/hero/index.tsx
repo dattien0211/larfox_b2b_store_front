@@ -35,8 +35,8 @@ const Hero: React.FC<HeroProps> = ({ banners }) => {
         loop={true}
         slidesPerView={1}
         autoplay={{
-          delay: 3000, // Slide change interval (in ms)
-          disableOnInteraction: false, // Allow autoplay even when interacting
+          delay: 5000, // Slide change interval (in ms)
+          disableOnInteraction: true, 
         }}
         pagination={{
           clickable: true,
