@@ -62,7 +62,7 @@ export const getProductsList = async function ({
   queryParams?: HttpTypes.FindParams & HttpTypes.StoreProductParams
 }> {
   const limit = queryParams?.limit || 12
-  const offset = pageParam * limit
+  const offset = pageParam > 0 ? (pageParam - 1) * limit : 0
   const region = await getRegion(countryCode)
 
   if (!region) {

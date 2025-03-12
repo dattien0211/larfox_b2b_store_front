@@ -8,7 +8,7 @@ import PreviewPrice from "./price"
 import Icons from "@modules/common/icons"
 import formatNumber from "@lib/util/formatNumber"
 
-export default async function ProductPreview({
+export default async function  ProductPreview({
   product,
   isFeatured,
 }: {

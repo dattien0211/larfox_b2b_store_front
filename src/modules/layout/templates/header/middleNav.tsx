@@ -10,33 +10,31 @@ import UserDropDown from "@modules/layout/components/user-dropdown"
 import SearchIconMobile from "@modules/layout/components/search-icon"
 
 export default async function MiddleNav() {
-  const { Heart, Bag } = Icons
+  const { Bag } = Icons
   const customer = await getCustomer().catch(() => null)
 
   return (
     <div className="flex items-center justify-between py-2 md:py-4">
-      <div className="w-10 sm:w-14 h-auto relative">
+      <div className="w-[40px] md:w-[60px] h-auto">
         <LocalizedClientLink href="/">
           <Image
             src={IMGS.Logo}
             alt="Logo"
-            width={56}
+            width={120}
             height={56}
-            priority={true}
             className="w-auto h-auto"
+            priority={true}
           />
         </LocalizedClientLink>
       </div>
+
       <SearchNav />
       <div className="flex items-center gap-x-1 ">
         <SearchIconMobile />
         <UserDropDown customer={customer} />
-        {/* <span className="cursor-pointer hover:text-primary py-2 px-1 lg:py-4 lg:px-2 ">
-          <Heart />
-        </span> */}
         <Suspense
           fallback={
-            <LocalizedClientLink
+            <LocalizedClientLink                     
               className="cursor-pointer hover:text-primary"
               href="/gio-hang"
               data-testid="nav-cart-link"

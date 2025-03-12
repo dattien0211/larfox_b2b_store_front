@@ -25,7 +25,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   return (
     <div
       className={clsx(
-        "w-full shadow-lg relative h-[200px] md:h-[380px] ",
+        "w-full shadow-lg relative h-[220px] md:h-[380px] ",
         isRow ? "!flex-row" : "",
         os === "mobile" ? "!flex-col" : "",
         classBlog
@@ -61,7 +61,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
             href={`/bai-viet/${blog?.handle}`}
             className={clsx(
               "-rotate-180 text-white font-semibold opacity-100 flex-1 line-clamp-2",
-              isSmall ? "text-sm sm:text-base" : "text-base sm:text-xl"
+              isSmall ? "text-sm sm:text-base" : "text-[15px] sm:text-xl"
             )}
           >
             {blog?.title}

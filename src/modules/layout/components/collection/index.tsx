@@ -35,7 +35,7 @@ const Collection: React.FC<CollectionProps> = ({ collection }) => {
   if (!collection) return null
 
   return (
-    <div className="relative content-container py-4 sm:py-6 my-5 sm:my-9 rounded-lg shadow-lg bg-white">
+    <div className="relative content-container py-4 sm:py-6 my-6 sm:my-10 rounded-lg shadow-lg bg-white">
       <RiceSpike />
       <CollectionBanner
         imageSrc={collection?.metadata?.thumbnail?.url}
@@ -43,7 +43,7 @@ const Collection: React.FC<CollectionProps> = ({ collection }) => {
       />
       <div className="mt-2 sm:mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         {displayedProducts?.map((product, index) => (
-          <ProductItem key={index} productItem={product} />
+          <ProductItem key={index} product={product} />
         ))}
       </div>
       <div className="flex justify-center mt-4 sm:mt-6">

@@ -48,9 +48,9 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   const token = cookies().get("_medusa_jwt")?.value
 
   return (
-    <div className="mb-16 sm:mb-24">
+    <div className="bg-[#F5F7FD] py-3 sm:py-6">
       <div
-        className="content-container flex flex-col  small:items-start py-6 relative"
+        className="content-container py-4 sm:py-6 mb-4 sm:mb-8 rounded-lg shadow-lg bg-white"
         data-testid="product-container"
       >
         <div className="flex flex-col md:flex-row items-start justify-center gap-x-4 md:gap-x-6 lg:gap-x-14 gap-y-8 w-full">
@@ -80,12 +80,28 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
             </div>
           </div>
         </div>
+      </div>
 
-        <Suspense fallback={<p>Đang tải mô tả sản phẩm...</p>}>
+      <div className="content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white">
+        <Suspense
+          fallback={
+            <div className="text-base sm:text-2xl text-center">
+              Đang tải mô tả sản phẩm...
+            </div>
+          }
+        >
           <ProductDescription description={product?.description || undefined} />
         </Suspense>
+      </div>
 
-        <Suspense fallback={<p>Đang tải đánh giá sản phẩm...</p>}>
+      <div className="content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white">
+        <Suspense
+          fallback={
+            <div className="text-base sm:text-2xl text-center">
+              Đang tải đánh giá sản phẩm...
+            </div>
+          }
+        >
           <ProductReview
             customer={customer}
             product={productById}
@@ -95,7 +111,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
       </div>
 
       <div
-        className="content-container mt-8 sm:mt-20 sm:mb-44"
+        className="content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white"
         data-testid="related-products-container"
       >
         <Suspense fallback={<SkeletonRelatedProducts />}>

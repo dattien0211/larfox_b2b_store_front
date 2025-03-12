@@ -22,7 +22,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   images,
   showThumbnails = false,
 }) => {
-  // const { os } = useOS()
+  const { os } = useOS()
   const mainSliderRef = useRef<any>(null)
   const [activeIndex, setActiveIndex] = useState(0)
   const { RightArrow, LeftArrow } = Icons
@@ -43,7 +43,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           <div
             key={index}
             className={clsx(
-              "p-2 w-[120px] h-[70px] sm:h-[120px] border transition-all duration-300 ease-in-out cursor-pointer relative",
+              "p-2 aspect-square border transition-all duration-300 ease-in-out cursor-pointer relative",
               isActive
                 ? "opacity-100 border-yellow-400"
                 : "opacity-50 border-[#AEAEAE]"
@@ -55,7 +55,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
               width={120}
               height={120}
               alt={`Thumbnail ${index + 1}`}
-              className="w-full h-full object-contain"
+              className="w-full aspect-square object-contain"
             />
           </div>
         )
@@ -92,19 +92,19 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       </Swiper>
 
       {showThumbnails && (
-        <div className="flex items-center justify-center gap-x-4 mt-4 md:mt-8 overflow-hidden">
+        <div className="flex items-center justify-center gap-x-2 sm:gap-x-4 mt-3 md:mt-6 overflow-hidden">
           <button
             className="p-2 cursor-pointer text-black-20"
             onClick={handlePrev}
           >
-            <LeftArrow size={20} />
+            <LeftArrow size={os === "mobile" ? 12 : 20} />
           </button>
           {thumbnailElements}
           <button
             className="p-2 cursor-pointer text-black-20"
             onClick={handleNext}
           >
-            <RightArrow size={20} />
+            <RightArrow size={os === "mobile" ? 12 : 20} />
           </button>
         </div>
       )}

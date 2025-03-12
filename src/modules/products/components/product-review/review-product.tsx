@@ -222,18 +222,17 @@ export default function ReviewProduct({
   return (
     <>
       <div className="flex flex-col md:flex-row gap-y-6 sm:gap-y-4 md:gap-x-24 items-center transition-all duration-300 ease-in-out">
-        <div className="w-full sm:w-fit flex flex-row-reverse gap-4 sm:flex-col justify-between sm:justify-center items-center text-center md:text-left">
+        <div className="w-full sm:w-fit flex flex-row gap-4 sm:flex-col justify-between sm:justify-center items-center text-center md:text-left">
           <div className="text-xl sm:text-4xl md:text-5xl font-bold text-yellow-500 flex items-center gap-x-1 sm:gap-x-2 ">
             {averageRating}
             <span className="text-yellow-500">
               <Star size={os !== "mobile" ? 34 : 20} />
             </span>
           </div>
-          {reviews?.length > 0 && (
-            <p className="text-[#404040] font-semibold">
-              Dựa trên {reviews?.length || 0} đánh giá
-            </p>
-          )}
+
+          <p className="text-gray-700 font-semibold sm:text-base text-sm">
+            Dựa trên {reviews?.length || 0} đánh giá
+          </p>
         </div>
 
         <div className="hidden md:block w-[2px] h-[110px] bg-grey-15"></div>
@@ -273,7 +272,7 @@ export default function ReviewProduct({
         </div>
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-4 justify-center md:justify-normal">
+      <div className="mt-4 flex flex-wrap gap-4 justify-between md:justify-normal">
         <button className="flex px-4 py-1 items-center border border-grey-20 justify-center">
           <Camera color="#3E3E3E" />
           <p className="text-sm ml-2">
@@ -399,7 +398,7 @@ export default function ReviewProduct({
         {/* Submit Button */}
 
         <button
-          className="block w-full max-w-[150px] p-2 sm:p-3 mt-4 bg-primary text-white font-semibold rounded hover:bg-orang-30"
+          className="block w-full max-w-[150px] p-2 sm:p-3 mt-4 bg-primary/90 text-white font-semibold rounded hover:bg-primary capitalize sm:text-base text-sm"
           onClick={handleOnclickReview}
         >
           Đánh giá

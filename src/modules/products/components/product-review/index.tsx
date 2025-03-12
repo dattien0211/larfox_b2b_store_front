@@ -26,16 +26,16 @@ const ProductReview = ({
   }, [product])
 
   return (
-    <div className="mt-6 sm:mt-10 w-full">
+    <div className="w-full" data-testid="product-review">
       <Heading level="h1" className="text-primary text-xl sm:text-2xl ">
         Đánh giá sản phẩm
       </Heading>
-      <div className="border border-grey-20mt-6 sm:mt-10">
-        <div className="flex gap-x-2 sm:gap-x-4 mt-4 px-4 sm:px-8 md:px-10 text-sm sm:text-lg">
+      <div className="border border-grey-20 mt-3 sm:mt-6">
+        <div className="flex gap-x-2 sm:gap-x-8 px-2 pt-2 sm:px-4 sm:pt-4 text-sm sm:text-lg">
           <button
             onClick={() => setIsReview(!isReview)}
             className={clsx("py-2 px-2 sm:px-4 border ", {
-              "border-primary text-primary transition-all duration-300 ease-in-out":
+              "border-primary text-primary transition-all duration-300 capitalize ease-in-out":
                 isReview,
             })}
           >
@@ -44,14 +44,14 @@ const ProductReview = ({
           <button
             onClick={() => setIsReview(!isReview)}
             className={clsx("py-2 px-2 sm:px-4 border ", {
-              "border-primary text-primary transition-all duration-300 ease-in-out":
+              "border-primary text-primary transition-all duration-300 capitalize ease-in-out":
                 !isReview,
             })}
           >
             Xem đánh giá về sản phẩm
           </button>
         </div>
-        <div className="px-4 pt-4 pb-8 sm:pt-4 md:pt-6 sm:pb-8 md:pb-12 sm:px-8 md:px-10 ">
+        <div className="px-2 pt-4 pb-8 sm:pt-4 sm:pb-8 sm:px-4 ">
           {isReview ? (
             <ReviewProduct
               customer={customer}

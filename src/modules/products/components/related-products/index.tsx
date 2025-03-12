@@ -1,39 +1,40 @@
 import { getProductsList } from "@lib/data/products"
-import { getRegion } from "@lib/data/regions"
 import { HttpTypes } from "@medusajs/types"
+import ProductItem from "@modules/layout/components/product-item"
+import ProductsSlider from "@modules/layout/components/slider"
 import ProductPreview from "@modules/products/components/product-preview"
 
 type RelatedProductsProps = {
   product: HttpTypes.StoreProduct
   countryCode: string
+  isSale?: boolean
 }
+
+const MAX_PRODUCTS = 20
 
 export default async function RelatedProducts({
   product,
   countryCode,
+  isSale = false,
 }: RelatedProductsProps) {
-  const region = await getRegion(countryCode)
-
-  if (!region) {
-    return null
-  }
-
-  // edit this function to define your related products logic
   const queryParams: HttpTypes.StoreProductParams = {}
-  if (region?.id) {
-    queryParams.region_id = region.id
-  }
-  if (product.collection_id) {
-    queryParams.collection_id = [product.collection_id]
-  }
-  if (product.tags) {
-    queryParams.tag_id = product.tags
-      .map((t) => t.id)
-      .filter(Boolean) as string[]
-  }
-  queryParams.is_giftcard = false
+
+  queryParams.limit = MAX_PRODUCTS
+
+  const categoryIds = product.categories?.map((category) => category.id)
+
+  if (categoryIds) queryParams["category_id"] = [...categoryIds]
+
+  // if (product.collection_id)
+  //   queryParams["collection_id"] = [product.collection_id]
+
+  // if (product.tags && product.tags.length > 0)
+  //   queryParams["tag_id"] = product.tags
+  //     .map((t) => t.id)
+  //     .filter(Boolean) as string[]
 
   const products = await getProductsList({
+    pageParam: 0,
     queryParams,
     countryCode,
   }).then(({ response }) => {
@@ -58,13 +59,7 @@ export default async function RelatedProducts({
           </h1>
         </div>
       ) : (
-        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
-          {products.map((product) => (
-            <li key={product.id}>
-              <ProductPreview product={product} />
-            </li>
-          ))}
-        </ul>
+        <ProductsSlider products={products} />
       )}
     </div>
   )

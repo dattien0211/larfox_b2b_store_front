@@ -8,7 +8,7 @@ export default async function FooterOfferForm() {
 
   return (
     <div className="sm:col-span-6 lg:col-span-4">
-      <h1 className="font-bold text-lg sm:text-2xl font-times">
+      <h1 className="font-bold text-xl sm:text-2xl font-times">
         Đăng ký nhận ưu đãi từ Bông Lúa
       </h1>
       <div className="sm:mt-8 mt-2">

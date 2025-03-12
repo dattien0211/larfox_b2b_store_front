@@ -1,9 +1,14 @@
 import { Metadata } from "next"
+import { Suspense } from "react"
 
 import Category from "@modules/home/components/category"
 import FlashSale from "@modules/layout/components/flash-sale"
 import Collection from "@modules/layout/components/collection"
 import Blogs from "@modules/layout/components/blogs"
+import Brands from "@modules/layout/components/brand"
+import BlogTypes from "@modules/layout/components/blog-types"
+import FeaturedProduct from "@modules/layout/components/featured-product"
+
 import {
   BEST_SELLER_PRODUCT_HANDLE,
   DAC_SAN_OCOP_HANDLE,
@@ -11,17 +16,13 @@ import {
   RECOMMEND_PRODUCT_HANDLE,
   FEATURED_PRODUCT_HANDLE,
 } from "@constants/defaultHandleCollection"
+
 import { getBlogList } from "@lib/data/blog"
 import { getBlogTypesList } from "@lib/data/blog-types"
 import { getCollectionsWithProducts } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 import { getCategoriesList } from "@lib/data/categories"
-import { getBannersList } from "@lib/data/banners"
 import { getBrandList } from "@lib/data/brand"
-import Brands from "@modules/layout/components/brand"
-import BlogTypes from "@modules/layout/components/blog-types"
-import FeaturedProducts from "@modules/home/components/featured-products"
-import FeaturedProduct from "@modules/layout/components/featured-product"
 
 export const metadata: Metadata = {
   title:
@@ -47,58 +48,112 @@ export default async function Home({
     return null
   }
 
-  // Function to get products based on collection handle
   const getCollectionByHandle = (handle: string) => {
-    if (!collections) return undefined
-    const collection = collections.find(
-      (collection) => collection.handle === handle
-    )
-    return collection || undefined
+    return collections.find((collection) => collection.handle === handle)
   }
 
   const { blogs } = await getBlogList()
-
   const { blogTypes } = await getBlogTypesList()
-
   const { product_categories } = await getCategoriesList()
-
-  const { banners } = await getBannersList()
-
   const { brands } = await getBrandList()
 
   return (
     <div className="bg-[#F5F7FD] py-3 sm:py-6">
-      {/* <Hero
-        banners={banners.filter(
-          (banner) => banner.position_type === "main_banner" && banner.is_active
-        )}
-      /> */}
+      <Suspense
+        fallback={
+          <div className="text-base sm:text-2xl text-center">
+            Đang tải danh mục sản phẩm...
+          </div>
+        }
+      >
+        <Category categories={product_categories} />
+      </Suspense>
 
-      <Category categories={product_categories} />
+      <Suspense
+        fallback={
+          <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
+            Đang tải chương trình khuyến mại...
+          </div>
+        }
+      >
+        <FlashSale collection={getCollectionByHandle(FLASH_SALE_HANDLE)} />
+      </Suspense>
 
-      <FlashSale collection={getCollectionByHandle(FLASH_SALE_HANDLE)} />
+      <Suspense
+        fallback={
+          <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
+            Đang tải bộ sưu tập...
+          </div>
+        }
+      >
+        <Collection
+          collection={getCollectionByHandle(BEST_SELLER_PRODUCT_HANDLE)}
+        />
+      </Suspense>
 
-      <Collection
-        collection={getCollectionByHandle(BEST_SELLER_PRODUCT_HANDLE)}
-      />
-
-      <Collection
-        collection={getCollectionByHandle(RECOMMEND_PRODUCT_HANDLE)}
-      />
-
-      <Collection collection={getCollectionByHandle(DAC_SAN_OCOP_HANDLE)} />
-
-      {brands && brands.length > 0 && <Brands brands={brands} />}
-
-      {blogs && blogTypes && blogs.length > 0 && (
-        <Blogs blogs={blogs} blogTypes={blogTypes} />
+      {brands && brands.length > 0 && (
+        <Suspense fallback={<div>Đang tải thương hiệu...</div>}>
+          <Brands brands={brands} />
+        </Suspense>
       )}
 
-      {blogTypes && blogTypes.length > 0 && <BlogTypes blogTypes={blogTypes} />}
+      <Suspense
+        fallback={
+          <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
+            Đang tải bộ sưu tập...
+          </div>
+        }
+      >
+        <Collection
+          collection={getCollectionByHandle(RECOMMEND_PRODUCT_HANDLE)}
+        />
+      </Suspense>
 
-      <FeaturedProduct
-        collection={getCollectionByHandle(FEATURED_PRODUCT_HANDLE)}
-      />
+      {blogs && blogTypes && blogs.length > 0 && (
+        <Suspense
+          fallback={
+            <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
+              Đang tải bài viết...
+            </div>
+          }
+        >
+          <Blogs blogs={blogs} blogTypes={blogTypes} />
+        </Suspense>
+      )}
+
+      <Suspense
+        fallback={
+          <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
+            Đang tải bộ sưu tập...
+          </div>
+        }
+      >
+        <Collection collection={getCollectionByHandle(DAC_SAN_OCOP_HANDLE)} />
+      </Suspense>
+
+      {blogTypes && blogTypes.length > 0 && (
+        <Suspense
+          fallback={
+            <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
+              Đang tải chủ đề...
+            </div>
+          }
+        >
+          <BlogTypes blogTypes={blogTypes} />
+        </Suspense>
+      )}
+
+      <Suspense
+        fallback={
+          <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
+            Đang tải sản phẩm nổi bật
+          </div>
+        }
+      >
+        <FeaturedProduct
+          collection={getCollectionByHandle(FEATURED_PRODUCT_HANDLE)}
+        />
+      </Suspense>
     </div>
   )
 }

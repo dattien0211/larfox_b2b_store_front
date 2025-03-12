@@ -10,15 +10,6 @@ export default function ProductSocial() {
       <LocalizedClientLink href="">
         <Image src={IMGS.FBIcon} alt="icon" width={24} height={24} />
       </LocalizedClientLink>
-      <LocalizedClientLink href="">
-        <Image src={IMGS.LinkedInIcon} alt="icon" width={24} height={24} />
-      </LocalizedClientLink>
-      <LocalizedClientLink href="">
-        <Image src={IMGS.YTIcon} alt="icon" width={24} height={24} />
-      </LocalizedClientLink>
-      <LocalizedClientLink href="">
-        <Image src={IMGS.TwitterIcon} alt="icon" width={24} height={24} />
-      </LocalizedClientLink>
     </div>
   )
 }

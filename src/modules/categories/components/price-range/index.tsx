@@ -52,7 +52,7 @@ const PriceRange = () => {
       <h2 className="text-base sm:text-lg font-semibold border-b border-gray-200 pb-4 text-primary">
         Giá
       </h2>
-      <div className="my-5 lg:my-7 w-[98%]">
+      <div className="my-6 lg:my-7 w-[98%]">
         <RangeSlider
           id="range-slider-yellow"
           min={MIN_PRICE}

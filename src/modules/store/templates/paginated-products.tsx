@@ -4,6 +4,7 @@ import ProductPreview from "@modules/products/components/product-preview"
 import { Pagination } from "@modules/store/components/pagination"
 import { SortOptions } from "@modules/categories/components/sort-category"
 import clsx from "clsx"
+import ProductItem from "@modules/layout/components/product-item"
 
 const PRODUCT_LIMIT = 16
 
@@ -49,7 +50,7 @@ export default async function PaginatedProducts({
     queryParams["collection_id"] = [collectionId]
   }
 
-  if (tagId) queryParams["tag_id"] = [...tagId]
+  if (tagId && tagId.length > 0) queryParams["tag_id"] = [...tagId]
 
   if (categoryId) queryParams["category_id"] = [...categoryId]
 
@@ -107,7 +108,8 @@ export default async function PaginatedProducts({
         {products.map((p) => {
           return (
             <li key={p.id}>
-              <ProductPreview product={p} />
+              {/* <ProductPreview product={p}/> */}
+              <ProductItem product={p} />
             </li>
           )
         })}

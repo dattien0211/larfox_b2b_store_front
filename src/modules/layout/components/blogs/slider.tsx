@@ -1,7 +1,6 @@
 "use client"
 
-import { useOS } from "@lib/hooks/OSContext"
-import React from "react"
+import React, { useMemo } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import {
   Navigation,
@@ -23,6 +22,16 @@ interface BlogSliderProps {
 }
 
 const BlogSlider: React.FC<BlogSliderProps> = ({ blogs, blogTypes }) => {
+  const slides = useMemo(
+    () =>
+      blogs.map((blog, index) => (
+        <SwiperSlide key={blog.id || index}>
+          <BlogCard blog={blog} blogTypes={blogTypes} />
+        </SwiperSlide>
+      )),
+    [blogs, blogTypes]
+  )
+
   return (
     <div className="w-full rounded-lg overflow-hidden h-full">
       <Swiper
@@ -31,7 +40,7 @@ const BlogSlider: React.FC<BlogSliderProps> = ({ blogs, blogTypes }) => {
         slidesPerView={1}
         autoplay={{
           delay: 3000,
-          disableOnInteraction: true,
+          disableOnInteraction: false,
         }}
         navigation
         pagination={{
@@ -42,13 +51,7 @@ const BlogSlider: React.FC<BlogSliderProps> = ({ blogs, blogTypes }) => {
           },
         }}
       >
-        {blogs &&
-          blogs.length > 0 &&
-          blogs.map((blog, index) => (
-            <SwiperSlide key={index}>
-              <BlogCard blog={blog} blogTypes={blogTypes} />
-            </SwiperSlide>
-          ))}
+        {slides}
       </Swiper>
     </div>
   )

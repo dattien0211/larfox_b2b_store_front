@@ -42,7 +42,7 @@ export default function AboutUs() {
         </section>
 
         <section className="mb-4">
-          <h2 className="text-lg sm:text-2xl font-semibold text-primary mb-2 sm:mb-4 font-times">
+          <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-4 font-times">
             Sứ Mệnh
           </h2>
           <ul className="list-disc list-inside text-gray-700 pl-4 sm:pl-8 text-sm sm:text-base  space-y-1 sm:space-y-2">
@@ -64,7 +64,7 @@ export default function AboutUs() {
         </section>
 
         <section className="mb-4">
-          <h2 className="text-lg sm:text-2xl font-semibold text-primary mb-2 sm:mb-4 font-times">
+          <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-4 font-times">
             Tầm Nhìn
           </h2>
           <p className="list-disc list-inside text-gray-700 indent-4 sm:indent-8 text-sm sm:text-base text-justify sm:text-normal">
@@ -83,7 +83,7 @@ export default function AboutUs() {
         </section>
 
         <section className="mb-4">
-          <h2 className="text-lg sm:text-2xl font-semibold text-primary mb-2 sm:mb-4 font-times">
+          <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-4 font-times">
             Giá Trị Cốt Lõi
           </h2>
           <ul className="list-disc list-inside text-gray-700 pl-4 sm:pl-8 text-sm sm:text-base space-y-1 sm:space-y-2">
@@ -110,7 +110,7 @@ export default function AboutUs() {
         </section>
 
         <section className="mb-4 ">
-          <h2 className="text-lg sm:text-2xl font-semibold text-primary mb-2 sm:mb-4 font-times">
+          <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-4 font-times">
             Cam Kết Chất Lượng
           </h2>
           <p className="text-gray-700 indent-4 sm:indent-8 text-sm sm:text-lg text-justify sm:text-normal">
@@ -130,7 +130,7 @@ export default function AboutUs() {
         </section>
 
         <section>
-          <h2 className="text-lg sm:text-2xl font-semibold text-primary mb-2 sm:mb-4 font-times">
+          <h2 className="text-xl sm:text-2xl font-semibold text-primary mb-2 sm:mb-4 font-times">
             Liên Hệ và Hỗ Trợ
           </h2>
           <p className="text-sm sm:text-lg text-gray-700 mb-2 indent-4 sm:indent-8">

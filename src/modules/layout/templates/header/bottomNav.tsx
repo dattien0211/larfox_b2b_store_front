@@ -65,14 +65,12 @@ export default function BottomNav({ categories, blogTypes }: BottomNavProps) {
       {/* Desktop Navigation */}
       <div className="hidden sm:flex items-center justify-between">
         <div className="flex items-center gap-x-4">
-          <div className="py-2 pr-2 lg:py-4 lg:pr-4 cursor-pointer hover:text-primary">
-            <LocalizedClientLink
-              href="/"
-              className=" text-sm text-nowrap lg:text-base capitalize"
-            >
-              Trang chủ
-            </LocalizedClientLink>
-          </div>
+          <LocalizedClientLink
+            href="/"
+            className=" text-sm text-nowrap lg:text-base capitalize py-2 pr-2 lg:py-4 lg:pr-4 cursor-pointer hover:text-primary"
+          >
+            Trang chủ
+          </LocalizedClientLink>
 
           <LocalizedClientLink
             href="/tat-ca-san-pham"
@@ -113,16 +111,7 @@ export default function BottomNav({ categories, blogTypes }: BottomNavProps) {
             <h1 className=" text-sm text-nowrap lg:text-base capitalize">
               Giới thiệu
             </h1>
-            {/* <span className="text-grey-30 group-hover:text-primary">
-              <DropDown />
-            </span> */}
           </LocalizedClientLink>
-          {/* <LocalizedClientLink
-            href="/lien-he"
-            className=" text-sm text-nowrap lg:text-base p-2 lg:p-4 cursor-pointer hover:text-primary"
-          >
-            Liên hệ
-          </LocalizedClientLink> */}
         </div>
       </div>
 

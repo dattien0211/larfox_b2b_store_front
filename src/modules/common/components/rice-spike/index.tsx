@@ -11,7 +11,7 @@ const RiceSpike = ({
   return (
     <>
       <div
-        className={`absolute -top-4 sm:-top-5 left-0 w-9 h-9 sm:w-16 sm:h-16 z-20 ${
+        className={`absolute -top-4 sm:-top-5 left-0 w-12 h-12 sm:w-16 sm:h-16 z-20 ${
           classIMG1 || ""
         }`}
       >
@@ -24,7 +24,7 @@ const RiceSpike = ({
         />
       </div>
       <div
-        className={`absolute -bottom-4 sm:-bottom-5 right-0 w-9 h-9 sm:w-16 sm:h-16 z-20 ${
+        className={`absolute -bottom-4 sm:-bottom-5 right-0 w-12 h-12 sm:w-16 sm:h-16 z-20 ${
           classIMG2 || ""
         }`}
       >

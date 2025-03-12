@@ -20,18 +20,17 @@ const Blogs: React.FC<BlogsProps> = ({ blogs, blogTypes }) => {
   if (!blogs || !blogTypes) return null
 
   const leftBlogs = blogs.slice(0, 6)
-  const rightBlogs = blogs.slice(0, 2)
-  // const rightBlogs = blogs.slice(-2)
+  const rightBlogs = blogs.slice(-2)
 
   const { RightArrow } = Icons
 
   return (
-    <div className="relative content-container py-4 sm:py-6 my-5 sm:my-9 rounded-lg shadow-lg bg-white">
+    <div className="relative content-container py-4 sm:py-6 my-6 sm:my-10 rounded-lg shadow-lg bg-white">
       <RiceSpike />
 
       <Heading
         level="h1"
-        className="mb-2 sm:mb-4 font-semibold capitalize font-times text-primary text-lg sm:text-2xl"
+        className="mb-2 sm:mb-4 font-semibold capitalize font-times text-primary text-xl sm:text-2xl"
       >
         Bài viết
       </Heading>

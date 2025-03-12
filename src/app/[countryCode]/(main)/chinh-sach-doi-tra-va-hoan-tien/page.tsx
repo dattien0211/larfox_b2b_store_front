@@ -24,7 +24,7 @@ export default async function RefundPolicyPage() {
           hàng và toàn bộ sản phẩm nhận được. Bông Lúa sẽ tiếp nhận và điều
           chỉnh đơn hàng cho quý khách trong vòng 48h từ khi nhận được yêu cầu.
         </p>
-        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
           1. Đổi trả do lỗi sai đơn hoặc lỗi vận chuyển:
         </h2>
         <div className="text-justify sm:text-normal sm:text-base text-sm">
@@ -77,7 +77,7 @@ export default async function RefundPolicyPage() {
             </p>
           </div>
         </div>
-        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
           2. Đổi trả sản phẩm theo mong muốn riêng của khách hàng:
         </h2>
         <div className="text-justify sm:text-normal sm:text-base text-sm ">
@@ -130,7 +130,7 @@ export default async function RefundPolicyPage() {
             </li>
           </ul>
         </div>
-        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
           3. Hoàn trả sản phẩm:
         </h2>
         <div className="text-justify sm:text-normal sm:text-base text-sm space-y-1 sm:space-y-2">

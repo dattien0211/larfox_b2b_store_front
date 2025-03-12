@@ -15,17 +15,17 @@ const Brands: React.FC<BlogsProps> = ({ brands }) => {
   if (!brands) return null
 
   return (
-    <div className="relative content-container py-4 sm:py-6 my-5 sm:my-9 rounded-lg shadow-lg bg-white">
+    <div className="relative content-container py-4 sm:py-6 my-6 sm:my-10 rounded-lg shadow-lg bg-white">
       <RiceSpike />
 
       <Heading
         level="h1"
-        className="mb-2 sm:mb-4 font-semibold capitalize font-times text-primary text-lg sm:text-2xl text-left"
+        className="mb-2 sm:mb-4 font-semibold capitalize font-times text-primary text-xl sm:text-2xl text-left"
       >
         Thương hiệu
       </Heading>
 
-      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4">
         {brands.map((brand) => (
           <div
             key={brand.id}

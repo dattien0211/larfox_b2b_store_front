@@ -15,6 +15,14 @@ body {
   color: white !important; /* Change text color */
 }
 
+@media (max-width: 640px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: hidden;
+    opacity: 0;
+  }
+}
+
 .loader {
   width: 14px;
   height: 14px;
@@ -319,7 +327,7 @@ body {
 
 @layer quill {
   .ql-editor {
-    @apply !p-0;
+    @apply !p-0 sm:!text-base !text-sm;
   }
   /* Define font-family styles */
   .ql-font-times-new-roman {

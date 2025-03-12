@@ -60,11 +60,7 @@ export const getCollectionsWithProducts = cache(
           collection.products = []
         }
 
-        const cheapestPrice = getProductPrice({
-          product: product,
-        })
-
-        collection.products.push(cheapestPrice as any)
+        collection.products.push(product as any)
       }
     })
 

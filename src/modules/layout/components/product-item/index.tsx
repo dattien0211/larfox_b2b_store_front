@@ -7,11 +7,11 @@ import { useParams } from "next/navigation"
 import { useMemo, useState, useEffect } from "react"
 
 import { addToCart } from "@lib/data/cart"
-import IMGS from "@constants/IMGS"
 import Icons from "@modules/common/icons"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { Button, toast } from "@medusajs/ui"
+import { toast } from "@medusajs/ui"
 import formatNumber from "@lib/util/formatNumber"
+import { getProductPrice } from "@lib/util/get-product-price"
 
 const optionsAsKeymap = (
   variantOptions: HttpTypes.StoreProductVariant["options"]
@@ -23,28 +23,17 @@ const optionsAsKeymap = (
 }
 
 export default function ProductItem({
-  productItem,
+  product,
   isSale = false,
 }: {
-  productItem: any
+  product: HttpTypes.StoreProduct
   isSale?: boolean
 }) {
   const { Star, StarHalf, Thunder, Cart, Flame } = Icons
-  const {
-    product,
-    cheapestPrice,
-  }: {
-    product: HttpTypes.StoreProduct
-    cheapestPrice: {
-      calculated_price_number: any
-      calculated_price: string
-      original_price_number: any
-      original_price: string
-      currency_code: any
-      price_type: any
-      percentage_diff: string
-    } | null
-  } = productItem
+
+  const { cheapestPrice } = getProductPrice({
+    product: product,
+  })
 
   const countryCode = useParams().countryCode as string
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
@@ -138,15 +127,16 @@ export default function ProductItem({
     <div className="w-full flex flex-col group cursor-pointer border border-primary rounded-md shadow-sm transition-all duration-300 hover:shadow-lg ">
       <div className="p-2 relative">
         <div className="bg-grey-15 relative w-full shadow-md overflow-hidden">
-          <Image
-            src={
-              product?.thumbnail ?? product?.images?.[0]?.url ?? IMGS.Product
-            }
-            alt="banner"
-            width={245}
-            height={245}
-            className="w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110 object-cover"
-          />
+          {(product?.thumbnail || product?.images?.[0]?.url) && (
+            <Image
+              // @ts-ignore
+              src={product.thumbnail ?? product.images[0].url}
+              alt="banner"
+              width={245}
+              height={245}
+              className="w-full aspect-square transition-transform duration-500 ease-in-out group-hover:scale-110 object-cover"
+            />
+          )}
 
           {cheapestPrice?.percentage_diff &&
             parseFloat(cheapestPrice?.percentage_diff) > 0 && (
@@ -180,7 +170,7 @@ export default function ProductItem({
       <div className="p-2">
         <LocalizedClientLink
           href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
-          className="line-clamp-2 text-sm sm:text-[15px] h-9 sm:h-[42px] hover:text-primary"
+          className="line-clamp-2 text-sm sm:text-[15px] h-10 sm:h-[42px] hover:text-primary"
         >
           {product?.title}
         </LocalizedClientLink>

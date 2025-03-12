@@ -17,7 +17,7 @@ export default async function SecurityPolicyPage() {
           Chính Sách Bảo Mật Thông Tin
         </h1>
 
-        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
           1. Mục đích và phạm vi thu thập
         </h2>
         <div className="text-sm sm:text-base space-y-1 sm:space-y-2 indent-2 sm:indent-4 ">
@@ -42,7 +42,7 @@ export default async function SecurityPolicyPage() {
           <p>Số lượng</p>
           <p>Thời gian giao nhận sản phẩm</p>
         </div>
-        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
           2. Phạm vi sử dụng thông tin
         </h2>
         <div className="text-sm sm:text-base space-y-1 sm:space-y-2 text-justify sm:text-left indent-2 sm:indent-4 ">
@@ -68,7 +68,7 @@ export default async function SecurityPolicyPage() {
             tài chính liên quan đến các khoản thanh toán trực tuyến của bạn.
           </p>
         </div>
-        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
           3. Thời gian lưu trữ thông tin
         </h2>
         <div className="text-justify sm:text-left sm:text-base text-sm indent-2 sm:indent-4 ">
@@ -78,7 +78,7 @@ export default async function SecurityPolicyPage() {
           <span className="px-1">{storeConfig.STORE_EMAIL}</span>
           <p></p>
         </div>
-        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
           4. Những người hoặc tổ chức có thể được tiếp cận với thông tin cá nhân
         </h2>
         <div className="text-justify sm:text-left sm:text-base text-sm space-y-1 sm:space-y-2 indent-2 sm:indent-4 ">
@@ -90,7 +90,7 @@ export default async function SecurityPolicyPage() {
             - CÔNG TY CP Bông Lúa<p></p>
           </p>
         </div>
-        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
           5. Địa chỉ của đơn vị thu thập và quản lý thông tin cá nhân
         </h2>
         <ul className="list-disc pl-6 text-sm sm:text-base space-y-1 sm:space-y-2 sm:pl-10">
@@ -100,7 +100,7 @@ export default async function SecurityPolicyPage() {
           <li> Website: {storeConfig.STORE_WEB_NAME}</li>
           <li> Email: {storeConfig.STORE_EMAIL}</li>
         </ul>
-        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
           6. Phương tiện và công cụ để người dùng tiếp cập và chỉnh sử dữ liệu
           cá nhân của mình
         </h2>
@@ -120,7 +120,7 @@ export default async function SecurityPolicyPage() {
             <p></p>
           </p>
         </div>
-        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-lg sm:text-2xl font-bold font-times">
+        <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
           7. Cơ chế tiếp nhận và giải quyết khiếu nại của người tiêu dùng liên
           quan đến việc thông tin cá nhân bị sử dụng sai mục đích hoặc phạm vi
           đã thông báo

@@ -16,11 +16,11 @@ const Category: React.FC<CategoryProps> = async ({ categories }) => {
   }
 
   return (
-    <div className="relative content-container py-4 sm:pt-6 sm:pb-8 mb-5 sm:mb-9  bg-white rounded-lg shadow-lg">
+    <div className="relative content-container py-4 sm:pt-6 sm:pb-8 mb-6 sm:mb-10  bg-white rounded-lg shadow-lg">
       <RiceSpike />
       <Heading
         level="h1"
-        className="mb-2 sm:mb-4 font-semibold capitalize font-times text-primary text-lg sm:text-2xl"
+        className="mb-2 sm:mb-4 font-semibold capitalize font-times text-primary text-xl sm:text-2xl"
       >
         Danh mục sản phẩm
       </Heading>

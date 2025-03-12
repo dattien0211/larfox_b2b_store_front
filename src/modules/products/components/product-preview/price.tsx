@@ -9,7 +9,7 @@ export default async function PreviewPrice({ price }: { price: VariantPrice }) {
   return (
     <>
       <Text
-        className={clx("text-primary text-sm sm:text-xl font-bold", {
+        className={clx("text-green-600 text-sm sm:text-xl font-bold", {
           // "text-ui-fg-interactive": price.price_type === "sale",
         })}
         data-testid="price"
