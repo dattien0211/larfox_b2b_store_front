@@ -1,9 +1,9 @@
 "use client"
 
+import clsx from "clsx"
 import { HttpTypes } from "@medusajs/types"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useState, useEffect } from "react"
-import clsx from "clsx"
 
 const CategoryFilter = ({
   allCategories,
@@ -48,7 +48,7 @@ const CategoryFilter = ({
   }
 
   return (
-    <div className="lg:py-6 lg:px-4 lg:rounded-md lg:shadow-lg lg:bg-white">
+    <div className="lg:py-6 lg:px-4 lg:rounded-md lg:shadow-lg lg:bg-white  ">
       <h2 className="text-base sm:text-lg font-semibold border-b border-gray-200 pb-4 capitalize text-primary">
         Danh mục sản phẩm
       </h2>

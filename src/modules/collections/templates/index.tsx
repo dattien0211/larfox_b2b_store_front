@@ -4,10 +4,11 @@ import { Suspense } from "react"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import { HttpTypes } from "@medusajs/types"
-import { SortOptions } from "@modules/categories/components/sort-category"
+import { SortOptions } from "@modules/layout/components/sort-category"
 import FilterMenu from "@modules/categories/components/filter-menu"
-import CategoryHeader from "@modules/categories/components/category-header"
+import CategoryHeader from "@modules/layout/components/sort-header"
 import Image from "next/image"
+import SortHeader from "@modules/layout/components/sort-header"
 
 export default function CollectionTemplate({
   sortBy,
@@ -31,7 +32,7 @@ export default function CollectionTemplate({
 
   return (
     <div className="pb-16 sm:pb-24 pt-4 bg-[#f5f6f7]">
-      <div className="content-container">
+      <section className="content-container">
         {collection?.metadata?.thumbnail?.url && (
           <Image
             src={collection?.metadata?.thumbnail?.url}
@@ -41,8 +42,9 @@ export default function CollectionTemplate({
             alt="thumbnail collection"
           />
         )}
-      </div>
-      <div
+      </section>
+
+      <section
         className="flex flex-col small:flex-row small:items-start py-4 gap-4 content-container relative z-20 "
         data-testid="collection-container"
       >
@@ -53,11 +55,7 @@ export default function CollectionTemplate({
         />
 
         <div className="flex-1">
-          <CategoryHeader
-            allCategories={allCategories}
-            path={["danh-muc-san-pham"]}
-            sortBy={sort}
-          />
+          <SortHeader path={["danh-muc-san-pham"]} sortBy={sort} />
 
           <Suspense fallback={<SkeletonProductGrid />}>
             <PaginatedProducts
@@ -70,7 +68,7 @@ export default function CollectionTemplate({
             />
           </Suspense>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

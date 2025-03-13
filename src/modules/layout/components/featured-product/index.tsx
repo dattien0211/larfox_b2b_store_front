@@ -1,36 +1,42 @@
-"use client"
-
 import React from "react"
 import { HttpTypes } from "@medusajs/types"
 import { Heading } from "@medusajs/ui"
 
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Icons from "@modules/common/icons"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import RiceSpike from "@modules/common/components/rice-spike"
-import ProductItem from "../product-item"
-import { useOS } from "@lib/hooks/OSContext"
+import { PaginatedProductsCollectionParams } from "types/global"
+import ShowItem from "../show-item"
+import { getProductsList } from "@lib/data/products"
+
+const PRODUCT_LIMIT = 20
 
 interface FeaturedProductProps {
   collection?: HttpTypes.StoreCollection
+  countryCode: string
 }
 
-const FeaturedProduct: React.FC<FeaturedProductProps> = ({ collection }) => {
-  const products = collection?.products
+const FeaturedProduct: React.FC<FeaturedProductProps> = async ({
+  collection,
+  countryCode,
+}) => {
+  if (!collection) return null
 
   const { RightArrow } = Icons
 
-  const { os } = useOS()
+  const queryParams: PaginatedProductsCollectionParams = {
+    limit: PRODUCT_LIMIT,
+  }
 
-  const displayedProducts =
-    products && products.length > 0
-      ? os === "desktop"
-        ? products.slice(0, 15)
-        : os === "tablet"
-        ? products.slice(0, 9)
-        : products.slice(0, 8)
-      : []
+  queryParams["collection_id"] = [collection.id]
 
-  if (!collection) return null
+  const {
+    response: { products },
+  } = await getProductsList({
+    pageParam: 1,
+    queryParams,
+    countryCode,
+  })
 
   return (
     <div className="relative content-container py-6 sm:py-8 my-6 sm:my-10 rounded-lg shadow-lg bg-white">
@@ -44,12 +50,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ collection }) => {
         Sản Phẩm Nổi Bật
       </Heading>
 
-      <div className="mt-2 sm:mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-        {displayedProducts &&
-          displayedProducts?.map((product, index) => (
-            <ProductItem key={index} product={product} />
-          ))}
-      </div>
+      <ShowItem products={products} />
 
       <div className="flex justify-center mt-4 sm:mt-6">
         <LocalizedClientLink

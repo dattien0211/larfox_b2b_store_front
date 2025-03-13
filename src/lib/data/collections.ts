@@ -1,8 +1,6 @@
 import { sdk } from "@lib/config"
 import { cache } from "react"
-import { getProductsList } from "./products"
 import { HttpTypes } from "@medusajs/types"
-import { getProductPrice } from "@lib/util/get-product-price"
 import fetchWithCache from "@lib/util/fetch-with-cache"
 
 export const getCollectionsList = cache(async function (
@@ -40,30 +38,6 @@ export const getCollectionsWithProducts = cache(
       return null
     }
 
-    const collectionIds = collections
-      .map((collection) => collection.id)
-      .filter(Boolean) as string[]
-
-    const { response } = await getProductsList({
-      pageParam: 0,
-      queryParams: { limit: 20, collection_id: collectionIds },
-      countryCode,
-    })
-
-    response.products.map((product) => {
-      const collection = collections.find(
-        (collection) => collection.id === product.collection_id
-      )
-
-      if (collection) {
-        if (!collection.products) {
-          collection.products = []
-        }
-
-        collection.products.push(product as any)
-      }
-    })
-
-    return collections as unknown as HttpTypes.StoreCollection[]
+    return collections
   }
 )

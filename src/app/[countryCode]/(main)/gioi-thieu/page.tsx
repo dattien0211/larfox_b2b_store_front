@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function AboutUs() {
   return (
-    <div className="bg-[#F5F7FD] pt-3 pb-8 sm:pt-6 sm:pb-14">
+    <div className="bg-primary-bg pt-3 pb-8 sm:pt-6 sm:pb-14">
       <div className="content-container bg-white rounded-lg shadow-lg py-4 sm:pt-2 sm:pb-14 mb-4 sm:mb-8 relative">
         <Image
           src={IMGS.IntroImage}

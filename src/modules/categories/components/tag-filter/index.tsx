@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { useState, useEffect } from "react"
 import clsx from "clsx"
 import { ProductTag } from "types/global"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 const TagFilter = ({ productTags }: { productTags?: ProductTag[] }) => {
   const router = useRouter()
@@ -35,11 +36,11 @@ const TagFilter = ({ productTags }: { productTags?: ProductTag[] }) => {
   }
 
   return (
-    <>
-      <h2 className="text-lg sm:text-xl font-semibold border-b border-gray-200 py-4 mt-4 sm:mt-8">
-        Tags
+    <div className="bg-white mt-8 lg:mt-4 lg:px-4 lg:py-6 lg:rounded-lg lg:shadow-lg ">
+      <h2 className="text-base sm:text-lg font-semibold border-b border-gray-200 pb-4 text-primary">
+        Thẻ
       </h2>
-      <div className="flex flex-wrap mt-4 sm:mt-8 gap-2">
+      <div className="flex flex-wrap mt-4 gap-2">
         {productTags &&
           productTags.length > 0 &&
           productTags
@@ -48,16 +49,17 @@ const TagFilter = ({ productTags }: { productTags?: ProductTag[] }) => {
             .map((tag) => (
               <div
                 className={clsx(
-                  "px-2 py-1 bg-grey-20 cursor-pointer hover:bg-primary hover:text-white transition",
+                  "px-2 py-1 bg-grey-20 cursor-pointer hover:bg-primary transition-all text-primary hover:text-white",
                   {
-                    "bg-primary border-primary": selectedTags.includes(tag.id),
+                    "bg-primary border-primary text-white":
+                      selectedTags.includes(tag.id),
                   }
                 )}
                 key={tag.id}
                 onClick={() => handleOnclick(tag.id)}
               >
                 <span
-                  className={clsx("text-nowrap text-xs sm:text-sm", {
+                  className={clsx("text-nowrap text-xs sm:text-sm ", {
                     "text-white": selectedTags.includes(tag.id),
                   })}
                 >
@@ -66,7 +68,7 @@ const TagFilter = ({ productTags }: { productTags?: ProductTag[] }) => {
               </div>
             ))}
       </div>
-    </>
+    </div>
   )
 }
 

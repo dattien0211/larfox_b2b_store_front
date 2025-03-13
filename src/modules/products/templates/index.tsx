@@ -15,6 +15,8 @@ import { getCustomer } from "@lib/data/customer"
 import ProductActionsWrapper from "./product-actions-wrapper"
 import { getProductsById } from "@lib/data/products"
 import ProductDescription from "../components/product-description"
+import Breadcrumb from "@modules/layout/components/bread-crumb"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
@@ -30,11 +32,6 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   if (!product || !product.id) {
     return notFound()
   }
-  // const customer = await getCustomer().catch(() => null)
-  // const [productById] = await getProductsById({
-  //   ids: [product.id],
-  //   regionId: region.id,
-  // })
 
   const customerPromise = getCustomer().catch(() => null)
   const productPromise = getProductsById({
@@ -48,11 +45,20 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   const token = cookies().get("_medusa_jwt")?.value
 
   return (
-    <div className="bg-[#F5F7FD] py-3 sm:py-6">
-      <div
-        className="content-container py-4 sm:py-6 mb-4 sm:mb-8 rounded-lg shadow-lg bg-white"
+    <div className="bg-primary-bg py-3 sm:py-6">
+      <section
+        className="content-container py-4 sm:py-[18px] mb-4 sm:mb-6 rounded-lg shadow-lg bg-white relative"
+        data-testid="product-breadcrumb"
+      >
+        <RiceSpike />
+        <Breadcrumb product={product} />
+      </section>
+
+      <section
+        className="content-container py-4 sm:py-6 mt-3 mb-4 sm:mt-6 sm:mb-8 rounded-lg shadow-lg bg-white relative"
         data-testid="product-container"
       >
+        <RiceSpike />
         <div className="flex flex-col md:flex-row items-start justify-center gap-x-4 md:gap-x-6 lg:gap-x-14 gap-y-8 w-full">
           <div className="w-full md:w-1/2">
             <ImageSlider
@@ -80,9 +86,10 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white">
+      <section className="content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white relative">
+        <RiceSpike />
         <Suspense
           fallback={
             <div className="text-base sm:text-2xl text-center">
@@ -92,9 +99,10 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
         >
           <ProductDescription description={product?.description || undefined} />
         </Suspense>
-      </div>
+      </section>
 
-      <div className="content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white">
+      <section className="content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white relative">
+        <RiceSpike />
         <Suspense
           fallback={
             <div className="text-base sm:text-2xl text-center">
@@ -108,16 +116,17 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
             token={token}
           />
         </Suspense>
-      </div>
+      </section>
 
-      <div
-        className="content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white"
+      <section
+        className="content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white relative"
         data-testid="related-products-container"
       >
+        <RiceSpike />
         <Suspense fallback={<SkeletonRelatedProducts />}>
           <RelatedProducts product={product} countryCode={countryCode} />
         </Suspense>
-      </div>
+      </section>
     </div>
   )
 }

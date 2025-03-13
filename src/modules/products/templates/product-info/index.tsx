@@ -1,3 +1,4 @@
+import { useOS } from "@lib/hooks/OSContext"
 import { HttpTypes } from "@medusajs/types"
 import { Heading, Text } from "@medusajs/ui"
 import Icons from "@modules/common/icons"
@@ -8,6 +9,8 @@ type ProductInfoProps = {
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
   const { Star, StarHalf } = Icons
+
+  const { os } = useOS()
 
   const reviews = Array.isArray(product?.metadata?.reviews)
     ? product.metadata.reviews
@@ -27,7 +30,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
       <div className="flex flex-col gap-y-2 sm:gap-y-4">
         <Heading
           level="h2"
-          className="sm:text-[28px] text-xl leading-10 "
+          className="text-xl sm:text-[28px] sm:leading-10 "
           data-testid="product-title"
         >
           {product.title}
@@ -38,7 +41,11 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
               if (index < Math.floor(rating)) {
                 // Full star with primary color
                 return (
-                  <Star key={index} size={20} className="text-yellow-500" />
+                  <Star
+                    key={index}
+                    size={os === "mobile" ? 14 : 20}
+                    className="text-yellow-500"
+                  />
                 )
               }
               if (index < Math.ceil(rating)) {

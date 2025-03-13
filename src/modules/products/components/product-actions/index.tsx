@@ -4,6 +4,7 @@ import { Button } from "@medusajs/ui"
 import { isEqual } from "lodash"
 import { useParams, useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
+import { Loader } from "@medusajs/icons"
 
 import Divider from "@modules/common/components/divider"
 import OptionSelect from "@modules/products/components/product-actions/option-select"
@@ -13,7 +14,6 @@ import { HttpTypes } from "@medusajs/types"
 import ProductInfo from "@modules/products/templates/product-info"
 import Icons from "@modules/common/icons"
 import ProductPolicy from "../product-policy"
-import ProductSocial from "../product-social"
 import ProductMoreInfo from "../product-more-info"
 
 type ProductActionsProps = {
@@ -116,13 +116,14 @@ export default function ProductActions({
       countryCode,
     })
 
-    setIsAdding(false)
+    // setIsAdding(false)
   }
 
   const handleBuyNow = async () => {
     if (!selectedVariant?.id) return null
 
     try {
+      setIsAdding(true)
       await addToCart({
         variantId: selectedVariant.id,
         quantity,
@@ -130,6 +131,8 @@ export default function ProductActions({
       })
     } catch (error) {
       console.error(error)
+    } finally {
+      setIsAdding(false)
     }
 
     router.push(`/${countryCode}/gio-hang`)
@@ -226,30 +229,26 @@ export default function ProductActions({
               onClick={handleAddToCart}
               disabled={!inStock || !selectedVariant || !!disabled || isAdding}
               variant="primary"
-              className="text-sm h-full rounded-sm px-2 sm:px-4 lg:px-6 border-none shadow-none bg-black-30 font-medium sm:text-base hover:bg-primary"
+              className="text-sm h-full rounded-sm px-2 sm:px-4 lg:px-6 border-none shadow-none bg-primary font-medium sm:text-base hover:bg-primary/90 hover:shadow-md capitalize"
               isLoading={isAdding}
               data-testid="add-product-button"
             >
-              {inStock ? "Thêm giỏ hàng" : "Hết hàng"}
+              {inStock ? "Thêm vào giỏ hàng" : "Hết hàng"}
             </Button>
             <button
-              className="bg-primary px-2 sm:px-4 lg:px-6 h-full rounded-sm text-white sm:text-base text-sm hover:shadow-md  transition-all"
+              className="bg-primary/90 hover:bg-primary px-2 sm:px-4 lg:px-6 h-full flex items-center justify-center rounded-sm text-white sm:text-base text-sm hover:shadow-md transition-all txt-compact-small-plus capitalize"
               onClick={handleBuyNow}
             >
-              Mua ngay
+              {isAdding ? (
+                <Loader className="animate-spin"></Loader>
+              ) : (
+                <>Mua ngay</>
+              )}
             </button>
           </div>
-          {/* <div className="mt-4 flex gap-x-2 items-center">
-            <span className="cursor-pointer">
-              <Heart />
-            </span>
-            <p>Thêm sản phẩm yêu thích</p>
-          </div> */}
         </div>
 
         <ProductMoreInfo product={product} variant={selectedVariant} />
-
-        {/* <ProductSocial /> */}
 
         <ProductPolicy />
       </div>

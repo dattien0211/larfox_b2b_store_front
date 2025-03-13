@@ -2,12 +2,19 @@ import { sdk } from "@lib/config"
 import medusaError from "@lib/util/medusa-error"
 import { cache } from "react"
 import { HttpTypes } from "@medusajs/types"
+import fetchWithCache from "@lib/util/fetch-with-cache"
 
-export const listRegions = cache(async function () {
-  return sdk.store.region
-    .list({}, { next: { tags: ["regions"] } })
-    .then(({ regions }) => regions)
-    .catch(medusaError)
+export const listRegions = cache(async function (): Promise<
+  HttpTypes.StoreRegion[]
+> {
+  const result = await fetchWithCache<{ regions: HttpTypes.StoreRegion[] }>(
+    "/store/regions",
+    {},
+    ["regions"],
+    300
+  )
+
+  return result?.regions ?? []
 })
 
 export const retrieveRegion = cache(async function (id: string) {
@@ -27,7 +34,7 @@ export const getRegion = cache(async function (countryCode: string) {
 
     const regions = await listRegions()
 
-    if (!regions) {
+    if (!regions || regions.length <= 0) {
       return null
     }
 

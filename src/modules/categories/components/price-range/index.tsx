@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import RangeSlider from "react-range-slider-input"
 import "react-range-slider-input/dist/style.css"
 import "./styles.css"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 const MIN_PRICE_DEFAULT = 0
 const MAX_PRICE_DEFAULT = 1000000
@@ -48,7 +49,7 @@ const PriceRange = () => {
   }
 
   return (
-    <div className="bg-white mt-8 lg:mt-4 lg:px-4 lg:py-6 lg:rounded-lg lg:shadow-lg">
+    <div className="bg-white mt-8 lg:mt-4 lg:px-4 lg:py-6 lg:rounded-lg lg:shadow-lg ">
       <h2 className="text-base sm:text-lg font-semibold border-b border-gray-200 pb-4 text-primary">
         Giá
       </h2>

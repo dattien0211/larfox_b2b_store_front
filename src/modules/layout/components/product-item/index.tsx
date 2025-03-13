@@ -12,6 +12,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import { toast } from "@medusajs/ui"
 import formatNumber from "@lib/util/formatNumber"
 import { getProductPrice } from "@lib/util/get-product-price"
+import Spinner from "@modules/common/icons/spinner"
 
 const optionsAsKeymap = (
   variantOptions: HttpTypes.StoreProductVariant["options"]
@@ -223,7 +224,7 @@ export default function ProductItem({
           className="w-full py-1 text-xs mt-2 rounded-md bg-primary/80 capitalize flex items-center justify-center gap-x-1 text-white duration-300 transition-all text-nowrap hover:shadow-sm hover:bg-primary/100"
         >
           {isAdding ? (
-            <span className="loader"></span>
+            <Spinner className="animate-spin"></Spinner>
           ) : (
             <>
               <Cart /> {inStock ? "Thêm vào giỏ hàng" : "Hết hàng"}

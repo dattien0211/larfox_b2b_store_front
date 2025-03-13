@@ -3,11 +3,12 @@ import { HttpTypes } from "@medusajs/types"
 
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
-import CategoryHeader from "@modules/categories/components/category-header"
-import { SortOptions } from "@modules/categories/components/sort-category"
+import SortHeader from "@modules/layout/components/sort-header"
+import { SortOptions } from "@modules/layout/components/sort-category"
 import FilterMenu from "@modules/categories/components/filter-menu"
 import ProductBanner from "@modules/layout/components/collection-banner"
 import { ProductTag } from "types/global"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 const StoreTemplate = ({
   sortBy,
@@ -46,7 +47,7 @@ const StoreTemplate = ({
         />
 
         <div className="flex-1">
-          <CategoryHeader
+          <SortHeader
             allCategories={allCategories}
             path={["danh-muc-san-pham"]}
             sortBy={sort}

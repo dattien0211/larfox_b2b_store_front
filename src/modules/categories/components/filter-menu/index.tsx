@@ -10,7 +10,7 @@ import CategoryFilter from "@modules/categories/components/category-filter"
 import PriceRange from "@modules/categories/components/price-range"
 import TagFilter from "@modules/categories/components/tag-filter"
 import Icons from "@modules/common/icons"
-import Breadcrumb from "../bread-crumb"
+import Breadcrumb from "../../../layout/components/bread-crumb"
 import { ProductTag } from "types/global"
 
 export default function FilterMenu({
@@ -32,7 +32,7 @@ export default function FilterMenu({
   return (
     <>
       {/* Toggle Button Only Show On Tablet Below  */}
-      <div className="lg:hidden flex items-center gap-x-3">
+      <section className="lg:hidden flex items-center gap-x-3">
         <button
           onClick={toggleMenu}
           className=" bg-primary text-white py-1 rounded-full px-3"
@@ -43,11 +43,11 @@ export default function FilterMenu({
           allCategories={allCategories}
           path={["danh-muc-san-pham", ...paramsCategory]}
         />
-      </div>
+      </section>
 
-      <div
-        className={`p-4 lg:p-0 lg:pb-4 fixed lg:static top-0 left-0 z-[100] h-svh lg:h-full w-[85%] lg:w-60 transform transition-transform duration-300 overflow-y-auto bg-white lg:bg-transparent ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+      <section
+        className={`p-4 lg:p-0 lg:pb-4 fixed lg:static top-0 left-0 z-[100] min-h-svh h-full w-[85%] lg:w-64 transform transition-transform duration-300  bg-white lg:bg-transparent ${
+          isMenuOpen ? "translate-x-0 overflow-y-auto" : "-translate-x-full "
         } lg:translate-x-0 lg:block`}
       >
         <div className="lg:hidden flex justify-between mb-4">
@@ -83,7 +83,7 @@ export default function FilterMenu({
         {productTags && productTags.length > 0 && (
           <TagFilter productTags={productTags} />
         )}
-      </div>
+      </section>
 
       {/* Overlay for Smaller Screens */}
       {isMenuOpen && (

@@ -9,7 +9,7 @@ import {
 import { listRegions } from "@lib/data/regions"
 import { StoreProductCategory, StoreRegion } from "@medusajs/types"
 import CategoryTemplate from "@modules/categories/templates"
-import { SortOptions } from "@modules/categories/components/sort-category"
+import { SortOptions } from "@modules/layout/components/sort-category"
 import { getProductTagsList } from "@lib/data/products"
 
 type Props = {

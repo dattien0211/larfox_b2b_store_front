@@ -34,7 +34,7 @@ export default async function RelatedProducts({
   //     .filter(Boolean) as string[]
 
   const products = await getProductsList({
-    pageParam: 0,
+    pageParam: 1,
     queryParams,
     countryCode,
   }).then(({ response }) => {
@@ -45,8 +45,8 @@ export default async function RelatedProducts({
 
   return (
     <div className="product-page-constraint">
-      <div className="flex flex-col items-center text-center mb-4 sm:mb-8">
-        <h1 className="sm:text-[28px] text-xl   md:text-4xl font-semibold font-times text-primary capitalize">
+      <div className="flex flex-col items-center text-center mb-3 sm:mb-6">
+        <h1 className="sm:text-[28px] text-xl md:text-3xl font-semibold font-times text-primary capitalize">
           Sản phẩm liên quan
         </h1>
       </div>

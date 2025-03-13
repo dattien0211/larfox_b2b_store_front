@@ -3,7 +3,7 @@ import { Metadata } from "next"
 import SearchResultsTemplate from "@modules/search/templates/search-results-template"
 
 import { search } from "@modules/search/actions"
-import { SortOptions } from "@modules/categories/components/sort-category"
+import { SortOptions } from "@modules/layout/components/sort-category"
 
 export const metadata: Metadata = {
   title: "Tìm Kiếm | Bông Lúa",

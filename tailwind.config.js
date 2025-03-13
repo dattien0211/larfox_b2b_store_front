@@ -37,6 +37,7 @@ module.exports = {
           30: "#323232",
         },
         primary: "#B38439",
+        "primary-bg": "#F5F7FD",
         // primary: "#4CAF50",
         orang: {
           5: "#FFB558",

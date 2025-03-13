@@ -46,8 +46,6 @@ const CategoryItem: React.FC<CategoryItemProp> = ({
                 "
               sizes="(max-width: 640px) 75px, (max-width: 1024px) 120px, 150px"
               // priority={true}
-              placeholder="blur"
-              blurDataURL="/placeholder.jpg"
             />
           )}
         </div>

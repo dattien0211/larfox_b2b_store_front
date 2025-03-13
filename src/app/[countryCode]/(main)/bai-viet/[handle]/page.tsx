@@ -87,18 +87,18 @@ export default async function BlogPage({ params }: Props) {
 
   return (
     <div className="content-container py-4 sm:py-8 mb-16 sm:mb-32">
-      <div
+      <section
         className="ql-editor rich-text-content"
         dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-      ></div>
+      ></section>
 
       {relatedBlogs.length > 0 && (
-        <div className="mt-8 sm:mt-12 mb-6 sm:mb-12">
+        <section className="mt-8 sm:mt-12 mb-6 sm:mb-12">
           <h1 className="mb-4 sm:mb-8 font-bold font-times text-xl md:text-2xl">
             Bài viết liên quan
           </h1>
           <BlogSlider blogs={relatedBlogs} />
-        </div>
+        </section>
       )}
     </div>
   )

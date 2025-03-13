@@ -59,17 +59,6 @@ const Blogs: React.FC<BlogsProps> = ({ blogs, blogTypes }) => {
           </div>
         </div>
       </div>
-
-      {/* Navigation Button */}
-      {/* <LocalizedClientLink
-        href={`/tat-ca-bai-viet`}
-        className="mt-12 flex items-center justify-center gap-x-4 relative z-20"
-      >
-        <button className="text-sm sm:text-base capitalize rounded-full px-6 sm:px-8 py-1 mx-auto border border-primary text-primary hover:bg-primary hover:text-white flex gap-x-2 items-center justify-center">
-          Xem tất cả
-          <RightArrow size={12} />
-        </button>
-      </LocalizedClientLink> */}
     </div>
   )
 }

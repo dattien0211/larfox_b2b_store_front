@@ -2,9 +2,10 @@ import { getProductsListWithSort } from "@lib/data/products"
 import { getRegion } from "@lib/data/regions"
 import ProductPreview from "@modules/products/components/product-preview"
 import { Pagination } from "@modules/store/components/pagination"
-import { SortOptions } from "@modules/categories/components/sort-category"
+import { SortOptions } from "@modules/layout/components/sort-category"
 import clsx from "clsx"
 import ProductItem from "@modules/layout/components/product-item"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 const PRODUCT_LIMIT = 16
 
@@ -100,7 +101,7 @@ export default async function PaginatedProducts({
     <>
       <ul
         className={clsx(
-          "grid  w-full grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 px-1 py-2  bg-white lg:p-4 rounded-lg shadow-lg",
+          "grid  w-full grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 px-1 py-2  bg-white lg:p-4 rounded-lg shadow-lg ",
           { "grid-cols-3 md:grid-cols-4": isSearch }
         )}
         data-testid="products-list"

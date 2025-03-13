@@ -5,9 +5,16 @@ import Category from "@modules/home/components/category"
 import FlashSale from "@modules/layout/components/flash-sale"
 import Collection from "@modules/layout/components/collection"
 import Blogs from "@modules/layout/components/blogs"
-import Brands from "@modules/layout/components/brand"
 import BlogTypes from "@modules/layout/components/blog-types"
+import Brands from "@modules/layout/components/brand"
 import FeaturedProduct from "@modules/layout/components/featured-product"
+
+import CategorySkeleton from "@modules/home/components/category/category-skeleton"
+import FlashSaleSkeleton from "@modules/layout/components/flash-sale/flash-sale-skeleton"
+import CollectionSkeleton from "@modules/layout/components/collection/collection-skeleton"
+import BlogSkeleton from "@modules/layout/components/blogs/blog-skeleton"
+import BrandsSkeleton from "@modules/layout/components/brand/brand-skeleton"
+import BlogTypeSkeleton from "@modules/layout/components/blog-types/blog-types-skeleton"
 
 import {
   BEST_SELLER_PRODUCT_HANDLE,
@@ -58,100 +65,61 @@ export default async function Home({
   const { brands } = await getBrandList()
 
   return (
-    <div className="bg-[#F5F7FD] py-3 sm:py-6">
-      <Suspense
-        fallback={
-          <div className="text-base sm:text-2xl text-center">
-            Đang tải danh mục sản phẩm...
-          </div>
-        }
-      >
+    <div className="bg-primary-bg py-3 sm:py-6">
+      <Suspense fallback={<CategorySkeleton />}>
         <Category categories={product_categories} />
       </Suspense>
 
-      <Suspense
-        fallback={
-          <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
-            Đang tải chương trình khuyến mại...
-          </div>
-        }
-      >
-        <FlashSale collection={getCollectionByHandle(FLASH_SALE_HANDLE)} />
+      <Suspense fallback={<FlashSaleSkeleton />}>
+        <FlashSale
+          collection={getCollectionByHandle(FLASH_SALE_HANDLE)}
+          countryCode={countryCode}
+        />
       </Suspense>
 
-      <Suspense
-        fallback={
-          <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
-            Đang tải bộ sưu tập...
-          </div>
-        }
-      >
+      <Suspense fallback={<CollectionSkeleton />}>
         <Collection
           collection={getCollectionByHandle(BEST_SELLER_PRODUCT_HANDLE)}
+          countryCode={countryCode}
         />
       </Suspense>
 
       {brands && brands.length > 0 && (
-        <Suspense fallback={<div>Đang tải thương hiệu...</div>}>
+        <Suspense fallback={<BrandsSkeleton />}>
           <Brands brands={brands} />
         </Suspense>
       )}
 
-      <Suspense
-        fallback={
-          <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
-            Đang tải bộ sưu tập...
-          </div>
-        }
-      >
+      <Suspense fallback={<CollectionSkeleton />}>
         <Collection
           collection={getCollectionByHandle(RECOMMEND_PRODUCT_HANDLE)}
+          countryCode={countryCode}
         />
       </Suspense>
 
       {blogs && blogTypes && blogs.length > 0 && (
-        <Suspense
-          fallback={
-            <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
-              Đang tải bài viết...
-            </div>
-          }
-        >
+        <Suspense fallback={<BlogSkeleton />}>
           <Blogs blogs={blogs} blogTypes={blogTypes} />
         </Suspense>
       )}
 
-      <Suspense
-        fallback={
-          <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
-            Đang tải bộ sưu tập...
-          </div>
-        }
-      >
-        <Collection collection={getCollectionByHandle(DAC_SAN_OCOP_HANDLE)} />
+      <Suspense fallback={<CollectionSkeleton />}>
+        <Collection
+          collection={getCollectionByHandle(DAC_SAN_OCOP_HANDLE)}
+          countryCode={countryCode}
+        />
       </Suspense>
 
       {blogTypes && blogTypes.length > 0 && (
-        <Suspense
-          fallback={
-            <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
-              Đang tải chủ đề...
-            </div>
-          }
-        >
+        <Suspense fallback={<BlogTypeSkeleton />}>
           <BlogTypes blogTypes={blogTypes} />
         </Suspense>
       )}
 
-      <Suspense
-        fallback={
-          <div className="text-base sm:text-2xl text-center my-5 sm:my-10">
-            Đang tải sản phẩm nổi bật
-          </div>
-        }
-      >
+      <Suspense fallback={<CollectionSkeleton />}>
         <FeaturedProduct
           collection={getCollectionByHandle(FEATURED_PRODUCT_HANDLE)}
+          countryCode={countryCode}
         />
       </Suspense>
     </div>

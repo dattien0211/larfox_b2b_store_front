@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 import StoreTemplate from "@modules/store/templates"
-import { SortOptions } from "@modules/categories/components/sort-category"
+import { SortOptions } from "@modules/layout/components/sort-category"
 import { getCategoriesList } from "@lib/data/categories"
 import { getProductTagsList } from "@lib/data/products"
 

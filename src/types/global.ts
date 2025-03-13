@@ -105,3 +105,8 @@ export type Brand = {
   updated_at: string
   deleted_at: string | null
 }
+
+export type PaginatedProductsCollectionParams = {
+  limit: number
+  collection_id?: string[]
+}

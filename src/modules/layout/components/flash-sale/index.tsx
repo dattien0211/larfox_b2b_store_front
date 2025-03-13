@@ -2,16 +2,42 @@ import Image from "next/image"
 import { HttpTypes } from "@medusajs/types"
 
 import IMGS from "@constants/IMGS"
-import FlashSaleProductsSlider from "../slider"
 import CountdownTimer from "./count-down"
 import RiceSpike from "@modules/common/components/rice-spike"
 import ProductsSlider from "../slider"
-interface FlashSaleProps {
-  collection?: HttpTypes.StoreCollection
+import { getProductsList } from "@lib/data/products"
+
+const PRODUCT_LIMIT = 20
+
+type PaginatedProductsParams = {
+  limit: number
+  collection_id?: string[]
 }
 
-const FlashSale: React.FC<FlashSaleProps> = ({ collection }) => {
-  const products = collection?.products
+interface FlashSaleProps {
+  collection?: HttpTypes.StoreCollection
+  countryCode: string
+}
+
+const FlashSale: React.FC<FlashSaleProps> = async ({
+  collection,
+  countryCode,
+}) => {
+  if (!collection) return null
+
+  const queryParams: PaginatedProductsParams = {
+    limit: PRODUCT_LIMIT,
+  }
+
+  queryParams["collection_id"] = [collection.id]
+
+  const {
+    response: { products },
+  } = await getProductsList({
+    pageParam: 1,
+    queryParams,
+    countryCode,
+  })
 
   return (
     <div className="relative py-3 sm:py-6 my-6 sm:my-10 content-container bg-white rounded-lg shadow-lg">

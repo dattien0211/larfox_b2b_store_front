@@ -58,12 +58,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     notFound()
   }
 
+  const formattedTitle = product.title
+    ? product.title.toLowerCase().replace(/^\w/, (c) => c.toUpperCase())
+    : ""
+
   return {
-    title: `${product.title} | Bông Lúa`,
-    description: `${product.title}`,
+    title: `${formattedTitle} | Bông Lúa`,
+    description: `${formattedTitle}`,
     openGraph: {
-      title: `${product.title} | Bông Lúa`,
-      description: `${product.title}`,
+      title: `${formattedTitle} | Bông Lúa`,
+      description: `${formattedTitle}`,
       images: product.thumbnail ? [product.thumbnail] : [],
     },
   }
