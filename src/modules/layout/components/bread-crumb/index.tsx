@@ -3,12 +3,16 @@ import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Icons from "@modules/common/icons"
 import { useOS } from "@lib/hooks/OSContext"
+import { BlogType, Blog } from "types/global"
 
 interface BreadcrumbProps {
   path?: string[]
   className?: string
   allCategories?: HttpTypes.StoreProductCategory[] // Make it optional
   product?: HttpTypes.StoreProduct
+  isBlog?: boolean
+  blog?: Blog
+  blogType?: BlogType
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({
@@ -16,6 +20,9 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
   className,
   allCategories = [], // Default to an empty array
   product,
+  isBlog = false,
+  blog,
+  blogType,
 }) => {
   const { os } = useOS()
   const { RightArrow } = Icons
@@ -31,27 +38,31 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
   return (
     <nav aria-label="breadcrumb" className={className}>
-      <ul className="list-none p-0 flex flex-wrap gap-y-1 items-center text-sm sm:text-base text-primary relative z-30">
+      <ul className="list-none p-0 flex flex-wrap gap-y-1 items-center text-sm sm:text-base relative z-30">
         <li>
           <LocalizedClientLink
             href="/"
-            className="hover:text-primary font-semibold capitalize"
+            className="hover:text-primary text-primary/90 font-semibold capitalize"
           >
             Trang chủ
           </LocalizedClientLink>
         </li>
-        <span className="mx-1 sm:mx-2">
-          <RightArrow size={os === "mobile" ? "10" : "12"} />
-        </span>
-        <li>
-          <LocalizedClientLink
-            href="/tat-ca-san-pham"
-            className="hover:text-primary font-semibold capitalize"
-          >
-            Sản phẩm
-          </LocalizedClientLink>
-        </li>
 
+        {!isBlog && (
+          <>
+            <span className="mx-1 sm:mx-2">
+              <RightArrow size={os === "mobile" ? "10" : "12"} />
+            </span>
+            <li>
+              <LocalizedClientLink
+                href="/tat-ca-san-pham"
+                className="hover:text-primary text-primary/90 font-semibold capitalize"
+              >
+                Sản phẩm
+              </LocalizedClientLink>
+            </li>
+          </>
+        )}
         {filteredItems.slice(1).map((item, index) => {
           const href = `/${filteredItems
             .slice(0, index + 2)
@@ -77,19 +88,44 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
             </li>
           )
         })}
-
         {product && (
           <>
             <span className="mx-1 sm:mx-2">
               <RightArrow size={os === "mobile" ? "10" : "12"} />
             </span>
             <li>
-              <LocalizedClientLink
-                href={`/san-pham/${product.handle}`}
-                className="hover:text-primary font-semibold capitalize w-36 line-clamp-1"
-              >
+              <p className="hover:text-primary !text-primary/75 font-semibold capitalize w-36 sm:w-96 line-clamp-1">
                 {product.title.toLowerCase()}
+              </p>
+            </li>
+          </>
+        )}
+
+        {blogType && (
+          <>
+            <span className="mx-1 sm:mx-2">
+              <RightArrow size={os === "mobile" ? "10" : "12"} />
+            </span>
+            <li>
+              <LocalizedClientLink
+                href={`/loai-bai-viet/${blogType.value}`}
+                className="hover:text-primary !text-primary/90 font-semibold capitalize line-clamp-1"
+              >
+                {blogType.name.toLowerCase()}
               </LocalizedClientLink>
+            </li>
+          </>
+        )}
+
+        {blog && (
+          <>
+            <span className="mx-1 sm:mx-2">
+              <RightArrow size={os === "mobile" ? "10" : "12"} />
+            </span>
+            <li>
+              <p className=" !text-primary/75 font-semibold capitalize w-36 sm:w-96 line-clamp-1">
+                {blog.title.toLowerCase()}
+              </p>
             </li>
           </>
         )}

@@ -4,7 +4,7 @@ import { Suspense } from "react"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import { HttpTypes } from "@medusajs/types"
-import { SortOptions } from "@modules/layout/components/sort-category"
+import { SortOptions } from "@modules/categories/components/sort-category"
 import FilterMenu from "@modules/categories/components/filter-menu"
 import CategoryHeader from "@modules/layout/components/sort-header"
 import Image from "next/image"
@@ -31,7 +31,7 @@ export default function CollectionTemplate({
   const sort = sortBy || "moi_nhat"
 
   return (
-    <div className="pb-16 sm:pb-24 pt-4 bg-[#f5f6f7]">
+    <div className="pb-16 sm:pb-24 pt-4 bg-primary-bg">
       <section className="content-container">
         {collection?.metadata?.thumbnail?.url && (
           <Image

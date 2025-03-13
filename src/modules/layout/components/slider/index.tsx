@@ -28,6 +28,9 @@ const ProductsSlider = ({
 }) => {
   const { LeftArrow, RightArrow } = Icons
   const { os } = useOS()
+
+  if (!os) return null
+
   const sliderRef = useRef<any>(null)
 
   const handlePrev = useCallback(() => sliderRef.current?.slidePrev(), [])

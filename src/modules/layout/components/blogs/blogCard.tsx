@@ -25,13 +25,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
   return (
     <div
       className={clsx(
-        "w-full shadow-lg relative h-[220px] md:h-[380px] ",
+        "w-full shadow-lg relative h-[220px] md:h-[380px] rounded-lg overflow-hidden",
         isRow ? "!flex-row" : "",
         os === "mobile" ? "!flex-col" : "",
         classBlog
       )}
     >
-      <div className="absolute inset-0  ">
+      <section className="absolute inset-0  ">
         <div className={"relative w-full h-full "}>
           {blog?.thumbnail && (
             <Image
@@ -44,12 +44,14 @@ const BlogCard: React.FC<BlogCardProps> = ({
             />
           )}
         </div>
-      </div>
+      </section>
 
-      <div className={clsx("absolute bottom-0 left-0 z-10 w-full rounded-lg")}>
-        <h1
+      <section
+        className={clsx("absolute bottom-0 left-0 z-10 w-full rounded-lg")}
+      >
+        <div
           className={clsx(
-            "px-4 shadow-inner  opacity-[45] flex items-end justify-start -rotate-180",
+            "px-4 shadow-inner  opacity-[45] flex items-center justify-center -rotate-180",
             isSmall ? "items-center h-16 md-20" : "items-end h-20 md:h-24"
           )}
           style={{
@@ -60,14 +62,14 @@ const BlogCard: React.FC<BlogCardProps> = ({
           <LocalizedClientLink
             href={`/bai-viet/${blog?.handle}`}
             className={clsx(
-              "-rotate-180 text-white font-semibold opacity-100 flex-1 line-clamp-2",
-              isSmall ? "text-sm sm:text-base" : "text-[15px] sm:text-xl"
+              "-rotate-180 text-white font-semibold opacity-100 flex-1 line-clamp-2 text-sm",
+              isSmall ? "sm:text-base" : "sm:text-lg"
             )}
           >
             {blog?.title}
           </LocalizedClientLink>
-        </h1>
-      </div>
+        </div>
+      </section>
     </div>
   )
 }

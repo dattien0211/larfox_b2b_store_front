@@ -7,7 +7,7 @@ import SkeletonOrderSummary from "@modules/skeletons/components/skeleton-order-s
 
 const SkeletonCartPage = () => {
   return (
-    <div className="pb-16 sm:pb-24 pt-4 bg-[#f5f6f7]">
+    <div className="pb-16 sm:pb-24 pt-4 bg-primary-bg">
       <div className="content-container">
         <div className="grid grid-cols-1 small:grid-cols-[1fr_360px] gap-y-6 gap-x-10">
           <div className="flex flex-col bg-white py-3 px-2 sm:px-4 rounded-lg shadow-lg gap-y-6">

@@ -11,7 +11,7 @@ export const listRegions = cache(async function (): Promise<
     "/store/regions",
     {},
     ["regions"],
-    300
+    600
   )
 
   return result?.regions ?? []

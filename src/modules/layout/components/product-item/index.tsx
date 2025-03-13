@@ -135,6 +135,7 @@ export default function ProductItem({
               alt="banner"
               width={245}
               height={245}
+              loading="lazy"
               className="w-full aspect-square transition-transform duration-500 ease-in-out group-hover:scale-110 object-cover"
             />
           )}
@@ -153,16 +154,13 @@ export default function ProductItem({
         </div>
 
         <div className="w-full absolute bottom-[10%] left-0 opacity-0 invisible transition-all duration-300 flex flex-col gap-2 items-center justify-center group-hover:opacity-100 group-hover:visible">
-          <button
+          <LocalizedClientLink
             className="w-36 h-7 sm:h-8 text-sm sm:text-base rounded-md bg-primary/85 text-white duration-300 transition-all text-nowrap
-                      hover:scale-105 hover:shadow-sm hover:bg-primary/95"
+                       flex items-center justify-center hover:scale-105 hover:shadow-sm hover:bg-primary/95"
+            href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
           >
-            <LocalizedClientLink
-              href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
-            >
-              Xem chi tiết
-            </LocalizedClientLink>
-          </button>
+            Xem chi tiết
+          </LocalizedClientLink>
         </div>
       </div>
 

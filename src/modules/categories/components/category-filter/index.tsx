@@ -41,7 +41,7 @@ const CategoryFilter = ({
           ? `${newPath}?${params}`
           : `${basePath}/tat-ca-san-pham?${params}`
 
-      router.push(finalPath, { scroll: false }) // Navigate while keeping query parameters
+      router.push(finalPath, { scroll: true }) // Navigate while keeping query parameters
 
       return updatedCategories
     })

@@ -19,9 +19,16 @@ import { Blog, BlogType } from "types/global"
 interface BlogSliderProps {
   blogs: Blog[]
   blogTypes?: BlogType[]
+  slidesPerView?: number
+  spaceBetween?: number
 }
 
-const BlogSlider: React.FC<BlogSliderProps> = ({ blogs, blogTypes }) => {
+const BlogSlider: React.FC<BlogSliderProps> = ({
+  blogs,
+  blogTypes,
+  slidesPerView = 1,
+  spaceBetween = 0,
+}) => {
   const slides = useMemo(
     () =>
       blogs.map((blog, index) => (
@@ -37,7 +44,8 @@ const BlogSlider: React.FC<BlogSliderProps> = ({ blogs, blogTypes }) => {
       <Swiper
         modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
         loop
-        slidesPerView={1}
+        slidesPerView={slidesPerView}
+        spaceBetween={spaceBetween}
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,

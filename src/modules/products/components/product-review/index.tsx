@@ -27,10 +27,13 @@ const ProductReview = ({
 
   return (
     <div className="w-full" data-testid="product-review">
-      <Heading level="h1" className="text-primary text-xl sm:text-2xl ">
+      <Heading
+        level="h1"
+        className="text-primary text-xl sm:text-2xl capitalize"
+      >
         Đánh giá sản phẩm
       </Heading>
-      <div className="border border-grey-20 mt-3 sm:mt-6">
+      <div className="border border-grey-20 mt-2 sm:mt-4">
         <div className="flex gap-x-2 sm:gap-x-8 px-2 pt-2 sm:px-4 sm:pt-4 text-sm sm:text-lg">
           <button
             onClick={() => setIsReview(!isReview)}

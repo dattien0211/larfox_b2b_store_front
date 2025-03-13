@@ -19,7 +19,7 @@ const CartTemplate = ({
 
   return (
     <div
-      className="pb-16 sm:pb-24 pt-4 bg-[#f5f6f7]"
+      className="pb-16 sm:pb-24 pt-4 bg-primary-bg"
       data-testid="cart-container"
     >
       <div className="content-container ">

@@ -1,8 +1,6 @@
 import React, { Suspense } from "react"
 import { notFound } from "next/navigation"
-import { Heading } from "@medusajs/ui"
 import { HttpTypes } from "@medusajs/types"
-import { cookies } from "next/headers"
 import "react-quill/dist/quill.snow.css"
 
 import ProductActions from "@modules/products/components/product-actions"
@@ -11,46 +9,37 @@ import RelatedProducts from "@modules/products/components/related-products"
 import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 import ImageSlider from "@modules/layout/components/img-slider"
 import ProductReview from "@modules/products/components/product-review"
-import { getCustomer } from "@lib/data/customer"
 import ProductActionsWrapper from "./product-actions-wrapper"
-import { getProductsById } from "@lib/data/products"
 import ProductDescription from "../components/product-description"
 import Breadcrumb from "@modules/layout/components/bread-crumb"
 import RiceSpike from "@modules/common/components/rice-spike"
+import ProductDescriptionSkeleton from "../components/product-description/product-description-skeleton"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
   region: HttpTypes.StoreRegion
   countryCode: string
+  customer: HttpTypes.StoreCustomer | null
+  token?: string
 }
 
 const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   product,
   region,
   countryCode,
+  customer,
+  token,
 }) => {
   if (!product || !product.id) {
     return notFound()
   }
 
-  const customerPromise = getCustomer().catch(() => null)
-  const productPromise = getProductsById({
-    ids: [product.id],
-    regionId: region.id,
-  })
-  const [customer, [productById]] = await Promise.all([
-    customerPromise,
-    productPromise,
-  ])
-  const token = cookies().get("_medusa_jwt")?.value
-
   return (
     <div className="bg-primary-bg py-3 sm:py-6">
       <section
-        className="content-container py-4 sm:py-[18px] mb-4 sm:mb-6 rounded-lg shadow-lg bg-white relative"
+        className="content-container py-4 sm:py-[18px] mb-4 sm:mb-6 rounded-lg shadow-lg bg-white "
         data-testid="product-breadcrumb"
       >
-        <RiceSpike />
         <Breadcrumb product={product} />
       </section>
 
@@ -90,13 +79,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
 
       <section className="content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white relative">
         <RiceSpike />
-        <Suspense
-          fallback={
-            <div className="text-base sm:text-2xl text-center">
-              Đang tải mô tả sản phẩm...
-            </div>
-          }
-        >
+        <Suspense fallback={<ProductDescriptionSkeleton />}>
           <ProductDescription description={product?.description || undefined} />
         </Suspense>
       </section>
@@ -110,11 +93,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
             </div>
           }
         >
-          <ProductReview
-            customer={customer}
-            product={productById}
-            token={token}
-          />
+          <ProductReview customer={customer} product={product} token={token} />
         </Suspense>
       </section>
 

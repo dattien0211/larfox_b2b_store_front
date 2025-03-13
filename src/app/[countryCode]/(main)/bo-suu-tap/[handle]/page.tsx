@@ -8,7 +8,7 @@ import {
 import { listRegions } from "@lib/data/regions"
 import { StoreCollection, StoreRegion } from "@medusajs/types"
 import CollectionTemplate from "@modules/collections/templates"
-import { SortOptions } from "@modules/layout/components/sort-category"
+import { SortOptions } from "@modules/categories/components/sort-category"
 import { getCategoriesList } from "@lib/data/categories"
 
 type Props = {
@@ -73,11 +73,12 @@ export default async function CollectionPage({ params, searchParams }: Props) {
   const minPrice = searchParams["min_price"]
   const maxPrice = searchParams["max_price"]
 
-  const categories = await getCategoriesList()
-
-  const collection = await getCollectionByHandle(params.handle).then(
-    (collection: StoreCollection) => collection
-  )
+  const [categories, collection] = await Promise.all([
+    getCategoriesList(),
+    getCollectionByHandle(params.handle).then(
+      (collection: StoreCollection) => collection
+    ),
+  ])
 
   if (!collection) {
     notFound()
@@ -95,5 +96,3 @@ export default async function CollectionPage({ params, searchParams }: Props) {
     />
   )
 }
-
-export const dynamic = "force-dynamic"

@@ -13,7 +13,8 @@ export const getBlogTypeByValue = cache(async function (
   const data = await fetchWithCache<{ blogTypes: BlogType[] }>(
     "/store/blog-types",
     { value },
-    ["blog-types"]
+    ["blog-types"],
+    1200
   )
   return data?.blogTypes?.[0] || null
 })
@@ -28,7 +29,8 @@ export const getBlogTypesList = cache(async function (
   const data = await fetchWithCache<PaginatedBlogList>(
     "/store/blog-types",
     { ...queryParams, limit, offset },
-    ["blog-types"]
+    ["blog-types"],
+    1200
   )
 
   return {

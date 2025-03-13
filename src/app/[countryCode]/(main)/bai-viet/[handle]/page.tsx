@@ -8,6 +8,9 @@ import { getRegion, listRegions } from "@lib/data/regions"
 import { getBlogByHandle, getBlogList } from "@lib/data/blog"
 import BlogSlider from "@modules/layout/components/blogs/slider"
 import { BlogQueryParams } from "types/global"
+import RiceSpike from "@modules/common/components/rice-spike"
+import { getBlogTypeByValue, getBlogTypesList } from "@lib/data/blog-types"
+import Breadcrumb from "@modules/layout/components/bread-crumb"
 
 type Props = {
   params: { countryCode: string; handle: string }
@@ -76,6 +79,8 @@ export default async function BlogPage({ params }: Props) {
     notFound()
   }
 
+  const blogType = (await getBlogTypeByValue(blog.type)) || undefined
+
   const sanitizedContent = DOMPurify.sanitize(blog.description)
 
   const queryParams: BlogQueryParams = {
@@ -86,22 +91,33 @@ export default async function BlogPage({ params }: Props) {
   const relatedBlogs = blogs?.filter((item) => item.id !== blog.id)
 
   return (
-    <div className="content-container py-4 sm:py-8 mb-16 sm:mb-32">
-      <section
-        className="ql-editor rich-text-content"
-        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-      ></section>
+    <div className="bg-primary-bg py-3 sm:py-6">
+      <section className="relative content-container py-4 sm:py-6 mb-3 sm:mb-6 rounded-lg shadow-lg bg-white">
+        <Breadcrumb isBlog={true} blogType={blogType} blog={blog} />
+      </section>
+      <section className="relative content-container py-4 sm:py-6 mb-6 sm:mb-10 rounded-lg shadow-lg bg-white">
+        <RiceSpike />
+        <div
+          className="ql-editor rich-text-content"
+          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+        ></div>
+      </section>
 
       {relatedBlogs.length > 0 && (
-        <section className="mt-8 sm:mt-12 mb-6 sm:mb-12">
-          <h1 className="mb-4 sm:mb-8 font-bold font-times text-xl md:text-2xl">
-            Bài viết liên quan
-          </h1>
-          <BlogSlider blogs={relatedBlogs} />
+        <section className="relative content-container py-4 sm:py-6 my-6 sm:my-10 rounded-lg shadow-lg bg-white">
+          <RiceSpike />
+          <div>
+            <h1 className="mb-3 sm:mb-6 font-bold font-times text-xl md:text-2xl text-primary">
+              Bài viết liên quan
+            </h1>
+            <BlogSlider
+              blogs={relatedBlogs}
+              slidesPerView={3}
+              spaceBetween={16}
+            />
+          </div>
         </section>
       )}
     </div>
   )
 }
-
-export const dynamic = "force-dynamic"

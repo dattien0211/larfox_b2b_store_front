@@ -13,7 +13,8 @@ export const getBlogByHandle = cache(async function (
   const data = await fetchWithCache<{ blogs: Blog[] }>(
     "/store/blogs",
     { handle },
-    ["blogs"]
+    ["blogs"],
+    1200
   )
   return data?.blogs?.[0] || null
 })
@@ -28,7 +29,8 @@ export const getBlogList = cache(async function (
   const data = await fetchWithCache<PaginatedBlogList>(
     "/store/blogs",
     { ...queryParams, limit, offset },
-    ["blogs"]
+    ["blogs"],
+    1200
   )
 
   return {

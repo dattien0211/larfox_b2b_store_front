@@ -11,6 +11,12 @@ export const getAuthHeaders = (): { authorization: string } | {} => {
   return {}
 }
 
+export const getToken = () => {
+  const token = cookies().get("_medusa_jwt")?.value
+
+  return token
+}
+
 export const setAuthToken = (token: string) => {
   cookies().set("_medusa_jwt", token, {
     maxAge: 60 * 60 * 24 * 7,

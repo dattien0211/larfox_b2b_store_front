@@ -20,7 +20,7 @@ export default function OrderCompletedTemplate({
   const isOnboarding = cookies().get("_medusa_onboarding")?.value === "true"
 
   return (
-    <div className="min-h-[calc(100vh-64px)] pb-16 sm:pb-24 pt-4 bg-[#f5f6f7]">
+    <div className="min-h-[calc(100vh-64px)] pb-16 sm:pb-24 pt-4 bg-primary-bg">
       <div className="content-container flex flex-col justify-center items-center gap-y-10 max-w-4xl h-full w-full">
         {isOnboarding && <OnboardingCta orderId={order.id} />}
         <div

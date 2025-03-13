@@ -46,19 +46,19 @@ const BlogTypes: React.FC<BlogsProps> = ({ blogTypes }) => {
             className="group bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col sm:flex-row items-center justify-normal sm:justify-between gap-x-4"
           >
             {/* Ảnh blogType */}
-            <div className="relative w-2/3 sm:w-1/2 h-[80px] sm:h-24   overflow-hidden">
+            <div className="relative w-2/3 sm:w-1/2 h-[80px] sm:h-24  overflow-hidden">
               <Image
                 src={blogType.thumbnail.url}
                 alt={blogType.name}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-contain group-hover:scale-125 transition-transform duration-300"
+                className="object-contain group-hover:scale-[1.2] transition-transform duration-300"
               />
             </div>
 
             {/* Nội dung blogType */}
             <div className="p-2 w-full sm:w-32">
-              <h2 className="text-xs sm:text-base capitalize font-semibold text-gray-600  group-hover:text-primary transition-colors text-center   flex items-center justify-center w-full">
+              <h2 className="text-xs sm:text-base capitalize font-semibold text-gray-600  group-hover:text-primary transition-colors text-center  flex items-center justify-center w-full">
                 {blogType.name}
               </h2>
             </div>

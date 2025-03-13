@@ -4,7 +4,7 @@ import { Suspense } from "react"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import { HttpTypes } from "@medusajs/types"
-import { SortOptions } from "@modules/layout/components/sort-category"
+import { SortOptions } from "@modules/categories/components/sort-category"
 import FilterMenu from "@modules/categories/components/filter-menu"
 import { ProductTag } from "types/global"
 import SortHeader from "@modules/layout/components/sort-header"
@@ -40,7 +40,7 @@ export default function CategoryTemplate({
   if (!category || !countryCode) notFound()
 
   return (
-    <div className="pb-16 sm:pb-24 bg-[#f5f6f7]">
+    <div className="pb-16 sm:pb-24 bg-primary-bg">
       <div
         className="flex flex-col small:flex-row small:items-start py-4 gap-4 content-container relative z-20"
         data-testid="category-container"

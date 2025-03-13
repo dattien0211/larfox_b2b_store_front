@@ -5,6 +5,8 @@ import ProductTemplate from "@modules/products/templates"
 import { getRegion, listRegions } from "@lib/data/regions"
 import { getProductByHandle } from "@lib/data/products"
 import { sdk } from "@lib/config"
+import { getToken } from "@lib/data/cookies"
+import { getCustomer } from "@lib/data/customer"
 
 type Props = {
   params: { countryCode: string; handle: string }
@@ -86,11 +88,17 @@ export default async function ProductPage({ params }: Props) {
     notFound()
   }
 
+  const token = getToken()
+
+  const customer = await getCustomer().catch(() => null)
+
   return (
     <ProductTemplate
       product={product}
       region={region}
       countryCode={params.countryCode}
+      customer={customer}
+      token={token}
     />
   )
 }

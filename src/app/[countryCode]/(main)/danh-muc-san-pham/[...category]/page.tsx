@@ -9,7 +9,7 @@ import {
 import { listRegions } from "@lib/data/regions"
 import { StoreProductCategory, StoreRegion } from "@medusajs/types"
 import CategoryTemplate from "@modules/categories/templates"
-import { SortOptions } from "@modules/layout/components/sort-category"
+import { SortOptions } from "@modules/categories/components/sort-category"
 import { getProductTagsList } from "@lib/data/products"
 
 type Props = {
@@ -85,14 +85,16 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     ? [searchParams.tag_id]
     : []
 
-  const { product_categories } = await getCategoryByHandle(params.category)
+  const [{ product_categories }, categories, { product_tags }] =
+    await Promise.all([
+      getCategoryByHandle(params.category),
+      getCategoriesList(),
+      await getProductTagsList(),
+    ])
 
   if (!product_categories) {
     notFound()
   }
-
-  const categories = await getCategoriesList()
-  const { product_tags } = await getProductTagsList()
 
   return (
     <CategoryTemplate
@@ -110,4 +112,4 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   )
 }
 
-export const dynamic = "force-dynamic"
+// export const dynamic = "force-dynamic"

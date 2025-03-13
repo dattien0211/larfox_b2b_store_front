@@ -1,11 +1,10 @@
 import { getBlogList } from "@lib/data/blog"
-import Text from "@modules/layout/components/text"
 import { notFound } from "next/navigation"
 import { BlogQueryParams, BlogType } from "types/global"
 import BlogCard from "@modules/layout/components/blogs/blogCard"
-import BlogSlider from "@modules/layout/components/blogs/slider"
 import { Pagination } from "@modules/store/components/pagination"
 import clsx from "clsx"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 export default async function BlogTypesTemplate({
   page,
@@ -20,8 +19,7 @@ export default async function BlogTypesTemplate({
   isAllBLogs?: boolean
   blogTypes?: BlogType[]
 }) {
-  const BLOG_LIMIT = isAllBLogs ? 6 : 12
-  const BLOG_COL_SHOW = isAllBLogs ? 12 : 3
+  const BLOG_LIMIT = 12
   const pageNumber = page ? parseInt(page) : 1
   const queryParams: BlogQueryParams = {}
 
@@ -39,41 +37,35 @@ export default async function BlogTypesTemplate({
     notFound()
   }
 
-  const relatedBlogs = !isAllBLogs ? blogs.slice(BLOG_COL_SHOW) : []
-
   return (
-    <div className="content-container py-3 sm:py-9 mt-4 sm:mt-12 mb-16 sm:mb-32">
-      <Text  title="BLog" subTitle={name} />
-      <div
-        className={clsx("mt-8 sm:mt-16", {
-          "flex flex-col gap-y-4 sm:gap-y-8": !isAllBLogs,
-          "grid grid-cols-3 gap-x-6 gap-y-10 ": isAllBLogs,
-        })}
-      >
-        {blogs.slice(0, BLOG_COL_SHOW).map((blog, index) => (
-          <BlogCard
-            blog={blog}
-            isRow={!isAllBLogs ? true : false}
-            key={index}
-            blogTypes={blogTypes}
-          />
-        ))}
-      </div>
-      {totalPages > 1 && (
-        <Pagination
-          data-testid="blog-pagination"
-          page={pageNumber}
-          totalPages={totalPages}
-        />
-      )}
-      {!isAllBLogs && relatedBlogs.length > 0 && (
-        <div className="mt-8 sm:mt-12 mb-6 sm:mb-12">
-          <h1 className="mb-4 sm:mb-8 font-bold font-times text-xl md:text-2xl">
-            Bài viết liên quan
-          </h1>
-          <BlogSlider blogs={relatedBlogs} />
+    <div className="bg-primary-bg py-3 sm:py-6">
+      <section className="relative content-container py-4 sm:py-6 mb-6 sm:mb-10 rounded-lg shadow-lg bg-white">
+        <RiceSpike />
+        <h1 className="text-center font-times capitalize text-primary text-xl sm:text-3xl font-semibold">
+          {isAllBLogs ? "Tất cả bài viết" : name}
+        </h1>
+        <div
+          className={clsx(
+            "mt-3 sm:mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6"
+          )}
+        >
+          {blogs.map((blog, index) => (
+            <BlogCard
+              blog={blog}
+              isRow={!isAllBLogs ? true : false}
+              key={index}
+              blogTypes={blogTypes}
+            />
+          ))}
         </div>
-      )}
+        {totalPages > 1 && (
+          <Pagination
+            data-testid="blog-pagination"
+            page={pageNumber}
+            totalPages={totalPages}
+          />
+        )}
+      </section>
     </div>
   )
 }

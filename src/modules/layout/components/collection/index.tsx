@@ -50,9 +50,7 @@ const Collection: React.FC<CollectionProps> = async ({
         imageSrc={collection?.metadata?.thumbnail?.url}
         href={collection?.handle ? `/bo-suu-tap/${collection?.handle}` : "/"}
       />
-
       <ShowItem products={products} />
-
       <div className="flex justify-center mt-4 sm:mt-6">
         <LocalizedClientLink
           href={collection?.handle ? `/bo-suu-tap/${collection?.handle}` : "/"}

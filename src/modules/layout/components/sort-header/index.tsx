@@ -1,7 +1,9 @@
 import Icons from "@modules/common/icons"
 import { HttpTypes } from "@medusajs/types"
 import Breadcrumb from "../bread-crumb"
-import SortCategories, { SortOptions } from "../sort-category"
+import SortCategories, {
+  SortOptions,
+} from "../../../categories/components/sort-category"
 import RiceSpike from "@modules/common/components/rice-spike"
 
 const SortHeader = ({

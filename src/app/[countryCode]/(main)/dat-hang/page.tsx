@@ -37,7 +37,7 @@ export default async function Checkout({
   const customer = await getCustomer()
 
   return (
-    <div className="pb-16 sm:pb-24 pt-4 sm:pt-6 bg-[#f5f6f7]">
+    <div className="pb-16 sm:pb-24 pt-4 sm:pt-6 bg-primary-bg">
       <div className="flex flex-col-reverse small:flex-row content-container gap-8">
         {cart?.items?.length ? (
           <>

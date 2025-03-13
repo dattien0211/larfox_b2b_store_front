@@ -2,7 +2,7 @@ import { Heading, Text } from "@medusajs/ui"
 
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { SortOptions } from "@modules/layout/components/sort-category"
+import { SortOptions } from "@modules/categories/components/sort-category"
 
 type SearchResultsTemplateProps = {
   query: string

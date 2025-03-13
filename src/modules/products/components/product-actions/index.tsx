@@ -33,7 +33,6 @@ const optionsAsKeymap = (
 
 export default function ProductActions({
   product,
-  region,
   disabled,
 }: ProductActionsProps) {
   const { Heart } = Icons

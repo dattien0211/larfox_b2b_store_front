@@ -1,11 +1,9 @@
 import { getProductsListWithSort } from "@lib/data/products"
 import { getRegion } from "@lib/data/regions"
-import ProductPreview from "@modules/products/components/product-preview"
 import { Pagination } from "@modules/store/components/pagination"
-import { SortOptions } from "@modules/layout/components/sort-category"
+import { SortOptions } from "@modules/categories/components/sort-category"
 import clsx from "clsx"
 import ProductItem from "@modules/layout/components/product-item"
-import RiceSpike from "@modules/common/components/rice-spike"
 
 const PRODUCT_LIMIT = 16
 

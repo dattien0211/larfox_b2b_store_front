@@ -32,7 +32,7 @@ const TagFilter = ({ productTags }: { productTags?: ProductTag[] }) => {
     }
 
     // Push the updated URL
-    router.push(`?${currentParams.toString()}`, { scroll: false })
+    router.push(`?${currentParams.toString()}`, { scroll: true })
   }
 
   return (
