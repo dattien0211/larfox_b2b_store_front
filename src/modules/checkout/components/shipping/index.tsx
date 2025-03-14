@@ -64,7 +64,7 @@ const Shipping: React.FC<ShippingProps> = ({
       <div className="flex flex-row items-center justify-between mb-2 sm:mb-6">
         <h1
           className={clx(
-            "flex flex-row sm:text-28 text-xl font-semibold font-times text-primary gap-x-2 items-baseline",
+            "flex flex-row sm:text-28 text-xl font-semibold font-times text-primary gap-x-2 items-baseline capitalize",
             {
               "opacity-50 pointer-events-none select-none":
                 !isOpen && cart.shipping_methods?.length === 0,
@@ -93,7 +93,7 @@ const Shipping: React.FC<ShippingProps> = ({
       </div>
       {isOpen ? (
         <div data-testid="delivery-options-container">
-          <div className="pb-4 sm:pb-8">
+          <div className="pb-4 ">
             <RadioGroup value={selectedShippingMethod?.id} onChange={set}>
               {availableShippingMethods?.map((option) => {
                 return (

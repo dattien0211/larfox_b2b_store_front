@@ -97,7 +97,7 @@ const Addresses = ({
   return (
     <>
       <div className="flex flex-row items-center justify-between mb-2 sm:mb-6">
-        <h1 className="flex flex-row sm:text-28 text-xl font-semibold font-times  gap-x-2 items-baseline text-primary sm:mb-4">
+        <h1 className="flex flex-row sm:text-28 text-xl font-semibold font-times  gap-x-2 items-baseline text-primary capitalize">
           Địa chỉ nhận hàng
           {!isOpen && <CheckCircleSolid />}
         </h1>

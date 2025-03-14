@@ -9,6 +9,7 @@ import OrderDetails from "@modules/order/components/order-details"
 import ShippingDetails from "@modules/order/components/shipping-details"
 import PaymentDetails from "@modules/order/components/payment-details"
 import { HttpTypes } from "@medusajs/types"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 type OrderCompletedTemplateProps = {
   order: HttpTypes.StoreOrder
@@ -20,13 +21,14 @@ export default function OrderCompletedTemplate({
   const isOnboarding = cookies().get("_medusa_onboarding")?.value === "true"
 
   return (
-    <div className="min-h-[calc(100vh-64px)] pb-16 sm:pb-24 pt-4 bg-primary-bg">
+    <div className="min-h-[calc(100vh-64px)] pb-16 sm:pb-24 pt-4 sm:pt-6 bg-primary-bg">
       <div className="content-container flex flex-col justify-center items-center gap-y-10 max-w-4xl h-full w-full">
         {isOnboarding && <OnboardingCta orderId={order.id} />}
         <div
-          className="flex flex-col gap-4 max-w-4xl h-full bg-white w-full py-3  px-2 sm:p-6 rounded-lg shadow-lg gap-y-6"
+          className="flex flex-col gap-4 max-w-4xl h-full bg-white w-full py-3  px-2 sm:p-6 rounded-lg shadow-lg gap-y-6 relative"
           data-testid="order-complete-container"
         >
+          <RiceSpike />
           <Heading
             level="h1"
             className="flex flex-col gap-y-3 text-primary sm:text-28 text-xl font-times font-bold items-center capitalize text-center"

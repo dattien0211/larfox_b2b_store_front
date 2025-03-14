@@ -4,6 +4,7 @@ import EmptyCartMessage from "../components/empty-cart-message"
 import SignInPrompt from "../components/sign-in-prompt"
 import Divider from "@modules/common/components/divider"
 import { HttpTypes } from "@medusajs/types"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 const CartTemplate = ({
   cart,
@@ -24,8 +25,10 @@ const CartTemplate = ({
     >
       <div className="content-container ">
         {cart?.items?.length ? (
-          <div className="grid grid-cols-1 small:grid-cols-[1fr_360px] gap-y-6 gap-x-10">
-            <div className="flex flex-col bg-white py-3 px-2 sm:px-4 rounded-lg shadow-lg gap-y-6">
+          <div className="grid grid-cols-1 small:grid-cols-[1fr_360px] gap-y-6 gap-x-8">
+            <div className="flex flex-col bg-white py-3 px-2 sm:px-4 rounded-lg shadow-lg gap-y-6 relative">
+              <RiceSpike />
+
               {/* {!customer && (
                 <>
                   <SignInPrompt />
@@ -38,7 +41,8 @@ const CartTemplate = ({
               <div className="flex flex-col gap-y-8 sticky top-12">
                 {cart && cart.region && (
                   <>
-                    <div className="bg-white py-3 px-2 lg:px-4 rounded-lg shadow-lg gap-y-6">
+                    <div className="bg-white pt-3 pb-6 px-2 lg:px-4 rounded-lg shadow-lg gap-y-6 relative">
+                      <RiceSpike />
                       <Summary cart={cart as any} />
                     </div>
                   </>

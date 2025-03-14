@@ -7,6 +7,7 @@ import { Brand } from "types/global"
 import { Heading } from "@medusajs/ui"
 import RiceSpike from "@modules/common/components/rice-spike"
 import { useOS } from "@lib/hooks/OSContext"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 interface BrandsProps {
   brands: Brand[]
@@ -37,22 +38,26 @@ const Brands: React.FC<BrandsProps> = ({ brands }) => {
 
       <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4">
         {displayBrand.map((brand) => (
-          <div
+          <ul
             key={brand.id}
             className="group flex justify-center items-center border border-primary/35 hover:border-primary/45 p-2 sm:p-4 rounded-lg hover:shadow-xl transition-all duration-500 cursor-pointer"
           >
-            {brand.logo?.url ? (
-              <Image
-                src={brand.logo.url}
-                alt={brand.name}
-                width={100}
-                height={100}
-                className="object-contain transition-transform duration-300 group-hover:scale-125"
-              />
-            ) : (
-              <span className="group-hover:text-primary">No logo</span>
-            )}
-          </div>
+            <li>
+              <LocalizedClientLink href={`/thuong-hieu/${brand.handle}`}>
+                {brand.logo?.url ? (
+                  <Image
+                    src={brand.logo.url}
+                    alt={brand.name}
+                    width={100}
+                    height={100}
+                    className="object-contain transition-transform duration-300 group-hover:scale-125"
+                  />
+                ) : (
+                  <span className="group-hover:text-primary">No logo</span>
+                )}
+              </LocalizedClientLink>
+            </li>
+          </ul>
         ))}
       </div>
 

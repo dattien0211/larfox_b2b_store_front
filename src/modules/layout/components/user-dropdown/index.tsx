@@ -49,7 +49,7 @@ const UserDropDown = ({
         >
           <Popover.Panel
             static
-            className="hidden small:block absolute top-[100%] right-0 bg-white border border-grey-20 shadow-lg w-[180px] p-4 text-base-regular font-semibold"
+            className="hidden small:block absolute top-[100%] right-0 bg-white border border-grey-20 shadow-lg w-[180px] p-4 text-base-regular font-manrope-semibold"
             data-testid="nav-cart-dropdown"
           >
             <div className="bg-white  capitalize">

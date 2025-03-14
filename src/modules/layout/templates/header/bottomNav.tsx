@@ -40,7 +40,7 @@ export default function BottomNav({ categories, blogTypes }: BottomNavProps) {
         ],
       },
       {
-        title: "Blog",
+        title: "Bài Viết",
         submenus: [
           ...(blogTypes?.map((blogType) => ({
             title: blogType.name,
@@ -93,7 +93,9 @@ export default function BottomNav({ categories, blogTypes }: BottomNavProps) {
             href="/tat-ca-bai-viet"
             className="relative flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group"
           >
-            <h1 className=" text-sm text-nowrap lg:text-base">Blog</h1>
+            <h1 className=" text-sm text-nowrap lg:text-base capitalize">
+              Bài Viết
+            </h1>
             <span className="text-grey-30 group-hover:text-primary">
               <DropDown />
             </span>
