@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { HttpTypes } from "@medusajs/types"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -31,7 +32,7 @@ const ProductMoreInfo = ({ product, variant }: ProductInfoProps) => {
         <span className="text-black-20 mr-2 text-nowrap capitalize">
           Danh Mục Sản Phẩm:
         </span>
-        <ul className="flex gap-x-2 flex-wrap gap-y-1  font-semibold">
+        <ul className="flex gap-x-2 flex-wrap gap-y-1 font-manrope-bold">
           {product?.categories &&
             product?.categories?.length > 0 &&
             product?.categories
@@ -64,7 +65,7 @@ const ProductMoreInfo = ({ product, variant }: ProductInfoProps) => {
                 <div key={tag?.id}>
                   <LocalizedClientLink
                     href={`/tat-ca-san-pham?tag_id=${tag?.id}`}
-                    className="hover:text-primary"
+                    className="text-primary font-manrope-bold capitalize hover:text-gray-800"
                   >
                     {tag?.value}
                   </LocalizedClientLink>
@@ -76,11 +77,16 @@ const ProductMoreInfo = ({ product, variant }: ProductInfoProps) => {
             })}
         </div>
       </div>
-      <div className="flex text-sm">
+      <div className="flex text-sm gap-x-2">
         <span className="text-black-20">Thương hiệu:</span>
-        <div className="flex gap-x-2 ml-1">
-          {product.origin_country && countryMapping[product.origin_country]}
-        </div>
+        {product?.brand && (
+          <LocalizedClientLink
+            href={`/thuong-hieu/${product?.brand?.handle}`}
+            className="text-primary font-manrope-bold capitalize hover:text-gray-800"
+          >
+            {product?.brand?.name.toLowerCase()}
+          </LocalizedClientLink>
+        )}
       </div>
     </div>
   )

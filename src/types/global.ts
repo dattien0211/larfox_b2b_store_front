@@ -1,3 +1,4 @@
+import { HttpTypes } from "@medusajs/types"
 import Image from "next/image"
 export type FeaturedProduct = {
   id: string
@@ -95,6 +96,7 @@ export type Brand = {
   thumbnail: ImageType | null
   short_description: string | null
   description: string | null
+  products: HttpTypes.StoreProduct[] | undefined | null
   website: string | null
   founded_year: number | null
   headquarters: string | null

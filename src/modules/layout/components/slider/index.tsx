@@ -18,6 +18,8 @@ import "swiper/css/pagination"
 import { useOS } from "@lib/hooks/OSContext"
 import Icons from "@modules/common/icons"
 import ProductItem from "../product-item"
+import repeat from "@lib/util/repeat"
+import ProductItemSkeleton from "../product-item/product-item-skeleton"
 
 const ProductsSlider = ({
   products,
@@ -28,17 +30,27 @@ const ProductsSlider = ({
 }) => {
   const { LeftArrow, RightArrow } = Icons
   const { os } = useOS()
-
   const sliderRef = useRef<any>(null)
+
+  const [loading, setLoading] = React.useState(true)
+
+  React.useEffect(() => {
+    if (os) setLoading(false)
+  }, [os])
 
   const handlePrev = useCallback(() => sliderRef.current?.slidePrev(), [])
   const handleNext = useCallback(() => sliderRef.current?.slideNext(), [])
 
-  // Determine number of slides per view based on OS
-  const slidesPerView = os === "desktop" ? 5 : os === "tablet" ? 3 : 2
-  const spaceBetween = os === "desktop" ? 16 : os === "tablet" ? 24 : 16
+  const slidesPerView = useMemo(() => {
+    if (!os) return 2 // Default value
+    return os === "desktop" ? 5 : os === "tablet" ? 3 : 2
+  }, [os])
 
-  // Memoized Swiper slides
+  const spaceBetween = useMemo(() => {
+    if (!os) return 16 // Default spacing
+    return os === "desktop" ? 16 : os === "tablet" ? 24 : 16
+  }, [os])
+
   const slides = useMemo(
     () =>
       products.map((product, index) => (
@@ -46,15 +58,21 @@ const ProductsSlider = ({
           <ProductItem product={product} isSale={isSale} />
         </SwiperSlide>
       )),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [products]
+    [products, isSale]
   )
 
-  if (!os) return null
+  if (loading)
+    return (
+      <div className="mt-2 sm:mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        {repeat(5).map((_, index) => (
+          <ProductItemSkeleton key={index} />
+        ))}
+      </div>
+    )
 
   return (
     <div className="mt-4 flex flex-col items-center justify-center">
-      <div className="w-full ">
+      <div className="w-full">
         <Swiper
           ref={sliderRef}
           modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}

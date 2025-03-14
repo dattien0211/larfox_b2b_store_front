@@ -12,7 +12,10 @@ export const getBrandByHandle = cache(async function (
 ): Promise<Brand | null> {
   const data = await fetchWithCache<{ brands: Brand[] }>(
     "/store/brands",
-    { handle },
+    {
+      handle,
+      fields: "*products",
+    },
     ["brands"]
   )
   return data?.brands?.[0] || null

@@ -22,7 +22,7 @@ export const getProductsById = async function ({
       id: ids,
       region_id: regionId,
       fields:
-        "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
+        "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata,*brand",
     })
     .then(({ products }) => products)
 }
@@ -36,7 +36,7 @@ export const getProductByHandle = async function (
       handle,
       region_id: regionId,
       fields:
-        "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
+        "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata,*brand",
     })
     .then(({ products }) => products[0])
 }
