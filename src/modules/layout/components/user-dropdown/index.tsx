@@ -49,21 +49,21 @@ const UserDropDown = ({
         >
           <Popover.Panel
             static
-            className="hidden small:block absolute top-[100%] right-0 bg-white border border-grey-20 shadow-lg w-[180px] p-4 text-ui-fg-base"
+            className="hidden small:block absolute top-[100%] right-0 bg-white border border-grey-20 shadow-lg w-[180px] p-4 text-base-regular font-semibold"
             data-testid="nav-cart-dropdown"
           >
-            <div className="bg-white">
+            <div className="bg-white  capitalize">
               {customer ? (
                 <div>
                   <LocalizedClientLink
                     href="/tai-khoan"
-                    className="hover:text-orang-10 text-sm py-2"
+                    className="hover:text-primary py-2"
                   >
                     Thông tin tài khoản
                   </LocalizedClientLink>
                   <p
                     onClick={handleLogout}
-                    className="hover:text-orang-10 text-sm py-2 mt-2 border-t border-grey-10 cursor-pointer"
+                    className="hover:text-primary py-2 mt-2 border-t border-grey-10 cursor-pointer"
                   >
                     Đăng xuất
                   </p>
@@ -71,7 +71,7 @@ const UserDropDown = ({
               ) : (
                 <LocalizedClientLink
                   href="/tai-khoan"
-                  className="hover:text-orang-10 text-sm"
+                  className="hover:text-primary "
                 >
                   Đăng nhập / Đăng ký
                 </LocalizedClientLink>

@@ -61,7 +61,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                           <li key={name}>
                             <LocalizedClientLink
                               href={href}
-                              className="sm:text-[28px] text-xl   leading-10 hover:text-ui-fg-disabled"
+                              className="sm:text-28 text-xl   leading-10 hover:text-ui-fg-disabled"
                               onClick={close}
                               data-testid={`${name.toLowerCase()}-link`}
                             >

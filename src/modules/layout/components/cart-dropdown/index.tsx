@@ -202,22 +202,20 @@ const CartDropdown = ({
                 </div>
               </>
             ) : (
-              <div>
-                <div className="flex py-6 flex-col gap-y-4 items-center justify-center">
-                  <span>Bạn chưa có sản phẩm trong giỏ hàng.</span>
-                  <div>
-                    <LocalizedClientLink href="/tat-ca-san-pham">
-                      <>
-                        <span className="sr-only"> Xem tất cả sản phẩm</span>
-                        <button
-                          onClick={close}
-                          className="transition-all duration-300 hover:bg-primary/80 bg-primary outline-none text-base px-4 py-2 rounded-md text-white capitalize"
-                        >
-                          Khám phá sản phẩm
-                        </button>
-                      </>
-                    </LocalizedClientLink>
-                  </div>
+              <div className="flex py-6 flex-col gap-y-4 items-center justify-center">
+                <span>Bạn chưa có sản phẩm trong giỏ hàng.</span>
+                <div>
+                  <LocalizedClientLink href="/tat-ca-san-pham">
+                    <>
+                      <span className="sr-only"> Xem tất cả sản phẩm</span>
+                      <button
+                        onClick={close}
+                        className="transition-all duration-300 hover:bg-primary/80 bg-primary outline-none text-base px-4 py-2 rounded-md text-white capitalize"
+                      >
+                        Khám phá sản phẩm
+                      </button>
+                    </>
+                  </LocalizedClientLink>
                 </div>
               </div>
             )}

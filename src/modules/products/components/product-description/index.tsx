@@ -11,7 +11,7 @@ const ProductDescription = ({ description }: { description?: string }) => {
     <div className="w-full" data-testid="product-description">
       <Heading
         level="h1"
-        className="text-primary text-xl sm:text-2xl capitalize"
+        className="text-primary text-xl sm:text-28 capitalize"
       >
         Mô tả sản phẩm
       </Heading>

@@ -32,7 +32,7 @@ const BlogTypes: React.FC<BlogsProps> = ({ blogTypes }) => {
       {/* Tiêu đề */}
       <Heading
         level="h1"
-        className="mb-4 sm:mb-6 font-semibold capitalize font-times text-primary text-xl sm:text-2xl text-left"
+        className="mb-4 sm:mb-6 font-semibold capitalize font-times text-primary text-xl sm:text-28 text-left"
       >
         Chủ Đề Nổi Bật
       </Heading>

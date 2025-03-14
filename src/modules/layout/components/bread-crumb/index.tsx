@@ -49,20 +49,14 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
         </li>
 
         {!isBlog && (
-          <>
-            <span className="mx-1 sm:mx-2">
-              <RightArrow size={os === "mobile" ? "10" : "12"} />
-            </span>
-            <li>
-              <LocalizedClientLink
-                href="/tat-ca-san-pham"
-                className="hover:text-primary text-primary/90 font-semibold capitalize"
-              >
-                Sản phẩm
-              </LocalizedClientLink>
-            </li>
-          </>
+          <BreadcrumbItem
+            href="/tat-ca-san-pham"
+            label="Sản phẩm"
+            icon={RightArrow}
+            os={os}
+          />
         )}
+
         {filteredItems.slice(1).map((item, index) => {
           const href = `/${filteredItems
             .slice(0, index + 2)
@@ -70,68 +64,97 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
             .join("/")}`
 
           return (
-            <li key={href} className="flex items-center text-nowrap">
-              {index > 0 ? (
-                <span className="ml-1 mr-2 font-bold">,</span>
-              ) : (
-                <span className="mx-1 sm:mx-2">
-                  <RightArrow size={os === "mobile" ? "10" : "12"} />
-                </span>
-              )}
-
-              <LocalizedClientLink
-                href={href}
-                className="hover:text-primary font-semibold"
-              >
-                {item.name}
-              </LocalizedClientLink>
-            </li>
+            <BreadcrumbItem
+              key={item.handle}
+              href={href}
+              label={item.name}
+              icon={RightArrow}
+              os={os}
+              separator={index > 0}
+            />
           )
         })}
+
+        {path?.length <= 0 &&
+          allCategories.length > 0 &&
+          allCategories.map((item, index) => {
+            const href = `/danh-muc-san-pham/${item.handle}`
+            return (
+              <BreadcrumbItem
+                key={item.handle}
+                href={href}
+                label={item.name}
+                icon={RightArrow}
+                os={os}
+                separator={index > 0}
+              />
+            )
+          })}
+
         {product && (
-          <>
-            <span className="mx-1 sm:mx-2">
-              <RightArrow size={os === "mobile" ? "10" : "12"} />
-            </span>
-            <li>
-              <p className="hover:text-primary !text-primary/75 font-semibold capitalize w-36 sm:w-96 line-clamp-1">
-                {product.title.toLowerCase()}
-              </p>
-            </li>
-          </>
+          <BreadcrumbItem
+            label={product.title.toLowerCase()}
+            icon={RightArrow}
+            os={os}
+            isLast
+          />
         )}
 
         {blogType && (
-          <>
-            <span className="mx-1 sm:mx-2">
-              <RightArrow size={os === "mobile" ? "10" : "12"} />
-            </span>
-            <li>
-              <LocalizedClientLink
-                href={`/loai-bai-viet/${blogType.value}`}
-                className="hover:text-primary !text-primary/90 font-semibold capitalize line-clamp-1"
-              >
-                {blogType.name.toLowerCase()}
-              </LocalizedClientLink>
-            </li>
-          </>
+          <BreadcrumbItem
+            href={`/loai-bai-viet/${blogType.value}`}
+            label={blogType.name.toLowerCase()}
+            icon={RightArrow}
+            os={os}
+          />
         )}
 
         {blog && (
-          <>
-            <span className="mx-1 sm:mx-2">
-              <RightArrow size={os === "mobile" ? "10" : "12"} />
-            </span>
-            <li>
-              <p className=" !text-primary/75 font-semibold capitalize w-36 sm:w-96 line-clamp-1">
-                {blog.title.toLowerCase()}
-              </p>
-            </li>
-          </>
+          <BreadcrumbItem
+            label={blog.title.toLowerCase()}
+            icon={RightArrow}
+            os={os}
+            isLast
+          />
         )}
       </ul>
     </nav>
   )
 }
+
+const BreadcrumbItem: React.FC<{
+  href?: string
+  label: string
+  icon: any
+  os: string
+  separator?: boolean
+  isLast?: boolean
+}> = ({ href, label, icon: Icon, os, separator = false, isLast = false }) => (
+  <li className="flex items-center text-nowrap">
+    {separator ? (
+      <span className="ml-1 mr-2 font-bold">,</span>
+    ) : (
+      <span className="mx-1 sm:mx-2">
+        <Icon size={os === "mobile" ? "10" : "12"} />
+      </span>
+    )}
+    {href ? (
+      <LocalizedClientLink
+        href={href}
+        className="hover:text-primary text-primary/90 font-semibold capitalize"
+      >
+        {label}
+      </LocalizedClientLink>
+    ) : (
+      <p
+        className={`!text-primary/75 font-semibold capitalize ${
+          isLast ? "w-36 sm:w-96 line-clamp-1" : ""
+        }`}
+      >
+        {label}
+      </p>
+    )}
+  </li>
+)
 
 export default Breadcrumb

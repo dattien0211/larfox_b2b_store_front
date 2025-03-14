@@ -96,3 +96,5 @@ export default async function CollectionPage({ params, searchParams }: Props) {
     />
   )
 }
+
+export const revalidate = 60

@@ -7,6 +7,7 @@ import { LOGIN_VIEW } from "@modules/account/templates/login-template"
 import ErrorMessage from "@modules/checkout/components/error-message"
 import { signup } from "@lib/data/customer"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
@@ -52,10 +53,11 @@ const Register = ({ setCurrentView }: Props) => {
 
   return (
     <div
-      className="max-w-sm flex flex-col items-center"
+      className="max-w-sm flex flex-col items-center rounded-lg shadow-lg bg-white p-4 capitalize"
       data-testid="register-page"
     >
-      <h1 className="sm:text-[28px] text-xl text-primary mb-6 font-times">
+      <RiceSpike />
+      <h1 className="sm:text-28 font-semibold capitalize text-xl text-primary mb-6 font-times">
         Đăng ký
       </h1>
 

@@ -16,7 +16,7 @@ const SortHeader = ({
   sortBy?: SortOptions
 }) => {
   return (
-    <div className="flex px-2 py-1 lg:py-0  items-center justify-between  sm:p-4 sm:h-[60px] bg-white rounded-lg shadow-lg mb-4 relative">
+    <div className="flex px-2 py-1 lg:py-2  items-center justify-between sm:p-4 sm:min-h-[60px] bg-white rounded-lg shadow-lg mb-4 relative gap-x-4">
       <RiceSpike classIMG2="!-bottom-5 sm:!-bottom-8 -right-5" />
 
       <div className="hidden lg:block">

@@ -81,4 +81,4 @@ export default async function BlogTypePage({ params, searchParams }: Props) {
   )
 }
 
-export const dynamic = "force-dynamic"
+export const revalidate = 600

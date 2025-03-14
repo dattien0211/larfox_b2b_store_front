@@ -12,7 +12,7 @@ type ShippingDetailsProps = {
 const ShippingDetails = ({ order }: ShippingDetailsProps) => {
   return (
     <div>
-      <h1 className="flex flex-row sm:text-[28px] text-xl font-semibold text-primary font-times my-4 capitalize">
+      <h1 className="flex flex-row sm:text-28 text-xl font-semibold text-primary font-times my-4 capitalize">
         Thông tin nhận hàng
       </h1>
       <div className="flex flex-col items-start gap-y-1">

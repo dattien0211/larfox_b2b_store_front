@@ -107,7 +107,7 @@ export default async function BlogPage({ params }: Props) {
         <section className="relative content-container py-4 sm:py-6 my-6 sm:my-10 rounded-lg shadow-lg bg-white">
           <RiceSpike />
           <div>
-            <h1 className="mb-3 sm:mb-6 font-bold font-times text-xl md:text-2xl text-primary">
+            <h1 className="mb-3 sm:mb-6 font-bold font-times text-xl md:text-28 text-primary">
               Bài viết liên quan
             </h1>
             <BlogSlider

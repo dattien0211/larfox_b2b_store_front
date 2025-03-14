@@ -4,6 +4,7 @@ import ChevronDown from "@modules/common/icons/chevron-down"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { convertToLocale } from "@lib/util/money"
 import { HttpTypes } from "@medusajs/types"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 type OverviewProps = {
   customer: HttpTypes.StoreCustomer | null
@@ -12,8 +13,9 @@ type OverviewProps = {
 
 const Overview = ({ customer, orders }: OverviewProps) => {
   return (
-    <div data-testid="overview-page-wrapper">
-      <div className="block">
+    <div data-testid="overview-page-wrapper ">
+      <div className="block bg-white w-full rounded-lg shadow-lg p-4 relative">
+        <RiceSpike />
         <div className="text-lg flex flex-col sm:flex-row justify-between items-center mb-4 font-times">
           <span data-testid="welcome-message" data-value={customer?.first_name}>
             Xin chào{" "}
@@ -36,7 +38,7 @@ const Overview = ({ customer, orders }: OverviewProps) => {
           <div className="flex flex-col gap-y-4 h-full col-span-1 row-span-2 flex-1">
             <div className="flex flex-col gap-y-4">
               <div className="flex items-center gap-x-2">
-                <h3 className="text-xl sm:text-2xl font-times text-primary font-semibold ">
+                <h3 className="text-xl sm:text-28 font-times text-primary font-semibold capitalize">
                   Đơn hàng gần đây
                 </h3>
               </div>

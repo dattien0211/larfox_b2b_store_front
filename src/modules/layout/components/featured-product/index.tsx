@@ -45,7 +45,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = async ({
       {/* Tiêu đề */}
       <Heading
         level="h1"
-        className="mb-4 sm:mb-6 font-semibold capitalize font-times text-primary text-xl sm:text-2xl text-left"
+        className="mb-4 sm:mb-6 font-semibold capitalize font-times text-primary text-xl sm:text-28 text-left"
       >
         Sản Phẩm Nổi Bật
       </Heading>
@@ -57,7 +57,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = async ({
           href={collection?.handle ? `/bo-suu-tap/${collection?.handle}` : "/"}
         >
           <button className="text-sm sm:text-base capitalize rounded-full px-6 sm:px-8 py-1 mx-auto border border-primary text-primary hover:bg-primary hover:text-white flex gap-x-2 items-center justify-center">
-            Xem tất cả
+            Xem thêm
             <RightArrow size={12} />
           </button>
         </LocalizedClientLink>

@@ -15,7 +15,7 @@ export default async function PaymentPolicyPage() {
         <RiceSpike />
 
         <section>
-          <h1 className="font-bold text-xl sm:text-2xl lg:text-[28px] font-times text-primary">
+          <h1 className="font-bold text-xl sm:text-28 lg:text-28 font-times text-primary">
             1. Chính Sách Mua Hàng Và Thanh Toán
           </h1>
           <ul className="pl-6 sm:pl-8 list-disc text-sm sm:text-base text-justify sm:text-normal mt-2">
@@ -87,7 +87,7 @@ export default async function PaymentPolicyPage() {
         </section>
 
         <section>
-          <h1 className="font-bold text-xl sm:text-2xl lg:text-[28px] font-times text-primary mt-3 sm:mt-6">
+          <h1 className="font-bold text-xl sm:text-28 lg:text-28 font-times text-primary mt-3 sm:mt-6">
             2. Vận chuyển và thanh toán
           </h1>
           <div className="sm:text-base text-sm text-justify sm:text-normal mt-2 indent-2 sm:indent-4 space-y-1 sm:space-y-2">

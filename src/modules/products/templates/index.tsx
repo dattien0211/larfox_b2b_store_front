@@ -34,13 +34,17 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
     return notFound()
   }
 
+
   return (
     <div className="bg-primary-bg py-3 sm:py-6">
       <section
         className="content-container py-4 sm:py-[18px] mb-4 sm:mb-6 rounded-lg shadow-lg bg-white "
         data-testid="product-breadcrumb"
       >
-        <Breadcrumb product={product} />
+        <Breadcrumb
+          product={product}
+          allCategories={product.categories || undefined}
+        />
       </section>
 
       <section
@@ -88,7 +92,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
         <RiceSpike />
         <Suspense
           fallback={
-            <div className="text-base sm:text-2xl text-center">
+            <div className="text-base sm:text-28 text-center">
               Đang tải đánh giá sản phẩm...
             </div>
           }

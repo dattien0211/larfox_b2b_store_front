@@ -5,6 +5,7 @@ import { notFound } from "next/navigation"
 import { listOrders } from "@lib/data/orders"
 import Divider from "@modules/common/components/divider"
 import TransferRequestForm from "@modules/account/components/transfer-request-form"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 export const metadata: Metadata = {
   title: "Đơn hàng | Bông Lúa",
@@ -19,21 +20,27 @@ export default async function Orders() {
   }
 
   return (
-    <div className="w-full" data-testid="orders-page-wrapper">
-      <div className="mb-8 flex flex-col gap-y-4">
-        <h1 className="sm:text-[28px]text-xl font-semibold text-primary font-times">
+    <div
+      className="w-full bg-white rounded-lg shadow-lg px-4 pt-4 pb-8 relative"
+      data-testid="orders-page-wrapper"
+    >
+      <RiceSpike />
+
+      <section className="mb-8 flex flex-col gap-y-4">
+        <h1 className="sm:text-28 text-xl font-semibold text-primary font-times">
           Đơn hàng
         </h1>
         <p className="text-base-regular">
           Xem các đơn hàng trước đây của bạn và trạng thái của chúng. Bạn cũng
           có thể tạo yêu cầu trả hàng hoặc đổi hàng nếu cần.
         </p>
-      </div>
-      <div>
+      </section>
+
+      <section>
         <OrderOverview orders={orders} />
         <Divider className="my-16" />
         <TransferRequestForm />
-      </div>
+      </section>
     </div>
   )
 }

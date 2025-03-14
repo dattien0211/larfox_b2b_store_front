@@ -11,7 +11,7 @@ export default async function SecurityPolicyPage() {
     <div className="bg-primary-bg pt-3 pb-8 sm:pt-6 sm:pb-14">
       <div className="content-container bg-white rounded-lg shadow-lg pt-4 pb-12  sm:pt-6 sm:pb-16 mb-4 sm:mb-8 relative">
         <RiceSpike />
-        <h1 className="font-bold text-xl sm:text-2xl lg:text-[28px] font-times text-primary">
+        <h1 className="font-bold text-xl sm:text-28 lg:text-28 font-times text-primary">
           Chính Sách Bảo Hành
         </h1>
 

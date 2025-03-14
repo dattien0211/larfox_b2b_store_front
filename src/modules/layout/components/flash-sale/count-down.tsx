@@ -43,7 +43,7 @@ const CountdownTimer: React.FC = () => {
 
   return (
     <div className="flex w-full items-center sm:gap-x-4 justify-between sm:justify-normal">
-      <div className="text-primary text-xl sm:text-2xl font-times font-semibold text-nowrap">
+      <div className="text-primary text-xl sm:text-28 font-times font-semibold text-nowrap">
         Khuyến Mãi
       </div>
       <div className="hidden sm:block w-8 h-[1px] bg-primary"></div>

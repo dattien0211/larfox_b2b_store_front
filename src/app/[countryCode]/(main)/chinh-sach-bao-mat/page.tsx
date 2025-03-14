@@ -14,12 +14,12 @@ export default async function SecurityPolicyPage() {
       <div className="content-container bg-white rounded-lg shadow-lg pt-4 pb-12  sm:pt-6 sm:pb-16 mb-4 sm:mb-8 relative">
         <RiceSpike />
 
-        <h1 className="font-bold text-xl sm:text-2xl lg:text-[28px] font-times text-primary">
+        <h1 className="font-bold text-xl sm:text-28 lg:text-28 font-times text-primary">
           Chính Sách Bảo Mật Thông Tin
         </h1>
 
         <section>
-          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
+          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-28 font-bold font-times">
             1. Mục đích và phạm vi thu thập
           </h2>
           <div className="text-sm sm:text-base space-y-1 sm:space-y-2 indent-2 sm:indent-4 ">
@@ -47,7 +47,7 @@ export default async function SecurityPolicyPage() {
         </section>
 
         <section>
-          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
+          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-28 font-bold font-times">
             2. Phạm vi sử dụng thông tin
           </h2>
           <div className="text-sm sm:text-base space-y-1 sm:space-y-2 text-justify sm:text-left indent-2 sm:indent-4 ">
@@ -77,7 +77,7 @@ export default async function SecurityPolicyPage() {
         </section>
 
         <section>
-          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
+          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-28 font-bold font-times">
             3. Thời gian lưu trữ thông tin
           </h2>
           <div className="text-justify sm:text-left sm:text-base text-sm indent-2 sm:indent-4 ">
@@ -91,7 +91,7 @@ export default async function SecurityPolicyPage() {
         </section>
 
         <section>
-          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
+          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-28 font-bold font-times">
             4. Những người hoặc tổ chức có thể được tiếp cận với thông tin cá
             nhân
           </h2>
@@ -107,7 +107,7 @@ export default async function SecurityPolicyPage() {
         </section>
 
         <section>
-          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
+          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-28 font-bold font-times">
             5. Địa chỉ của đơn vị thu thập và quản lý thông tin cá nhân
           </h2>
           <ul className="list-disc pl-6 text-sm sm:text-base space-y-1 sm:space-y-2 sm:pl-10">
@@ -120,7 +120,7 @@ export default async function SecurityPolicyPage() {
         </section>
 
         <section>
-          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
+          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-28 font-bold font-times">
             6. Phương tiện và công cụ để người dùng tiếp cập và chỉnh sử dữ liệu
             cá nhân của mình
           </h2>
@@ -145,7 +145,7 @@ export default async function SecurityPolicyPage() {
         </section>
 
         <section>
-          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
+          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-28 font-bold font-times">
             7. Cơ chế tiếp nhận và giải quyết khiếu nại của người tiêu dùng liên
             quan đến việc thông tin cá nhân bị sử dụng sai mục đích hoặc phạm vi
             đã thông báo

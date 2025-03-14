@@ -29,7 +29,7 @@ export default function OrderCompletedTemplate({
         >
           <Heading
             level="h1"
-            className="flex flex-col gap-y-3 text-primary sm:text-[28px] text-xl font-times font-bold items-center capitalize text-center"
+            className="flex flex-col gap-y-3 text-primary sm:text-28 text-xl font-times font-bold items-center capitalize text-center"
           >
             {/* <span className="caption-bottom">Cảm ơn!</span> */}
             <span>Đơn hàng của bạn đã được đặt thành công.</span>
@@ -37,7 +37,7 @@ export default function OrderCompletedTemplate({
           <OrderDetails order={order} />
           <Heading
             level="h2"
-            className="flex flex-row sm:text-[28px] text-xl text-primary font-times font-bold capitalize"
+            className="flex flex-row sm:text-28 text-xl text-primary font-times font-bold capitalize"
           >
             Tổng quan
           </Heading>

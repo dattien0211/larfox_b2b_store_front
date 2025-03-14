@@ -97,7 +97,7 @@ const Addresses = ({
   return (
     <>
       <div className="flex flex-row items-center justify-between mb-2 sm:mb-6">
-        <h1 className="flex flex-row sm:text-[28px] text-xl font-semibold font-times  gap-x-2 items-baseline text-primary sm:mb-4">
+        <h1 className="flex flex-row sm:text-28 text-xl font-semibold font-times  gap-x-2 items-baseline text-primary sm:mb-4">
           Địa chỉ nhận hàng
           {!isOpen && <CheckCircleSolid />}
         </h1>
@@ -128,7 +128,7 @@ const Addresses = ({
                 <div>
                   <Heading
                     level="h2"
-                    className="sm:text-[28px] text-xl  -regular gap-x-4 pb-6 pt-8"
+                    className="sm:text-28 text-xl  -regular gap-x-4 pb-6 pt-8"
                   >
                     Địa chỉ nhận hóa đơn
                   </Heading>

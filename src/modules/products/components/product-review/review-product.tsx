@@ -313,7 +313,7 @@ export default function ReviewProduct({
                   setRating(i + 1),
                     setErrors((prevErrors) => ({ ...prevErrors, rating: "" }))
                 }}
-                className={`cursor-pointer text-2xl ${
+                className={`cursor-pointer text-28 ${
                   rating > i ? "text-yellow-500" : "text-gray-300"
                 }`}
               >

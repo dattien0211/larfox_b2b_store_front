@@ -20,7 +20,7 @@ const Category: React.FC<CategoryProps> = async ({ categories }) => {
       <RiceSpike />
       <Heading
         level="h1"
-        className="mb-2 sm:mb-4 font-semibold capitalize font-times text-primary text-xl sm:text-2xl"
+        className="mb-2 sm:mb-4 font-semibold capitalize font-times text-primary text-xl sm:text-28"
       >
         Danh mục sản phẩm
       </Heading>

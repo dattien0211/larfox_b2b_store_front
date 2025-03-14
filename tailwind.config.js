@@ -74,6 +74,7 @@ module.exports = {
       },
       fontSize: {
         xxs: "10px",
+        28: ["1.75rem", { lineHeight: "2rem" }],
         "3xl": "2rem",
         normal: "1rem",
         "44px": "44px", // Custom font size

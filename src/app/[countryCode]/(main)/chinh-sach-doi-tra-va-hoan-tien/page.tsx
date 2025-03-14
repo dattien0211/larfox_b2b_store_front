@@ -13,7 +13,7 @@ export default async function RefundPolicyPage() {
     <div className="bg-primary-bg pt-3 pb-8 sm:pt-6 sm:pb-14">
       <div className="content-container bg-white rounded-lg shadow-lg pt-4 pb-12  sm:pt-6 sm:pb-16 mb-4 sm:mb-8 relative">
         <RiceSpike />
-        <h1 className="font-bold text-xl sm:text-2xl lg:text-[28px] font-times text-primary">
+        <h1 className="font-bold text-xl sm:text-28 lg:text-28 font-times text-primary">
           Chính Sách Đổi Trả Và Hoàn Tiền
         </h1>
 
@@ -26,7 +26,7 @@ export default async function RefundPolicyPage() {
           chỉnh đơn hàng cho quý khách trong vòng 48h từ khi nhận được yêu cầu.
         </p>
         <section>
-          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
+          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-28 font-bold font-times">
             1. Đổi trả do lỗi sai đơn hoặc lỗi vận chuyển:
           </h2>
           <div className="text-justify sm:text-normal sm:text-base text-sm">
@@ -82,7 +82,7 @@ export default async function RefundPolicyPage() {
         </section>
 
         <section>
-          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
+          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-28 font-bold font-times">
             2. Đổi trả sản phẩm theo mong muốn riêng của khách hàng:
           </h2>
           <div className="text-justify sm:text-normal sm:text-base text-sm ">
@@ -138,8 +138,7 @@ export default async function RefundPolicyPage() {
         </section>
 
         <section>
-          
-          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-2xl font-bold font-times">
+          <h2 className="mt-3 mb-2 sm:mt-6 sm:mb-4 text-xl sm:text-28 font-bold font-times">
             3. Hoàn trả sản phẩm:
           </h2>
           <div className="text-justify sm:text-normal sm:text-base text-sm space-y-1 sm:space-y-2">

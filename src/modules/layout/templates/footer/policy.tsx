@@ -6,7 +6,7 @@ export default async function FooterPolicy() {
 
   return (
     <div className="sm:col-span-6 lg:col-span-3">
-      <h1 className="font-bold text-xl sm:text-2xl font-times">Chính sách</h1>
+      <h1 className="font-bold text-xl sm:text-28 font-times">Chính sách</h1>
       <div className="sm:mt-8 mt-2">
         <ul className="list-none space-y-1 sm:space-y-2">
           <li className="hover:text-orang-5">

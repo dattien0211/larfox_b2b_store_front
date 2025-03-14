@@ -17,7 +17,7 @@ export const getCategoriesList = cache(async function (
   const data = await fetchWithCache<{
     product_categories: HttpTypes.StoreProductCategory[]
     count: number
-  }>("/store/product-categories", { limit, offset }, ["categories"], 300)
+  }>("/store/product-categories", { limit, offset }, ["categories"], 600)
 
   return {
     product_categories: data?.product_categories || [],

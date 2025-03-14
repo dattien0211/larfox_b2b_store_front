@@ -21,7 +21,7 @@ const OrderDetailsTemplate: React.FC<OrderDetailsTemplateProps> = ({
   return (
     <div className="flex flex-col justify-center gap-y-4">
       <div className="flex gap-2 justify-between items-center">
-        <h1 className="sm:text-[28px] text-xl font-semibold text-primary font-times">
+        <h1 className="sm:text-28 text-xl font-semibold text-primary font-times">
           Chi tiết đơn hàng
         </h1>
         <LocalizedClientLink

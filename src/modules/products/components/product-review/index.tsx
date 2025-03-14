@@ -29,7 +29,7 @@ const ProductReview = ({
     <div className="w-full" data-testid="product-review">
       <Heading
         level="h1"
-        className="text-primary text-xl sm:text-2xl capitalize"
+        className="text-primary text-xl sm:text-28 capitalize"
       >
         Đánh giá sản phẩm
       </Heading>

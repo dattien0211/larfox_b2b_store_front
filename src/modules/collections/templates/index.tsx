@@ -55,7 +55,7 @@ export default function CollectionTemplate({
         />
 
         <div className="flex-1">
-          <SortHeader path={["danh-muc-san-pham"]} sortBy={sort} />
+          <SortHeader sortBy={sort} />
 
           <Suspense fallback={<SkeletonProductGrid />}>
             <PaginatedProducts

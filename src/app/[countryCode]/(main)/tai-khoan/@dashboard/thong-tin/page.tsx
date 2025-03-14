@@ -9,6 +9,7 @@ import ProfilePassword from "@modules/account/components/profile-password"
 import { notFound } from "next/navigation"
 import { listRegions } from "@lib/data/regions"
 import { getCustomer } from "@lib/data/customer"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 export const metadata: Metadata = {
   title: "Thông Tin Tài Khoản | Bông Lúa",
@@ -24,9 +25,14 @@ export default async function Profile() {
   }
 
   return (
-    <div className="w-full" data-testid="profile-page-wrapper">
-      <div className="mb-8 flex flex-col gap-y-4">
-        <h1 className="sm:text-[28px]text-xl font-semibold text-primary font-times">
+    <div
+      className="w-full bg-white rounded-lg shadow-lg p-4 relative"
+      data-testid="profile-page-wrapper"
+    >
+      <RiceSpike />
+
+      <section className="mb-8 flex flex-col gap-y-4  ">
+        <h1 className="sm:text-28 text-lg font-semibold text-primary font-times capitalize">
           Thông tin tài khoản
         </h1>
         <p className="text-sm sm:text-base">
@@ -34,8 +40,9 @@ export default async function Profile() {
           thoại. Bạn cũng có thể cập nhật địa chỉ thanh toán hoặc thay đổi mật
           khẩu của mình.
         </p>
-      </div>
-      <div className="flex flex-col gap-y-8 w-full">
+      </section>
+
+      <section className="flex flex-col gap-y-8 w-full">
         <ProfileName customer={customer} />
         <Divider />
         {/* <ProfileEmail customer={customer} />
@@ -45,7 +52,7 @@ export default async function Profile() {
         {/* <ProfilePassword customer={customer} />
         <Divider /> */}
         <ProfileBillingAddress customer={customer} regions={regions} />
-      </div>
+      </section>
     </div>
   )
 }

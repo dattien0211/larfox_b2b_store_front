@@ -46,7 +46,7 @@ export default async function RelatedProducts({
   return (
     <div className="product-page-constraint">
       <div className="flex flex-col items-center text-center mb-3 sm:mb-6">
-        <h1 className="sm:text-[28px] text-xl md:text-3xl font-semibold font-times text-primary capitalize">
+        <h1 className="sm:text-28 text-xl md:text-3xl font-semibold font-times text-primary capitalize">
           Sản phẩm liên quan
         </h1>
       </div>

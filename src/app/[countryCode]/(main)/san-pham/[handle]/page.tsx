@@ -102,3 +102,5 @@ export default async function ProductPage({ params }: Props) {
     />
   )
 }
+
+export const revalidate = 20

@@ -4,6 +4,7 @@ import { LOGIN_VIEW } from "@modules/account/templates/login-template"
 import Input from "@modules/common/components/input"
 import ErrorMessage from "@modules/checkout/components/error-message"
 import { login } from "@lib/data/customer"
+import RiceSpike from "@modules/common/components/rice-spike"
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
@@ -42,10 +43,11 @@ const Login = ({ setCurrentView }: Props) => {
 
   return (
     <div
-      className="max-w-sm w-full flex flex-col items-center"
+      className="max-w-sm w-full flex flex-col items-center  rounded-lg shadow-lg bg-white p-4 relative"
       data-testid="login-page"
     >
-      <h1 className="sm:text-[28px]text-xl mb-6 text-primary font-times">
+      <RiceSpike />
+      <h1 className="sm:text-28 capitalize text-xl mb-6 text-primary font-times font-semibold">
         Đăng nhập
       </h1>
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
@@ -103,7 +105,7 @@ const Login = ({ setCurrentView }: Props) => {
         <button
           type="submit"
           data-testid="sign-in-button"
-          className="w-full mt-4 text-white bg-primary rounded-md py-2"
+          className="w-full mt-4 text-white bg-primary rounded-md py-2 capitalize"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Đang đăng nhập ..." : "Đăng nhập"}

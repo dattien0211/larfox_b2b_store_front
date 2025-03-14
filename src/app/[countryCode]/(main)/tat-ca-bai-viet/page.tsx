@@ -28,3 +28,5 @@ export default async function AllBlogsPage({ searchParams }: Props) {
     ></BlogTypesTemplate>
   )
 }
+
+export const revalidate = 60

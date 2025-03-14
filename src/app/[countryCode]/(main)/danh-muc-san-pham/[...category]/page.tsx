@@ -112,4 +112,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   )
 }
 
-// export const dynamic = "force-dynamic"
+//  export const dynamic = "force-dynamic"
+
+export const revalidate = 60 

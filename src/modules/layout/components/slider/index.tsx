@@ -29,8 +29,6 @@ const ProductsSlider = ({
   const { LeftArrow, RightArrow } = Icons
   const { os } = useOS()
 
-  if (!os) return null
-
   const sliderRef = useRef<any>(null)
 
   const handlePrev = useCallback(() => sliderRef.current?.slidePrev(), [])
@@ -51,6 +49,8 @@ const ProductsSlider = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [products]
   )
+
+  if (!os) return null
 
   return (
     <div className="mt-4 flex flex-col items-center justify-center">

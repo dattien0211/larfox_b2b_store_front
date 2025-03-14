@@ -56,7 +56,7 @@ const Collection: React.FC<CollectionProps> = async ({
           href={collection?.handle ? `/bo-suu-tap/${collection?.handle}` : "/"}
         >
           <button className="text-sm sm:text-base capitalize rounded-full px-6 sm:px-8 py-1 mx-auto border border-primary text-primary hover:bg-primary hover:text-white flex gap-x-2 items-center justify-center">
-            Xem tất cả
+            Xem thêm
             <RightArrow size={12} />
           </button>
         </LocalizedClientLink>
