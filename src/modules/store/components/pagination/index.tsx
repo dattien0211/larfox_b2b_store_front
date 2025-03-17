@@ -36,7 +36,7 @@ export function Pagination({
     <button
       key={p}
       className={clx(
-        "txt-xlarge-plus text-ui-fg-muted cursor-pointer w-11 h-11 rounded-full",
+        "txt-xlarge-plus text-ui-fg-muted cursor-pointer w-7 h-7 sm:w-11 sm:h-11 rounded-full",
         {
           "text-white bg-primary hover:text-ui-fg-subtle ": isCurrent,
         }
@@ -111,7 +111,7 @@ export function Pagination({
   // Render the component
   return (
     <div className="flex justify-center w-full mt-12">
-      <div className="flex gap-4 items-end" data-testid={dataTestid}>
+      <div className="flex gap-3 sm:gap-4 items-end" data-testid={dataTestid}>
         {renderPageButtons()}
       </div>
     </div>

@@ -1,4 +1,5 @@
 "use client"
+
 import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Icons from "@modules/common/icons"
@@ -38,7 +39,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
   return (
     <nav aria-label="breadcrumb" className={className}>
-      <ul className="list-none p-0 flex flex-wrap gap-y-1 items-center text-sm sm:text-base relative z-30">
+      <ul className="list-none p-0 flex flex-wrap gap-y-1 items-center text-xs sm:text-base relative z-30">
         <li>
           <LocalizedClientLink
             href="/"
@@ -148,7 +149,7 @@ const BreadcrumbItem: React.FC<{
     ) : (
       <p
         className={`!text-primary/75 font-semibold capitalize ${
-          isLast ? "w-36 sm:w-96 line-clamp-1" : ""
+          isLast ? "w-36 sm:w-96 truncate" : ""
         }`}
       >
         {label}

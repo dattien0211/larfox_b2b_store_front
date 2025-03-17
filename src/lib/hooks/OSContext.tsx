@@ -10,40 +10,32 @@ interface OSContextProps {
 const OSContext = createContext<OSContextProps | undefined>(undefined)
 
 const OSProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [os, setOS] = useState<OS>("desktop")
+  const [os, setOS] = useState<OS>(() => {
+    const width = typeof window !== "undefined" ? window.innerWidth : 1024
+    return width < 640 ? "mobile" : width < 1024 ? "tablet" : "desktop"
+  })
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout
+
     const determineOS = () => {
-      const width = window.innerWidth
-      if (width < 640) {
-        setOS("mobile")
-      } else if (width < 1024) {
-        setOS("tablet")
-      } else {
-        setOS("desktop")
-      }
+      clearTimeout(timeout)
+      timeout = setTimeout(() => {
+        const width = window.innerWidth
+        setOS(width < 640 ? "mobile" : width < 1024 ? "tablet" : "desktop")
+      }, 150) // Debounce to prevent excessive re-renders
     }
 
-    // Initial check
-    determineOS()
-
-    // Add resize event listener
     window.addEventListener("resize", determineOS)
-
-    return () => {
-      window.removeEventListener("resize", determineOS)
-    }
+    return () => window.removeEventListener("resize", determineOS)
   }, [])
 
   return <OSContext.Provider value={{ os }}>{children}</OSContext.Provider>
 }
 
-// Custom hook for consuming the OS context
 const useOS = () => {
   const context = useContext(OSContext)
-  if (!context) {
-    throw new Error("useOS must be used within an OSProvider")
-  }
+  if (!context) throw new Error("useOS must be used within an OSProvider")
   return context
 }
 

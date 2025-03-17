@@ -99,7 +99,7 @@ export default async function PaginatedProducts({
     <>
       <ul
         className={clsx(
-          "grid  w-full grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 px-1 py-2  bg-white lg:p-4 rounded-lg shadow-lg ",
+          "grid  w-full grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 px-1 py-2 bg-white lg:p-4 rounded-lg shadow-lg ",
           { "grid-cols-3 md:grid-cols-4": isSearch }
         )}
         data-testid="products-list"

@@ -23,15 +23,16 @@ const BlogCard: React.FC<BlogCardProps> = ({
   const { os } = useOS()
 
   return (
-    <div
+    <LocalizedClientLink
+      href={`/bai-viet/${blog?.handle}`}
       className={clsx(
-        "w-full shadow-lg relative h-[220px] md:h-[380px] rounded-lg overflow-hidden",
+        "w-full shadow-lg relative h-[220px] md:h-[380px] rounded-lg overflow-hidden block group",
         isRow ? "!flex-row" : "",
         os === "mobile" ? "!flex-col" : "",
         classBlog
       )}
     >
-      <section className="absolute inset-0  ">
+      <section className="absolute inset-0 group-hover:shadow-xl transition-shadow duration-300">
         <div className={"relative w-full h-full "}>
           {blog?.thumbnail && (
             <Image
@@ -59,18 +60,17 @@ const BlogCard: React.FC<BlogCardProps> = ({
               "linear-gradient(180deg, #000000 30.46%, rgba(0, 0, 0, 0) 100%)",
           }}
         >
-          <LocalizedClientLink
-            href={`/bai-viet/${blog?.handle}`}
+          <p
             className={clsx(
-              "-rotate-180 text-white font-semibold opacity-100 flex-1 line-clamp-2 text-sm",
+              "-rotate-180 text-white font-semibold opacity-100 flex-1 line-clamp-2 text-sm group-hover:text-primary",
               isSmall ? "sm:text-base" : "sm:text-lg"
             )}
           >
             {blog?.title}
-          </LocalizedClientLink>
+          </p>
         </div>
       </section>
-    </div>
+    </LocalizedClientLink>
   )
 }
 

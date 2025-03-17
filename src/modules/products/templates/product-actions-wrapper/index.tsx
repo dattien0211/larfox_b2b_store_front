@@ -1,22 +1,15 @@
-import { getProductsById } from "@lib/data/products"
+"use client"
+
 import { HttpTypes } from "@medusajs/types"
 import ProductActions from "@modules/products/components/product-actions"
 
-/**
- * Fetches real time pricing for a product and renders the product actions component.
- */
-export default async function ProductActionsWrapper({
-  id,
+export default function ProductActionsWrapper({
   region,
+  product,
 }: {
-  id: string
   region: HttpTypes.StoreRegion
+  product: HttpTypes.StoreProduct
 }) {
-  const [product] = await getProductsById({
-    ids: [id],
-    regionId: region.id,
-  })
-
   if (!product) {
     return null
   }

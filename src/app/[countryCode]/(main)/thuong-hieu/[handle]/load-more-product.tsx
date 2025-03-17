@@ -17,7 +17,7 @@ export default function LoadMoreProducts({ products }: Props) {
 
   return (
     <>
-      <ShowItem products={products.slice(0, visibleCount)} />
+      <ShowItem products={products.slice(0, visibleCount)} isAll={true} />
       {visibleCount < products.length && (
         <div className="text-center mt-4">
           <button

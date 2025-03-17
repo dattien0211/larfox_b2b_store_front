@@ -47,15 +47,13 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { handle } = params
+  // Fetch region first since product fetch depends on it
   const region = await getRegion(params.countryCode)
-
   if (!region) {
     notFound()
   }
 
-  const product = await getProductByHandle(handle, region.id)
-
+  const product = await getProductByHandle(params.handle, region.id)
   if (!product) {
     notFound()
   }
@@ -77,20 +75,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const region = await getRegion(params.countryCode)
+  if (!region) notFound()
 
-  if (!region) {
-    notFound()
-  }
+  // Run product and customer fetches concurrently after region is available
+  const [product, customer] = await Promise.all([
+    getProductByHandle(params.handle, region.id),
+    getCustomer().catch(() => null),
+  ])
 
-  const product = await getProductByHandle(params.handle, region?.id)
-
-  if (!product) {
-    notFound()
-  }
+  if (!product) notFound()
 
   const token = getToken()
-
-  const customer = await getCustomer().catch(() => null)
 
   return (
     <ProductTemplate
@@ -103,4 +98,4 @@ export default async function ProductPage({ params }: Props) {
   )
 }
 
-export const revalidate = 20
+export const revalidate = 30

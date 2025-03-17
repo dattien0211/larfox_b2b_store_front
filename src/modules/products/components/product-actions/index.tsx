@@ -6,15 +6,14 @@ import { useParams, useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
 import { Loader } from "@medusajs/icons"
 
-import Divider from "@modules/common/components/divider"
-import OptionSelect from "@modules/products/components/product-actions/option-select"
-import ProductPrice from "../product-price"
 import { addToCart } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
 import ProductInfo from "@modules/products/templates/product-info"
-import Icons from "@modules/common/icons"
+import Divider from "@modules/common/components/divider"
+import OptionSelect from "@modules/products/components/product-actions/option-select"
 import ProductPolicy from "../product-policy"
 import ProductMoreInfo from "../product-more-info"
+import ProductPrice from "../product-price"
 
 type ProductActionsProps = {
   product: HttpTypes.StoreProduct
@@ -35,8 +34,6 @@ export default function ProductActions({
   product,
   disabled,
 }: ProductActionsProps) {
-  const { Heart } = Icons
-
   const router = useRouter()
 
   const [options, setOptions] = useState<Record<string, string | undefined>>({})

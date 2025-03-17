@@ -1,13 +1,9 @@
 "use client"
 
 import React from "react"
-import Image from "next/image"
 
-import Icons from "@modules/common/icons"
-import IMGS from "@constants/IMGS"
 import BlogSlider from "./slider"
 import { Blog, BlogType } from "types/global"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { Heading } from "@medusajs/ui"
 import RiceSpike from "@modules/common/components/rice-spike"
 import BlogCard from "./blogCard"
@@ -21,8 +17,6 @@ const Blogs: React.FC<BlogsProps> = ({ blogs, blogTypes }) => {
 
   const leftBlogs = blogs.slice(0, 6)
   const rightBlogs = blogs.slice(-2)
-
-  const { RightArrow } = Icons
 
   return (
     <div className="relative content-container py-4 sm:py-6 my-6 sm:my-10 rounded-lg shadow-lg bg-white">

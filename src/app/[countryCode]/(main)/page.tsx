@@ -66,62 +66,56 @@ export default async function Home({
 
   return (
     <div className="bg-primary-bg py-3 sm:py-6">
-      <Suspense fallback={<CategorySkeleton />}>
-        <Category categories={product_categories} />
-      </Suspense>
-
-      <Suspense fallback={<FlashSaleSkeleton />}>
-        <FlashSale
-          collection={getCollectionByHandle(FLASH_SALE_HANDLE)}
-          countryCode={countryCode}
-        />
-      </Suspense>
-
-      <Suspense fallback={<CollectionSkeleton />}>
-        <Collection
-          collection={getCollectionByHandle(BEST_SELLER_PRODUCT_HANDLE)}
-          countryCode={countryCode}
-        />
-      </Suspense>
-
-      {brands && brands.length > 0 && (
-        <Suspense fallback={<BrandsSkeleton />}>
-          <Brands brands={brands} />
+      <div className="content-container">
+        <Suspense fallback={<CategorySkeleton />}>
+          <Category categories={product_categories} />
         </Suspense>
-      )}
-
-      <Suspense fallback={<CollectionSkeleton />}>
-        <Collection
-          collection={getCollectionByHandle(RECOMMEND_PRODUCT_HANDLE)}
-          countryCode={countryCode}
-        />
-      </Suspense>
-
-      {blogs && blogTypes && blogs.length > 0 && (
-        <Suspense fallback={<BlogSkeleton />}>
-          <Blogs blogs={blogs} blogTypes={blogTypes} />
+        <Suspense fallback={<FlashSaleSkeleton />}>
+          <FlashSale
+            collection={getCollectionByHandle(FLASH_SALE_HANDLE)}
+            countryCode={countryCode}
+          />
         </Suspense>
-      )}
-
-      <Suspense fallback={<CollectionSkeleton />}>
-        <Collection
-          collection={getCollectionByHandle(DAC_SAN_OCOP_HANDLE)}
-          countryCode={countryCode}
-        />
-      </Suspense>
-
-      {blogTypes && blogTypes.length > 0 && (
-        <Suspense fallback={<BlogTypeSkeleton />}>
-          <BlogTypes blogTypes={blogTypes} />
+        <Suspense fallback={<CollectionSkeleton />}>
+          <Collection
+            collection={getCollectionByHandle(BEST_SELLER_PRODUCT_HANDLE)}
+            countryCode={countryCode}
+          />
         </Suspense>
-      )}
-
-      <Suspense fallback={<CollectionSkeleton />}>
-        <FeaturedProduct
-          collection={getCollectionByHandle(FEATURED_PRODUCT_HANDLE)}
-          countryCode={countryCode}
-        />
-      </Suspense>
+        {brands && brands.length > 0 && (
+          <Suspense fallback={<BrandsSkeleton />}>
+            <Brands brands={brands} />
+          </Suspense>
+        )}
+        <Suspense fallback={<CollectionSkeleton />}>
+          <Collection
+            collection={getCollectionByHandle(RECOMMEND_PRODUCT_HANDLE)}
+            countryCode={countryCode}
+          />
+        </Suspense>
+        {blogs && blogTypes && blogs.length > 0 && (
+          <Suspense fallback={<BlogSkeleton />}>
+            <Blogs blogs={blogs} blogTypes={blogTypes} />
+          </Suspense>
+        )}
+        <Suspense fallback={<CollectionSkeleton />}>
+          <Collection
+            collection={getCollectionByHandle(DAC_SAN_OCOP_HANDLE)}
+            countryCode={countryCode}
+          />
+        </Suspense>
+        {blogTypes && blogTypes.length > 0 && (
+          <Suspense fallback={<BlogTypeSkeleton />}>
+            <BlogTypes blogTypes={blogTypes} />
+          </Suspense>
+        )}
+        <Suspense fallback={<CollectionSkeleton />}>
+          <FeaturedProduct
+            collection={getCollectionByHandle(FEATURED_PRODUCT_HANDLE)}
+            countryCode={countryCode}
+          />
+        </Suspense>
+      </div>
     </div>
   )
 }

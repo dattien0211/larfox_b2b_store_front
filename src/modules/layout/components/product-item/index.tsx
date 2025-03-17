@@ -125,7 +125,10 @@ export default function ProductItem({
   const soldCount = formatNumber(Number(product?.metadata?.sold) || 0)
 
   return (
-    <div className="w-full flex flex-col group cursor-pointer border border-primary rounded-md shadow-sm transition-all duration-300 hover:shadow-lg ">
+    <LocalizedClientLink
+      href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
+      className="w-full flex flex-col group cursor-pointer border border-primary rounded-md shadow-sm transition-all duration-300 hover:shadow-lg "
+    >
       <div className="p-2 relative">
         <div className="bg-grey-15 relative w-full shadow-md overflow-hidden">
           {(product?.thumbnail || product?.images?.[0]?.url) && (
@@ -153,7 +156,7 @@ export default function ProductItem({
             )}
         </div>
 
-        <div className="w-full absolute bottom-[10%] left-0 opacity-0 invisible transition-all duration-300 flex flex-col gap-2 items-center justify-center group-hover:opacity-100 group-hover:visible">
+        {/* <div className="w-full absolute bottom-[10%] left-0 opacity-0 invisible transition-all duration-300 flex flex-col gap-2 items-center justify-center group-hover:opacity-100 group-hover:visible">
           <LocalizedClientLink
             className="w-36 h-7 sm:h-8 text-sm sm:text-base rounded-md bg-primary/85 text-white duration-300 transition-all text-nowrap
                        flex items-center justify-center hover:scale-105 hover:shadow-sm hover:bg-primary/95"
@@ -161,18 +164,15 @@ export default function ProductItem({
           >
             Xem chi tiết
           </LocalizedClientLink>
-        </div>
+        </div> */}
       </div>
 
       <div className="bg-primary h-[1px] w-full relative"></div>
 
       <div className="p-2">
-        <LocalizedClientLink
-          href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
-          className="line-clamp-2 text-sm sm:text-[15px] h-10 sm:h-[42px] hover:text-primary"
-        >
+        <p className="line-clamp-2 text-sm sm:text-[15px] h-10 sm:h-[42px] group-hover:text-primary">
           {product?.title}
-        </LocalizedClientLink>
+        </p>
 
         <div className="mt-1">
           <span className="text-green-600 text-sm sm:text-lg font-bold">
@@ -239,6 +239,6 @@ export default function ProductItem({
           </div>
         )}
       </div>
-    </div>
+    </LocalizedClientLink>
   )
 }
