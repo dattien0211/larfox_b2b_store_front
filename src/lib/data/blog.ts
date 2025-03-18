@@ -23,7 +23,7 @@ export const getBlogList = cache(async function (
   pageParam: number = 1,
   queryParams?: BlogQueryParams
 ): Promise<PaginatedBlogList> {
-  const limit = queryParams?.limit || 8
+  const limit = queryParams?.limit || 12
   const offset = (pageParam - 1) * limit
 
   const data = await fetchWithCache<PaginatedBlogList>(

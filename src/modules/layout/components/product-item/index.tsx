@@ -170,8 +170,8 @@ export default function ProductItem({
       <div className="bg-primary h-[1px] w-full relative"></div>
 
       <div className="p-2">
-        <p className="line-clamp-2 text-sm sm:text-[15px] h-10 sm:h-[42px] group-hover:text-primary">
-          {product?.title}
+        <p className="line-clamp-2 text-sm sm:text-[15px] h-10 sm:h-[42px] group-hover:text-primary capitalize">
+          {product?.title.toLowerCase()}
         </p>
 
         <div className="mt-1">

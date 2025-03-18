@@ -9,7 +9,7 @@ import { getBlogByHandle, getBlogList } from "@lib/data/blog"
 import BlogSlider from "@modules/layout/components/blogs/slider"
 import { BlogQueryParams } from "types/global"
 import RiceSpike from "@modules/common/components/rice-spike"
-import { getBlogTypeByValue, getBlogTypesList } from "@lib/data/blog-types"
+import { getBlogTypeByValue } from "@lib/data/blog-types"
 import Breadcrumb from "@modules/layout/components/bread-crumb"
 
 type Props = {

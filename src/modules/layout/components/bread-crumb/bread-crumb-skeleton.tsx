@@ -3,7 +3,7 @@ import repeat from "@lib/util/repeat"
 
 const BreadcrumbSkeleton: React.FC = () => {
   return (
-    <nav aria-label="breadcrumb" className="p-4 rounded-lg">
+    <nav aria-label="breadcrumb" className="px-2 sm:px-4  rounded-lg">
       <ul className="list-none p-0 flex flex-wrap gap-y-1 items-center text-sm sm:text-base">
         {repeat(4).map((_, index) => (
           <BreadcrumbItem key={index} isLast={index === 3} />
