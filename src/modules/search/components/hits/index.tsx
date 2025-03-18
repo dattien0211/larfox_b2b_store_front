@@ -9,12 +9,11 @@ import {
 
 import { ProductHit } from "../hit"
 import ShowAll from "../show-all"
-import { tree } from "next/dist/build/templates/app-page"
 
-type HitsProps<THit> = React.ComponentProps<"div"> &
+type HitsProps<Hit> = React.ComponentProps<"div"> &
   UseHitsProps & {
     hitComponent: (props: {
-      hit: THit
+      hit: Hit
       setShow: Dispatch<SetStateAction<boolean>>
     }) => JSX.Element
   } & {
@@ -43,10 +42,10 @@ const Hits = ({
       )}
     >
       <div
-        className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xlarge:grid-cols-5 gap-2 sm:gap-4 mb-4"
+        className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xlarge:grid-cols-5 gap-1 sm:gap-4 mb-4"
         data-testid="search-results"
       >
-        {hits.slice(0, width >= 1680 ? 15 : 8).map((hit, index) => (
+        {hits.slice(0, width >= 1440 ? 15 : 8).map((hit, index) => (
           <li
             key={index}
             className={clx("list-none", {

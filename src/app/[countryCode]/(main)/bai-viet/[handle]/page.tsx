@@ -61,8 +61,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     notFound()
   }
 
+  const formattedTitle = blog.title
+    ? blog.title.toLowerCase().replace(/^\w/, (c) => c.toUpperCase())
+    : ""
   return {
-    title: `${blog.title} | Bông Lúa`,
+    title: `${formattedTitle} | Bông Lúa`,
     description: `${blog.short_description}`,
     openGraph: {
       title: `${blog.title} | Bông Lúa`,

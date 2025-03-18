@@ -54,7 +54,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           data-testid="product-container"
         >
           <RiceSpike />
-          <div className="flex flex-col md:flex-row items-start justify-center gap-x-4 md:gap-x-6 lg:gap-x-14 gap-y-8 w-full">
+          <div className="flex flex-col md:flex-row items-start justify-center gap-x-4 md:gap-x-6 lg:gap-x-14 gap-y-4 w-full">
             <div className="w-full md:w-1/2">
               <ImageSlider
                 images={product?.images || []}

@@ -101,21 +101,7 @@ export default function ProductActions({
   }, [selectedVariant])
 
   // add the selected variant to the cart
-  const handleAddToCart = async () => {
-    if (!selectedVariant?.id) return null
-
-    setIsAdding(true)
-
-    await addToCart({
-      variantId: selectedVariant.id,
-      quantity,
-      countryCode,
-    })
-
-    // setIsAdding(false)
-  }
-
-  const handleBuyNow = async () => {
+  const handleAddToCart = async (isBuyNow = false) => {
     if (!selectedVariant?.id) return null
 
     try {
@@ -125,13 +111,12 @@ export default function ProductActions({
         quantity,
         countryCode,
       })
+      isBuyNow && router.push(`/${countryCode}/gio-hang`)
     } catch (error) {
       console.error(error)
     } finally {
       setIsAdding(false)
     }
-
-    router.push(`/${countryCode}/gio-hang`)
   }
 
   // Decrease quantity but ensure it doesn't go below 1
@@ -222,7 +207,7 @@ export default function ProductActions({
               </button>
             </div>
             <Button
-              onClick={handleAddToCart}
+              onClick={() => handleAddToCart()}
               disabled={!inStock || !selectedVariant || !!disabled || isAdding}
               variant="primary"
               className="text-sm h-full rounded-sm px-2 sm:px-4 lg:px-6 border-none shadow-none bg-primary font-medium sm:text-base hover:bg-primary/90 hover:shadow-md capitalize"
@@ -233,7 +218,7 @@ export default function ProductActions({
             </Button>
             <button
               className="bg-primary/90 hover:bg-primary px-2 sm:px-4 lg:px-6 h-full flex items-center justify-center rounded-sm text-white sm:text-base text-sm hover:shadow-md transition-all txt-compact-small-plus capitalize"
-              onClick={handleBuyNow}
+              onClick={() => handleAddToCart(true)}
             >
               {isAdding ? (
                 <Loader className="animate-spin"></Loader>

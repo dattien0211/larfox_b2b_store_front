@@ -225,7 +225,10 @@ export default function ProductItem({
             <Spinner className="animate-spin"></Spinner>
           ) : (
             <>
-              <Cart /> {inStock ? "Thêm vào giỏ hàng" : "Hết hàng"}
+              <span className="hidden sm:inline-block">
+                <Cart />
+              </span>
+              {inStock ? "Thêm vào giỏ hàng" : "Hết hàng"}
             </>
           )}
         </button>

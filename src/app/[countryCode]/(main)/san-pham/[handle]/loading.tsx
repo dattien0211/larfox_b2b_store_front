@@ -2,6 +2,7 @@ import RiceSpike from "@modules/common/components/rice-spike"
 import BreadcrumbSkeleton from "@modules/layout/components/bread-crumb/bread-crumb-skeleton"
 import ProductDescriptionSkeleton from "@modules/products/components/product-description/product-description-skeleton"
 import ReviewProductSkeleton from "@modules/products/components/product-review/review-product-skeleton"
+import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 
 export default function Loading() {
   return (
@@ -17,7 +18,7 @@ export default function Loading() {
         >
           <RiceSpike />
           {/* Placeholder for RiceSpike */}
-          <div className="flex flex-col md:flex-row items-start justify-center gap-x-4 md:gap-x-6 lg:gap-x-14 gap-y-8 w-full">
+          <div className="flex flex-col md:flex-row items-start justify-center gap-x-4 md:gap-x-6 lg:gap-x-14 gap-y-4 w-full">
             {/* Left side skeleton */}
             <div className="w-full md:w-1/2 h-80 bg-gray-200 rounded-lg"></div>
 
@@ -42,8 +43,12 @@ export default function Loading() {
 
         <section className="content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white relative">
           <RiceSpike />
-
           <ReviewProductSkeleton />
+        </section>
+
+        <section className="content-container py-4 sm:py-6 my-4 sm:my-8 rounded-lg shadow-lg bg-white relative">
+          <RiceSpike />
+          <SkeletonRelatedProducts />
         </section>
       </div>
     </div>

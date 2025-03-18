@@ -1,8 +1,9 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import { getProductsList } from "@lib/data/products"
 import { HttpTypes } from "@medusajs/types"
-import ProductItem from "@modules/layout/components/product-item"
 import ProductsSlider from "@modules/layout/components/slider"
-import ProductPreview from "@modules/products/components/product-preview"
 
 type RelatedProductsProps = {
   product: HttpTypes.StoreProduct
@@ -12,36 +13,39 @@ type RelatedProductsProps = {
 
 const MAX_PRODUCTS = 20
 
-export default async function RelatedProducts({
+export default function RelatedProducts({
   product,
   countryCode,
   isSale = false,
 }: RelatedProductsProps) {
-  const queryParams: HttpTypes.StoreProductParams = {}
+  const [products, setProducts] = useState<HttpTypes.StoreProduct[]>([])
 
-  queryParams.limit = MAX_PRODUCTS
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const queryParams: HttpTypes.StoreProductParams = { limit: MAX_PRODUCTS }
 
-  const categoryIds = product.categories?.map((category) => category.id)
+      const categoryIds = product.categories?.map((category) => category.id)
+      if (categoryIds) queryParams["category_id"] = [...categoryIds]
 
-  if (categoryIds) queryParams["category_id"] = [...categoryIds]
+      try {
+        const { response } = await getProductsList({
+          pageParam: 1,
+          queryParams,
+          countryCode,
+        })
 
-  // if (product.collection_id)
-  //   queryParams["collection_id"] = [product.collection_id]
+        const filteredProducts = response.products.filter(
+          (responseProduct) => responseProduct.id !== product.id
+        )
 
-  // if (product.tags && product.tags.length > 0)
-  //   queryParams["tag_id"] = product.tags
-  //     .map((t) => t.id)
-  //     .filter(Boolean) as string[]
+        setProducts(filteredProducts)
+      } catch (error) {
+        console.error("Error fetching related products:", error)
+      }
+    }
 
-  const products = await getProductsList({
-    pageParam: 1,
-    queryParams,
-    countryCode,
-  }).then(({ response }) => {
-    return response.products.filter(
-      (responseProduct) => responseProduct.id !== product.id
-    )
-  })
+    fetchProducts()
+  }, [product, countryCode])
 
   return (
     <div className="product-page-constraint">
@@ -53,13 +57,13 @@ export default async function RelatedProducts({
 
       {!products.length ? (
         <div>
-          <h1 className="text-black-20 text-sm  sm:text-base md:text-lg text-center">
+          <h1 className="text-black-20 text-sm sm:text-base md:text-lg text-center">
             Sản phẩm đang được thêm, hãy đón chờ những sản phẩm tốt nhất từ Bông
             Lúa bạn nhé.
           </h1>
         </div>
       ) : (
-        <ProductsSlider products={products} />
+        <ProductsSlider products={products} isSale={isSale} />
       )}
     </div>
   )

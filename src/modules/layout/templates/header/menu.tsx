@@ -66,8 +66,8 @@ const Menu = ({
                     )}
                     href={`${to}/${menuItem.handle || menuItem.value}`}
                   >
-                    <span className="text-base whitespace-nowrap overflow-hidden text-ellipsis block max-w-[175px]">
-                      {menuItem.name}
+                    <span className="text-base whitespace-nowrap overflow-hidden text-ellipsis block max-w-[175px] capitalize">
+                      {menuItem.name.toLowerCase()}
                     </span>
 
                     <span className="text-grey-30 group-hover:text-primary">

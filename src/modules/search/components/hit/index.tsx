@@ -30,7 +30,7 @@ const Hit = ({ hit, setShow }: HitProps) => {
     >
       <Container
         key={hit.id}
-        className="group flex sm:flex-col gap-4 sm:gap-2 w-full p-2 sm:p-4 shadow-elevation-card-rest hover:shadow-elevation-card-hover items-center sm:justify-center"
+        className="group flex sm:flex-col gap-4 sm:gap-2 w-full p-2 shadow-elevation-card-rest hover:shadow-elevation-card-hover items-center sm:justify-center"
       >
         <Thumbnail
           thumbnail={hit.thumbnail}
@@ -39,7 +39,7 @@ const Hit = ({ hit, setShow }: HitProps) => {
         />
         <div className="flex flex-col">
           <Text
-            className="text-ui-fg-subtle sm:h-[48px] line-clamp-1 sm:line-clamp-2 group-hover:text-primary"
+            className="text-ui-fg-subtle sm:h-[42px] line-clamp-1 sm:line-clamp-2 group-hover:text-primary"
             data-testid="search-result-title"
           >
             {hit.title}

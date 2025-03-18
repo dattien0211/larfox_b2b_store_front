@@ -108,7 +108,7 @@ const CartDropdown = ({
         >
           <Popover.Panel
             static
-            className="hidden small:block absolute top-[calc(100%+0px)] right-0 bg-white border border-grey-20 shadow-lg w-[440px] text-ui-fg-base"
+            className="hidden small:block absolute top-[calc(100%+0px)] right-0 bg-white border border-grey-20 shadow-lg w-[440px] text-ui-fg-base z-[999]"
             data-testid="nav-cart-dropdown"
           >
             {/* <h1 className="text-lg font-semibold p-4 text-center">Giỏ Hàng</h1> */}

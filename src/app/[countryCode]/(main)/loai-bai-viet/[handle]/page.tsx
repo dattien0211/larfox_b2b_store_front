@@ -57,8 +57,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     notFound()
   }
 
+  const formattedTitle = blogType.name
+    ? blogType.name.toLowerCase().replace(/^\w/, (c) => c.toUpperCase())
+    : ""
+
   return {
-    title: `${blogType.name} | Bông Lúa`,
+    title: `${formattedTitle} | Bông Lúa`,
     description: `${blogType.description}`,
   }
 }

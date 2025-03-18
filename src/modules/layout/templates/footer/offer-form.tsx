@@ -12,13 +12,13 @@ export default async function FooterOfferForm() {
         Đăng ký nhận ưu đãi từ Bông Lúa
       </h1>
       <div className="sm:mt-8 mt-2">
-        <div className="flex h-[46px] w-full">
+        <div className="flex h-[36px] sm:h-[46px] w-full">
           <input
             type="text"
             placeholder="Nhập email"
-            className="px-4 flex-1 focus:outline-none h-full bg-grey-10 rounded-l-md text-primary"
+            className="px-4 flex-1 focus:outline-none text-sm sm:text-base h-full bg-grey-10 rounded-l-md text-primary"
           />
-          <div className="bg-primary w-[46px] h-[46px] flex items-center justify-center rounded-r-md cursor-pointer">
+          <div className="bg-primary w-[46px] h-full flex items-center justify-center rounded-r-md cursor-pointer">
             <span className="text-white">
               <Send />
             </span>
