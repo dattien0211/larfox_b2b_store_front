@@ -64,6 +64,7 @@ export default async function Home({
   const { product_categories } = await getCategoriesList()
   const { brands } = await getBrandList()
 
+  
   return (
     <div className="bg-primary-bg py-3 sm:py-6">
       <div className="content-container">

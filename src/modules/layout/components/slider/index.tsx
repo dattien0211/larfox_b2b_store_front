@@ -61,6 +61,9 @@ const ProductsSlider = ({
           slidesPerView={slidesPerView}
           spaceBetween={spaceBetween}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
+          onBeforeInit={(swiper) => {
+            sliderRef.current = swiper
+          }}
         >
           {products.map((product, index) => (
             <SwiperSlide key={index}>
