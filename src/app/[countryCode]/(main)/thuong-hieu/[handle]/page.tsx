@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     notFound()
   }
 
-  const brand = await getBrandByHandle(handle)
+  const brand = await getBrandByHandle(handle, region.id)
 
   if (!brand) {
     notFound()
@@ -68,7 +68,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BrandPage({ params }: Props) {
-  const brand = await getBrandByHandle(params.handle)
+  const region = await getRegion(params.countryCode)
+
+  if (!region) {
+    notFound()
+  }
+  const brand = await getBrandByHandle(params.handle, region.id)
 
   if (!brand) {
     notFound()

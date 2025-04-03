@@ -1,6 +1,7 @@
 import { Brand, BlogQueryParams } from "types/global"
 import { cache } from "react"
 import fetchWithCache from "@lib/util/fetch-with-cache"
+import { getProductsById } from "./products"
 
 type PaginatedBrandList = {
   brands: Brand[]
@@ -8,7 +9,8 @@ type PaginatedBrandList = {
 }
 
 export const getBrandByHandle = cache(async function (
-  handle: string
+  handle: string,
+  regionId: string
 ): Promise<Brand | null> {
   const data = await fetchWithCache<{ brands: Brand[] }>(
     "/store/brands",
@@ -18,7 +20,17 @@ export const getBrandByHandle = cache(async function (
     },
     ["brands"]
   )
-  return data?.brands?.[0] || null
+
+  const brand = data?.brands?.[0]
+
+  if (!brand) return null
+
+  const ids = brand.products?.map((product) => product.id) || []
+  if (ids && ids.length > 0) {
+    const products = await getProductsById({ ids, regionId })
+    brand.products = products
+  }
+  return brand
 })
 
 export const getBrandList = cache(async function (

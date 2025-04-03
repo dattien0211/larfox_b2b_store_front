@@ -127,7 +127,7 @@ export default function ProductItem({
   return (
     <LocalizedClientLink
       href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
-      className="w-full flex flex-col group cursor-pointer border border-primary rounded-md shadow-sm transition-all duration-300 hover:shadow-lg "
+      className="w-full flex flex-col group cursor-pointer border border-primary rounded-md shadow-sm transition-all duration-300 hover:shadow-lg"
     >
       <div className="p-2 relative">
         <div className="bg-grey-15 relative w-full shadow-md overflow-hidden">
@@ -155,16 +155,6 @@ export default function ProductItem({
               </>
             )}
         </div>
-
-        {/* <div className="w-full absolute bottom-[10%] left-0 opacity-0 invisible transition-all duration-300 flex flex-col gap-2 items-center justify-center group-hover:opacity-100 group-hover:visible">
-          <LocalizedClientLink
-            className="w-36 h-7 sm:h-8 text-sm sm:text-base rounded-md bg-primary/85 text-white duration-300 transition-all text-nowrap
-                       flex items-center justify-center hover:scale-105 hover:shadow-sm hover:bg-primary/95"
-            href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
-          >
-            Xem chi tiết
-          </LocalizedClientLink>
-        </div> */}
       </div>
 
       <div className="bg-primary h-[1px] w-full relative"></div>
@@ -217,9 +207,13 @@ export default function ProductItem({
         </div>
 
         <button
-          onClick={handleAddToCart}
+          onClick={(e) => {
+            e.stopPropagation()
+            e.preventDefault()
+            handleAddToCart()
+          }}
           disabled={!inStock || !selectedVariant || isAdding}
-          className="w-full py-1 text-xs mt-2 rounded-md bg-primary/80 capitalize flex items-center justify-center gap-x-1 text-white duration-300 transition-all text-nowrap hover:shadow-sm hover:bg-primary/100"
+          className="w-full py-1 text-xs mt-2 rounded-md bg-primary/85 capitalize flex items-center justify-center gap-x-1 text-white duration-300 transition-all text-nowrap hover:shadow-sm hover:bg-primary/100 disabled:opacity-65 disabled:hover:bg-primary/80 disabled:hover:shadow-none disabled:cursor-not-allowed"
         >
           {isAdding ? (
             <Spinner className="animate-spin"></Spinner>
@@ -228,7 +222,7 @@ export default function ProductItem({
               <span className="hidden sm:inline-block">
                 <Cart />
               </span>
-              {inStock ? "Thêm vào giỏ hàng" : "Hết hàng"}
+              {inStock && selectedVariant ? "Thêm vào giỏ hàng" : "Hết hàng"}
             </>
           )}
         </button>
