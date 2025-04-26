@@ -55,13 +55,15 @@ const ProductsSlider = ({
     <div className="mt-4 flex flex-col items-center justify-center">
       <div className="w-full">
         <Swiper
-          ref={sliderRef}
           modules={[Navigation, Thumbs, Controller, Autoplay, Pagination]}
           loop
           slidesPerView={slidesPerView}
           spaceBetween={spaceBetween}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           onBeforeInit={(swiper) => {
+            sliderRef.current = swiper
+          }}
+          onSwiper={(swiper) => {
             sliderRef.current = swiper
           }}
         >
