@@ -69,14 +69,10 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                 {/* <ProductOnboardingCta /> */}
                 <Suspense
                   fallback={
-                    <ProductActions
-                      disabled={true}
-                      product={product}
-                      region={region}
-                    />
+                    <ProductActions disabled={true} product={product} />
                   }
                 >
-                  <ProductActionsWrapper product={product} region={region} />
+                  <ProductActionsWrapper product={product} />
                 </Suspense>
               </div>
             </div>

@@ -17,7 +17,6 @@ import ProductPrice from "../product-price"
 
 type ProductActionsProps = {
   product: HttpTypes.StoreProduct
-  region: HttpTypes.StoreRegion
   disabled?: boolean
 }
 

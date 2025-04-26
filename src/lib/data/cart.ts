@@ -7,7 +7,7 @@ import { omit } from "lodash"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 import { getAuthHeaders, getCartId, removeCartId, setCartId } from "./cookies"
-import { getProductByHandle, getProductsById } from "./products"
+import { getProductsById } from "./products"
 import { getRegion } from "./regions"
 import { DEFAULT_EMAIL } from "@constants/defaultEmail"
 

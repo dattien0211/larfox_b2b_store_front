@@ -75,6 +75,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const region = await getRegion(params.countryCode)
+
+  console.log("OK", region)
   if (!region) notFound()
 
   // Run product and customer fetches concurrently after region is available

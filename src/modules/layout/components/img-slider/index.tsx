@@ -13,7 +13,7 @@ import Icons from "@modules/common/icons"
 import clsx from "clsx"
 import { useOS } from "@lib/hooks/OSContext"
 
-// Dynamically import Swiper with a loading fallback and disable SSR
+// Dynamically import Swiper with a loading fallback and forward ref
 const Swiper = dynamic(() => import("swiper/react").then((mod) => mod.Swiper), {
   ssr: false,
   loading: () => (
@@ -79,6 +79,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         loop={true}
         slidesPerView={1}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
+        onBeforeInit={(swiper) => {
+          mainSliderRef.current = swiper
+        }}
         onSwiper={(swiper) => (mainSliderRef.current = swiper)}
         onSlideChange={handleSlideChange}
         className="mb-4"

@@ -281,11 +281,11 @@ body {
   }
 
   .rich-text-content h2 {
-    @apply !text-xl sm:!text-2xl !font-[500] !mb-3;
+    @apply !text-xl sm:!text-2xl !font-[500] !mb-3 text-center;
   }
 
   .rich-text-content h3 {
-    @apply !text-lg sm:!text-xl !font-[500] !mb-2;
+    @apply !text-lg sm:!text-xl !font-[500] !mb-2 text-center;
   }
 
   .rich-text-content p {
