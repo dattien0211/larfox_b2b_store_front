@@ -64,57 +64,64 @@ export default function BottomNav({ categories, blogTypes }: BottomNavProps) {
     <div className="relative">
       {/* Desktop Navigation */}
       <div className="hidden sm:flex items-center justify-between">
-        <div className="flex items-center gap-x-4">
-          <LocalizedClientLink
-            href="/"
-            className=" text-sm text-nowrap lg:text-base capitalize py-2 pr-2 lg:py-4 lg:pr-4 cursor-pointer hover:text-primary"
-          >
-            Trang chủ
-          </LocalizedClientLink>
-
-          <LocalizedClientLink
-            href="/tat-ca-san-pham"
-            className="relative flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group"
-          >
-            <h1 className=" text-sm text-nowrap lg:text-base capitalize">
-              Sản phẩm
-            </h1>
-            <span className="text-grey-30 group-hover:text-primary">
-              <DropDown />
-            </span>
-            <Menu
-              menuItems={categories}
-              to={"/danh-muc-san-pham"}
-              isGrid={true}
-            />
-          </LocalizedClientLink>
-
-          <LocalizedClientLink
-            href="/tat-ca-bai-viet"
-            className="relative flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group"
-          >
-            <h1 className=" text-sm text-nowrap lg:text-base capitalize">
-              Bài Viết
-            </h1>
-            <span className="text-grey-30 group-hover:text-primary">
-              <DropDown />
-            </span>
-            <Menu
-              menuItems={blogTypes}
-              to={"/loai-bai-viet"}
-              isCategory={false}
-            />
-          </LocalizedClientLink>
-
-          <LocalizedClientLink
-            href="/gioi-thieu"
-            className="flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4 cursor-pointer hover:text-primary group"
-          >
-            <h1 className=" text-sm text-nowrap lg:text-base capitalize">
-              Giới thiệu
-            </h1>
-          </LocalizedClientLink>
-        </div>
+        <nav>
+          <ul className="flex items-center gap-x-4">
+            <li className="cursor-pointer">
+              <LocalizedClientLink
+                href="/"
+                className=" text-sm text-nowrap lg:text-base capitalize py-2 pr-2 lg:py-4 lg:pr-4 hover:text-primary"
+              >
+                Trang chủ
+              </LocalizedClientLink>
+            </li>
+            <li className="relative cursor-pointer">
+              <LocalizedClientLink
+                href="/tat-ca-san-pham"
+                className="flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4  hover:text-primary group"
+              >
+                <h1 className=" text-sm text-nowrap lg:text-base capitalize">
+                  Sản phẩm
+                </h1>
+                <span className="text-grey-30 group-hover:text-primary">
+                  <DropDown />
+                </span>
+              </LocalizedClientLink>
+              <Menu
+                menuItems={categories}
+                to={"/danh-muc-san-pham"}
+                isGrid={true}
+              />
+            </li>
+            <li className="relative cursor-pointer">
+              <LocalizedClientLink
+                href="/tat-ca-bai-viet"
+                className=" flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4  hover:text-primary group"
+              >
+                <h1 className=" text-sm text-nowrap lg:text-base capitalize">
+                  Bài Viết
+                </h1>
+                <span className="text-grey-30 group-hover:text-primary">
+                  <DropDown />
+                </span>
+              </LocalizedClientLink>
+              <Menu
+                menuItems={blogTypes}
+                to={"/loai-bai-viet"}
+                isCategory={false}
+              />
+            </li>
+            <li className="cursor-pointer">
+              <LocalizedClientLink
+                href="/gioi-thieu"
+                className="flex items-center gap-x-2 lg:gap-x-4 p-2 lg:p-4  hover:text-primary group"
+              >
+                <h1 className=" text-sm text-nowrap lg:text-base capitalize">
+                  Giới thiệu
+                </h1>
+              </LocalizedClientLink>
+            </li>
+          </ul>
+        </nav>
       </div>
 
       {/* Mobile Navigation */}

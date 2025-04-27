@@ -74,7 +74,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   return (
     <div className="w-full max-w-[800px] mx-auto">
       <Swiper
-        ref={mainSliderRef}
         modules={[Navigation, Controller, Autoplay]}
         loop={true}
         slidesPerView={1}

@@ -1,5 +1,3 @@
-"use client"
-
 import React, { Suspense } from "react"
 import { notFound } from "next/navigation"
 import { HttpTypes } from "@medusajs/types"
@@ -27,7 +25,6 @@ type ProductTemplateProps = {
 
 const ProductTemplate: React.FC<ProductTemplateProps> = ({
   product,
-  region,
   countryCode,
   customer,
   token,
