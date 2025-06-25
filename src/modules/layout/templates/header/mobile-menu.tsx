@@ -112,17 +112,17 @@ export default function MobileMenu({
                   }
                 )}
               >
-                {item.submenus?.map((submenuItem) => (
-                  <LocalizedClientLink
-                    key={submenuItem.title}
-                    href={submenuItem.href || "#"}
-                    className="py-2 hover:text-primary flex items-center justify-between"
-                    onClick={onClose}
-                  >
-                    {submenuItem.title}
-                    <RightArrow />
-                  </LocalizedClientLink>
-                ))}
+                {/*{item.submenus?.map((submenuItem) => (*/}
+                {/*  <LocalizedClientLink*/}
+                {/*    key={submenuItem.title}*/}
+                {/*    href={submenuItem.href || "#"}*/}
+                {/*    className="py-2 hover:text-primary flex items-center justify-between"*/}
+                {/*    onClick={onClose}*/}
+                {/*  >*/}
+                {/*    {submenuItem.title}*/}
+                {/*    <RightArrow />*/}
+                {/*  </LocalizedClientLink>*/}
+                {/*))}*/}
               </div>
             </div>
           ))}

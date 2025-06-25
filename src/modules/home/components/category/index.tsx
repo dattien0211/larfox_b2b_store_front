@@ -1,8 +1,5 @@
-import Image from "next/image"
 import { Heading } from "@medusajs/ui"
 import { StoreProductCategory } from "@medusajs/types"
-
-import IMGS from "@constants/IMGS"
 import CategoryItem from "./category-item"
 import RiceSpike from "@modules/common/components/rice-spike"
 
@@ -16,7 +13,7 @@ const Category: React.FC<CategoryProps> = async ({ categories }) => {
   }
 
   return (
-    <div className="relative content-container py-4 sm:pt-6 sm:pb-8 mb-6 sm:mb-10  bg-white rounded-lg shadow-lg">
+    <div className="relative py-4 sm:pt-6 sm:pb-8 mb-6 sm:mb-10 bg-white rounded-lg shadow-lg">
       <RiceSpike />
       <Heading
         level="h1"

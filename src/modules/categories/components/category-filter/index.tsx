@@ -3,7 +3,7 @@
 import clsx from "clsx"
 import { HttpTypes } from "@medusajs/types"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 
 const CategoryFilter = ({
   allCategories,
@@ -48,15 +48,13 @@ const CategoryFilter = ({
   }
 
   return (
-    <div className="lg:py-6 lg:px-4 lg:rounded-md lg:shadow-lg lg:bg-white  ">
-      <h2 className="text-base sm:text-lg font-semibold border-b border-gray-200 pb-4 capitalize text-primary">
-        Danh mục sản phẩm
-      </h2>
-      <div className="space-y-6 mt-6">
+    <div className="w-80 bg-white p-6 rounded-xl shadow-sm h-fit">
+      <h3 className="font-semibold mb-4">Danh mục sản phẩm</h3>
+      <div className="space-y-2 mt-6">
         {allCategories.map((category) => (
           <label
             key={category.id}
-            className="flex items-center cursor-pointer hover:opacity-80"
+            className="flex items-center"
             onClick={() => toggleCategory(category.handle)}
           >
             <div

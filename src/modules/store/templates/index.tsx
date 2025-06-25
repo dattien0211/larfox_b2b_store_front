@@ -3,12 +3,9 @@ import { HttpTypes } from "@medusajs/types"
 
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
-import SortHeader from "@modules/layout/components/sort-header"
 import { SortOptions } from "@modules/categories/components/sort-category"
 import FilterMenu from "@modules/categories/components/filter-menu"
-import ProductBanner from "@modules/layout/components/collection-banner"
 import { ProductTag } from "types/global"
-import RiceSpike from "@modules/common/components/rice-spike"
 
 const StoreTemplate = ({
   sortBy,
@@ -33,39 +30,40 @@ const StoreTemplate = ({
   const sort = sortBy || "moi_nhat"
 
   return (
-    <div className="pb-16 sm:pb-24 bg-primary-bg">
-      <ProductBanner />
+    <section className="pb-16 sm:pb-24 bg-primary-bg pt-6">
       <div
-        className="flex flex-col small:flex-row small:items-start py-4 gap-x-4 gap-y-4 content-container relative z-20 "
+        className="container mx-auto px-4"
         data-testid="all-category-container"
       >
-        <FilterMenu
-          allCategories={allCategories}
-          paramsCategory={[]}
-          data-testid="product-filter"
-          productTags={productTags}
-        />
-
-        <div className="flex-1">
-          <SortHeader
+        <div className="flex gap-8">
+          <FilterMenu
             allCategories={allCategories}
-            path={["danh-muc-san-pham"]}
-            sortBy={sort}
+            paramsCategory={[]}
+            data-testid="product-filter"
+            productTags={productTags}
           />
 
-          <Suspense fallback={<SkeletonProductGrid />}>
-            <PaginatedProducts
-              sortBy={sort}
-              minPrice={minPrice}
-              maxPrice={maxPrice}
-              tagId={tagId}
-              page={pageNumber}
-              countryCode={countryCode}
-            />
-          </Suspense>
+          <div className="flex-1">
+            {/*<SortHeader*/}
+            {/*  allCategories={allCategories}*/}
+            {/*  path={["danh-muc-san-pham"]}*/}
+            {/*  sortBy={sort}*/}
+            {/*/>*/}
+
+            <Suspense fallback={<SkeletonProductGrid />}>
+              <PaginatedProducts
+                sortBy={sort}
+                minPrice={minPrice}
+                maxPrice={maxPrice}
+                tagId={tagId}
+                page={pageNumber}
+                countryCode={countryCode}
+              />
+            </Suspense>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

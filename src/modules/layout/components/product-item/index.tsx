@@ -4,11 +4,10 @@ import { HttpTypes } from "@medusajs/types"
 import Image from "next/image"
 import { isEqual } from "lodash"
 import { useParams } from "next/navigation"
-import { useMemo, useState, useEffect } from "react"
+import { useEffect, useMemo, useState } from "react"
 
 import { addToCart } from "@lib/data/cart"
 import Icons from "@modules/common/icons"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { toast } from "@medusajs/ui"
 import formatNumber from "@lib/util/formatNumber"
 import { getProductPrice } from "@lib/util/get-product-price"
@@ -125,117 +124,119 @@ export default function ProductItem({
   const soldCount = formatNumber(Number(product?.metadata?.sold) || 0)
 
   return (
-    <LocalizedClientLink
-      href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
-      className="w-full flex flex-col group cursor-pointer border border-primary rounded-md shadow-sm transition-all duration-300 hover:shadow-lg"
+    <div
+      // href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
+      className="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition-shadow"
     >
-      <div className="p-2 relative">
-        <div className="bg-grey-15 relative w-full shadow-md overflow-hidden">
-          {(product?.thumbnail || product?.images?.[0]?.url) && (
-            <Image
-              // @ts-ignore
-              src={product.thumbnail ?? product.images[0].url}
-              alt="banner"
-              width={245}
-              height={245}
-              loading="lazy"
-              className="w-full aspect-square transition-transform duration-500 ease-in-out group-hover:scale-110 object-cover"
-            />
-          )}
-
-          {cheapestPrice?.percentage_diff &&
-            parseFloat(cheapestPrice?.percentage_diff) > 0 && (
-              <>
-                <div className="absolute top-2 right-10 z-20">
-                  <Thunder size={24} />
-                </div>
-                <div className="text-red-500 bg-orang-15 flex absolute top-[10px] right-2 text-xs pl-3 pr-1 py-[1px] rounded-r-sm font-semibold">
-                  -{cheapestPrice?.percentage_diff}%
-                </div>
-              </>
-            )}
-        </div>
-      </div>
-
-      <div className="bg-primary h-[1px] w-full relative"></div>
-
-      <div className="p-2">
-        <p className="line-clamp-2 text-sm sm:text-[15px] h-10 sm:h-[42px] group-hover:text-primary capitalize">
-          {product?.title.toLowerCase()}
-        </p>
-
-        <div className="mt-1">
-          <span className="text-green-600 text-sm sm:text-lg font-bold">
-            {cheapestPrice?.calculated_price}
-          </span>
-          {cheapestPrice?.percentage_diff &&
-            parseFloat(cheapestPrice?.percentage_diff) > 0 && (
-              <span className="text-grey-40 ml-2 text-xs sm:text-sm line-through">
-                {cheapestPrice?.original_price}
+      <div className="flex gap-4">
+        {(product?.thumbnail || product?.images?.[0]?.url) && (
+          <Image
+            // @ts-ignore
+            src={product.thumbnail ?? product.images[0].url}
+            alt="banner"
+            width={20}
+            height={20}
+            loading="lazy"
+            className="w-20 h-20 rounded-lg object-cover"
+          />
+        )}
+        <div className="flex-1">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center">
+              <h3 className="font-semibold text-lg capitalize">
+                {product?.title.toLowerCase()}
+              </h3>
+              <span className="text-sm text-gray-500 ml-2">
+                Active 5 mins ago
               </span>
-            )}
-        </div>
-
-        <div className="flex flex-row justify-between items-center">
-          <p className="hidden sm:flex text-xs sm:text-sm f items-center gap-x-1">
-            <span className="flex items-center gap-x-[2px]">
-              {[...Array(5)].map((_, index) =>
-                index < fullStars ? (
-                  <Star key={index} color="#EA9934" />
-                ) : index === fullStars && hasHalfStar ? (
-                  <StarHalf key={index} color="#EA9934" />
-                ) : (
-                  <Star key={index} color="#D1D5DB" />
-                )
-              )}
-            </span>
-
-            <span>
-              (<span className="text-gray-600">{reviews.length}</span>)
-            </span>
-          </p>
-
-          <p className="flex sm:hidden items-center justify-center gap-x-1 text-xs">
-            {averageRating}
-            <Star color="#EA9934" size={12} />
-          </p>
-
-          <p className="text-grey-30 text-xs sm:text-sm">
-            Đã bán:{" "}
-            <span className="text-gray-600 font-semibold">{soldCount}</span>
-          </p>
-        </div>
-
-        <button
-          onClick={(e) => {
-            e.stopPropagation()
-            e.preventDefault()
-            handleAddToCart()
-          }}
-          disabled={!inStock || !selectedVariant || isAdding}
-          className="w-full py-1 text-xs mt-2 rounded-md bg-primary/85 capitalize flex items-center justify-center gap-x-1 text-white duration-300 transition-all text-nowrap hover:shadow-sm hover:bg-primary/100 disabled:opacity-65 disabled:hover:bg-primary/80 disabled:hover:shadow-none disabled:cursor-not-allowed"
-        >
-          {isAdding ? (
-            <Spinner className="animate-spin"></Spinner>
-          ) : (
-            <>
-              <span className="hidden sm:inline-block">
-                <Cart />
-              </span>
-              {inStock && selectedVariant ? "Thêm vào giỏ hàng" : "Hết hàng"}
-            </>
-          )}
-        </button>
-
-        {isSale && (
-          <div className="mt-[4px] rounded-full bg-[#FFDBB7] w-full h-5 relative">
-            <div className="absolute bg-gradient-to-r from-[#EA541E] to-[#FBD316] top-0 left-0 w-[20%] h-full rounded-full"></div>
-            <div className="absolute capitalize inset-0 text-primary text-xxs sm:text-xs h-full w-full flex items-center justify-center gap-x-1">
-              <Flame /> Đang bán chạy
             </div>
           </div>
-        )}
+          <p className="text-gray-600 mb-2">Singapore</p>
+          <div className="mt-1">
+            <span className="text-green-600 text-sm sm:text-lg font-bold">
+              {cheapestPrice?.calculated_price}
+            </span>
+            {/*{cheapestPrice?.percentage_diff &&*/}
+            {/*  parseFloat(cheapestPrice?.percentage_diff) > 0 && (*/}
+            {/*    <span className="text-grey-40 ml-2 text-xs sm:text-sm line-through">*/}
+            {/*      {cheapestPrice?.original_price}*/}
+            {/*    </span>*/}
+            {/*  )}*/}
+          </div>
+
+          <div className="flex flex-row justify-between items-center">
+            <p className="hidden sm:flex text-xs sm:text-sm f items-center gap-x-1">
+              <span className="flex items-center gap-x-[2px]">
+                {[...Array(5)].map((_, index) =>
+                  index < fullStars ? (
+                    <Star key={index} color="#EA9934" />
+                  ) : index === fullStars && hasHalfStar ? (
+                    <StarHalf key={index} color="#EA9934" />
+                  ) : (
+                    <Star key={index} color="#D1D5DB" />
+                  )
+                )}
+              </span>
+
+              <span>
+                (<span className="text-gray-600">{reviews.length}</span>)
+              </span>
+            </p>
+
+            <p className="flex sm:hidden items-center justify-center gap-x-1 text-xs">
+              {averageRating}
+              <Star color="#EA9934" size={12} />
+            </p>
+
+            <p className="text-grey-30 text-xs sm:text-sm">
+              Đã bán:{" "}
+              <span className="text-gray-600 font-semibold">{soldCount}</span>
+            </p>
+          </div>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
+              handleAddToCart()
+            }}
+            disabled={!inStock || !selectedVariant || isAdding}
+            className="w-full py-1 text-xs mt-2 rounded-md bg-primary/85 capitalize flex items-center justify-center gap-x-1 text-white duration-300 transition-all text-nowrap hover:shadow-sm hover:bg-primary/100 disabled:opacity-65 disabled:hover:bg-primary/80 disabled:hover:shadow-none disabled:cursor-not-allowed"
+          >
+            {isAdding ? (
+              <Spinner className="animate-spin"></Spinner>
+            ) : (
+              <>
+                <span className="hidden sm:inline-block">
+                  <Cart />
+                </span>
+                {inStock && selectedVariant ? "Thêm vào giỏ hàng" : "Hết hàng"}
+              </>
+            )}
+          </button>
+
+          {isSale && (
+            <div className="mt-[4px] rounded-full bg-[#FFDBB7] w-full h-5 relative">
+              <div className="absolute bg-gradient-to-r from-[#EA541E] to-[#FBD316] top-0 left-0 w-[20%] h-full rounded-full"></div>
+              <div className="absolute capitalize inset-0 text-primary text-xxs sm:text-xs h-full w-full flex items-center justify-center gap-x-1">
+                <Flame /> Đang bán chạy
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/*{cheapestPrice?.percentage_diff &&*/}
+        {/*  parseFloat(cheapestPrice?.percentage_diff) > 0 && (*/}
+        {/*    <>*/}
+        {/*      <div className="absolute top-2 right-10 z-20">*/}
+        {/*        <Thunder size={24} />*/}
+        {/*      </div>*/}
+        {/*      <div className="text-red-500 bg-orang-15 flex absolute top-[10px] right-2 text-xs pl-3 pr-1 py-[1px] rounded-r-sm font-semibold">*/}
+        {/*        -{cheapestPrice?.percentage_diff}%*/}
+        {/*      </div>*/}
+        {/*    </>*/}
+        {/*  )}*/}
       </div>
-    </LocalizedClientLink>
+    </div>
   )
 }

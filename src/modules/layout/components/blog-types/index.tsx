@@ -48,7 +48,7 @@ const BlogTypes: React.FC<BlogsProps> = ({ blogTypes }) => {
             {/* Ảnh blogType */}
             <div className="relative w-2/3 sm:w-1/2 h-[80px] sm:h-24  overflow-hidden">
               <Image
-                src={blogType.thumbnail.url}
+                src={blogType?.thumbnail?.url || ""}
                 alt={blogType.name}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
