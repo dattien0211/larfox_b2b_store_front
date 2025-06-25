@@ -38,6 +38,7 @@ export default async function StorePage({ searchParams, params }: Params) {
 
   return (
     <StoreTemplate
+      categories={categories.product_categories}
       allCategories={categories.product_categories}
       sortBy={sortBy}
       minPrice={minPrice}
@@ -46,6 +47,7 @@ export default async function StorePage({ searchParams, params }: Params) {
       countryCode={params.countryCode}
       productTags={product_tags}
       tagId={tagId}
+      paramsCategory={[]}
     />
   )
 }

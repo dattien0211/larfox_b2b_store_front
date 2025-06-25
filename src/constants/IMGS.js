@@ -11,6 +11,7 @@ import AllProducts from "@assets/images/all-product.jpg"
 import Search from "@assets/images/search-icon.png"
 import Left from "@assets/images/left.png"
 import Right from "@assets/images/right.png"
+import Eyes from "@assets/images/eyes.png"
 
 export default {
   Logo,
@@ -25,4 +26,5 @@ export default {
   Search,
   Left,
   Right,
+  Eyes,
 }
