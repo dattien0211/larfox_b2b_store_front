@@ -11,7 +11,8 @@ import Icons from "@modules/common/icons"
 import { toast } from "@medusajs/ui"
 import formatNumber from "@lib/util/formatNumber"
 import { getProductPrice } from "@lib/util/get-product-price"
-import Spinner from "@modules/common/icons/spinner"
+import IMGS from "@constants/IMGS"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const optionsAsKeymap = (
   variantOptions: HttpTypes.StoreProductVariant["options"]
@@ -151,78 +152,124 @@ export default function ProductItem({
               </span>
             </div>
           </div>
-          <p className="text-gray-600 mb-2">Singapore</p>
-          <div className="mt-1">
-            <span className="text-green-600 text-sm sm:text-lg font-bold">
-              {cheapestPrice?.calculated_price}
+          <p className="text-gray-600 mb-2">Singapore, Asia Pacific</p>
+          <div className="mb-3">
+            <span className="text-sm font-medium text-gray-700">
+              Capabilities:
             </span>
-            {/*{cheapestPrice?.percentage_diff &&*/}
-            {/*  parseFloat(cheapestPrice?.percentage_diff) > 0 && (*/}
-            {/*    <span className="text-grey-40 ml-2 text-xs sm:text-sm line-through">*/}
-            {/*      {cheapestPrice?.original_price}*/}
-            {/*    </span>*/}
-            {/*  )}*/}
-          </div>
-
-          <div className="flex flex-row justify-between items-center">
-            <p className="hidden sm:flex text-xs sm:text-sm f items-center gap-x-1">
-              <span className="flex items-center gap-x-[2px]">
-                {[...Array(5)].map((_, index) =>
-                  index < fullStars ? (
-                    <Star key={index} color="#EA9934" />
-                  ) : index === fullStars && hasHalfStar ? (
-                    <StarHalf key={index} color="#EA9934" />
-                  ) : (
-                    <Star key={index} color="#D1D5DB" />
-                  )
-                )}
+            <div className="flex flex-wrap gap-1 mt-1">
+              <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
+                Software Development
               </span>
-
-              <span>
-                (<span className="text-gray-600">{reviews.length}</span>)
+              <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
+                Software Development
               </span>
-            </p>
-
-            <p className="flex sm:hidden items-center justify-center gap-x-1 text-xs">
-              {averageRating}
-              <Star color="#EA9934" size={12} />
-            </p>
-
-            <p className="text-grey-30 text-xs sm:text-sm">
-              Đã bán:{" "}
-              <span className="text-gray-600 font-semibold">{soldCount}</span>
-            </p>
-          </div>
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation()
-              e.preventDefault()
-              handleAddToCart()
-            }}
-            disabled={!inStock || !selectedVariant || isAdding}
-            className="w-full py-1 text-xs mt-2 rounded-md bg-primary/85 capitalize flex items-center justify-center gap-x-1 text-white duration-300 transition-all text-nowrap hover:shadow-sm hover:bg-primary/100 disabled:opacity-65 disabled:hover:bg-primary/80 disabled:hover:shadow-none disabled:cursor-not-allowed"
-          >
-            {isAdding ? (
-              <Spinner className="animate-spin"></Spinner>
-            ) : (
-              <>
-                <span className="hidden sm:inline-block">
-                  <Cart />
-                </span>
-                {inStock && selectedVariant ? "Thêm vào giỏ hàng" : "Hết hàng"}
-              </>
-            )}
-          </button>
-
-          {isSale && (
-            <div className="mt-[4px] rounded-full bg-[#FFDBB7] w-full h-5 relative">
-              <div className="absolute bg-gradient-to-r from-[#EA541E] to-[#FBD316] top-0 left-0 w-[20%] h-full rounded-full"></div>
-              <div className="absolute capitalize inset-0 text-primary text-xxs sm:text-xs h-full w-full flex items-center justify-center gap-x-1">
-                <Flame /> Đang bán chạy
-              </div>
             </div>
-          )}
+          </div>
+          <div className="mb-4">
+            <span className="text-sm font-medium text-gray-700">
+              Certifications:
+            </span>
+            <div className="flex flex-wrap gap-1 mt-1">
+              <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">
+                ISO 27001
+              </span>
+              <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">
+                ISO 27002
+              </span>
+            </div>
+          </div>
+
+          {/*Price*/}
+
+          {/*<div className="mt-1">*/}
+          {/*  <span className="text-green-600 text-sm sm:text-lg font-bold">*/}
+          {/*    {cheapestPrice?.calculated_price}*/}
+          {/*  </span>*/}
+          {/*  /!*{cheapestPrice?.percentage_diff &&*!/*/}
+          {/*  /!*  parseFloat(cheapestPrice?.percentage_diff) > 0 && (*!/*/}
+          {/*  /!*    <span className="text-grey-40 ml-2 text-xs sm:text-sm line-through">*!/*/}
+          {/*  /!*      {cheapestPrice?.original_price}*!/*/}
+          {/*  /!*    </span>*!/*/}
+          {/*  /!*  )}*!/*/}
+          {/*</div>*/}
+
+          {/*<div className="flex flex-row justify-between items-center">*/}
+          {/*  <p className="hidden sm:flex text-xs sm:text-sm f items-center gap-x-1">*/}
+          {/*    <span className="flex items-center gap-x-[2px]">*/}
+          {/*      {[...Array(5)].map((_, index) =>*/}
+          {/*        index < fullStars ? (*/}
+          {/*          <Star key={index} color="#EA9934" />*/}
+          {/*        ) : index === fullStars && hasHalfStar ? (*/}
+          {/*          <StarHalf key={index} color="#EA9934" />*/}
+          {/*        ) : (*/}
+          {/*          <Star key={index} color="#D1D5DB" />*/}
+          {/*        )*/}
+          {/*      )}*/}
+          {/*    </span>*/}
+
+          {/*    <span>*/}
+          {/*      (<span className="text-gray-600">{reviews.length}</span>)*/}
+          {/*    </span>*/}
+          {/*  </p>*/}
+
+          {/*  <p className="flex sm:hidden items-center justify-center gap-x-1 text-xs">*/}
+          {/*    {averageRating}*/}
+          {/*    <Star color="#EA9934" size={12} />*/}
+          {/*  </p>*/}
+
+          {/*  <p className="text-grey-30 text-xs sm:text-sm">*/}
+          {/*    Đã bán:{" "}*/}
+          {/*    <span className="text-gray-600 font-semibold">{soldCount}</span>*/}
+          {/*  </p>*/}
+          {/*</div>*/}
+
+          <div className="flex gap-3">
+            <button className="gradient-bg text-white px-4 py-2 rounded-lg text-sm hover:opacity-90">
+              Contact Supplier
+            </button>
+            <LocalizedClientLink
+              className="border border-gray-300 px-4 py-2 rounded-lg text-sm hover:bg-gray-50"
+              href={`/san-pham/${product.handle}`}
+            >
+              <Image
+                src={IMGS.Eyes}
+                alt={"See detail"}
+                width={20}
+                height={20}
+              />
+            </LocalizedClientLink>
+          </div>
+
+          {/*<button*/}
+          {/*  onClick={(e) => {*/}
+          {/*    e.stopPropagation()*/}
+          {/*    e.preventDefault()*/}
+          {/*    handleAddToCart()*/}
+          {/*  }}*/}
+          {/*  disabled={!inStock || !selectedVariant || isAdding}*/}
+          {/*  className="w-full py-1 text-xs mt-2 rounded-md bg-primary/85 capitalize flex items-center justify-center gap-x-1 text-white duration-300 transition-all text-nowrap hover:shadow-sm hover:bg-primary/100 disabled:opacity-65 disabled:hover:bg-primary/80 disabled:hover:shadow-none disabled:cursor-not-allowed"*/}
+          {/*>*/}
+          {/*  {isAdding ? (*/}
+          {/*    <Spinner className="animate-spin"></Spinner>*/}
+          {/*  ) : (*/}
+          {/*    <>*/}
+          {/*      <span className="hidden sm:inline-block">*/}
+          {/*        <Cart />*/}
+          {/*      </span>*/}
+          {/*      {inStock && selectedVariant ? "Thêm vào giỏ hàng" : "Hết hàng"}*/}
+          {/*    </>*/}
+          {/*  )}*/}
+          {/*</button>*/}
+
+          {/*{isSale && (*/}
+          {/*  <div className="mt-[4px] rounded-full bg-[#FFDBB7] w-full h-5 relative">*/}
+          {/*    <div className="absolute bg-gradient-to-r from-[#EA541E] to-[#FBD316] top-0 left-0 w-[20%] h-full rounded-full"></div>*/}
+          {/*    <div className="absolute capitalize inset-0 text-primary text-xxs sm:text-xs h-full w-full flex items-center justify-center gap-x-1">*/}
+          {/*      <Flame /> Đang bán chạy*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
+          {/*)}*/}
         </div>
 
         {/*{cheapestPrice?.percentage_diff &&*/}

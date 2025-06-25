@@ -2,15 +2,15 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import {
+  getCategoriesList,
   getCategoryByHandle,
   listCategories,
-  getCategoriesList,
 } from "@lib/data/categories"
 import { listRegions } from "@lib/data/regions"
 import { StoreProductCategory, StoreRegion } from "@medusajs/types"
-import CategoryTemplate from "@modules/categories/templates"
 import { SortOptions } from "@modules/categories/components/sort-category"
 import { getProductTagsList } from "@lib/data/products"
+import StoreTemplate from "@modules/store/templates"
 
 type Props = {
   params: { category: string[]; countryCode: string }
@@ -92,22 +92,22 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       await getProductTagsList(),
     ])
 
-  if (!product_categories) {
+  if (!product_categories.length) {
     notFound()
   }
 
   return (
-    <CategoryTemplate
+    <StoreTemplate
       categories={product_categories}
       allCategories={categories.product_categories}
       sortBy={sortBy}
       minPrice={minPrice}
       maxPrice={maxPrice}
-      tagId={tagId}
       page={page}
       countryCode={params.countryCode}
-      paramsCategory={params.category}
       productTags={product_tags}
+      paramsCategory={params.category}
+      tagId={tagId}
     />
   )
 }

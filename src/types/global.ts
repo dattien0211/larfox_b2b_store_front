@@ -1,5 +1,5 @@
 import { HttpTypes } from "@medusajs/types"
-import Image from "next/image"
+
 export type FeaturedProduct = {
   id: string
   title: string
@@ -111,4 +111,17 @@ export type Brand = {
 export type PaginatedProductsCollectionParams = {
   limit: number
   collection_id?: string[]
+}
+
+export type Seller = {
+  id: string
+  name: string
+  handle: string
+  description: string | null
+  photo: string | null
+  address_line: string | null
+  city: string | null
+  postal_code: string | null
+  country_code: string | null
+  tax_id: string | null
 }

@@ -94,6 +94,14 @@ module.exports = {
         "manrope-extralight": ["Manrope-ExtraLight", "sans-serif"],
       },
       keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
         ring: {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
@@ -178,6 +186,8 @@ module.exports = {
         enter: "enter 200ms ease-out",
         "slide-in": "slide-in 1.2s cubic-bezier(.41,.73,.51,1.02)",
         leave: "leave 150ms ease-in forwards",
+        float: "float 6s ease-in-out infinite",
+        marquee: "marquee 20s linear infinite",
       },
       textShadow: {
         custom: "2px 2px 4px #FEB954", // y=2, blur=4, color=#FEB954
