@@ -7,6 +7,6 @@ export const metadata: Metadata = {
   description: "Thông tin tài khoản.",
 }
 
-export default function Login() {
+export default function SignIn() {
   return <LoginTemplate />
 }

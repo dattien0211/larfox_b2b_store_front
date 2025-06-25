@@ -1,13 +1,12 @@
 import { Metadata } from "next"
-
-import StoreTemplate from "@modules/store/templates"
 import { SortOptions } from "@modules/categories/components/sort-category"
 import { getCategoriesList } from "@lib/data/categories"
 import { getProductTagsList } from "@lib/data/products"
+import StoreTemplate from "@modules/store/templates"
 
 export const metadata: Metadata = {
-  title: "Tất Cả Sản Phẩm | Bông Lúa",
-  description: "Khám phá tất cả sản phẩm trên Bông Lúa.",
+  title: "Tất Cả Sản Phẩm",
+  description: "Khám phá tất cả sản phẩm trên Larfox.",
 }
 
 type Params = {

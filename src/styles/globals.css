@@ -3,8 +3,7 @@
 @import "tailwindcss/utilities";
 
 body {
-  font-family: "Manrope-Regular", sans-serif;
-  color: #323232;
+    @apply font-sans;
 }
 
 /* ::-webkit-scrollbar {
@@ -12,346 +11,373 @@ body {
 } */
 .swiper-button-prev,
 .swiper-button-next {
-  color: white !important; /* Change text color */
+    color: white !important; /* Change text color */
 }
 
 @media (max-width: 640px) {
-  .swiper-button-prev,
-  .swiper-button-next {
-    display: hidden;
-    opacity: 0;
-  }
+    .swiper-button-prev,
+    .swiper-button-next {
+        display: hidden;
+        opacity: 0;
+    }
 }
 
 .loader {
-  width: 14px;
-  height: 14px;
-  border: 2px solid white;
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: spin 0.5s linear infinite;
+    width: 14px;
+    height: 14px;
+    border: 2px solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.5s linear infinite;
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @layer fonts {
-  @font-face {
-    font-family: "Times New Roman";
-    src: url("/fonts/times.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
+    @font-face {
+        font-family: "Times New Roman";
+        src: url("/fonts/times.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
 
-  @font-face {
-    font-family: "Manrope-Bold";
-    src: url("/fonts/Manrope-Bold.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
+    @font-face {
+        font-family: "Manrope-Bold";
+        src: url("/fonts/Manrope-Bold.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
 
-  @font-face {
-    font-family: "Manrope-ExtraBold";
-    src: url("/fonts/Manrope-ExtraBold.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
+    @font-face {
+        font-family: "Manrope-ExtraBold";
+        src: url("/fonts/Manrope-ExtraBold.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
 
-  @font-face {
-    font-family: "Manrope-ExtraLight";
-    src: url("/fonts/Manrope-ExtraLight.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
+    @font-face {
+        font-family: "Manrope-ExtraLight";
+        src: url("/fonts/Manrope-ExtraLight.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
 
-  @font-face {
-    font-family: "Manrope-Light";
-    src: url("/fonts/Manrope-Light.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
+    @font-face {
+        font-family: "Manrope-Light";
+        src: url("/fonts/Manrope-Light.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
 
-  @font-face {
-    font-family: "Manrope-Medium";
-    src: url("/fonts/Manrope-Medium.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
+    @font-face {
+        font-family: "Manrope-Medium";
+        src: url("/fonts/Manrope-Medium.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
 
-  @font-face {
-    font-family: "Manrope-Regular";
-    src: url("/fonts/Manrope-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
+    @font-face {
+        font-family: "Manrope-Regular";
+        src: url("/fonts/Manrope-Regular.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
 
-  @font-face {
-    font-family: "Manrope-SemiBold";
-    src: url("/fonts/Manrope-SemiBold.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
+    @font-face {
+        font-family: "Manrope-SemiBold";
+        src: url("/fonts/Manrope-SemiBold.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
 }
 
 @layer select {
-  .custom-control {
-    font-family: "Manrope-Regular";
-    font-weight: 300;
-    font-size: 14px;
-    padding-left: 4px;
-    height: 44px;
-  }
+    .custom-control {
+        font-family: "Manrope-Regular";
+        font-weight: 300;
+        font-size: 14px;
+        padding-left: 4px;
+        height: 44px;
+    }
 
-  .custom-placeholder {
-    font-family: "Manrope-Regular";
-    font-weight: 300;
-    font-size: 14px;
-    color: #aaa; /* Optional color */
-    padding-left: 4px;
-  }
+    .custom-placeholder {
+        font-family: "Manrope-Regular";
+        font-weight: 300;
+        font-size: 14px;
+        color: #aaa; /* Optional color */
+        padding-left: 4px;
+    }
 
-  .custom-single-value {
-    font-family: "Manrope-Regular";
-    font-weight: 300;
-    font-size: 14px;
-    color: #333; /* Optional color */
-    padding-left: 4px;
-  }
+    .custom-single-value {
+        font-family: "Manrope-Regular";
+        font-weight: 300;
+        font-size: 14px;
+        color: #333; /* Optional color */
+        padding-left: 4px;
+    }
 
-  .custom-menu {
-    font-family: "Manrope-Regular";
-    font-weight: 300;
-    font-size: 14px;
-    background-color: #f8f8f8; /* Optional background */
-    padding-left: 4px;
-  }
+    .custom-menu {
+        font-family: "Manrope-Regular";
+        font-weight: 300;
+        font-size: 14px;
+        background-color: #f8f8f8; /* Optional background */
+        padding-left: 4px;
+    }
 
-  .custom-option {
-    font-family: "Manrope-Regular";
-    font-weight: 300;
-    font-size: 14px;
-    color: #000; /* Optional color */
-    padding-left: 4px;
-  }
+    .custom-option {
+        font-family: "Manrope-Regular";
+        font-weight: 300;
+        font-size: 14px;
+        color: #000; /* Optional color */
+        padding-left: 4px;
+    }
 }
 
 @layer utilities {
-  /* Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
 
-  .no-scrollbar::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
+    .no-scrollbar::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
 
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
 
-  input:focus ~ label,
-  input:not(:placeholder-shown) ~ label {
-    @apply -translate-y-2 text-xsmall-regular;
-  }
+    input:focus ~ label,
+    input:not(:placeholder-shown) ~ label {
+        @apply -translate-y-2 text-xsmall-regular;
+    }
 
-  input:focus ~ label {
-    @apply left-0;
-  }
+    input:focus ~ label {
+        @apply left-0;
+    }
 
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus,
-  select:-webkit-autofill,
-  select:-webkit-autofill:hover,
-  select:-webkit-autofill:focus {
-    border: 1px solid #212121;
-    -webkit-text-fill-color: #212121;
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-    transition: background-color 5000s ease-in-out 0s;
-  }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        border: 1px solid #212121;
+        -webkit-text-fill-color: #212121;
+        -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
 
-  input[type="search"]::-webkit-search-decoration,
-  input[type="search"]::-webkit-search-cancel-button,
-  input[type="search"]::-webkit-search-results-button,
-  input[type="search"]::-webkit-search-results-decoration {
-    -webkit-appearance: none;
-  }
+    input[type="search"]::-webkit-search-decoration,
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration {
+        -webkit-appearance: none;
+    }
 }
 
 @layer components {
-  .content-container {
-    @apply max-w-[1200px] w-full mx-auto px-4 sm:px-8 md:px-6;
-  }
-
-  .contrast-btn {
-    @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
-  }
-
-  .text-xsmall-regular {
-    @apply text-[10px] leading-4 font-normal;
-  }
-
-  .text-small-regular {
-    @apply text-xs leading-5 font-normal;
-  }
-
-  .text-small-semi {
-    @apply text-xs leading-5 font-semibold;
-  }
-
-  .text-base-regular {
-    @apply text-sm leading-6 font-normal;
-  }
-
-  .text-base-semi {
-    @apply text-sm leading-6 font-semibold;
-  }
-
-  .text-large-regular {
-    @apply text-base leading-6 font-normal;
-  }
-
-  .text-large-semi {
-    @apply text-base leading-6 font-semibold;
-  }
-
-  .text-xl-regular {
-    @apply text-2xl leading-[36px] font-normal;
-  }
-
-  .text-xl-semi {
-    @apply text-2xl leading-[36px] font-semibold;
-  }
-
-  .text-2xl-regular {
-    @apply text-[30px] leading-[48px] font-normal;
-  }
-
-  .text-2xl-semi {
-    @apply text-[30px] leading-[48px] font-semibold;
-  }
-
-  .sm:text-3xl text-xl -regular {
-    @apply sm:text-3xl text-xl   leading-[44px] font-normal;
-  }
-
-  .sm:text-3xl text-xl -semi {
-    @apply sm:text-3xl text-xl   leading-[44px] font-semibold;
-  }
-
-  .swiper-pagination-bullet.custom-dot {
-    @apply w-7 h-2 rounded-full bg-primary cursor-pointer relative;
-    margin: 0 6px !important;
-  }
-
-  .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
-    @apply opacity-50 bg-gray-300;
-  }
-
-  .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    @apply bg-white opacity-100 shadow-lg;
-    box-shadow: 0 4px 8px rgba(224, 129, 5, 0.1);
-  }
-
-  .swiper-pagination-bullet:hover {
-    @apply scale-110;
-    background-color: #ffd700; /* Hover màu vàng */
-    opacity: 1;
-  }
-
-  @media (max-width: 640px) {
-    .swiper-pagination-bullet.custom-dot {
-      @apply w-5 h-2.5;
-      margin: 0 4px !important;
+    .content-container {
+        @apply max-w-[1200px] w-full mx-auto px-4 sm:px-8 md:px-6;
     }
-  }
+
+    .contrast-btn {
+        @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
+    }
+
+    .text-xsmall-regular {
+        @apply text-[10px] leading-4 font-normal;
+    }
+
+    .text-small-regular {
+        @apply text-xs leading-5 font-normal;
+    }
+
+    .text-small-semi {
+        @apply text-xs leading-5 font-semibold;
+    }
+
+    .text-base-regular {
+        @apply text-sm leading-6 font-normal;
+    }
+
+    .text-base-semi {
+        @apply text-sm leading-6 font-semibold;
+    }
+
+    .text-large-regular {
+        @apply text-base leading-6 font-normal;
+    }
+
+    .text-large-semi {
+        @apply text-base leading-6 font-semibold;
+    }
+
+    .text-xl-regular {
+        @apply text-2xl leading-[36px] font-normal;
+    }
+
+    .text-xl-semi {
+        @apply text-2xl leading-[36px] font-semibold;
+    }
+
+    .text-2xl-regular {
+        @apply text-[30px] leading-[48px] font-normal;
+    }
+
+    .text-2xl-semi {
+        @apply text-[30px] leading-[48px] font-semibold;
+    }
+
+    .sm:text-3xl text-xl -regular {
+        @apply sm:text-3xl text-xl   leading-[44px] font-normal;
+    }
+
+    .sm:text-3xl text-xl -semi {
+        @apply sm:text-3xl text-xl   leading-[44px] font-semibold;
+    }
+
+    .swiper-pagination-bullet.custom-dot {
+        @apply w-7 h-2 rounded-full bg-primary cursor-pointer relative;
+        margin: 0 6px !important;
+    }
+
+    .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+        @apply opacity-50 bg-gray-300;
+    }
+
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        @apply bg-white opacity-100 shadow-lg;
+        box-shadow: 0 4px 8px rgba(224, 129, 5, 0.1);
+    }
+
+    .swiper-pagination-bullet:hover {
+        @apply scale-110;
+        background-color: #ffd700; /* Hover màu vàng */
+        opacity: 1;
+    }
+
+    @media (max-width: 640px) {
+        .swiper-pagination-bullet.custom-dot {
+            @apply w-5 h-2.5;
+            margin: 0 4px !important;
+        }
+    }
 }
 
 @layer richtext {
-  /* globals.css */
-  .rich-text-content h1 {
-    @apply !text-2xl sm:!text-3xl !font-bold !mb-4 text-center;
-  }
+    /* globals.css */
+    .rich-text-content h1 {
+        @apply !text-2xl sm:!text-3xl !font-bold !mb-4 text-center;
+    }
 
-  .rich-text-content h2 {
-    @apply !text-xl sm:!text-2xl !font-[500] !mb-3 text-center;
-  }
+    .rich-text-content h2 {
+        @apply !text-xl sm:!text-2xl !font-[500] !mb-3 text-center;
+    }
 
-  .rich-text-content h3 {
-    @apply !text-lg sm:!text-xl !font-[500] !mb-2 text-center;
-  }
+    .rich-text-content h3 {
+        @apply !text-lg sm:!text-xl !font-[500] !mb-2 text-center;
+    }
 
-  .rich-text-content p {
-    @apply !text-sm sm:!text-base !leading-relaxed !mb-2 !text-justify indent-2 sm:indent-4;
-  }
+    .rich-text-content p {
+        @apply !text-sm sm:!text-base !leading-relaxed !mb-2 !text-justify indent-2 sm:indent-4;
+    }
 
-  .rich-text-content ul {
-    @apply !list-disc !pl-5 !mb-4;
-  }
+    .rich-text-content ul {
+        @apply !list-disc !pl-5 !mb-4;
+    }
 
-  .rich-text-content ol {
-    @apply !list-decimal !pl-5 !mb-4;
-  }
+    .rich-text-content ol {
+        @apply !list-decimal !pl-5 !mb-4;
+    }
 
-  .rich-text-content li {
-    @apply !mb-2;
-  }
+    .rich-text-content li {
+        @apply !mb-2;
+    }
 
-  .rich-text-content blockquote {
-    @apply !border-l-4 !border-gray-300 !pl-4 !italic !text-gray-600 !mb-4;
-  }
+    .rich-text-content blockquote {
+        @apply !border-l-4 !border-gray-300 !pl-4 !italic !text-gray-600 !mb-4;
+    }
 
-  .rich-text-content a {
-    @apply !text-blue-500 !underline hover:!text-blue-600;
-  }
+    .rich-text-content a {
+        @apply !text-blue-500 !underline hover:!text-blue-600;
+    }
 
-  .rich-text-content strong {
-    @apply !font-bold;
-  }
+    .rich-text-content strong {
+        @apply !font-bold;
+    }
 
-  .rich-text-content em {
-    @apply !italic !block !mx-auto !text-center;
-  }
+    .rich-text-content em {
+        @apply !italic !block !mx-auto !text-center;
+    }
 
-  .rich-text-content img {
-    @apply !my-4 mx-auto w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 object-cover;
-  }
+    .rich-text-content img {
+        @apply !my-4 mx-auto w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 object-cover;
+    }
 }
 
 @layer quill {
-  .ql-editor {
-    @apply !p-0 sm:!text-base !text-sm;
-  }
-  /* Define font-family styles */
-  .ql-font-times-new-roman {
-    font-family: "Times New Roman", Times, serif;
-  }
+    .ql-editor {
+        @apply !p-0 sm:!text-base !text-sm;
+    }
 
-  .ql-font-manrope {
-    font-family: "Manrope", sans-serif;
-  }
+    /* Define font-family styles */
+    .ql-font-times-new-roman {
+        font-family: "Times New Roman", Times, serif;
+    }
 
-  .ql-font-arial {
-    font-family: Arial, Helvetica, sans-serif;
-  }
+    .ql-font-manrope {
+        font-family: "Manrope", sans-serif;
+    }
 
-  .ql-font-courier-new {
-    font-family: "Courier New", Courier, monospace;
-  }
+    .ql-font-arial {
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-  .ql-editor h1,
-  .ql-editor h2,
-  .ql-editor h3,
-  .ql-editor h4,
-  .ql-editor h5,
-  .ql-editor h6 {
-    font-family: inherit; /* Use the inherited font from the editor content */
-  }
+    .ql-font-courier-new {
+        font-family: "Courier New", Courier, monospace;
+    }
+
+    .ql-editor h1,
+    .ql-editor h2,
+    .ql-editor h3,
+    .ql-editor h4,
+    .ql-editor h5,
+    .ql-editor h6 {
+        font-family: inherit; /* Use the inherited font from the editor content */
+    }
+}
+
+.hover\:text-primary:hover {
+    --tw-text-opacity: 1;
+    color: rgb(102 126 234 / var(--tw-text-opacity, 1));
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gray-700 {
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }

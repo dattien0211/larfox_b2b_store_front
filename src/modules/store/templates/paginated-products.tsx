@@ -98,18 +98,17 @@ export default async function PaginatedProducts({
   return (
     <>
       <ul
-        className={clsx(
-          "grid  w-full grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 px-1 py-2 bg-white lg:p-4 rounded-lg shadow-lg ",
-          { "grid-cols-3 md:grid-cols-4": isSearch }
-        )}
+        className={clsx("grid gap-4", {
+          "grid-cols-3 md:grid-cols-4": isSearch,
+        })}
         data-testid="products-list"
       >
         {products.map((p) => {
           return (
-            <li key={p.id}>
+            <div key={p.id}>
               {/* <ProductPreview product={p}/> */}
               <ProductItem product={p} />
-            </li>
+            </div>
           )
         })}
       </ul>

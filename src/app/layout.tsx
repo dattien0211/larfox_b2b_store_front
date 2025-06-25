@@ -3,6 +3,7 @@ import { Metadata } from "next"
 import "styles/globals.css"
 import { OSProvider } from "@lib/hooks/OSContext"
 import { Toaster } from "@medusajs/ui"
+import { inter } from "./font"
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-mode="light">
+    <html lang="en" data-mode="light" className={inter.variable}>
       <body>
         <OSProvider>
           <main>{props.children}</main>

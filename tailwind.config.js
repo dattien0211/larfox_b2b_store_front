@@ -36,9 +36,8 @@ module.exports = {
           20: "#787777",
           30: "#323232",
         },
-        primary: "#B38439",
+        primary: "rgb(102 126 234)",
         "primary-bg": "#F5F7FD",
-        // primary: "#4CAF50",
         orang: {
           5: "#FFB558",
           10: "#D96800",
@@ -84,16 +83,7 @@ module.exports = {
         "128px": "128px",
       },
       fontFamily: {
-        sans: [
-          "Inter",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
-          "Ubuntu",
-          "sans-serif",
-        ],
+        sans: ["var(--font-inter)", "sans-serif"],
         times: ["Times New Roman", "sans-serif"],
         manrope: ["Manrope-Regular", "sans-serif"],
         "manrope-bold": ["Manrope-Bold", "sans-serif"],
