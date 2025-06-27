@@ -44,7 +44,7 @@ const Menu = ({
                   className={clsx(
                     "flex justify-between items-center text-black-30 hover:bg-grey-15 py-3 px-4 rounded-md cursor-pointer group"
                   )}
-                  href={`/tat-ca-san-pham`}
+                  href={`/products`}
                 >
                   <span className="text-base text-nowrap">
                     Tất cả sản phảm{" "}

@@ -2,6 +2,7 @@ import { getCustomer } from "@lib/data/customer"
 import Icons from "@modules/common/icons"
 import Link from "next/link"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import UserDropDown from "@modules/layout/components/user-dropdown"
 
 export default async function MiddleNav() {
   const { Bag } = Icons
@@ -34,16 +35,22 @@ export default async function MiddleNav() {
             <span className="text-gray-700 hover:text-primary cursor-pointer">
               Language
             </span>
-            <Link href="/tai-khoan/dang-nhap">
-              <span className="text-gray-700 hover:text-primary cursor-pointer">
-                Sign in
-              </span>
-            </Link>
-            <Link href="/tai-khoan/dang-ky">
-              <button className="cursor-pointer gradient-bg text-white px-6 py-2 rounded-full hover:opacity-90 font-semibold">
-                Sign up
-              </button>
-            </Link>
+            {customer ? (
+              <UserDropDown customer={customer} />
+            ) : (
+              <>
+                <Link href="/account/sign-in">
+                  <span className="text-gray-700 hover:text-primary cursor-pointer">
+                    Sign in
+                  </span>
+                </Link>
+                <Link href="/account/sign-up">
+                  <button className="cursor-pointer gradient-bg text-white px-6 py-2 rounded-full hover:opacity-90 font-semibold">
+                    Sign up
+                  </button>
+                </Link>
+              </>
+            )}
             <button className="border border-primary text-primary px-6 py-2 rounded-full hover:bg-primary hover:text-white">
               Get the app
             </button>

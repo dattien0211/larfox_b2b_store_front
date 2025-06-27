@@ -31,15 +31,13 @@ const CategoryFilter = ({
         : [...prev, handle] // Add category
 
       const basePath = pathname.split("/").slice(0, 2).join("/") // Extract base path
-      const newPath = `${basePath}/danh-muc-san-pham/${updatedCategories.join(
-        "/"
-      )}` // Updated category path
+      const newPath = `${basePath}/category/${updatedCategories.join("/")}` // Updated category path
 
       const params = new URLSearchParams(searchParams.toString()) // Clone current search params
       const finalPath =
         updatedCategories.length > 0
           ? `${newPath}?${params}`
-          : `${basePath}/tat-ca-san-pham?${params}`
+          : `${basePath}/products?${params}`
 
       router.push(finalPath, { scroll: true }) // Navigate while keeping query parameters
 

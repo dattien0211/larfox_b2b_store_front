@@ -125,3 +125,46 @@ export type Seller = {
   country_code: string | null
   tax_id: string | null
 }
+
+export interface Certificate {
+  id: string
+  title: string
+  type: string
+  image: ImageType[]
+  description: string
+  product_id?: string
+  seller_id?: string
+  metadata: Record<string, any>
+  created_at: string
+  updated_at: string
+}
+
+export type CertificateQueryParams = QueryParams & {
+  product_id?: string
+  seller_id?: string
+}
+
+export type PaginatedProductCertificateList = {
+  productCertificates: Certificate[]
+  count: number
+}
+
+export type PaginatedSellerCertificateList = {
+  sellerCertificates: Certificate[]
+  count: number
+}
+
+export type CertificateTypeQueryParams = QueryParams & {
+  name?: string
+  value?: string
+}
+
+export interface CertificateType {
+  id: string
+  name: string
+  value: string
+  description: string
+  metadata: Record<string, any>
+  created_at: string
+  updated_at: string
+}

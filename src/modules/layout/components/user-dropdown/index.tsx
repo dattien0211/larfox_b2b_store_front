@@ -4,7 +4,7 @@ import { Popover, Transition } from "@headlessui/react"
 import { Fragment, useState } from "react"
 import { HttpTypes } from "@medusajs/types"
 
-import { useParams, usePathname } from "next/navigation"
+import { useParams } from "next/navigation"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import icons from "@modules/common/icons"
 import { signout } from "@lib/data/customer"
@@ -53,29 +53,20 @@ const UserDropDown = ({
             data-testid="nav-cart-dropdown"
           >
             <div className="bg-white  capitalize">
-              {customer ? (
-                <div>
-                  <LocalizedClientLink
-                    href="/tai-khoan"
-                    className="hover:text-primary py-2"
-                  >
-                    Thông tin tài khoản
-                  </LocalizedClientLink>
-                  <p
-                    onClick={handleLogout}
-                    className="hover:text-primary py-2 mt-2 border-t border-grey-10 cursor-pointer"
-                  >
-                    Đăng xuất
-                  </p>
-                </div>
-              ) : (
+              <div>
                 <LocalizedClientLink
-                  href="/tai-khoan"
-                  className="hover:text-primary "
+                  href="/account"
+                  className="hover:text-primary py-2"
                 >
-                  Đăng nhập / Đăng ký
+                  User Profile
                 </LocalizedClientLink>
-              )}
+                <p
+                  onClick={handleLogout}
+                  className="hover:text-primary py-2 mt-2 border-t border-grey-10 cursor-pointer"
+                >
+                  Log Out
+                </p>
+              </div>
             </div>
           </Popover.Panel>
         </Transition>

@@ -13,11 +13,16 @@ export default function BottomNav({ categories }: BottomNavProps) {
       <div className="hidden sm:flex items-center justify-between">
         <nav className="border-t border-gray-100 py-3">
           <div className="flex items-center space-x-12 text-sm font-medium overflow-x-auto">
+            <LocalizedClientLink href={`/category`}>
+              <span className="text-gray-700 hover:text-primary cursor-pointer whitespace-nowrap">
+                All categories
+              </span>
+            </LocalizedClientLink>
             {categories ? (
               categories.length > 0 ? (
                 categories?.map((category, index) => (
                   <LocalizedClientLink
-                    href={`/danh-muc-san-pham/${category.handle}`}
+                    href={`/category/${category.handle}`}
                     key={index}
                   >
                     <span className="text-gray-700 hover:text-primary cursor-pointer whitespace-nowrap">

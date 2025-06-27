@@ -13,6 +13,7 @@ import formatNumber from "@lib/util/formatNumber"
 import { getProductPrice } from "@lib/util/get-product-price"
 import IMGS from "@constants/IMGS"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { getProductCertificateList } from "@lib/data/products"
 
 const optionsAsKeymap = (
   variantOptions: HttpTypes.StoreProductVariant["options"]
@@ -124,6 +125,19 @@ export default function ProductItem({
 
   const soldCount = formatNumber(Number(product?.metadata?.sold) || 0)
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getProductCertificateList(1)
+        console.log(response)
+      } catch (err) {
+        console.error("Failed to fetch certificates", err)
+      }
+    }
+
+    fetchData().then()
+  }, [])
+
   return (
     <div
       // href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
@@ -230,7 +244,7 @@ export default function ProductItem({
             </button>
             <LocalizedClientLink
               className="border border-gray-300 px-4 py-2 rounded-lg text-sm hover:bg-gray-50"
-              href={`/san-pham/${product.handle}`}
+              href={`/product/${product.handle}`}
             >
               <Image
                 src={IMGS.Eyes}

@@ -41,10 +41,7 @@ const StoreTemplate = ({
   return (
     <>
       <section className="pb-16 sm:pb-24 bg-primary-bg pt-6">
-        <div
-          className="container mx-auto px-4"
-          data-testid="all-category-container"
-        >
+        <div className="container mx-auto" data-testid="all-category-container">
           <div className="flex gap-8">
             <FilterMenu
               allCategories={allCategories}
@@ -79,7 +76,7 @@ const StoreTemplate = ({
       {/*News*/}
 
       <section id="news" className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto">
           <h2 className="text-4xl font-light text-center mb-4">
             Customized{" "}
             <span className="gradient-text font-medium">Business News</span>
