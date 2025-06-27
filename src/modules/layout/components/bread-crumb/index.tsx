@@ -4,7 +4,7 @@ import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Icons from "@modules/common/icons"
 import { useOS } from "@lib/hooks/OSContext"
-import { BlogType, Blog } from "types/global"
+import { Blog, BlogType } from "types/global"
 
 interface BreadcrumbProps {
   path?: string[]
@@ -51,7 +51,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
         {!isBlog && (
           <BreadcrumbItem
-            href="/tat-ca-san-pham"
+            href="/products"
             label="Sản phẩm"
             icon={RightArrow}
             os={os}
@@ -79,7 +79,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
         {path?.length <= 0 &&
           allCategories.length > 0 &&
           allCategories.map((item, index) => {
-            const href = `/danh-muc-san-pham/${item.handle}`
+            const href = `/category/${item.handle}`
             return (
               <BreadcrumbItem
                 key={item.handle}
@@ -103,7 +103,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
         {blogType && (
           <BreadcrumbItem
-            href={`/loai-bai-viet/${blogType.value}`}
+            href={`/blog-types/${blogType.value}`}
             label={blogType.name.toLowerCase()}
             icon={RightArrow}
             os={os}

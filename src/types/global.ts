@@ -69,6 +69,7 @@ export type BlogQueryParams = QueryParams & {
   title?: string
   handle?: string
   type?: string
+  seller_id?: string
 }
 
 export type BannerQueryParams = QueryParams
@@ -124,6 +125,8 @@ export type Seller = {
   postal_code: string | null
   country_code: string | null
   tax_id: string | null
+  email: string | null
+  phone: string | null
 }
 
 export interface Certificate {

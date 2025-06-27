@@ -1,4 +1,7 @@
-import { getProductsListWithSort } from "@lib/data/products"
+import {
+  getProductCertificateList,
+  getProductsListWithSort,
+} from "@lib/data/products"
 import { getRegion } from "@lib/data/regions"
 import { Pagination } from "@modules/store/components/pagination"
 import { SortOptions } from "@modules/categories/components/sort-category"
@@ -92,8 +95,15 @@ export default async function PaginatedProducts({
   })
 
   const totalPages = Math.ceil(count / PRODUCT_LIMIT)
+  console.log({ products })
 
   if (products.length <= 0) return <></>
+  const result = await Promise.all(
+    products.map((product) =>
+      getProductCertificateList(1, { product_id: product.id })
+    )
+  )
+  const allCertificates = result.flatMap((res) => res.productCertificates)
 
   return (
     <>
@@ -107,7 +117,12 @@ export default async function PaginatedProducts({
           return (
             <div key={p.id}>
               {/* <ProductPreview product={p}/> */}
-              <ProductItem product={p} />
+              <ProductItem
+                product={p}
+                certificate={allCertificates.filter(
+                  (item) => item.product_id === p.id
+                )}
+              />
             </div>
           )
         })}

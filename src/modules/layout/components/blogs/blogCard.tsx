@@ -6,6 +6,7 @@ import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { Blog, BlogType } from "types/global"
 import { useOS } from "@lib/hooks/OSContext"
+
 interface BlogCardProps {
   blog: Blog
   blogTypes?: BlogType[]
@@ -24,7 +25,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
   return (
     <LocalizedClientLink
-      href={`/bai-viet/${blog?.handle}`}
+      href={`/blogs/${blog?.handle}`}
       className={clsx(
         "w-full shadow-lg relative h-[220px] md:h-[380px] rounded-lg overflow-hidden block group",
         isRow ? "!flex-row" : "",

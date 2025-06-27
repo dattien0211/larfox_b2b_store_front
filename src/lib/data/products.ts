@@ -234,6 +234,7 @@ export const getProductCertificateList = cache(async function (
     1200
   )
 
+  console.log("OK", data, { ...queryParams, limit, offset })
   return {
     productCertificates: data?.productCertificates || [],
     count: data?.count || 0,

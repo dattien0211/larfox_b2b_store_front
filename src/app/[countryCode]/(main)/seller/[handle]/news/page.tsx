@@ -1,87 +1,56 @@
+import { getBlogList } from "@lib/data/blog"
+import { getBrandList } from "@lib/data/brand"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+
 type Props = {
   params: { countryCode: string; handle: string }
 }
 export default async function SellerNews({ params }: Props) {
+  const { sellers } = await getBrandList()
+  const seller = sellers.find((item) => item.handle === params.handle)
+  const { blogs } = await getBlogList(1, { seller_id: seller?.id })
   return (
     <>
-      <div className="border-b">
-        <div className="mb-6 container mx-auto">
-          <img
-            className="w-full h-64 rounded-xl object-cover"
-            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/bfd5c2ff67-fee05dd31993ff88dc45.png"
-            alt="modern technology company office building with glass facade and digital displays"
-          />
-        </div>
-      </div>
-      <section id="news-timeline" className="py-12">
+      <section id="news-timeline" className="py-12 border-t">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold mb-8">
-            Company <span className="gradient-text">News Timeline</span>
+            {"Company's "}
+            <span className="gradient-text">News</span>
           </h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-8">
-              <div className="timeline-item cursor-pointer hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="font-semibold text-lg text-gray-900">
-                    TechPro Solutions Launches Revolutionary AI Platform
-                  </h3>
-                  <span className="text-sm text-gray-500 whitespace-nowrap ml-4">
-                    Dec 15, 2024
-                  </span>
+          <div className="space-y-6">
+            {blogs.map((blog, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow"
+              >
+                <div className="flex gap-4">
+                  <img
+                    src={blog.thumbnail.url}
+                    alt={blog.title}
+                    className="w-40 h-40 object-cover rounded-lg"
+                  />
+                  <div className="flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="font-semibold text-lg">{blog.title}</h3>
+                        <span className="text-sm text-gray-500">
+                          2 days ago
+                        </span>
+                      </div>
+                      <p className="text-gray-700 mb-2">
+                        {blog.short_description}
+                      </p>
+                    </div>
+                    <LocalizedClientLink
+                      href={`/blogs/${blog.handle}`}
+                      className="text-primary text-sm font-medium hover:underline cursor-pointer"
+                    >
+                      Read more
+                    </LocalizedClientLink>
+                  </div>
                 </div>
-                <p className="text-gray-700">
-                  Our new AI-powered business intelligence platform
-                  revolutionizes how enterprises analyze data and make strategic
-                  decisions...
-                </p>
               </div>
-
-              <div className="timeline-item cursor-pointer hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="font-semibold text-lg text-gray-900">
-                    Strategic Partnership with Global Tech Giant
-                  </h3>
-                  <span className="text-sm text-gray-500 whitespace-nowrap ml-4">
-                    Dec 8, 2024
-                  </span>
-                </div>
-                <p className="text-gray-700">
-                  Partnership announcement that will expand our cloud services
-                  to 15 new markets across Asia Pacific region...
-                </p>
-              </div>
-
-              <div className="timeline-item cursor-pointer hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="font-semibold text-lg text-gray-900">
-                    ISO 27001 Certification Achieved
-                  </h3>
-                  <span className="text-sm text-gray-500 whitespace-nowrap ml-4">
-                    Nov 28, 2024
-                  </span>
-                </div>
-                <p className="text-gray-700">
-                  TechPro Solutions successfully achieves ISO 27001
-                  certification, reinforcing our commitment to information
-                  security...
-                </p>
-              </div>
-
-              <div className="timeline-item cursor-pointer hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="font-semibold text-lg text-gray-900">
-                    Q3 2024 Growth Report Released
-                  </h3>
-                  <span className="text-sm text-gray-500 whitespace-nowrap ml-4">
-                    Oct 30, 2024
-                  </span>
-                </div>
-                <p className="text-gray-700">
-                  Company reports 45% year-over-year growth in Q3 2024, driven
-                  by increased demand for AI and cloud solutions...
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

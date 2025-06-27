@@ -1,11 +1,12 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getRegion, listRegions } from "@lib/data/regions"
-import { getProductByHandle } from "@lib/data/products"
+import { getProductByHandle, getProductsList } from "@lib/data/products"
 import { sdk } from "@lib/config"
 import { getToken } from "@lib/data/cookies"
 import { getCustomer } from "@lib/data/customer"
 import Link from "next/link"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 type Props = {
   params: { countryCode: string; handle: string }
@@ -82,10 +83,19 @@ export default async function ProductPage({ params }: Props) {
     getCustomer().catch(() => null),
   ])
 
+  const { response } = await getProductsList({
+    countryCode: params.countryCode,
+  })
+
+  const products = response.products.filter(
+    (item) =>
+      (item?.seller ? item.seller.handle === product.seller.handle : false) &&
+      item.id !== product.id
+  )
+
   if (!product) notFound()
 
   const token = getToken()
-
   return (
     <>
       <section id="breadcrumb" className="bg-gray-50 py-4">
@@ -245,7 +255,7 @@ export default async function ProductPage({ params }: Props) {
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-300 mb-4">
                         <div>
                           <i className="fas fa-map-marker-alt mr-2 text-primary"></i>
-                          Singapore, Asia Pacific
+                          {product.seller.address_line}
                         </div>
                         <div>
                           <i className="fas fa-calendar mr-2 text-primary"></i>
@@ -261,10 +271,7 @@ export default async function ProductPage({ params }: Props) {
                         </div>
                       </div>
                       <p className="text-gray-300 leading-relaxed">
-                        Leading technology solutions provider specializing in
-                        enterprise software development, AI implementation, and
-                        digital transformation services for Fortune 500
-                        companies across Asia Pacific.
+                        {product.seller.description}
                       </p>
                     </div>
                   </div>
@@ -283,10 +290,13 @@ export default async function ProductPage({ params }: Props) {
                     <button className="w-full gradient-bg text-white py-3 rounded-lg font-semibold hover:opacity-90">
                       <i className="fas fa-comments mr-2"></i>Chat Now
                     </button>
-                    <button className="w-full border border-primary text-primary py-3 rounded-lg font-semibold hover:bg-primary hover:text-white">
+                    <LocalizedClientLink
+                      href={`/seller/${product.seller.handle}`}
+                      className="w-full block text-center border border-primary text-primary py-3 rounded-lg font-semibold hover:bg-primary hover:text-white"
+                    >
                       <i className="fas fa-building mr-2"></i>View Company
                       Profile
-                    </button>
+                    </LocalizedClientLink>
                     <button className="w-full border border-gray-600 text-gray-300 py-3 rounded-lg hover:bg-gray-700">
                       <i className="fas fa-star mr-2"></i>Add to Watchlist
                     </button>
@@ -425,74 +435,78 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </section>
 
-      <section id="related-products" className="py-8 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-6">
-            Related Products from TechPro Solutions
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-              <img
-                className="w-full h-32 rounded-lg object-cover mb-3"
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/366d0af397-2c33fcfa4407b188a22b.png"
-                alt="AI Analytics Platform"
-              />
-              <h3 className="font-semibold mb-2">AI Analytics Platform</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Machine learning powered business intelligence
-              </p>
-              <button className="w-full gradient-bg text-white py-2 rounded-lg text-sm">
-                View Details
-              </button>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-              <img
-                className="w-full h-32 rounded-lg object-cover mb-3"
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/eabac82177-878ee7ac43a00ff9da96.png"
-                alt="Cloud Infrastructure"
-              />
-              <h3 className="font-semibold mb-2">Cloud Infrastructure</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Scalable cloud computing solutions
-              </p>
-              <button className="w-full gradient-bg text-white py-2 rounded-lg text-sm">
-                View Details
-              </button>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-              <img
-                className="w-full h-32 rounded-lg object-cover mb-3"
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/582c47ac7f-80a63ca0cc0963596508.png"
-                alt="Mobile App Solutions"
-              />
-              <h3 className="font-semibold mb-2">Mobile App Solutions</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Cross-platform mobile applications
-              </p>
-              <button className="w-full gradient-bg text-white py-2 rounded-lg text-sm">
-                View Details
-              </button>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-              <img
-                className="w-full h-32 rounded-lg object-cover mb-3"
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/7c843d13d8-13e80a42db0adafc1de1.png"
-                alt="Cybersecurity Suite"
-              />
-              <h3 className="font-semibold mb-2">Cybersecurity Suite</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Advanced threat protection systems
-              </p>
-              <Link
-                className="flex justify-center gradient-bg text-white py-2 rounded-lg text-sm"
-                href={`/san-pham/${product.handle}`}
-              >
-                View Details
-              </Link>
+      {product?.seller ? (
+        <section id="related-products" className="py-8 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold mb-6">
+              Related Products from {product.seller.name}
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                <img
+                  className="w-full h-32 rounded-lg object-cover mb-3"
+                  src="https://storage.googleapis.com/uxpilot-auth.appspot.com/366d0af397-2c33fcfa4407b188a22b.png"
+                  alt="AI Analytics Platform"
+                />
+                <h3 className="font-semibold mb-2">AI Analytics Platform</h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Machine learning powered business intelligence
+                </p>
+                <button className="w-full gradient-bg text-white py-2 rounded-lg text-sm">
+                  View Details
+                </button>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                <img
+                  className="w-full h-32 rounded-lg object-cover mb-3"
+                  src="https://storage.googleapis.com/uxpilot-auth.appspot.com/eabac82177-878ee7ac43a00ff9da96.png"
+                  alt="Cloud Infrastructure"
+                />
+                <h3 className="font-semibold mb-2">Cloud Infrastructure</h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Scalable cloud computing solutions
+                </p>
+                <button className="w-full gradient-bg text-white py-2 rounded-lg text-sm">
+                  View Details
+                </button>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                <img
+                  className="w-full h-32 rounded-lg object-cover mb-3"
+                  src="https://storage.googleapis.com/uxpilot-auth.appspot.com/582c47ac7f-80a63ca0cc0963596508.png"
+                  alt="Mobile App Solutions"
+                />
+                <h3 className="font-semibold mb-2">Mobile App Solutions</h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Cross-platform mobile applications
+                </p>
+                <button className="w-full gradient-bg text-white py-2 rounded-lg text-sm">
+                  View Details
+                </button>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                <img
+                  className="w-full h-32 rounded-lg object-cover mb-3"
+                  src="https://storage.googleapis.com/uxpilot-auth.appspot.com/7c843d13d8-13e80a42db0adafc1de1.png"
+                  alt="Cybersecurity Suite"
+                />
+                <h3 className="font-semibold mb-2">Cybersecurity Suite</h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Advanced threat protection systems
+                </p>
+                <Link
+                  className="flex justify-center gradient-bg text-white py-2 rounded-lg text-sm"
+                  href={`/san-pham/${product.handle}`}
+                >
+                  View Details
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <></>
+      )}
     </>
   )
 }

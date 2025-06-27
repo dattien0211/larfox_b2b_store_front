@@ -1,7 +1,25 @@
+import { getBrandList, getSellerCertificateList } from "@lib/data/brand"
+import { getProductsList } from "@lib/data/products"
+import { getBlogList } from "@lib/data/blog"
+import SellerCertificationItem from "@modules/seller/components/certification"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+
 type Props = {
   params: { countryCode: string; handle: string }
 }
 export default async function SellerHome({ params }: Props) {
+  const { sellers } = await getBrandList()
+  const { response } = await getProductsList({
+    countryCode: params.countryCode,
+  })
+  const products = response.products.filter((item) =>
+    item?.seller ? item.seller.handle === params.handle : false
+  )
+  const seller = sellers.find((item) => item.handle === params.handle)
+  const { sellerCertificates } = await getSellerCertificateList(1, {
+    seller_id: seller?.id,
+  })
+  const { blogs } = await getBlogList(1, { limit: 3, seller_id: seller?.id })
   return (
     <>
       <div className="border-b">
@@ -42,7 +60,7 @@ export default async function SellerHome({ params }: Props) {
             </div>
             <div>
               <h2 className="text-3xl font-bold mb-4">
-                TechPro Solutions{" "}
+                {seller?.name}{" "}
                 <span className="text-gray-500 text-xl">(Founded 2015)</span>
               </h2>
               <p className="text-lg text-gray-700 mb-4">
@@ -78,45 +96,29 @@ export default async function SellerHome({ params }: Props) {
       </section>
 
       <section id="goods-listing" className="py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">
-            Our <span className="gradient-text">Products</span>
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <img
-                className="w-full h-32 rounded-lg object-cover mb-3"
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/7ab3460e4c-c1e21866660c3accb069.png"
-                alt="enterprise software dashboard interface"
-              />
-              <h3 className="font-medium">Enterprise Software</h3>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <img
-                className="w-full h-32 rounded-lg object-cover mb-3"
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/366d0af397-2c33fcfa4407b188a22b.png"
-                alt="AI artificial intelligence neural network visualization"
-              />
-              <h3 className="font-medium">AI Solutions</h3>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <img
-                className="w-full h-32 rounded-lg object-cover mb-3"
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/eabac82177-878ee7ac43a00ff9da96.png"
-                alt="cloud computing servers in data center"
-              />
-              <h3 className="font-medium">Cloud Platforms</h3>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <img
-                className="w-full h-32 rounded-lg object-cover mb-3"
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/582c47ac7f-80a63ca0cc0963596508.png"
-                alt="mobile app development coding screen"
-              />
-              <h3 className="font-medium">Mobile Apps</h3>
+        {products.length > 0 && (
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8">
+              Our <span className="gradient-text">Products</span>
+            </h2>
+            <div className="grid md:grid-cols-4 gap-6">
+              {products.map((product, index) => (
+                <LocalizedClientLink
+                  href={`/product/${product.handle}`}
+                  key={index}
+                  className="bg-white p-4 rounded-lg shadow-sm"
+                >
+                  <img
+                    className="w-full h-32 rounded-lg object-cover mb-3"
+                    src={product?.thumbnail ? product?.thumbnail : ""}
+                    alt="Product Image"
+                  />
+                  <h3 className="font-medium">{product.title}</h3>
+                </LocalizedClientLink>
+              ))}
             </div>
           </div>
-        </div>
+        )}
       </section>
 
       <section id="services-listing" className="py-12">
@@ -220,47 +222,23 @@ export default async function SellerHome({ params }: Props) {
           </div>
         </div>
       </section>
-      <section id="certifications" className="py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">
-            Our <span className="gradient-text">Certifications</span>
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-lg text-center">
-              <img
-                className="w-20 h-20 mx-auto mb-3 object-contain"
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fa15fb3620-222210d0ad09aea2a36a.png"
-                alt="ISO 27001 certification badge"
-              />
-              <span className="font-medium">ISO 27001</span>
-            </div>
-            <div className="bg-white p-6 rounded-lg text-center">
-              <img
-                className="w-20 h-20 mx-auto mb-3 object-contain"
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/04d078867a-d8422c041d31e30789ac.png"
-                alt="SOC 2 compliance certificate"
-              />
-              <span className="font-medium">SOC 2</span>
-            </div>
-            <div className="bg-white p-6 rounded-lg text-center">
-              <img
-                className="w-20 h-20 mx-auto mb-3 object-contain"
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/a2f53ee49f-164b9cf4f26dc0b16204.png"
-                alt="AWS partner certification logo"
-              />
-              <span className="font-medium">AWS Partner</span>
-            </div>
-            <div className="bg-white p-6 rounded-lg text-center">
-              <img
-                className="w-20 h-20 mx-auto mb-3 object-contain"
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/e4dbc02a6a-a988aab8f4ca6a2ae30c.png"
-                alt="Microsoft Azure certified partner badge"
-              />
-              <span className="font-medium">Azure Certified</span>
+      {sellerCertificates.length > 0 && (
+        <section id="certifications" className="py-12 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8">
+              Our <span className="gradient-text">Certifications</span>
+            </h2>
+            <div className="grid md:grid-cols-4 gap-6">
+              {sellerCertificates.map((certificate, index) => (
+                <SellerCertificationItem
+                  certificate={certificate}
+                  key={index}
+                />
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section id="culture" className="py-12">
         <div className="container mx-auto px-4">
@@ -320,45 +298,61 @@ export default async function SellerHome({ params }: Props) {
           </div>
         </div>
       </section>
-      <section id="company-news" className="py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">
-            Latest <span className="gradient-text">News</span>
-          </h2>
-          <div className="space-y-6">
-            <div className="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-start mb-3">
-                <h3 className="font-semibold text-lg">
-                  TechPro Solutions Launches New AI Platform
-                </h3>
-                <span className="text-sm text-gray-500">2 days ago</span>
-              </div>
-              <p className="text-gray-700 mb-3">
-                Revolutionary AI-powered business intelligence platform now
-                available for enterprise clients...
-              </p>
-              <span className="text-primary text-sm font-medium">
-                Read more
-              </span>
+      {blogs.length > 0 && (
+        <section id="company-news" className="py-12">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-3xl font-bold">
+                Latest <span className="gradient-text">News</span>
+              </h2>
+              <a
+                href={`/seller/${params.handle}/news`}
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-all duration-200"
+              >
+                View more
+              </a>
             </div>
-            <div className="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-start mb-3">
-                <h3 className="font-semibold text-lg">
-                  Partnership with Global Tech Giant Announced
-                </h3>
-                <span className="text-sm text-gray-500">1 week ago</span>
-              </div>
-              <p className="text-gray-700 mb-3">
-                Strategic partnership will expand cloud services to 15 new
-                markets across Asia Pacific...
-              </p>
-              <span className="text-primary text-sm font-medium">
-                Read more
-              </span>
+
+            <div className="space-y-6">
+              {blogs.map((blog, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow"
+                >
+                  <div className="flex gap-4">
+                    <img
+                      src={blog.thumbnail.url}
+                      alt={blog.title}
+                      className="w-40 h-40 object-cover rounded-lg"
+                    />
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex justify-between items-start mb-2">
+                          <h3 className="font-semibold text-lg">
+                            {blog.title}
+                          </h3>
+                          <span className="text-sm text-gray-500">
+                            2 days ago
+                          </span>
+                        </div>
+                        <p className="text-gray-700 mb-2">
+                          {blog.short_description}
+                        </p>
+                      </div>
+                      <LocalizedClientLink
+                        href={`/blogs/${blog.handle}`}
+                        className="text-primary text-sm font-medium hover:underline cursor-pointer"
+                      >
+                        Read more
+                      </LocalizedClientLink>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section id="contact-details" className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -368,13 +362,11 @@ export default async function SellerHome({ params }: Props) {
           <div className="grid lg:grid-cols-2 gap-12">
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold text-xl mb-4">
-                  TechPro Solutions
-                </h3>
+                <h3 className="font-semibold text-xl mb-4">{seller?.name}</h3>
                 <div className="space-y-3">
                   <p className="flex items-center">
                     <i className="fas fa-map-marker-alt text-primary mr-3"></i>
-                    123 Tech Hub Drive, Singapore 138588
+                    {seller?.address_line}
                   </p>
                   <p className="flex items-center">
                     <i className="fas fa-globe text-primary mr-3"></i>
@@ -382,11 +374,11 @@ export default async function SellerHome({ params }: Props) {
                   </p>
                   <p className="flex items-center">
                     <i className="fas fa-envelope text-primary mr-3"></i>
-                    contact@techprosolutions.com
+                    {seller?.email}
                   </p>
                   <p className="flex items-center">
-                    <i className="fas fa-phone text-primary mr-3"></i>+65 6123
-                    4567
+                    <i className="fas fa-phone text-primary mr-3"></i>
+                    {seller?.phone}
                   </p>
                 </div>
               </div>

@@ -4,7 +4,6 @@ import { BlogQueryParams, BlogType } from "types/global"
 import BlogCard from "@modules/layout/components/blogs/blogCard"
 import { Pagination } from "@modules/store/components/pagination"
 import clsx from "clsx"
-import RiceSpike from "@modules/common/components/rice-spike"
 
 export default async function BlogTypesTemplate({
   page,
@@ -39,10 +38,9 @@ export default async function BlogTypesTemplate({
 
   return (
     <div className="bg-primary-bg py-3 sm:py-6">
-      <div className="content-container">
-        <section className="relative content-container py-4 sm:py-6 mb-6 sm:mb-10 rounded-lg shadow-lg bg-white">
-          <RiceSpike />
-          <h1 className="text-center font-times capitalize text-primary text-xl sm:text-3xl font-semibold">
+      <div className="container">
+        <section className="relative py-8 mb-6 sm:mb-10 rounded-lg shadow-lg bg-white px-4">
+          <h1 className="text-center text-primary text-xl sm:text-3xl font-semibold gradient-text pb-6">
             {isAllBLogs ? "Tất cả bài viết" : name}
           </h1>
           <div
@@ -53,7 +51,7 @@ export default async function BlogTypesTemplate({
             {blogs.map((blog, index) => (
               <BlogCard
                 blog={blog}
-                isRow={!isAllBLogs ? true : false}
+                isRow={!isAllBLogs}
                 key={index}
                 blogTypes={blogTypes}
               />

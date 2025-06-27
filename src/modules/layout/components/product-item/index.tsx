@@ -13,7 +13,7 @@ import formatNumber from "@lib/util/formatNumber"
 import { getProductPrice } from "@lib/util/get-product-price"
 import IMGS from "@constants/IMGS"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { getProductCertificateList } from "@lib/data/products"
+import { Certificate } from "../../../../types/global"
 
 const optionsAsKeymap = (
   variantOptions: HttpTypes.StoreProductVariant["options"]
@@ -26,9 +26,11 @@ const optionsAsKeymap = (
 
 export default function ProductItem({
   product,
+  certificate,
   isSale = false,
 }: {
   product: HttpTypes.StoreProduct
+  certificate: Certificate[]
   isSale?: boolean
 }) {
   const { Star, StarHalf, Thunder, Cart, Flame } = Icons
@@ -125,19 +127,6 @@ export default function ProductItem({
 
   const soldCount = formatNumber(Number(product?.metadata?.sold) || 0)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getProductCertificateList(1)
-        console.log(response)
-      } catch (err) {
-        console.error("Failed to fetch certificates", err)
-      }
-    }
-
-    fetchData().then()
-  }, [])
-
   return (
     <div
       // href={product?.handle ? `/san-pham/${product?.handle}` : "/"}
@@ -180,19 +169,24 @@ export default function ProductItem({
               </span>
             </div>
           </div>
-          <div className="mb-4">
-            <span className="text-sm font-medium text-gray-700">
-              Certifications:
-            </span>
-            <div className="flex flex-wrap gap-1 mt-1">
-              <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">
-                ISO 27001
+          {certificate.length > 0 && (
+            <div className="mb-4">
+              <span className="text-sm font-medium text-gray-700">
+                Certifications:
               </span>
-              <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">
-                ISO 27002
-              </span>
+
+              <div className="flex flex-wrap gap-1 mt-1">
+                {certificate.map((item, index) => (
+                  <span
+                    key={index}
+                    className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded"
+                  >
+                    {item.type}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/*Price*/}
 
