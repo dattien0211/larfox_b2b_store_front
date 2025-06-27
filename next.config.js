@@ -28,15 +28,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: new URL(process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL).hostname,
-      },
-      {
-        protocol: "https",
-        hostname: new URL(process.env.NEXT_PUBLIC_R2_URL).hostname,
-      },
-      {
-        protocol: "https",
-        hostname: new URL("https://anco.mitujsc.com").hostname,
-      },
+      }
     ],
   },
   async headers() {

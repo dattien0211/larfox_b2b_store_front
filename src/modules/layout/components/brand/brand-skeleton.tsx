@@ -5,18 +5,22 @@ import React from "react"
 
 const BrandsSkeleton: React.FC = () => {
   return (
-    <div className="relative content-container py-4 sm:py-6 my-6 sm:my-10 rounded-lg shadow-lg bg-white">
-      <div className="w-32 h-6 bg-gray-300 rounded mb-4 animate-pulse"></div>
-
-      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4">
-        {repeat(12).map((_, index) => (
-          <div
-            key={index}
-            className="animate-pulse flex justify-center items-center border border-primary/35 p-2 sm:p-4 rounded-lg bg-gray-200"
-          >
-            <div className="w-24 h-24 bg-gray-300 rounded-md"></div>
+    <div className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="w-52 h-8 bg-gray-200 rounded mb-10 mx-auto animate-pulse"></div>
+        <div className="relative">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 pl-14 pr-14">
+            {repeat(12).map((_, index) => (
+              <div
+                key={index}
+                className="bg-white py-5 px-3 rounded-xl text-center border border-gray-200 flex flex-col items-center animate-pulse"
+              >
+                <div className="w-14 h-14 rounded-full bg-gray-300 mb-3"></div>
+                <div className="w-20 h-4 bg-gray-200 rounded"></div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   )

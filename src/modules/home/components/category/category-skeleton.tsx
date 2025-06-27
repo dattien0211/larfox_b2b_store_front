@@ -3,21 +3,22 @@ import React from "react"
 
 const CategorySkeleton: React.FC = () => {
   return (
-    <div className="relative content-container py-4 sm:pt-6 sm:pb-8 mb-6 sm:mb-10 bg-white rounded-lg shadow-lg">
-      <div className="w-32 h-6 bg-gray-300 rounded mb-4 animate-pulse"></div>
-
-      <div className="grid grid-cols-3 sm:grid-cols-4 small:grid-cols-6 w-full border-t border-l border-primary/35">
-        {repeat(12).map((_, index) => (
-          <div
-            key={index}
-            className="group cursor-pointer border-b border-r border-primary/35 hover:z-[1] hover:shadow-lg transition-all duration-150 ease-in-out"
-          >
-            <div className="w-full flex flex-col items-center justify-center p-2 sm:p-3 sm:gap-y-4 gap-y-2 overflow-hidden">
-              <div className="w-[95%] sm:w-[85%] aspect-square bg-gray-300 rounded-md animate-pulse"></div>
-              <div className="w-24 h-4 bg-gray-300 rounded animate-pulse"></div>
-            </div>
+    <div className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="w-52 h-8 bg-gray-200 rounded mb-10 mx-auto animate-pulse"></div>
+        <div className="relative">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 pl-14 pr-14">
+            {repeat(12).map((_, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-2xl text-center border border-gray-200 min-w-[200px] w-full max-w-sm flex flex-col items-center"
+              >
+                <div className="w-20 h-20 bg-gray-200 rounded-lg mb-5 animate-pulse"></div>
+                <div className="w-28 h-5 bg-gray-200 rounded mb-2 animate-pulse"></div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   )

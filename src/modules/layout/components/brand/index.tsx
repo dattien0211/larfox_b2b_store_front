@@ -1,80 +1,56 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React from "react"
 import Image from "next/image"
-
-import { Brand } from "types/global"
-import { Heading } from "@medusajs/ui"
-import RiceSpike from "@modules/common/components/rice-spike"
-import { useOS } from "@lib/hooks/OSContext"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import IMGS from "@constants/IMGS"
+import { Seller } from "types/global"
+import BrandItem from "./brand-item"
 
 interface BrandsProps {
-  brands: Brand[]
+  sellers: Seller[]
 }
 
-const Brands: React.FC<BrandsProps> = ({ brands }) => {
-  const { os } = useOS() // ✅ Get OS from context
-  const [visibleCount, setVisibleCount] = useState(6)
+const Brands: React.FC<BrandsProps> = ({ sellers }) => {
 
-  useEffect(() => {
-    setVisibleCount(os === "mobile" ? 6 : brands.length)
-  }, [os, brands.length])
-
-  if (!brands) return null
-
-  const displayBrand = brands.slice(0, visibleCount)
+  if (!sellers) return null
 
   return (
-    <div className="relative content-container py-4 sm:py-6 my-6 sm:my-10 rounded-lg shadow-lg bg-white">
-      <RiceSpike />
-
-      <Heading
-        level="h1"
-        className="mb-2 sm:mb-4 font-semibold capitalize font-times text-primary text-xl sm:text-28 text-left"
-      >
-        Thương hiệu
-      </Heading>
-
-      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4">
-        {displayBrand.map((brand) => (
-          <ul
-            key={brand.id}
-            className="group flex justify-center items-center border border-primary/35 hover:border-primary/45 p-2 sm:p-4 rounded-lg hover:shadow-xl transition-all duration-500 cursor-pointer"
-          >
-            <li>
-              <LocalizedClientLink href={`/thuong-hieu/${brand.handle}`}>
-                {brand.logo?.url ? (
-                  <Image
-                    src={brand.logo.url}
-                    alt={brand.name}
-                    width={100}
-                    height={100}
-                    className="object-contain transition-transform duration-300 group-hover:scale-125"
-                  />
-                ) : (
-                  <span className="group-hover:text-primary">No logo</span>
-                )}
-              </LocalizedClientLink>
-            </li>
-          </ul>
-        ))}
-      </div>
-
-      {/* View More Button (Only on Mobile) */}
-      {os === "mobile" && visibleCount < brands.length && (
-        <div className="mt-4 flex justify-center">
-          <button
-            onClick={() =>
-              setVisibleCount((prev) => Math.min(prev + 6, brands.length))
-            }
-            className="sm:hidden text-sm capitalize rounded-full px-6 py-1 mx-auto border border-primary text-primary"
-          >
-            Xem thêm
-          </button>
+    <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-light text-center mb-16">
+            {"Explore "}
+            <span className="gradient-text font-medium">sellers</span>
+          </h2>
+          <div className="relative">
+            <button className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-300">
+              <Image src={IMGS.Left} alt={"Left"} width={24} height={24} />
+            </button>
+            <button className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-300">
+              <Image src={IMGS.Right} alt={"Left"} width={24} height={24} />
+            </button>
+            <div className="overflow-hidden">
+              <div className="transition-transform duration-300 ease-in-out">
+                <div className="space-y-8">
+                  <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 pl-14 pr-14">
+                    {sellers.length > 0 ? (
+                      sellers.map((seller) => (
+                        <BrandItem
+                          key={seller.id}
+                          imagesSRC={seller.photo!}
+                          text={seller.name}
+                          link={`/seller/${seller.handle}`}
+                        />
+                      ))
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      )}
-    </div>
+    </section>
   )
 }
 

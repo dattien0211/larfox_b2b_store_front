@@ -1,7 +1,7 @@
-import { Heading } from "@medusajs/ui"
 import { StoreProductCategory } from "@medusajs/types"
+import Image from "next/image"
+import IMGS from "@constants/IMGS"
 import CategoryItem from "./category-item"
-import RiceSpike from "@modules/common/components/rice-spike"
 
 interface CategoryProps {
   categories: StoreProductCategory[]
@@ -13,34 +13,45 @@ const Category: React.FC<CategoryProps> = async ({ categories }) => {
   }
 
   return (
-    <div className="relative py-4 sm:pt-6 sm:pb-8 mb-6 sm:mb-10 bg-white rounded-lg shadow-lg">
-      <RiceSpike />
-      <Heading
-        level="h1"
-        className="mb-2 sm:mb-4 font-semibold capitalize font-times text-primary text-xl sm:text-28"
-      >
-        Danh mục sản phẩm
-      </Heading>
-
-      <div className="grid grid-cols-3 sm:grid-cols-4 small:grid-cols-6 w-full border-t border-l border-primary/35">
-        <CategoryItem
-          key={100}
-          text={"Tất cả sản phẩm"}
-          link={"/tat-ca-san-pham"}
-          isAll={true}
-        />
-        {categories &&
-          categories.map((category) => (
-            <CategoryItem
-              key={category.id}
-              // @ts-ignore
-              imagesSRC={category?.metadata?.thumbnail?.url}
-              text={category.name}
-              link={category.handle}
-            />
-          ))}
+    <section className="py-20 bg-white">
+    <div className="container mx-auto px-4">
+      <h2 className="text-4xl font-light text-center mb-16">
+        {"Explore "}
+        <span className="gradient-text font-medium">
+          services and goods sellers
+        </span>
+      </h2>
+      <div className="relative">
+        <button className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-300">
+          <Image src={IMGS.Left} alt={"Left"} width={24} height={24} />
+        </button>
+        <button className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-300">
+          <Image src={IMGS.Right} alt={"Left"} width={24} height={24} />
+        </button>
+        <div className="overflow-hidden">
+          <div className="transition-transform duration-300 ease-in-out">
+            <div className="space-y-8">
+              <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 pl-14 pr-14">
+                {categories.length > 0 ? (
+                  categories.map((category) => (
+                    <CategoryItem
+                      key={category.id}
+                      // @ts-ignore
+                      imagesSRC={category?.metadata?.thumbnail?.url}
+                      text={category?.name}
+                      link={`/category/${category.handle}`}
+                    />
+                  ))
+                ) : (
+                  <></>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
   )
 }
 

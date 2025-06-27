@@ -4,6 +4,10 @@ import "styles/globals.css"
 import { OSProvider } from "@lib/hooks/OSContext"
 import { Toaster } from "@medusajs/ui"
 import { inter } from "./font"
+import { config } from "@fortawesome/fontawesome-svg-core"
+import "@fortawesome/fontawesome-svg-core/styles.css"
+import AIModal from "@modules/layout/components/modal/AIModal/AIModal"
+config.autoAddCss = false
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
@@ -21,6 +25,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           style={{ background: "red" }}
           className="my-toast"
         />
+        <AIModal />
       </body>
     </html>
   )
