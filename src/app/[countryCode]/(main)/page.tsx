@@ -8,6 +8,7 @@ import { getCategoriesList } from "@lib/data/categories"
 import { getBrandList } from "@lib/data/brand"
 import Image from "next/image"
 import IMGS from "@constants/IMGS"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export const metadata: Metadata = {
   title: "Larfox",
@@ -205,7 +206,10 @@ export default async function Home({
                     {product_categories.length > 0 ? (
                       product_categories.map((category) => (
                         // eslint-disable-next-line react/jsx-key
-                        <div className="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary">
+                        <LocalizedClientLink
+                          href={`/category/${category.handle}`}
+                          className="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary"
+                        >
                           <div className="text-2xl text-primary mb-3 justify-items-center">
                             <Image
                               //@ts-ignore
@@ -218,28 +222,28 @@ export default async function Home({
                           <p className="text-sm font-medium text-gray-800">
                             {category?.name}
                           </p>
-                        </div>
+                        </LocalizedClientLink>
                       ))
                     ) : (
                       <></>
                     )}
                   </div>
 
-                  <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
-                    <div className="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary">
-                      <div className="text-2xl text-primary mb-3 justify-items-center">
-                        <Image
-                          src={IMGS.Search}
-                          alt={"Search"}
-                          width={24}
-                          height={24}
-                        />
-                      </div>
-                      <p className="text-sm font-medium text-gray-800">
-                        Technology Outsourcing
-                      </p>
-                    </div>
-                  </div>
+                  {/*<div className="grid grid-cols-4 md:grid-cols-8 gap-4">*/}
+                  {/*  <div className="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary">*/}
+                  {/*    <div className="text-2xl text-primary mb-3 justify-items-center">*/}
+                  {/*      <Image*/}
+                  {/*        src={IMGS.Search}*/}
+                  {/*        alt={"Search"}*/}
+                  {/*        width={24}*/}
+                  {/*        height={24}*/}
+                  {/*      />*/}
+                  {/*    </div>*/}
+                  {/*    <p className="text-sm font-medium text-gray-800">*/}
+                  {/*      Technology Outsourcing*/}
+                  {/*    </p>*/}
+                  {/*  </div>*/}
+                  {/*</div>*/}
                 </div>
               </div>
             </div>
@@ -267,7 +271,10 @@ export default async function Home({
                     {sellers.length > 0 ? (
                       sellers.map((seller) => (
                         // eslint-disable-next-line react/jsx-key
-                        <div className="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary">
+                        <LocalizedClientLink
+                          href={`/seller/${seller.handle}`}
+                          className="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary"
+                        >
                           <div className="text-2xl text-primary mb-3 justify-items-center">
                             <Image
                               src={seller?.photo ? seller.photo : ""}
@@ -279,7 +286,7 @@ export default async function Home({
                           <p className="text-sm font-medium text-gray-800">
                             {seller?.name}
                           </p>
-                        </div>
+                        </LocalizedClientLink>
                       ))
                     ) : (
                       <></>

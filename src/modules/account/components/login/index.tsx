@@ -54,7 +54,6 @@ const Login = ({ setCurrentView }: Props) => {
         <div className="flex flex-col w-full gap-y-4">
           <div>
             <Input
-              label="Email"
               autoComplete="email"
               data-testid="email-input"
               {...register("email", {
@@ -79,7 +78,6 @@ const Login = ({ setCurrentView }: Props) => {
           </div>
           <div>
             <Input
-              label="Mật khẩu"
               type="password"
               autoComplete="current-password"
               data-testid="password-input"
