@@ -65,7 +65,7 @@ export async function signup(_currentState: unknown, formData: FormData) {
 
     revalidateTag("customer")
 
-    await transferCart()
+    // await transferCart()
 
     return createdCustomer
   } catch (error: any) {
@@ -102,7 +102,7 @@ export async function signout(countryCode: string) {
   revalidateTag("auth")
   revalidateTag("cart")
   revalidateTag("customer")
-  redirect(`/${countryCode}/tai-khoan`)
+  redirect(`/${countryCode}/account`)
 }
 
 export async function transferCart() {

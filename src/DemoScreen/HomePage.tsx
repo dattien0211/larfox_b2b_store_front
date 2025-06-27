@@ -115,36 +115,45 @@
 
 <!-- Future Section -->
 <section id="future" class="py-20 bg-white">
-  <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-light text-center mb-16">The future of <span class="gradient-text font-medium">B2B is here now</span></h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="text-center group">
-        <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-          <i class="fas fa-shield-alt text-2xl text-white"></i>
+  <div className="container mx-auto px-4">
+    <h2 class="text-4xl font-light text-center mb-16">The future of <span class="gradient-text font-medium">B2B is here now</span>
+    </h2>
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="text-center group">
+        <div
+          className="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+          <i className="fas fa-shield-alt text-2xl text-white"></i>
         </div>
-        <h3 class="text-xl font-semibold mb-4">Secure Financial Programs</h3>
-        <p class="text-gray-600 text-sm leading-relaxed">Transact with confidence using our secure and reliable financial programs backed by trusted banks</p>
+        <h3 className="text-xl font-semibold mb-4">Secure Financial Programs</h3>
+        <p className="text-gray-600 text-sm leading-relaxed">Transact with confidence using our secure and reliable
+          financial programs backed by trusted banks</p>
       </div>
-      <div class="text-center group">
-        <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-          <i class="fas fa-robot text-2xl text-white"></i>
+      <div className="text-center group">
+        <div
+          className="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+          <i className="fas fa-robot text-2xl text-white"></i>
         </div>
-        <h3 class="text-xl font-semibold mb-4">The 1st AI Bidding/Selling Agent</h3>
-        <p class="text-gray-600 text-sm leading-relaxed">Find the best total value partners effortlessly fast with our 1st ever AI bidding/selling with culture matching solutions</p>
+        <h3 className="text-xl font-semibold mb-4">The 1st AI Bidding/Selling Agent</h3>
+        <p className="text-gray-600 text-sm leading-relaxed">Find the best total value partners effortlessly fast with
+          our 1st ever AI bidding/selling with culture matching solutions</p>
       </div>
-      <div class="text-center group">
-        <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-          <i class="fas fa-tools text-2xl text-white"></i>
+      <div className="text-center group">
+        <div
+          className="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+          <i className="fas fa-tools text-2xl text-white"></i>
         </div>
-        <h3 class="text-xl font-semibold mb-4">Very Simple Tool</h3>
-        <p class="text-gray-600 text-sm leading-relaxed">Require no public price listing, this is B2B services and goods commerce on digitalized environment</p>
+        <h3 className="text-xl font-semibold mb-4">Very Simple Tool</h3>
+        <p className="text-gray-600 text-sm leading-relaxed">Require no public price listing, this is B2B services and
+          goods commerce on digitalized environment</p>
       </div>
-      <div class="text-center group">
-        <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-          <i class="fas fa-newspaper text-2xl text-white"></i>
+      <div className="text-center group">
+        <div
+          className="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+          <i className="fas fa-newspaper text-2xl text-white"></i>
         </div>
-        <h3 class="text-xl font-semibold mb-4">The 1st Business News AI Agent</h3>
-        <p class="text-gray-600 text-sm leading-relaxed">Get top 5 customized business news impacting your business daily from our AI agent</p>
+        <h3 className="text-xl font-semibold mb-4">The 1st Business News AI Agent</h3>
+        <p className="text-gray-600 text-sm leading-relaxed">Get top 5 customized business news impacting your business
+          daily from our AI agent</p>
       </div>
     </div>
   </div>
@@ -153,31 +162,38 @@
 <!-- Explore Section -->
 <section id="explore" class="py-20 bg-white">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-light text-center mb-16">Explore <span class="gradient-text font-medium">services and goods sellers</span></h2>
+    <h2 class="text-4xl font-light text-center mb-16">Explore <span class="gradient-text font-medium">services and goods sellers</span>
+    </h2>
     <div class="relative">
-      <button id="prevBtn" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-300">
+      <button id="prevBtn"
+              class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-300">
         <i class="fas fa-chevron-left text-gray-600"></i>
       </button>
-      <button id="nextBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-300">
+      <button id="nextBtn"
+              class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-300">
         <i class="fas fa-chevron-right text-gray-600"></i>
       </button>
       <div class="overflow-hidden">
         <div id="categorySlider" class="transition-transform duration-300 ease-in-out">
           <div class="space-y-8">
             <div class="grid grid-cols-4 md:grid-cols-8 gap-4">
-              <div class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary">
+              <div
+                class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary">
                 <i class="fas fa-laptop-code text-2xl text-primary mb-3"></i>
                 <p class="text-sm font-medium text-gray-800">Technology Outsourcing</p>
               </div>
-              <div class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary">
+              <div
+                class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary">
                 <i class="fas fa-cog text-2xl text-secondary mb-3"></i>
                 <p class="text-sm font-medium text-gray-800">Spare Parts</p>
               </div>
-              <div class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary">
+              <div
+                class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary">
                 <i class="fas fa-microscope text-2xl text-primary mb-3"></i>
                 <p class="text-sm font-medium text-gray-800">Clean Room</p>
               </div>
-              <div class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary">
+              <div
+                class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-all hover:-translate-y-1 border border-gray-200 hover:border-primary">
                 <i class="fas fa-robot text-2xl text-secondary mb-3"></i>
                 <p class="text-sm font-medium text-gray-800">Automation</p>
               </div>

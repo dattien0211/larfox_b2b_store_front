@@ -36,9 +36,8 @@ module.exports = {
           20: "#787777",
           30: "#323232",
         },
-        primary: "#B38439",
+        primary: "rgb(102 126 234)",
         "primary-bg": "#F5F7FD",
-        // primary: "#4CAF50",
         orang: {
           5: "#FFB558",
           10: "#D96800",
@@ -84,16 +83,7 @@ module.exports = {
         "128px": "128px",
       },
       fontFamily: {
-        sans: [
-          "Inter",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
-          "Ubuntu",
-          "sans-serif",
-        ],
+        sans: ["var(--font-inter)", "sans-serif"],
         times: ["Times New Roman", "sans-serif"],
         manrope: ["Manrope-Regular", "sans-serif"],
         "manrope-bold": ["Manrope-Bold", "sans-serif"],
@@ -104,6 +94,14 @@ module.exports = {
         "manrope-extralight": ["Manrope-ExtraLight", "sans-serif"],
       },
       keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
         ring: {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
@@ -188,6 +186,8 @@ module.exports = {
         enter: "enter 200ms ease-out",
         "slide-in": "slide-in 1.2s cubic-bezier(.41,.73,.51,1.02)",
         leave: "leave 150ms ease-in forwards",
+        float: "float 6s ease-in-out infinite",
+        marquee: "marquee 20s linear infinite",
       },
       textShadow: {
         custom: "2px 2px 4px #FEB954", // y=2, blur=4, color=#FEB954

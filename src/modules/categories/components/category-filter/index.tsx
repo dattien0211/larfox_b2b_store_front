@@ -3,7 +3,7 @@
 import clsx from "clsx"
 import { HttpTypes } from "@medusajs/types"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 
 const CategoryFilter = ({
   allCategories,
@@ -31,15 +31,13 @@ const CategoryFilter = ({
         : [...prev, handle] // Add category
 
       const basePath = pathname.split("/").slice(0, 2).join("/") // Extract base path
-      const newPath = `${basePath}/danh-muc-san-pham/${updatedCategories.join(
-        "/"
-      )}` // Updated category path
+      const newPath = `${basePath}/category/${updatedCategories.join("/")}` // Updated category path
 
       const params = new URLSearchParams(searchParams.toString()) // Clone current search params
       const finalPath =
         updatedCategories.length > 0
           ? `${newPath}?${params}`
-          : `${basePath}/tat-ca-san-pham?${params}`
+          : `${basePath}/products?${params}`
 
       router.push(finalPath, { scroll: true }) // Navigate while keeping query parameters
 
@@ -48,16 +46,16 @@ const CategoryFilter = ({
   }
 
   return (
-    <div className="lg:py-6 lg:px-4 lg:rounded-md lg:shadow-lg lg:bg-white  ">
-      <h2 className="text-base sm:text-lg font-semibold border-b border-gray-200 pb-4 capitalize text-primary">
-        Danh mục sản phẩm
-      </h2>
-      <div className="space-y-6 mt-6">
+    <div className="w-80 bg-white p-6 rounded-xl shadow-sm h-fit">
+      <h3 className="font-semibold mb-4">Danh mục sản phẩm</h3>
+      <div className="space-y-2 mt-6">
         {allCategories.map((category) => (
           <label
             key={category.id}
-            className="flex items-center cursor-pointer hover:opacity-80"
-            onClick={() => toggleCategory(category.handle)}
+            className="flex items-center"
+            onClick={() => {
+              toggleCategory(category.handle)
+            }}
           >
             <div
               className={clsx(
@@ -72,20 +70,20 @@ const CategoryFilter = ({
                 }
               )}
             >
-              {selectedCategories.includes(category.handle) && (
-                <svg
-                  className="absolute w-4 h-4 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M20 6L9 17l-5-5" />
-                </svg>
-              )}
+              {/*{selectedCategories.includes(category.handle) && (*/}
+              <svg
+                className="absolute w-4 h-4 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              {/*)}*/}
             </div>
             <span
               className={clsx(

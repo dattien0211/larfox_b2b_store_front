@@ -1,51 +1,62 @@
 import { getCustomer } from "@lib/data/customer"
-import Image from "next/image"
 import Icons from "@modules/common/icons"
-import IMGS from "@constants/IMGS"
+import Link from "next/link"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { Suspense } from "react"
-import CartButton from "@modules/layout/components/cart-button"
-import SearchNav from "./searchNav"
 import UserDropDown from "@modules/layout/components/user-dropdown"
-import SearchIconMobile from "@modules/layout/components/search-icon"
 
 export default async function MiddleNav() {
   const { Bag } = Icons
   const customer = await getCustomer().catch(() => null)
 
   return (
-    <div className="flex items-center justify-between py-2 md:py-4">
-      <div className="w-[40px] md:w-[60px] h-auto">
-        <LocalizedClientLink href="/">
-          <Image
-            src={IMGS.Logo}
-            alt="Logo"
-            width={120}
-            height={56}
-            className="w-auto h-auto"
-            priority={true}
-          />
-        </LocalizedClientLink>
+    <header id="header" className="bg-white shadow-sm sticky top-0 z-50">
+      <div className="">
+        <div className="flex items-center justify-between py-4">
+          <LocalizedClientLink href="/" className="flex items-center">
+            <div className="text-3xl font-bold gradient-text mr-2">
+              LARFOX.COM
+            </div>
+            {/*<span className="text-lg font-medium text-gray-700">.COM</span>*/}
+          </LocalizedClientLink>
+          {/*<div className="mx-8 flex flex-grow items-center px-6 rounded-full border border-gray-200 focus-within:ring-2 focus-within:ring-primary">*/}
+          {/*  <input*/}
+          {/*    className="w-full py-3 pr-4 focus:outline-none"*/}
+          {/*    placeholder="Search box"*/}
+          {/*  />*/}
+          {/*  <Image*/}
+          {/*    src={IMGS.Search}*/}
+          {/*    alt="Search"*/}
+          {/*    width={20}*/}
+          {/*    height={20}*/}
+          {/*    className="cursor-pointer"*/}
+          {/*  />*/}
+          {/*</div>*/}
+          <div className="hidden lg:flex items-center space-x-8 text-sm font-medium">
+            <span className="text-gray-700 hover:text-primary cursor-pointer">
+              Language
+            </span>
+            {customer ? (
+              <UserDropDown customer={customer} />
+            ) : (
+              <>
+                <Link href="/account/sign-in">
+                  <span className="text-gray-700 hover:text-primary cursor-pointer">
+                    Sign in
+                  </span>
+                </Link>
+                <Link href="/account/sign-up">
+                  <button className="cursor-pointer gradient-bg text-white px-6 py-2 rounded-full hover:opacity-90 font-semibold">
+                    Sign up
+                  </button>
+                </Link>
+              </>
+            )}
+            <button className="border border-primary text-primary px-6 py-2 rounded-full hover:bg-primary hover:text-white">
+              Get the app
+            </button>
+          </div>
+        </div>
       </div>
-
-      <SearchNav />
-      <div className="flex items-center gap-x-1 ">
-        <SearchIconMobile />
-        <UserDropDown customer={customer} />
-        <Suspense
-          fallback={
-            <LocalizedClientLink                     
-              className="cursor-pointer hover:text-primary"
-              href="/gio-hang"
-              data-testid="nav-cart-link"
-            >
-              <Bag />
-            </LocalizedClientLink>
-          }
-        >
-          <CartButton />
-        </Suspense>
-      </div>
-    </div>
+    </header>
   )
 }

@@ -3,8 +3,6 @@
 import React, { useState } from "react"
 import Icons from "@modules/common/icons"
 import CategoryFilterSkeleton from "../category-filter/category-filter-skeleton"
-import PriceRangeSkeleton from "../price-range/price-range-skeleton"
-import TagFilterSkeleton from "../tag-filter/tag-filter-skeleton"
 
 export default function FilterMenuSkeleton() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -44,10 +42,10 @@ export default function FilterMenuSkeleton() {
         <CategoryFilterSkeleton />
 
         {/* Price Range Skeleton */}
-        <PriceRangeSkeleton />
+        {/*<PriceRangeSkeleton />*/}
 
         {/* Tag Filter Skeleton */}
-        <TagFilterSkeleton />
+        {/*<TagFilterSkeleton />*/}
       </section>
 
       {/* Overlay for Smaller Screens */}

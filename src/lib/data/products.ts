@@ -7,7 +7,11 @@ import { sortProducts } from "@lib/util/sort-products"
 import { getProductPrice } from "@lib/util/get-product-price"
 import client from "@lib/util/client"
 import { UploadedFile } from "./upload-file"
-import { PaginatedProductTagList } from "types/global"
+import {
+  CertificateQueryParams,
+  PaginatedProductCertificateList,
+  PaginatedProductTagList,
+} from "types/global"
 import fetchWithCache from "@lib/util/fetch-with-cache"
 
 export const getProductsById = async function ({
@@ -36,7 +40,7 @@ export const getProductByHandle = async function (
       handle,
       region_id: regionId,
       fields:
-        "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata,*brand",
+        "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata,*seller",
     })
     .then(({ products }) => products[0])
 }
@@ -75,7 +79,7 @@ export const getProductsList = cache(async function ({
       offset,
       // region_id: region.id,
       fields:
-        "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata",
+        "*variants.calculated_price,+variants.inventory_quantity,*categories,*metadata,*seller",
       ...queryParams,
     },
     ["products"], // Cache tag for invalidation
@@ -215,3 +219,23 @@ export const getProductTagsList = async function (
     count: res.data?.count || 0,
   }
 }
+
+export const getProductCertificateList = cache(async function (
+  pageParam: number = 1,
+  queryParams?: CertificateQueryParams
+): Promise<PaginatedProductCertificateList> {
+  const limit = queryParams?.limit || 20
+  const offset = (pageParam - 1) * limit
+
+  const data = await fetchWithCache<PaginatedProductCertificateList>(
+    "/store/product-certificates",
+    { ...queryParams, limit, offset },
+    ["product-certificates"],
+    1200
+  )
+
+  return {
+    productCertificates: data?.productCertificates || [],
+    count: data?.count || 0,
+  }
+})

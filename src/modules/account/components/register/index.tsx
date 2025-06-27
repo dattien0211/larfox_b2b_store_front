@@ -69,7 +69,6 @@ const Register = ({ setCurrentView }: Props) => {
         <div className="flex flex-col w-full gap-y-2">
           <div>
             <Input
-              label="Họ và tên"
               {...register("first_name", {
                 required: "Vui lòng nhập họ và tên!",
               })}
@@ -82,7 +81,6 @@ const Register = ({ setCurrentView }: Props) => {
           </div>
           <div>
             <Input
-              label="Email"
               {...register("email", {
                 required: "Vui lòng nhập email!",
                 pattern: {
@@ -102,7 +100,6 @@ const Register = ({ setCurrentView }: Props) => {
           </div>
           <div>
             <Input
-              label="Số điện thoại"
               {...register("phone", {
                 required: "Vui lòng nhập số điện thoại!",
                 pattern: {
@@ -119,7 +116,6 @@ const Register = ({ setCurrentView }: Props) => {
           </div>
           <div>
             <Input
-              label="Mật khẩu"
               {...register("password", {
                 required: "Vui lòng nhập mật khẩu!",
                 minLength: {
@@ -137,7 +133,6 @@ const Register = ({ setCurrentView }: Props) => {
           </div>
           <div>
             <Input
-              label="Xác nhận mật khẩu"
               {...register("confirm_password", {
                 required: "Vui lòng xác nhận mật khẩu!",
                 validate: (value) =>

@@ -1,5 +1,5 @@
 import { HttpTypes } from "@medusajs/types"
-import Image from "next/image"
+
 export type FeaturedProduct = {
   id: string
   title: string
@@ -111,4 +111,60 @@ export type Brand = {
 export type PaginatedProductsCollectionParams = {
   limit: number
   collection_id?: string[]
+}
+
+export type Seller = {
+  id: string
+  name: string
+  handle: string
+  description: string | null
+  photo: string | null
+  address_line: string | null
+  city: string | null
+  postal_code: string | null
+  country_code: string | null
+  tax_id: string | null
+}
+
+export interface Certificate {
+  id: string
+  title: string
+  type: string
+  image: ImageType[]
+  description: string
+  product_id?: string
+  seller_id?: string
+  metadata: Record<string, any>
+  created_at: string
+  updated_at: string
+}
+
+export type CertificateQueryParams = QueryParams & {
+  product_id?: string
+  seller_id?: string
+}
+
+export type PaginatedProductCertificateList = {
+  productCertificates: Certificate[]
+  count: number
+}
+
+export type PaginatedSellerCertificateList = {
+  sellerCertificates: Certificate[]
+  count: number
+}
+
+export type CertificateTypeQueryParams = QueryParams & {
+  name?: string
+  value?: string
+}
+
+export interface CertificateType {
+  id: string
+  name: string
+  value: string
+  description: string
+  metadata: Record<string, any>
+  created_at: string
+  updated_at: string
 }
